@@ -1,0 +1,54 @@
+node_modules
+.vscode
+.DS_Store
+package-lock.json
+emotion-recognition-application.json
+local.env
+scripts/object-storage.log
+scripts/game-cloud-foundry.log
+scripts/openwhisk-create-html.log
+scripts/game-configure-apis.log
+scripts/game-deploy-cloudant.log
+scripts/deploy-twitter-functions.log
+scripts/text-replace/etc
+scripts/cloudant/etc
+scripts/cloudant/.env
+game/html-function/function-html.js
+game/html-function/swagger.json
+game/twitter-functions/swagger-read.json
+game/twitter-functions/swagger-write.json
+game/twitter-functions/config.json
+
+# webapp
+dist
+score-webapp-cloud-foundry.log
+score-service-cloud-foundry.log
+
+# icp-k8s  harald
+icp-k8s/hiscore-api/node_modules
+
+# game
+game/.DS_Store
+node_modules
+game/dist
+
+# local env files
+game/.env.local
+game/.env.*.local
+
+# Log files
+game/npm-debug.log*
+game/yarn-debug.log*
+game/yarn-error.log*
+
+# Editor directories and files
+game/.idea
+game/.vscode
+game/*.suo
+game/*.ntvs*
+game/*.njsproj
+game/*.sln
+game/*.sw*
+
+game/vue.config.js
+

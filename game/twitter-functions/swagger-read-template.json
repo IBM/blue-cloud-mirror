@@ -1,0 +1,79 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0",
+		"title": "twitter-read"
+	},
+	"schemes": [
+		"https"
+	],
+	"consumes": [
+		"application/json"
+	],
+	"produces": [
+		"application/json",
+		"text/html",
+		"text/plain",
+		"image/svg+xml"
+	],
+	"paths": {
+		"/read": {
+			"get": {
+				"operationId": "getRead",
+				"x-openwhisk": {
+					"namespace": "xxx-your-openwhisk-namespace-for-example:niklas_heidloff%40de.ibm.com_demo-xxx",
+					"action": "read-last-results",
+					"package": "emotions-demo",
+					"url": "https://openwhisk.ng.bluemix.net/api/v1/web/xxx-your-openwhisk-namespace-for-example:niklas_heidloff%40de.ibm.com_demo-xxx/emotions-demo/read-last-results.http",
+					"auth": "f7a27cb6-e071-4b82-baf3-2bf39b227939"
+				},
+				"responses": {
+					"200": {
+						"description": "A successful invocation response"
+					}
+				}
+			}
+		}
+	},
+	"x-ibm-configuration": {
+		"assembly": {
+			"execute": [
+				{
+					"operation-switch": {
+						"case": [
+							{
+								"operations": [
+									"getRead"
+								],
+								"execute": [
+									{
+										"set-variable": {
+											"actions": [
+												{
+													"set": "message.headers.X-Require-Whisk-Auth",
+													"value": "f7a27cb6-e071-4b82-baf3-2bf39b227939"
+												}
+											]
+										}
+									},
+									{
+										"invoke": {
+											"target-url": "https://openwhisk.ng.bluemix.net/api/v1/web/xxx-your-openwhisk-namespace-for-example:niklas_heidloff%40de.ibm.com_demo-xxx/emotions-demo/read-last-results.http",
+											"verb": "keep"
+										}
+									}
+								]
+							}
+						],
+						"otherwise": [],
+						"title": "whisk-invoke"
+					}
+				}
+			]
+		},
+		"cors": {
+			"enabled": true
+		}
+	},
+	"basePath": "/twitter-read"
+}

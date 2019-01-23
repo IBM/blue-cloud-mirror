@@ -1,0 +1,63 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0",
+		"title": "html-game"
+	},
+	"schemes": [
+		"https"
+	],
+	"produces": [
+		"text/html"
+	],
+	"paths": {
+		"/game": {
+			"get": {
+				"operationId": "getAction",
+				"x-openwhisk": {
+					"namespace": "xxx-your-openwhisk-namespace-for-example:niklas_heidloff%40de.ibm.com_demo-xxx",
+					"action": "html",
+					"package": "emotions-demo",
+					"url": "https://openwhisk.ng.bluemix.net/api/v1/web/xxx-your-openwhisk-namespace-for-example:niklas_heidloff%40de.ibm.com_demo-xxx/emotions-demo/html"
+				},
+				"responses": {
+					"200": {
+						"description": "A successful invocation response"
+					}
+				}
+			}
+		}
+	},
+	"x-ibm-configuration": {
+		"assembly": {
+			"execute": [
+				{
+					"operation-switch": {
+						"case": [
+							{
+								"operations": [
+									"getAction"
+								],
+								"execute": [
+									{
+										"invoke": {
+											"target-url": "https://openwhisk.ng.bluemix.net/api/v1/web/xxx-your-openwhisk-namespace-for-example:niklas_heidloff%40de.ibm.com_demo-xxx/emotions-demo/html",
+											"verb": "keep"
+										}
+									}
+								]
+							}
+						],
+						"otherwise": [],
+						"title": "whisk-invoke"
+					}
+				}
+			]
+		},
+		"cors": {
+			"enabled": true
+		}
+	},
+	"basePath": "/demo"
+}
+

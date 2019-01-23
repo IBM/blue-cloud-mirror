@@ -1,0 +1,30 @@
+{
+  "name": "game",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@tensorflow-models/posenet": "0.2.3",
+    "@tensorflow/tfjs": "0.13.3",
+    "axios": "0.18.0",
+    "bootstrap-vue": "2.0.0-rc.11",
+    "face-api.js": "0.16.2",
+    "html2canvas": "1.0.0-alpha.12",
+    "vue": "2.5.17",
+    "vue-class-component": "6.0.0",
+    "vue-property-decorator": "7.0.0",
+    "vue-router": "3.0.1",
+    "vuex": "3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "3.2.0",
+    "@vue/cli-plugin-typescript": "3.2.0",
+    "@vue/cli-service": "3.2.0",
+    "typescript": "3.0.0",
+    "vue-template-compiler": "2.5.17"
+  }
+}

@@ -1,0 +1,6 @@
+applications:
+- name: blue-cloud-mirror
+  host: blue-cloud-mirror-${random-word}
+  memory: 512M
+  instances: 1
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack
