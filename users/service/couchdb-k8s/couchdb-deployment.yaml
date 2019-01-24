@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: users-couchdb
+  labels:
+    app: users
+spec:
+  type: NodePort
+  ports:
+    - port: 5984
+      nodePort: 32001  # API is available on 172.17.20.215:32001
+  selector:
+    app: users
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: couchdb-pv-claim-etc
+  labels:
+    app: users
+spec:
+  storageClassName: glusterfs
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Mi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: couchdb-pv-claim-data
+  labels:
+    app: users
+spec:
+  storageClassName: glusterfs
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: users-couchdb
+  labels:
+    app: users
+spec:
+  selector:
+    matchLabels:
+      app: users
+      tier: couchdb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: users
+        tier: couchdb
+    spec:
+      containers:
+      - image: couchdb:latest
+        name: couchdb
+        ports:
+        - containerPort: 5984
+          name: couchdb
+        volumeMounts:
+        - name: couchdb-persistent-storage-data
+          mountPath: /opt/couchdb/data
+        - name: couchdb-persistent-storage-etc
+          mountPath: /opt/couchdb/etc/local.d 
+      volumes:
+      - name: couchdb-persistent-storage-data
+        persistentVolumeClaim:
+          claimName: couchdb-pv-claim-data
+      - name: couchdb-persistent-storage-etc
+        persistentVolumeClaim:
+          claimName: couchdb-pv-claim-etc          

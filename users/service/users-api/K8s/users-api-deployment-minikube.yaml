@@ -1,0 +1,75 @@
+apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: users-api
+  labels:
+    app: users
+spec:
+  selector:
+    matchLabels:
+      app: users
+      tier: backend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: users
+        tier: backend
+    spec:
+      containers:
+      - image: users-api:1.0.1
+        name: users-api
+        env:
+        - name: BASICAUTH
+          value: '{"teeC7mee1i": "coo0vahdo7nahToo1Om1ud2oo"}'  
+        - name: COUCHDBURL
+          value: 'http://icpadmin:icpadmin@users-couchdb.default.svc.cluster.local:5984'
+        ports:
+        - containerPort: 3000
+          name: users-api 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: users-api
+  labels:
+    app: users
+spec:
+  ports:
+    - port: 3000  
+      protocol: TCP
+      name: http
+  selector:
+    app: users
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: users-api-ingress
+spec:
+  tls:
+    - secretName: users-api-cloud-tls
+      hosts:
+        - users-api.cloud
+  rules:
+  - host: users-api.cloud
+    http:
+      paths:
+        - path: /list
+          backend:
+            serviceName: users-api
+            servicePort: 3000
+        - path: /read
+          backend:
+            serviceName: users-api
+            servicePort: 3000
+        - path: /registeruser
+          backend:
+            serviceName: users-api
+            servicePort: 3000
+        - path: /delete
+          backend:
+            serviceName: users-api
+            servicePort: 3000          
+

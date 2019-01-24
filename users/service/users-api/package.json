@@ -1,0 +1,19 @@
+{
+  "name": "vr-hiscore-api",
+  "version": "1.0.0",
+  "description": "Store and retrieve personal hiscore data in CouchDB",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Harald Uebele",
+  "license": "",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dateformat": "^3.0.3",
+    "express": "^4.16.4",
+    "express-basic-auth": "^1.1.6",
+    "nano": "^7.1.1"
+  }
+}

@@ -1,0 +1,269 @@
+swagger: '2.0'
+info:
+  x-ibm-name: users-api
+  title: users-api
+  version: 1.0.0
+schemes:
+  - https
+basePath: /users-api
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Client Secret:
+    type: apiKey
+    description: ''
+    in: header
+    name: X-IBM-Client-Secret
+  Client ID:
+    type: apiKey
+    description: ''
+    in: header
+    name: X-IBM-Client-Id
+security:
+  - Client Secret: []
+    Client ID: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  assembly:
+    execute:
+      - operation-switch:
+          title: operation-switch
+          case:
+            - operations:
+                - verb: get
+                  path: /list
+              execute:
+                - invoke:
+                    title: invoke-list
+                    timeout: 60
+                    verb: GET
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    version: 1.0.0
+                    target-url: 'https://##YOURCLOUDGATEWAY##:##YOURCLOUDPORT##/list'
+                    username: teeC7mee1i
+                    password: coo0vahdo7nahToo1Om1ud2oo
+            - operations:
+                - verb: post
+                  path: /registeruser
+              execute:
+                - invoke:
+                    title: invoke-registeruser
+                    timeout: 60
+                    verb: POST
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    version: 1.0.0
+                    target-url: 'https://##YOURCLOUDGATEWAY##:##YOURCLOUDPORT##/registeruser'
+                    username: teeC7mee1i
+                    password: coo0vahdo7nahToo1Om1ud2oo
+            - operations:
+                - verb: get
+                  path: /read
+              execute:
+                - invoke:
+                    title: invoke-read
+                    timeout: 60
+                    verb: GET
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    version: 1.0.0
+                    target-url: 'https://##YOURCLOUDGATEWAY##:##YOURCLOUDPORT##/read?lastname=$(request.parameters.lastname)&firstname=$(request.parameters.firstname)'
+                    username: teeC7mee1i
+                    password: coo0vahdo7nahToo1Om1ud2oo
+            - operations:
+                - verb: get
+                  path: /delete
+              execute:
+                - invoke:
+                    title: invoke-delete
+                    timeout: 60
+                    verb: GET
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    version: 1.0.0
+                    target-url: 'https://##YOURCLOUDGATEWAY##:##YOURCLOUDPORT##/delete?lastname=$(request.parameters.lastname)&firstname=$(request.parameters.firstname)'
+                    username: teeC7mee1i
+                    password: coo0vahdo7nahToo1Om1ud2oo
+          otherwise: []
+          version: 1.0.0
+  phase: realized
+paths:
+  /registeruser:
+    post:
+      responses:
+        '200':
+          description: 200 OK
+          schema:
+            $ref: '#/definitions/RESULT OK'
+        '500':
+          description: 500 Error
+      summary: 'Register user, user data is JSON object'
+      description: 'Body: { "firstName": "Hans",   "lastName": "Mailer",   "email": "user@test.de",   "signedTerms": "true",   "registrationDate": "1547050380" }'
+      parameters:
+        - name: data
+          required: true
+          in: body
+          schema:
+            $ref: '#/definitions/USER DATA'
+          description: JSON user object
+  /list:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+          schema:
+            $ref: '#/definitions/LIST DATA'
+      summary: List all users in database
+      description: Result is a JSON object with numbers of entries and an array of all user data
+  /read:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+          schema:
+            $ref: '#/definitions/LIST Value'
+        '500':
+          description: 500 Error
+      summary: Read a user record
+      description: 'Read a singel record, query with lastname and firstname'
+      parameters:
+        - name: lastname
+          type: string
+          required: true
+          in: query
+          description: Last name
+        - name: firstname
+          type: string
+          required: true
+          in: query
+          description: First name
+  /delete:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+        '500':
+          description: 500 Error
+      summary: Delete record
+      description: 'Delete user record, query on lastname and firstname, Result 200 OK when delete succesful or no record found'
+      parameters:
+        - name: lastname
+          type: string
+          required: true
+          in: query
+          description: Last name
+        - name: firstname
+          type: string
+          required: true
+          in: query
+          description: First name
+definitions:
+  RESULT OK:
+    properties:
+      id:
+        type: object
+        example: '{id: firstname lastname}'
+        description: Firstname Lastname
+    additionalProperties: false
+    required:
+      - id
+  USER DATA:
+    properties:
+      firstName:
+        type: string
+        example: Hans
+      lastName:
+        type: string
+        example: Maier
+      email:
+        type: string
+        example: hm@example.com
+      signedTerms:
+        type: boolean
+        example: 'true'
+      registrationDate:
+        type: integer
+        format: int32
+        example: '1547050380'
+    additionalProperties: true
+    description: JSON User Data for /registeruser
+  LIST Value:
+    properties:
+      _id:
+        type: string
+        description: CouchDB ID
+        example: Hans Maier
+      _rev:
+        type: string
+        description: CouchDB Revision
+        example: 1-a170eca85848329732
+      lastName:
+        type: string
+        example: Maier
+      firstName:
+        type: string
+        example: Hans
+      email:
+        type: string
+        example: hm@example.com
+      signedTerms:
+        type: boolean
+        example: 'true'
+        description: 'User accepted Ts&Cs, must be true'
+      registrationDate:
+        type: integer
+        description: 'Unix timestamp, integer'
+        format: int32
+        example: '1547050300'
+      time:
+        type: string
+        description: Timestamp
+        example: '2019-01-17T07:13:18+0000'
+    additionalProperties: true
+  LIST Row:
+    type: object
+    properties:
+      id:
+        type: string
+        description: CouchDB ID
+        example: Hans Maier
+      key:
+        type: string
+        description: CouchDB Key
+        example: Hans Maier
+      value:
+        description: CouchDB data record
+        $ref: '#/definitions/LIST Value'
+    additionalProperties: true
+  LIST DATA:
+    properties:
+      total_rows:
+        type: integer
+        format: int32
+        description: Number of records in CouchDB
+        example: '12'
+      rows:
+        $ref: '#/definitions/LIST Rows'
+    additionalProperties: true
+    description: Result set of /list operation
+  LIST Rows:
+    type: array
+    items:
+      $ref: '#/definitions/LIST Row'
+    description: Array of LIST row
+tags: []
+x-ibm-endpoints:
+  - endpointUrl: 'https://api.eu-de.apiconnect.appdomain.cloud/b-uebele-dev-fra-b/sb'
+    type:
+      - production
+      - development

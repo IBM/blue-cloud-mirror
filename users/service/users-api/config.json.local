@@ -1,0 +1,3 @@
+{
+"couchdburl": "http://<user>:<password>@<couch db host>:<port | 5984>"
+}

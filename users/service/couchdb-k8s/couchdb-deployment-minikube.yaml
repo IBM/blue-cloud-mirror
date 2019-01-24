@@ -1,0 +1,101 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: users-couchdb
+  labels:
+    app: users
+spec:
+  type: NodePort
+  ports:
+    - port: 5984
+      nodePort: 32001  # API is available on 172.17.20.215:32001
+  selector:
+    app: users
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv002
+spec:
+  storageClassName: data
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 4Gi
+  hostPath:
+    path: /data/pv002/
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv001
+spec:
+  storageClassName: etc
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 10Mi
+  hostPath:
+    path: /data/pv001/
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc-couchdb-data
+spec:
+  storageClassName: data
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 4Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc-couchdb-etc
+spec:
+  storageClassName: etc
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Mi
+---
+apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: users-couchdb
+  labels:
+    app: users
+spec:
+  selector:
+    matchLabels:
+      app: users
+      tier: couchdb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: users
+        tier: couchdb
+    spec:
+      containers:
+      - image: couchdb:latest
+        name: couchdb
+        ports:
+        - containerPort: 5984
+          name: couchdb
+        volumeMounts:
+        - name: pvc-couchdb-data
+          mountPath: /opt/couchdb/data
+        - name: pvc-couchdb-etc
+          mountPath: /opt/couchdb/etc/local.d 
+      volumes:
+      - name: pvc-couchdb-data
+        persistentVolumeClaim:
+          claimName: pvc-couchdb-data
+      - name: pvc-couchdb-etc
+        persistentVolumeClaim:
+          claimName: pvc-couchdb-etc          
