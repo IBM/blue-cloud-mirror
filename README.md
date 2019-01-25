@@ -4,9 +4,9 @@ This project contains a game where players need to show five specific emotions a
 
 [Play the Game.](https://blue-cloud-mirror.mybluemix.net/)
 
-The game can be used at conferences as conversation starter with developers. It's fun, interactive and uses key technologies of the [IBM Cloud](https://cloud.ibm.com/).
+Here is an example of a successful game:
 
-Visitors at the booth can play anonymously or they can enter their email addresses and names and sign the terms to have a chance to win some gadgets at the end of the conferences.
+![alt text](images/game-results-900.jpeg "game results")
 
 **Showcase of IBM Cloud Technologies**
 
