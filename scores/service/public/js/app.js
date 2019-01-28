@@ -3,10 +3,10 @@ var app = angular.module("visual-recognition-demo", ["ngRoute"]);
 
 // Define all constants.
 app.constant("api", {
-  url_db: "https://8f5db30-e9fe-489d-920a-de1f50a31930-bluemix.cloudant.com/",
+  url_db: "",
   vr_url:
-    "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers",
-  vr_key: "77fcccaea16c001fa2bec52ed8b5f9a3888bd542"
+    "",
+  vr_key: ""
 });
 
 // Define all the routes for the web app.
@@ -29,10 +29,6 @@ app.config(function($routeProvider) {
     .when("/showdata", {
       templateUrl: "templates/content/showdata.html",
       controller: "controllerShowData"
-    })
-    .when("/senddata", {
-      templateUrl: "templates/content/senddata.html",
-      controller: "controllerSendData"
     })
     .when("/sendscore", {
       templateUrl: "templates/content/sendscore.html",

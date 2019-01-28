@@ -4,10 +4,12 @@
     "authors": ["Thomas Suedbroecker <thomas.suedbroecker@de.ibm.com>"],
     "dependencies": {
       "bootstrap": "4.0.0-alpha.3",
-      "tether": "*",
-      "angular-simple-logger": "*",
-      "angular-lodash": "*",
-      "jquery": "*",
-      "angular-route": "*"
+      "tether": "v1.4.4",
+      "angular-simple-logger": "0.1.7",
+      "angular-lodash": "v0.1.2",
+      "lodash": "~2.4.1",
+      "jquery": "3.3.1",
+      "angular-route": "v1.7.6",
+      "angular": "v1.7.6"
     }
   }
