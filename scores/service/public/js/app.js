@@ -11,6 +11,7 @@ app.constant("api", {
 
 // Define all the routes for the web app.
 app.config(function($routeProvider) {
+  console.log("info:", $routeProvider);
   $routeProvider
     .when("/", {
       redirectTo: "/dashboard"
