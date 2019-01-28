@@ -3,7 +3,7 @@
     "directory": "./public/lib/",
     "authors": ["Thomas Suedbroecker <thomas.suedbroecker@de.ibm.com>"],
     "dependencies": {
-      "bootstrap": "4.0.0-alpha.3",
+      "bootstrap": "^4.0.1",
       "tether": "v1.4.4",
       "angular-simple-logger": "0.1.7",
       "angular-lodash": "v0.1.2",
