@@ -1,10 +1,16 @@
 {
-  "name": "er-score-api",
-  "authors": ["Thomas Suedbroecker <thomas.suedbroecker@de.ibm.com>"],
+  "name": "scores-service",
+  "directory": "./public/lib/",
+  "main": "",
+  "authors": [
+    "Thomas Suedbroecker <thomas.suedbroecker@de.ibm.com>"
+  ],
   "dependencies": {
     "bootstrap": "4.0.0-alpha.3",
-    "jquery": "*",
     "tether": "*",
+    "angular-simple-logger": "*",
+    "angular-lodash": "*",
+    "jquery": "*",
     "angular-route": "*"
   }
 }

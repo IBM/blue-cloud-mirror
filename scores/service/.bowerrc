@@ -1,0 +1,13 @@
+{
+    "name": "scores-service",
+    "directory": "./public/lib/",
+    "authors": ["Thomas Suedbroecker <thomas.suedbroecker@de.ibm.com>"],
+    "dependencies": {
+      "bootstrap": "4.0.0-alpha.3",
+      "tether": "*",
+      "angular-simple-logger": "*",
+      "angular-lodash": "*",
+      "jquery": "*",
+      "angular-route": "*"
+    }
+  }
