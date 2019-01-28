@@ -21,8 +21,12 @@ game/twitter-functions/config.json
 
 # webapp
 dist
-score-webapp-cloud-foundry.log
-score-service-cloud-foundry.log
+*.log
+scores.local.root.env
+App.vue
+scoreMain.vue
+scores/functions-api/api-definition/template-scores-functions-API-1.0.0.json
+scores/scores-api/scores-service-API-CF-1.0.0.yaml
 
 # icp-k8s  harald
 icp-k8s/hiscore-api/node_modules

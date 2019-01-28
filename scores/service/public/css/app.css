@@ -1,0 +1,93 @@
+body {
+    padding-bottom: 40px;
+}
+
+.container-fluid {
+    padding-top: 55px;
+}
+
+.click {
+    cursor: pointer;
+}
+
+#footer{
+    padding-top: 30px;
+}
+
+.jumbotron {
+    padding: 2rem;
+}
+.margin {
+    margin-bottom: 1rem;
+}
+
+.img{
+    max-width: 100%;
+    max-height: 100%;
+}
+#image-upload{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#spinner {
+    position: fixed;
+    z-index: 99;
+    left: calc(50% - 46px);
+    top: calc(50% - 46px);
+}
+a.anchor {
+    display: block;
+    position: relative;
+    top: -55px;
+    visibility: hidden;
+}
+
+/* My Styles */
+.figure {
+  width: 250px;
+  height: 250px;
+  background-color: #000;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#map-canvas {
+  height: 100%;
+  margin: 0px;
+  padding: 0px
+}
+
+.angular-google-map-container { height: 400px; }

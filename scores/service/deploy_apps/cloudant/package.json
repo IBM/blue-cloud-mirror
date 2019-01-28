@@ -1,0 +1,16 @@
+{
+  "name": "cloudant",
+  "version": "1.0.1",
+  "description": "",
+  "main": "setup.js",
+  "scripts": {
+    "start": "node setup.js"
+  },
+  "author": "Niklas Heidloff and Thomas Suedbroecker",
+  "license": "ALv2",
+  "dependencies": {
+    "@cloudant/cloudant": "3.0.1",
+    "dotenv": "6.1.0",
+    "fs": "0.0.1-security"
+  }
+}

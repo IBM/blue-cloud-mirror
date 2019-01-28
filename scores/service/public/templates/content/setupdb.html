@@ -1,0 +1,53 @@
+<h1 class="display-3">Setup DB</h1>
+<hr class="m-y-2" />
+<div>
+  <label class="col-form-label" for="inputUser">User</label>
+  <input
+    type="text"
+    class="form-control form-control-danger form-control-success"
+    id="inputUser"
+    ng-model="theUser"
+    placeholder="User"
+  />
+  <label class="col-form-label" for="inputPassword">Password</label>
+  <input
+    type="text"
+    class="form-control form-control-danger form-control-success"
+    id="inputPassword"
+    ng-model="thePassword"
+    placeholder="Password"
+  />
+  <p>
+    <button
+      type="button"
+      ng-class="( theInputScore && theFirst_name && theLast_name && theUser && thePassword )?'':'disabled'"
+      class="btn btn-success pull-right"
+      ng-click="setupDB(theUser,thePassword)"
+    >
+      Setup DB
+    </button>
+  </p>
+</div>
+<div ng-if="showdata"><p>This is the high score list:</p></div>
+
+<div ng-if="showdata">
+  <hr class="m-y-2" />
+  <table border="1|0">
+    <thead>
+      <tr>
+        <th>Database name</th>
+        <th>Database Url</th>
+        <th>View</th>
+        <th>Index</th>
+        <th>Cors</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td>{{ db }}</td>
+      <td>{{ url }}</td>
+      <td>{{ view }}</td>
+      <td>{{ index }}</td>
+      <td>{{ cors }}</td>
+    </tbody>
+  </table>
+</div>

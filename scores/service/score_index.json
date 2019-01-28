@@ -1,0 +1,11 @@
+{
+  "_id": "_design/_d_scores",
+  "views": {},
+  "language": "javascript",
+  "indexes": {
+    "_idx_scores": {
+      "analyzer": "standard",
+      "index": "function (doc) {\n  index(\"default\", doc._id);\n  \n  /*************\n    score  related\n   *************/\n\n  if(doc.score.score){\n    index(\"theScore\", doc.score.score, {\"store\": true, \"facet\":false});\n  }\n  if(doc.score.gameDate){\n    index(\"theScoreGamedate\", doc.score.gameDate, {\"store\": true, \"facet\":false });\n  }\n  if(doc.score.firstName){\n    index(\"theScoreFirstName\", doc.score.firstName, {\"store\": true, \"facet\":true});\n  }\n  if(doc.score.lastName){\n    index(\"theScoreLastName\", doc.score.lastName, {\"store\": true, \"facet\":true});\n  }\n  if(doc.score.uid){\n    index(\"theScoreUID\", doc.score.uid, {\"store\": true, \"facet\":true});\n  }\n}"
+    }
+  }
+}

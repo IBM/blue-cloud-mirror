@@ -1,0 +1,7 @@
+# basics
+node_modules
+score-webapp-cloud-foundry.log
+
+# custom
+deploy_apps
+.DS_Store

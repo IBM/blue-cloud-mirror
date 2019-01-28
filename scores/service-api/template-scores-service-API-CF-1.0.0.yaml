@@ -1,0 +1,243 @@
+swagger: '2.0'
+info:
+  x-ibm-name: scores
+  title: scores service API CF
+  version: 1.0.0
+  contact:
+    name: Thomas Südbröcker
+    email: thomas.suedbroecker@de.ibm.com
+  description: This is just a sample API for the ibm cloud mirror demo.
+schemes:
+  - https
+basePath: /scores
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  IBM-Client-Secret:
+    type: apiKey
+    description: ''
+    in: header
+    name: X-IBM-Client-Secret
+  IBM-Client-Id:
+    type: apiKey
+    description: ''
+    in: header
+    name: X-IBM-Client-Id
+security:
+  - IBM-Client-Secret: []
+    IBM-Client-Id: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  assembly:
+    execute:
+      - operation-switch:
+          title: operations of the scores service
+          case:
+            - operations:
+                - verb: post
+                  path: /api/v1/addscore
+              execute:
+                - invoke:
+                    target-url: 'SCORES_SERVICE_URL/api/v1/addscore'
+                    title: addscore
+                    verb: POST
+                    username: 'USER'
+                    password: 'PASSWORD'
+            - operations:
+                - verb: get
+                  path: /api/v1/gethighscore
+              execute:
+                - invoke:
+                    title: getHighScoreList
+                    timeout: 60
+                    verb: GET
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    version: 1.0.0
+                    target-url: 'SCORES_SERVICE_URL/api/v1/gethighscore'
+                    username: 'USER'
+                    password: 'PASSWORD'
+            - operations:
+                - verb: get
+                  path: /api/v1/getscorelist
+              execute:
+                - invoke:
+                    title: getScoreList
+                    timeout: 60
+                    verb: GET
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    version: 1.0.0
+                    target-url: 'SCORES_SERVICE_URL/api/v1/getscorelist'
+                    username: 'USER'
+                    password: 'PASSWORD'
+            - operations:
+                - verb: get
+                  path: /api/v1/searchscore
+              execute:
+                - invoke:
+                    title: searchScore
+                    timeout: 60
+                    verb: GET
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    version: 1.0.0
+                    target-url: 'SCORES_SERVICE_URL/api/v1/searchscore?searchTopic=$(request.parameters.searchTopic)&searchString=$(request.parameters.searchString)'
+                    username: 'USER'
+                    password: 'PASSWORD'
+            - operations:
+                - verb: get
+                  path: /api/v1/setupDB
+              execute:
+                - invoke:
+                    title: setupDB
+                    timeout: 60
+                    verb: GET
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    version: 1.0.0
+                    target-url: 'SCORES_SERVICE_URL/api/v1/setupDB'
+                    username: 'USER'
+                    password: 'PASSWORD'
+            - operations:
+                - verb: post
+                  path: /api/v1/deletescore
+              execute:
+                - invoke:
+                    title: deleteScore
+                    timeout: 60
+                    verb: POST
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error: []
+                    version: 1.0.0
+                    target-url: 'SCORES_SERVICE_URL/api/v1/deletescore'
+                    username: 'USER'
+                    password: 'PASSWORD'
+          otherwise: []
+          version: 1.0.0
+          description: This list does contain given API calls.
+    catch: []
+  phase: realized
+  gateway: datapower-gateway
+paths:
+  /api/v1/addscore:
+    post:
+      responses:
+        '200':
+          description: 200 OK
+        '500':
+          description: Error information see json object.
+      parameters:
+        - name: addscore
+          required: true
+          in: body
+          schema:
+            $ref: '#/definitions/addscore'
+          description: Add score
+  /api/v1/gethighscore:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+        '500':
+          description: Error information see json object.
+  /api/v1/getscorelist:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+        '500':
+          description: Error information see json object.
+  /api/v1/searchscore:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+        '500':
+          description: Error information see json object.
+      parameters:
+        - name: searchTopic
+          type: string
+          required: true
+          in: query
+        - name: searchString
+          type: string
+          required: true
+          in: query
+  /api/v1/setupDB:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+        '500':
+          description: Error information see json object.
+  /api/v1/deletescore:
+    post:
+      responses:
+        '200':
+          description: 200 OK
+        '500':
+          description: Error information see json object.
+      parameters:
+        - name: score
+          required: false
+          in: body
+          schema:
+            $ref: '#/definitions/deletescore'
+definitions:
+  addscore:
+    properties:
+      firstName:
+        type: string
+        example: Thomas
+      lastName:
+        type: string
+        example: Michael
+      gameDate:
+        type: integer
+        format: int32
+        example: '1547032734102'
+      score:
+        type: integer
+        format: int32
+        example: '100'
+    additionalProperties: false
+    required:
+      - firstName
+      - lastName
+      - gameDate
+      - score
+  deletescore:
+    properties:
+      score:
+        $ref: '#/definitions/deletescore_detail'
+    additionalProperties: false
+    required:
+      - score
+  deletescore_detail:
+    properties:
+      id:
+        type: string
+      rev:
+        type: string
+    additionalProperties: false
+    required:
+      - id
+      - rev
+tags: []
+host: $(catalog.host)
+x-ibm-endpoints:
+  - endpointUrl: 'https://api.us-south.apiconnect.appdomain.cloud/thomassuedbroecker2deibmcom-stage-bluecloudmirror-showcase/sb'
+    type:
+      - production
+      - development

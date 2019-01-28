@@ -1,0 +1,10 @@
+{
+  "name": "er-score-api",
+  "authors": ["Thomas Suedbroecker <thomas.suedbroecker@de.ibm.com>"],
+  "dependencies": {
+    "bootstrap": "4.0.0-alpha.3",
+    "jquery": "*",
+    "tether": "*",
+    "angular-route": "*"
+  }
+}

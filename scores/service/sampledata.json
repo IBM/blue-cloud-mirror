@@ -1,0 +1,31 @@
+{
+    "docs": [
+        {
+            "_id": "7849419250a877d016690ebf042c129a",
+            "score": {
+            "firstName": "Niklas",
+            "lastName": "Heidloff",
+            "gameDate": 1547807817267,
+            "score": 23.668,
+            "uid": "Niklas Heidloff"
+            }
+        },
+        {   "_id": "f634346d019993485ca7023dab53a339",
+            "score": {
+              "firstName": "Thomas",
+              "lastName": "Südbröcker",
+              "gameDate": 1547651780095,
+              "score": 25.924,
+              "uid": "Thomas Südbröcker"
+            }
+        },
+        {   "_id": "e67f6b4ea93b9116dd191f61d5c38060",
+            "score": {
+              "firstName": "Harald",
+              "lastName": "Uebele",
+              "gameDate": 1547651780095,
+              "score": 24.924,
+              "uid": "Harald Uebele"
+            }
+        }]
+}

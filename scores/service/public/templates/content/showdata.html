@@ -1,0 +1,53 @@
+<h1 class="display-3">Show high scores</h1>
+<hr class="m-y-2" />
+<div>
+  <label class="col-form-label" for="inputUser">User</label>
+  <input
+    type="text"
+    class="form-control form-control-danger form-control-success"
+    id="inputUser"
+    ng-model="theUser"
+    placeholder="User"
+  />
+  <label class="col-form-label" for="inputPassword">Password</label>
+  <input
+    type="text"
+    class="form-control form-control-danger form-control-success"
+    id="inputPassword"
+    ng-model="thePassword"
+    placeholder="Password"
+  />
+  <p>
+    <button
+      type="button"
+      ng-class="( theUser && thePassword )?'':'disabled'"
+      class="btn btn-success pull-right"
+      ng-click="getData(theUser,thePassword)"
+    >
+      Load high scores
+    </button>
+  </p>
+</div>
+<div ng-if="showdata"><p>This is the high score list:</p></div>
+
+<div ng-if="showdata">
+  <hr class="m-y-2" />
+  <table border="1|0">
+    <thead>
+      <tr>
+        <th>Score</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="data in datalist">
+        <td>{{ data.score }}</td>
+        <td>{{ data.firstName }}</td>
+        <td>{{ data.lastName }}</td>
+        <td>{{ data.gameDate }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

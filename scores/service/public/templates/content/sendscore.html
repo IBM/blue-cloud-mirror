@@ -1,0 +1,53 @@
+<h1 class="display-3">Send score</h1>
+<hr class="m-y-2" />
+
+<div class="form-group" ng-class="inputClassifierNameClass">
+  <label class="col-form-label" for="inputScore">Score</label>
+  <input
+    type="text"
+    class="form-control form-control-danger form-control-success"
+    id="inputScore"
+    ng-model="theInputScore"
+    placeholder="Score"
+  />
+  <label class="col-form-label" for="inputFirst_name">First name</label>
+  <input
+    type="text"
+    class="form-control form-control-danger form-control-success"
+    id="inputFirst_name"
+    ng-model="theFirst_name"
+    placeholder="First name"
+  />
+  <label class="col-form-label" for="inputLast_name">Last name</label>
+  <input
+    type="text"
+    class="form-control form-control-danger form-control-success"
+    id="inputLast_name"
+    ng-model="theLast_name"
+    placeholder="Last name"
+  />
+  <label class="col-form-label" for="inputUser">User</label>
+  <input
+    type="text"
+    class="form-control form-control-danger form-control-success"
+    id="inputUser"
+    ng-model="theUser"
+    placeholder="User"
+  />
+  <label class="col-form-label" for="inputPassword">Password</label>
+  <input
+    type="text"
+    class="form-control form-control-danger form-control-success"
+    id="inputPassword"
+    ng-model="thePassword"
+    placeholder="Password"
+  />
+</div>
+
+<input
+  type="button"
+  ng-class="( theInputScore && theFirst_name && theLast_name && theUser && thePassword )?'':'disabled'"
+  class="btn btn-success pull-right"
+  ng-click="sendScore(theInputScore,theFirst_name,theLast_name,theUser,thePassword)"
+  value="Send score"
+/>

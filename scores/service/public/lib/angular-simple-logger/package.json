@@ -1,0 +1,116 @@
+{
+  "_args": [
+    [
+      "angular-simple-logger@>=0.0.1",
+      "/Users/tsuedbroecker/Documents/tsuedbro/MobileBluemix/dev/gitHubIBMRepo/demo-visual-recognition-backend/node_modules/angular-google-maps"
+    ]
+  ],
+  "_from": "angular-simple-logger@>=0.0.1",
+  "_id": "angular-simple-logger@0.1.7",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/angular-simple-logger",
+  "_nodeVersion": "4.2.2",
+  "_npmUser": {
+    "email": "nemtcan@gmail.com",
+    "name": "nmccready"
+  },
+  "_npmVersion": "2.14.15",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "angular-simple-logger",
+    "raw": "angular-simple-logger@>=0.0.1",
+    "rawSpec": ">=0.0.1",
+    "scope": null,
+    "spec": ">=0.0.1",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/angular-google-maps"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-simple-logger/-/angular-simple-logger-0.1.7.tgz",
+  "_shasum": "4ae48e5eac0973f577845918e56d4933cf66f041",
+  "_shrinkwrap": null,
+  "_spec": "angular-simple-logger@>=0.0.1",
+  "_where": "/Users/tsuedbroecker/Documents/tsuedbro/MobileBluemix/dev/gitHubIBMRepo/demo-visual-recognition-backend/node_modules/angular-google-maps",
+  "author": {
+    "name": "Nicholas McCready"
+  },
+  "bugs": {
+    "url": "https://github.com/nmccready/angular-simple-logger/issues"
+  },
+  "dependencies": {
+    "angular": "^1.2",
+    "debug": "^2.2.0"
+  },
+  "description": "Basic logger with level logging which can also be independent.",
+  "devDependencies": {
+    "angular-mocks": "^1.2",
+    "brfs": "^1.4.1",
+    "browserify": "^11.2.0",
+    "chai": "^3.2.0",
+    "coffee-script": "^1.9.3",
+    "del": "^2.0.0",
+    "globby": "^3.0.1",
+    "gulp": "git://github.com/gulpjs/gulp.git#bbe3c56138a9ede627879d7e47daffd0a6d9b6db",
+    "gulp-bump": "^1.0.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-coffeelint": "^0.5.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-debug": "^2.1.0",
+    "gulp-git": "^1.4.0",
+    "gulp-if": "^1.2.5",
+    "gulp-insert": "^0.5.0",
+    "gulp-open": "^1.0.0",
+    "gulp-replace": "^0.5.4",
+    "gulp-tag-version": "^1.3.0",
+    "gulp-task-listing": "^1.0.1",
+    "gulp-uglify": "^1.4.1",
+    "gulp-util": "^3.0.6",
+    "gulp-wrap": "^0.11.0",
+    "jasmine-core": "^2.3.4",
+    "jsonfile": "^2.2.2",
+    "karma": "^0.13.9",
+    "karma-browserify": "^4.4.0",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-coffee-preprocessor": "^0.3.0",
+    "karma-coverage": "^0.5.1",
+    "karma-jasmine": "^0.3.6",
+    "karma-mocha-reporter": "^1.1.1",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "mocha": "^2.3.0",
+    "phantomjs": "^1.9.18",
+    "pretty-hrtime": "^1.0.0",
+    "require-directory": "^2.1.1",
+    "through2": "^0.6.3",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "4ae48e5eac0973f577845918e56d4933cf66f041",
+    "tarball": "https://registry.npmjs.org/angular-simple-logger/-/angular-simple-logger-0.1.7.tgz"
+  },
+  "gitHead": "bd15d5a9875761c9564d0c82698460980bca4c9a",
+  "homepage": "https://github.com/nmccready/angular-simple-logger",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "maintainers": [
+    {
+      "name": "nmccready",
+      "email": "nemtcan@gmail.com"
+    }
+  ],
+  "name": "angular-simple-logger",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nmccready/angular-simple-logger.git"
+  },
+  "scripts": {
+    "start": "gulp",
+    "test": "gulp spec"
+  },
+  "version": "0.1.7"
+}

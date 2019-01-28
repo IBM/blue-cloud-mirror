@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="theme-color" content="#4178be" />
+    <title>Blue cloud mirror - score service UI</title>
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="lib/tether/dist/css/tether.min.css" />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+    <!-- Own CSS -->
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body ng-app="visual-recognition-demo">
+    <!-- Include the navigation -->
+    <div ng-include="'templates/content/navigation.html'"></div>
+    
+    <!-- Footer -->
+    <div class="container-fluid">
+      <div ng-view></div>
+
+      <p align="center" id="footer">
+        <div style="margin-top:50px;font-size: smaller;color: darkgray;">Brought to you by the <a target="_blank" style="color:#053c9f" href="https://developer.ibm.com/cities/berlin-de/">IBM Developer Advocacy DACH</a> team</div>
+        <div style="margin-top:10px;margin-bottom:20px;font-size: smaller;color: darkgray;">Get the <a target="_blank" style="color:#053c9f" href="https://github.com/nheidloff/blue-cloud-mirror">code</a></div>
+      </p>
+
+      <div id="spinner" ng-show="spinner"><img src="img/spinner.gif" /></div>
+    </div>
+
+    <!-- External JavaScript Libraries -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiTIC7I0Hogte2so_NuTUazC_dS3frhYw&sensor=true"
+      async
+      defer
+    ></script>
+
+    <!-- JavaScript Libraries -->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/tether/dist/js/tether.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+
+    <!-- Own JavaScript -->
+    <script src="js/app.js"></script>
+
+    <!-- Controller -->
+    <script src="js/controller/controllerDashboard.js"></script>
+    <script src="js/controller/controllerShowAllData.js"></script>
+    <script src="js/controller/controllerShowData.js"></script>
+    <script src="js/controller/controllerSendData.js"></script>
+    <script src="js/controller/controllerSendScore.js"></script>
+    <script src="js/controller/controllerSetupDB.js"></script>
+
+    <!-- Factory -->
+    <!-- Directives -->
+  </body>
+</html>

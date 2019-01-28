@@ -1,0 +1,9 @@
+{
+  "_id": "_design/_d_highscores",
+  "views": {
+    "_v_highscores": {
+      "map": "function(doc) {\n    if(doc.score.score) {\n        emit(doc.score.score, doc.score.firstName, doc.score.lastName, doc.score.gameDate, doc.score.uid);\n    }\n}"
+    }
+  },
+  "language": "javascript"
+}

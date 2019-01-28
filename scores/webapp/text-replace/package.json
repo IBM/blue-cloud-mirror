@@ -1,0 +1,14 @@
+{
+  "name": "text-replace",
+  "version": "1.0.1",
+  "description": "",
+  "main": "replace.js",
+  "scripts": {
+    "start": "node replace.js"
+  },
+  "author": "Niklas Heidloff and Thomas Suedbroecker",
+  "license": "ALv2",
+  "dependencies": {
+    "replace-in-file": "3.4.2"
+  }
+}

@@ -1,0 +1,8 @@
+applications:
+  - path: ../
+    memory: 512M
+    instances: 1
+    domain: de-cloudfoundry-check-cl.eu-de.containers.appdomain.cloud
+    name: er-score-api-cfee
+    host: er-score-api-cfee
+    disk_quota: 1024M

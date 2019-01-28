@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Thomas Suedbroecker",
+  "license": "MIT",
+  "dependencies": {
+    "@cloudant/cloudant": "^3.0.1",
+    "async": "^2.6.1",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "4.16.3",
+    "express-basic-auth": "^1.1.6",
+    "fs": "0.0.1-security",
+    "request": "2.87.0"
+  }
+}

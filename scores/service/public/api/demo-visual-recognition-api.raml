@@ -1,0 +1,60 @@
+#%RAML 0.8
+---
+version: v0
+title: demo visual recognition backend API
+baseUri: https://demo-visual-recognition-backend.eu-gb.mybluemix.net/api{version}
+
+/classify_image:
+  post:
+    description: |
+       classifies image with custom Watson visual recognition service
+       Use the "multipart/form-data" content type to upload a image which content will become the file-content
+    body:
+      multipart/form-data:
+        formParameters:
+          images_file:
+            description: |
+              image file (.jpg, .png) to be classified
+              for example: "dogs.jpg" with a beagle on it
+            required: true
+            type: file
+    responses:
+       200:
+         body:
+           application/json:
+            example: |
+              {
+                "result": {
+                  "custom_classes": 4,
+                  "images": [
+                    {
+                      "classifiers": [
+                        {
+                          "classes": [
+                            {
+                              "class": "beagle",
+                              "score": 0.983165
+                            }
+                          ],
+                          "classifier_id": "dogs_1972238687",
+                          "name": "dogs"
+                        }
+                      ],
+                      "image": "dogs.jpg"
+                    }
+                  ],
+                  "images_processed": 1
+                }
+              }
+
+/searchVerifications:
+  get:
+  description: |
+     gets data from a cloudant database
+     currently no parameters needed
+  body:
+     currently no parameters needed
+  responses:
+     200:
+       body:
+         application/json:

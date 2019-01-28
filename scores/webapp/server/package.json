@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Thomas Suedbroecker",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-basic-auth": "^1.1.6",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "node-openssl-cert": "0.0.47",
+    "path": "^0.12.7",
+    "request": "^2.88.0"
+  }
+}
