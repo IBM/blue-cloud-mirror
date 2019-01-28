@@ -1,6 +1,6 @@
 # Functions API
 
-[Back to setup scores and webapp overview](../README.md) 
+[Back](../README.md) 
 
 ## Objective
 
@@ -13,29 +13,9 @@
 
 ## Architecture
 
-The **functions API** is our serverless approach to secure the **service API** or directly the **scores service**. 
-  Later it will be possible integrate with the APP ID service to secure the access to the API with a OOTB user login.
-    
-  At the moment the IBM Lite API management exposes the APIs, which are implemented with **actions** or **sequences** inside IBM Functions. [IBM Functions](https://console.bluemix.net/openwhisk/) is based on [Apache OpenWhisk](https://openwhisk.apache.org/).
+TBD
 
-  Inside the **actions**, the access to the **service API** or direclty to **scores service** is enabled and can be configured. The action do contain the **auth** information for each of them.
-
-In the following image you can see the dependencies of **scores service**, **service API** and **functions API**.
-
-The focus is only on the **functions API**.
-
-You have **two options** in the setup configuration for the **functions api**.
-
-* Option 1: Using the **service API**
-
-    ![scores functions api option 1](docimages/scores-architecture-scores-functions-api-options-1.png)
-
-* Option 2: Using the **scores service**
-
-    ![scores functions api option 2](docimages/scores-architecture-scores-functions-api-options-2.png)
-
-
-## Setup the scores functions API on IBM Cloud
+## Setup the users functions API on IBM Cloud
 
 The setup is automated in a bash script.
 You need a IBM Cloud account and an IBM platform key.
@@ -48,7 +28,7 @@ This in an overview of the steps to follow.
 5. [Execute the bash script and deploy the scores functions api](#part-SETUP-04)
 6. [Verify the setup on IBM Cloud](#part-SETUP-05)
 7. [Change the actions to each API call ](#part-SETUP-06)
-8. [Save the needed data for the WebApp and Game configuration](#part-SETUP-07)
+8. [Save the needed data for the Game configuration](#part-SETUP-07)
 
 ### 1. Get IBM platform key <a name="part-SETUP-00"></a>
 
@@ -80,98 +60,45 @@ Leave your terminal open.
     _Cloud Foundry Apps and services relevant:_
      * IBMCLOUD_CF_ORGANIZATION_NAME="**[YOUR_ORGANIZATION_NAME]**
 
-#### Options for the API usage in the functions API <a name="part-SETUP-02"></a>
-
-You can set two options for the API usage.
-
- * Usage of the pure **scores-service**
- * Usage of the API defined with API Connect **scores-service-api**
- 
-This is the environment ariable: **IBMCLOUD_FUNCTIONS_API_TYPE**:
-
 #### Definitions:
 
-  * "SCORES_SERVICE" == use the pure **scores service** in the **functions API**
-  * "SCORES_SERVICE_API" == use API defined with API Connect  **scores service API**
-
-  Example:
-  * IBMCLOUD_FUNCTIONS_API_TYPE=**"SCORES_SERVICE"**
+  * "USERS_SERVICE_API" == use API defined with API Connect  **users service API**
 
 #### Configurations
 
   1. To use the **service api** ensure these environment variables are set for the **service-api**. 
   _Note:_ You shoud have configured them in the chapter **service api**.
 
-    * IBMCLOUD_SCOREAPI_URL=""
-    * IBMCLOUD_SCOREAPI_CLIENT_ID=""
-    * IBMCLOUD_SCOREAPI_CLIENT_SECRET=""
-
-  2. To use the pure **scores service** ensure these environment variables are set for the **scores service**.
-  _Note:_ You shoud have configured them in the chapter **scores service**.
-
-    * IBMCLOUD_CF_APP_USER="admin"
-    * IBMCLOUD_CF_APP_PASSWORD="a12345678"
-    * IBMCLOUD_CF_APP_SERVICE_NAME="bluecloudmirror-scores-service- **YOUR_NAME** "
+    * IBMCLOUD_USERAPI_URL=""
+    * IBMCLOUD_USERAPI_CLIENT_ID=""
+    * IBMCLOUD_USERAPI_CLIENT_SECRET=""
 
 ### 3. Enable the bash script for automation <a name="part-SETUP-03"></a>
 
 Return to your open terminal.
 ```
-cd [YOUR-ROOT]/bluecloudmirror/scores/functions-api
+cd [YOUR-ROOT]/bluecloudmirror/users/functions-api
 chmod u+x *.sh
 ```
 
 ### 4. Execute the bash script and deploy the scores functions api <a name="part-SETUP-04"></a>
 
-This bash script will deploy the **scores functions api**.
+This bash script will deploy the **users functions api**.
 It uses the IBM Functions based on Open Whisk and IBM Lite API Management. 
 It creates **actions**, **sequences** and a **api**.
 
 The bash script shows the execution steps. Some steps do take time, be patient.
 
-After the excution you can find a log file in the this folder. The log is called **ibmcloud-create-functions-api.log**. This log contains detailed information about the execution.
+After the excution you can find a log file in the this folder. The log is called **ibmcloud-create-user-api.log**. This log contains detailed information about the execution.
 
 ```sh
-./ibmcloud-create-service-api.sh
+./ibmcloud-create-users-api.sh
 ```
 
 Here is a sample output of the bash scipt.
 
 ```sh
-Login to IBM Cloud
-
-_set -o thomas.suedbroecker@de.ibm.com
-_create -s STAGE-BLUECLOUDMIRROR-SHOWCASE
-_set s STAGE-BLUECLOUDMIRROR-SHOWCASE -g default
-
-_save functions env information
-_current wsk namespace is _.
-_current wsk api host is openwhisk.ng.bluemix.net.
-_current wsk authorization is a111cf2:Hjyj.
-_save score service env information
-_scores user admin.
-_scores password a12345678.
-_scores url bluecloudmirror-scores-service-tsuedbro.mybluemix.net.
-_api SCORES_SERVICE
-Login end
-
-
-Installing...
-
-_creating package scores-functions-api
-_adding parameter to package scores-functions-api
-_list parameter
-_creating actions
-_creating action sequence
-_creating API
-_setup text-replace
-__copy API Definition
-__replace FUNCTIONS_SPACE_NAME with thomas.suedbroecker@de.ibm.com_STAGE-BLUECLOUDMIRROR-SHOWCASE
-__replace PACKAGE_NAME with scores-functions-api
-__replace OPENWHISK_API with https://openwhisk.ng.bluemix.net/api/v1/web
-_api https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/d4/scores/api/v1/addscore https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/d4/scores/api/v1/deletescore https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/d9b4/scores/api/v1/getscorelist
-
-Install Complete
+TBD
 ```
 
 ### 5. Verify the setup on IBM Cloud <a name="part-SETUP-05"></a>
@@ -217,17 +144,7 @@ At the moment all related actions are sequences.
 
 ![scores-functions-navigation-08](docimages/scores-functions-navigation-08.png)
 
-### 7. Save the needed data for the WebApp and Game configuration <a name="part-SETUP-07"></a>
-
-**High Scores** relevant
-
-1. Select **Summary** in the API navigation tree. Here you can copy the **Route** URL.
-
-![scores-functions-navigation-10](docimages/scores-functions-navigation-10.png)
-
-2. Insert the **Route** URL into the **[YOUR-ROOT]bluecloudmirror/scores/scores.local.root.env** file.
-
-  * IBMCLOUD_CF_APP_WEBAPP_FUNCTIONS_API_URL="**YOUR_COPIED_ROUTE_URL**"
+### 7. Save the needed data for the Game configuration <a name="part-SETUP-07"></a>
 
 **Game** relevant
 

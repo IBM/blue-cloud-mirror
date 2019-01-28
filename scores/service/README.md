@@ -1,4 +1,4 @@
-# Score service
+# Scores service
 
 [Back to setup scores and webapp overview](../README.md) #
 
@@ -178,7 +178,7 @@ After the execution you can open the URL:https://bluecloudmirror-score-service- 
 ![score-service-ui](docimages/scores-service-ui.png)
 
 
-Move on to the next step [functions api](../service-api/README.md) !
+Move on to the next step [service-api](../service-api/README.md) !
 
 
 

@@ -12,8 +12,12 @@ readonly ENV_ROOT_FILE="${ROOT_FOLDER}/scores/scores.local.root.env"
 readonly ENV_CLOUDANT_FILE="${ROOT_FOLDER}/scores/service/deploy_apps/cloudant/.env"
 readonly ENV_SERVER_FILE="${ROOT_FOLDER}/scores/service/.env"
 source $ENV_ROOT_FILE
+
+rm $ENV_CLOUDANT_FILE
 touch $ENV_CLOUDANT_FILE
 source $ENV_CLOUDANT_FILE
+
+rm $ENV_CLOUDANT_FILE
 touch $ENV_SERVER_FILE
 source $ENV_SERVER_FILE
 ALIAS="$IBMCLOUD_CLOUDANT_NAME-alias"
