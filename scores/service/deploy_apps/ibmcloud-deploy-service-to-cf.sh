@@ -167,6 +167,9 @@ function deployServiceToServer() {
 
   _out _npm install
   npm install
+
+  _out _bower install public/lib
+  bower install
  
   _out _show existing spaces
   ibmcloud cf spaces
