@@ -107,20 +107,20 @@ TBD
 
 2. Open **Functions**
 
-![scores-functions-navigation-01](docimages/scores-functions-navigation-01.png)
+![users-functions-navigation-01](docimages/users-functions-navigation-01.png)
 
 3. Select **Actions** in the navigation at the left hand side and verify the **region** **"DALLAS"** and select the same **space**  which is used for the Cloud Foundry App. 
 Here you can see the installed **actions** and **sequences**.
 
-![scores-functions-navigation-02](docimages/scores-functions-navigation-02.png)
+![users-functions-navigation-02](docimages/users-functions-navigation-02.png)
 
 4. Press **API**. Here you can find the list of APIs used in your Cloud Foundry space with Functions. Click on the API link you can see in the list.
 
-![scores-functions-navigation-03](docimages/scores-functions-navigation-03.png)
+![users-functions-navigation-03](docimages/users-functions-navigation-03.png)
 
 5. Here you can see a overview
 
-![scores-functions-navigation-04](docimages/scores-functions-navigation-04.png)
+![users-functions-navigation-04](docimages/users-functions-navigation-04.png)
 
 6. Choose **Definition**
 
@@ -128,7 +128,7 @@ Here you can see the uploaded API configuration.
 In **Path** you can find the API calls with the releated Actions.
 At the moment all related actions are sequences.
 
-![scores-functions-navigation-05](docimages/scores-functions-navigation-05.png)
+![scores-functions-navigation-05](docimages/users-functions-navigation-05.png)
 
 ### 6. Change the actions to each API call <a name="part-SETUP-06"></a>
 
@@ -137,15 +137,15 @@ The reason is that the uploaded API imformation does contain older auth informat
 
 1. Change the used **sequences** for each API call, by using **edit operation**.
 
-![scores-functions-navigation-06](docimages/scores-functions-navigation-06.png)
+![scores-functions-navigation-06](docimages/users-functions-navigation-06.png)
 
 2. Now replace each sequence with the concrete action.
 
-![scores-functions-navigation-07](docimages/scores-functions-navigation-07.png)
+![scores-functions-navigation-07](docimages/users-functions-navigation-07.png)
 
 3. After the change it should look like this and you can explpore the API definition
 
-![scores-functions-navigation-08](docimages/scores-functions-navigation-08.png)
+![scores-functions-navigation-08](docimages/users-functions-navigation-08.png)
 
 ### 7. Save the needed data for the Game configuration <a name="part-SETUP-07"></a>
 
@@ -153,23 +153,25 @@ The reason is that the uploaded API imformation does contain older auth informat
 
 1. Select **Explore** in the API navigation tree and point to the **postAddscore** operation.
 
-![scores-functions-navigation-08](docimages/scores-functions-navigation-08.png)
+![scores-functions-navigation-08](docimages/users-functions-navigation-08.png)
 
 2. Choose try in API defintion and copy the curl statement 
 
-![scores-functions-navigation-11](docimages/scores-functions-navigation-11.png)
+![scores-functions-navigation-11](docimages/users-functions-navigation-11.png)
 
 ```sh
-curl --request POST \ --url https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/d97dc1b4/scores/api/v1/addscore \ --header 'accept: application/json' \ --header 'content-type: application/json' \ --data '{"id":4864513159462912}'
+curl --request POST \ --url https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/32e3eb0506333bda774fe953c3e66ee4ec97a8c8f2c1b0fb28611e14769b8120/users/adduser \ --header 'accept: application/json' \ --header 'content-type: application/json' \ --data '{"id":4672220810969088}'
 ```
 
 3. Insert the api call in the Game App configuration file [YOUR-ROOT]/bluecloudmirror/**local.env** and save the file.
 
-Example API call for addscore: **https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/d97dc1b4/scores/api/v1/addscore**
+Example API call for addscore: **https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/32e3eb0506333bda774fe953c3e66ee4ec97a8c8f2c1b0fb28611e14769b8120/users/adduser**
 
 * API_USERS=users-url-not-defined
 
-Move on to the next step [webapp](../webapp/README.md) !
+Now you can use the **Users functions API** in your Game App. :-)
+
+Back [webapp](../README.md) !
 
 
 

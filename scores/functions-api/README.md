@@ -252,14 +252,6 @@ Example API call for addscore: **https://service.us.apiconnect.ibmcloud.com/gws/
 
 * API_USERS=users-url-not-defined
 
+Now you can use the **Users functions API** in your Game App. :-)
+
 Move on to the next step [webapp](../webapp/README.md) !
-
-
-
-
-
-
-
-
-
-
