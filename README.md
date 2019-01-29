@@ -44,6 +44,15 @@ This is a list of used technologies:
 * [Thomas Südbröcker](https://twitter.com/tsuedbroecker)
 * [Harald Uebele](https://twitter.com/harald_u)
 
+## Documentation and Articles
+
+* [Introducing Blue Cloud Mirror, a Fun IBM Cloud Showcase](http://heidloff.net/article/introducing-blue-cloud-mirror)
+* [Three Minutes Video](https://www.youtube.com/watch?v=jkDWoHjMAig)
+* [Screenshots and Diagrams](https://github.com/IBM/blue-cloud-mirror/tree/master/images)
+* [Three awesome TensorFlow.js Models for Visual Recognition](http://heidloff.net/article/tensorflowjs-visual-recognition)
+* [Serverless Vue.js Applications on the IBM Cloud](http://heidloff.net/article/serverless-vuejs-ibm-cloud)
+* [Awesome Developer Experience with Vue.js](http://heidloff.net/article/awesome-developer-experience-vuejs)
+
 ## Setup
 
 In the easiest case the game can be set up on a local machine in less than five minutes. In this case only the game web application is run without being able to register users and having highscores. To set up the game locally, invoke the following commands:
