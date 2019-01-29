@@ -174,7 +174,7 @@ Go to the Sandbox catalog with selecting
 
 ![score-service-api-navigation-09](docimages/score-service-api-navigation-09.png)
 
-8. Here you can explore the scores service API running on Cloud Foundry.
+8. Here you can explore the exposed **scores API**.
 
 ![score-service-api-navigation-10](docimages/score-service-api-navigation-10.png)
 
@@ -218,7 +218,8 @@ curl --request POST \
 
 5. Here you copy from the **URL parameter** the string until **api/v1/addscore**
 
-  _Example:_ ONLY COPY THE BASE URL until **api/v1/addscore**
+  _Example:_  Copy only the base URL until "**api/v1/addscore**"
+  
   "**https://api.us-south.apiconnect.appdomain.cloud/thomassuedbroeckerdeibmcom-99-bluemirror-demo-backend/sb/scores/**" - api/v1/addscore
 
 _Note:_ This is **service API** information for the **functions API** configuration, you will configure later.

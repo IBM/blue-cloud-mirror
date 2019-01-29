@@ -18,7 +18,7 @@ The **functions API** is our serverless approach to secure the **service API** o
     
   At the moment the IBM Lite API management exposes the APIs, which are implemented with **actions** or **sequences** inside IBM Functions. [IBM Functions](https://console.bluemix.net/openwhisk/) is based on [Apache OpenWhisk](https://openwhisk.apache.org/).
 
-  Inside the **actions**, the access to the **service API** or direclty to **scores service** is enabled and can be configured. The action do contain the **auth** information for each of them.
+  Inside the **actions**, the access to the **service API** or direclty to **scores service** is enabled and can be configured. The actions will contain the **auth** information for each of them, depening on your the configuration.
 
 In the following image you can see the dependencies of **scores service**, **service API** and **functions API**.
 

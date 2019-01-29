@@ -18,7 +18,7 @@ This is a simplified view on the scores architecture.
 
 ![scores service api](docimages/scores-architecture.png)
 
-Here is a small description for each major element in the diagram.
+Here is a small description for each major elements in the diagram.
 
 * **WebApp**
   

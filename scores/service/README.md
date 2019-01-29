@@ -127,7 +127,7 @@ Sample output of the bash
 ./ibmcloud-deploy-service-to-cf.sh 
 1. Login to IBM Cloud
 
-_set -o thomas.suedbroecker.2@de.ibm.com
+_set -o thomas.suedbroecker@de.ibm.com
 _create -s 99-BLUECLOUDMIRROR-SHOWCASE
 _set -s 99-BLUECLOUDMIRROR-SHOWCASE -g default
 
@@ -148,6 +148,7 @@ Create scores cloudant DB end
 3. Deploy service start
 
 _npm install
+_bower install
 _show existing spaces
 _show existing apps
 _push bluecloudmirror-scores-service-tsuedbro
