@@ -84,7 +84,7 @@ import { Component, Vue } from "vue-property-decorator";
 export default {
   methods: {
     onGetTheCode() {
-      window.location="https://github.com/nheidloff/blue-cloud-mirror";
+      window.location="https://github.com/ibm/blue-cloud-mirror";
     },
     onStartNewGame() {
       this.$router.push("start");
