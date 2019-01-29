@@ -160,12 +160,12 @@ The reason is that the uploaded API imformation does contain older auth informat
 ![scores-functions-navigation-11](docimages/users-functions-navigation-11.png)
 
 ```sh
-curl --request POST \ --url https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/32e3eb0506333bda774fe953c3e66ee4ec97a8c8f2c1b0fb28611e14769b8120/users/adduser \ --header 'accept: application/json' \ --header 'content-type: application/json' \ --data '{"id":4672220810969088}'
+curl --request POST \ --url https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/32e3eb9b8120/users/adduser \ --header 'accept: application/json' \ --header 'content-type: application/json' \ --data '{"id":4672220810969088}'
 ```
 
 3. Insert the api call in the Game App configuration file [YOUR-ROOT]/bluecloudmirror/**local.env** and save the file.
 
-Example API call for addscore: **https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/32e3eb0506333bda774fe953c3e66ee4ec97a8c8f2c1b0fb28611e14769b8120/users/adduser**
+Example API call for addscore: **https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/32e3eb69b8120/users/adduser**
 
 * API_USERS=users-url-not-defined
 

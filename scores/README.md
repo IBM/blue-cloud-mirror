@@ -63,27 +63,37 @@ The setup is organized in separated chapters.
 Each chapter does setup a single part of the architecture. The setup is mostly automated with bash scripts. 
 To configure these bash scripts you need to insert values in the **scores.local.root.env** file. Just copy and paste the file  **scores.local.root.env-template** and rename the file to **scores.local.root.env**.
 
-_Note:_ The setup description is for IBM Cloud, but you can run the Node.js apps also locally.
-The **scores service** uses port 3000 and **webapp server** the port 3001.
+There are two major steps the **core scores services** and the **High Score Web App** setup.
 
-* Install
-```sh
-npm install
-```
-* Run locally
-```sh
-npm start
-> node server.js
-Listening on port (3001)
-```
+_Note:_ The setup description is for IBM Cloud, but you can run the Node.js apps also locally.
+The **scores service** uses port 3000 and **webapp server** the port 3000.
+
+Sample for the **scores service**.
+
+ * Install
+ ```sh
+ npm install
+ bower install
+ ```
+ * Run locally
+ ```sh
+ npm start
+ > node server.js
+ Listening on port (3000)
+ ```
+
+* Browser URL: localhost:3000
+
 
 ## 1. Core scores services setup
 
-* [Service](./service) 
+These are the three steps to setup the core scores services.
+
+1. [Service](./service) 
 You must setup the **Scores Service**, the result is needed in the **service api**. 
-* [Service API](./service-api) 
+2. [Service API](./service-api) 
 The **Service API** can be **optional**, if you decide not to use the API Connect instance on IBM Cloud as input for the **Functions API**.
-* [Functions API](./functions-api)
+3. [Functions API](./functions-api)
 The **Functions API** is a must for the setup, because this API is used in the **High Scores Web App**.
 
 ## 2. High Score Web App setup
