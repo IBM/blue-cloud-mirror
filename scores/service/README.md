@@ -6,6 +6,9 @@
 
 * Setup the **scores service**
 
+Take a 3 min look in the YouTube video: How to setup the scores service?
+[![You Tube Setup](https://img.youtube.com/vi/xpMjO9ZTzq0/0.jpg)](https://www.youtube.com/watch?v=xpMjO9ZTzq0 "Click play on youtube")
+
 ## Services used
 
 * Cloud Foundry Apps Node.js Buildpack
