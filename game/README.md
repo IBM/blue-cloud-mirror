@@ -20,8 +20,8 @@ The web application can be hosted and run in four different ways:
 In the easiest case the game can be set up on a local machine in less than five minutes. In this case only the game web application is run without being able to register users and having highscores. To set up the game locally, invoke the following commands:
 
 ```
-$ git clone git@github.ibm.com:niklas-heidloff/visual-recognition-demo.git
-$ cd visual-recognition-demo/game
+$ git clone https://github.com/IBM/blue-cloud-mirror.git
+$ cd blue-cloud-mirror/game
 $ yarn install
 $ yarn run serve
 ```

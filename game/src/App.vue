@@ -41,7 +41,7 @@
       <b-row>
         <b-col style="text-align:center">
           <div style="margin-top:50px;font-size: smaller;color: darkgray;">Brought to you by the <a target="_blank" style="color:#053c9f" href="https://developer.ibm.com/cities/berlin-de/">IBM Developer Advocacy DACH</a> team</div>
-          <div style="margin-top:10px;margin-bottom:20px;font-size: smaller;color: darkgray;">Get the <a target="_blank" style="color:#053c9f" href="https://github.com/nheidloff/blue-cloud-mirror">code</a></div>
+          <div style="margin-top:10px;margin-bottom:20px;font-size: smaller;color: darkgray;">Get the <a target="_blank" style="color:#053c9f" href="https://github.com/ibm/blue-cloud-mirror">code</a></div>
         </b-col>
       </b-row>
     </b-container>
