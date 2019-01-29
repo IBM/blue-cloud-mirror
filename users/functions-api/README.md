@@ -132,7 +132,10 @@ At the moment all related actions are sequences.
 
 ### 6. Change the actions to each API call <a name="part-SETUP-06"></a>
 
-1. Change the used action for each API call the action. With edit operation.
+For the later usage for the **API Explorer** we need to change the binded actions in the operations for the **functions API**.
+The reason is that the uploaded API imformation does contain older auth information from older action instances.
+
+1. Change the used **sequences** for each API call, by using **edit operation**.
 
 ![scores-functions-navigation-06](docimages/scores-functions-navigation-06.png)
 
