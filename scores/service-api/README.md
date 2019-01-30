@@ -110,6 +110,12 @@ Configure API defintion end
 
 ### 5. Use **API Connect** to create a managed scores service API <a name="part-SETUP-04"></a>
 
+Just to give you basic understanding on the dependencies we will use inside of API Connect. Take a look in the following image.
+
+![score-service-api-connect-01](docimages/score-service-api-connect-01.png)
+
+
+
 ### a. Import API swagger defintion
 
 1. Login to IBM Cloud
