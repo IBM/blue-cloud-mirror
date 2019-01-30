@@ -201,11 +201,17 @@
         <b-button
           v-on:click="onTweet"
           variant="primary"
-          style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+          style="margin-right:20px;background-color: #053c9f !important;border-color:#053c9f !important;"
           :disabled="tweetButtonDisabled == true"
         >{{tweetLabel}}</b-button>
+        <b-button
+          v-on:click="onDownloadImage"
+          variant="primary"
+          style="margin-right:20px;background-color: #053c9f !important;border-color:#053c9f !important;"
+        >Download Image</b-button>
       </b-col>
     </b-row>
+    <a id="exportElementHidden" style="display:none"/>
     <b-modal ref="modelDialog" hide-footer title="Error saving Scores">
       <div>
         <div>The user's score couldn't be stored.</div>
@@ -519,6 +525,15 @@ export default {
     },
     onStartNewGame() {
       this.$router.push("start");
+    },
+    onDownloadImage() {
+      html2canvas(document.querySelector("#capture")).then(canvas => {
+          let imageEncoded = canvas.toDataURL("image/png");
+          let exportElement = document.getElementById('exportElementHidden');
+          exportElement.setAttribute("href", imageEncoded);
+          exportElement.setAttribute("download", "blue-cloud-mirror.png");
+          exportElement.click();
+      });
     },
     onTweet() {
       if (this.$store.state.apis.users.url != "twitter-url-not-defined") {
