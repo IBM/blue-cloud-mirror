@@ -69,7 +69,6 @@ function ibmcloud_login() {
 function setup() {
     _out Creating vue.config.js
   cd ${root_folder}/
-  npm install
   cp ${root_folder}/../game/vue.config.js.cf.template ${root_folder}/../game/vue.config.js
 
   _out Building Vue application

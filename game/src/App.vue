@@ -25,7 +25,7 @@
             <a href="#" class="nav-link">
               <a
                 target="_blank"
-                href="https://er-high-score-ui-cfee.de-cloudfoundry-check-cl.eu-de.containers.appdomain.cloud/"
+                href="https://blue-cloud-mirror-highscore.de-cloudfoundry-check-cl.eu-de.containers.appdomain.cloud/"
                 class
                 style="color: white;"
               >Highscores</a>
