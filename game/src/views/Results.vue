@@ -278,7 +278,7 @@ export default {
   },
   computed: {
     tweetLabel: function() {
-      let output = "Tweet my Results";
+      let output = "Tweet";
       if (this.$store.state.apis.users.url != "twitter-url-not-defined") {
         if (this.tweeting == true) {
           output = "Preparing Tweet ...";
@@ -524,7 +524,7 @@ export default {
       if (this.$store.state.apis.users.url != "twitter-url-not-defined") {
         this.tweeting = true;
         const axiosService = axios.create({
-          timeout: 5000,
+          timeout: 50000,
           headers: {
             "Content-Type": "application/json"
           }
@@ -544,9 +544,9 @@ export default {
             })
             .then(function(response) {
               window.open(
-                "https://twitter.com/intent/tweet?hashtags=ibm,ibmdeveloper&url=" +
+                "https://twitter.com/intent/tweet?hashtags=bluecloudmirror,ibm,ibmdeveloper&url=" +
                   window.location.href +
-                  "&text=here are my results",
+                  "&text=Check out Blue Cloud Mirror!",
                 "_blank"
               );
               that.tweeting = false;
