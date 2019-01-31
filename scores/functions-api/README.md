@@ -9,10 +9,14 @@
 Take 4 minutes and have a look in the YouTube video: How to setup the scores functions api?
 [![You Tube Setup](https://img.youtube.com/vi/EShNx6y6AsY/0.jpg)](https://www.youtube.com/watch?v=EShNx6y6AsY "Click play on youtube")
 
+---
+
 ## Services used
 
 * Cloud Functions
 * Lite API Management
+
+---
 
 ## Architecture
 
@@ -37,6 +41,7 @@ You have **two options** in the setup configuration for the **functions api**.
 
     ![scores functions api option 2](docimages/scores-architecture-scores-functions-api-options-2.png)
 
+---
 
 ## Setup the scores functions API on IBM Cloud
 

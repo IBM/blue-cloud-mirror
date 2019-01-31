@@ -7,6 +7,7 @@
 Test the 
 [YouTube playlist](https://www.youtube.com/playlist?list=PLUte4WEyMEjWjJSL_MG692rL_hOna7MbD) with a sample setup for all scores parts.
 
+---
 ## Services used
 
 * Cloud Foundry Apps Node.js Buildpack
@@ -15,6 +16,7 @@ Test the
 * Lite API Management
 * API Connect
 
+---
 ## Architecture
 
 This is a simplified view on the scores architecture.
@@ -58,7 +60,7 @@ Here is a small description for each major elements in the diagram.
   
   The **scores service** implements the access to a nosql database Cloudant. The major objective of **scores service** is to provide the add score and list score functionality.
    
-
+---
 ## Setup Instructions
 
 The setup is organized in separated chapters.

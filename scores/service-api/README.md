@@ -9,12 +9,15 @@
 Take 4 minutes and have a look in the YouTube video: How to setup the scores service api?
 [![You Tube Setup](https://img.youtube.com/vi/7zFCqJ0lRo4/0.jpg)](https://www.youtube.com/watch?v=7zFCqJ0lRo4 "Click play on youtube")
 
+---
+
 ## Services used
 
 * API Connect
 
-## Architecture
+---
 
+## Architecture
 
   The **service API** is realized with the [**API Connect**](https://www.ibm.com/cloud/api-connect). It exposes a subset of the functionality from the **scores service**.
   The exposed API is secured with **auth key**.
@@ -22,6 +25,8 @@ Take 4 minutes and have a look in the YouTube video: How to setup the scores ser
 In the following image you can see the dependencies of **scores service**, **service API** and **functions API**.
 
 ![scores service api](docimages/scores-architecture-scores-api.png)
+
+---
 
 ## Setup the score service API on IBM Cloud
 
