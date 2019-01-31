@@ -100,7 +100,7 @@ function ibmcloud_login() {
   printf "\nSCORE_USER=$IBMCLOUD_CF_APP_USER" >> $ENV_FUNCTION_FILE
   _out "_scores password $IBMCLOUD_CF_APP_PASSWORD."
   printf "\nSCORE_PASSWORD=$IBMCLOUD_CF_APP_PASSWORD" >> $ENV_FUNCTION_FILE
-  _out "_scores url $IBMCLOUD_CF_APP_SERVICE_NAME.mybluemix.net."
+  _out "_scores url $IBMCLOUD_CF_APP_SERVICE_NAME.mybluemix.net"
   printf "\nSCORE_URL=https://$IBMCLOUD_CF_APP_SERVICE_NAME.mybluemix.net/" >> $ENV_FUNCTION_FILE
   _out "_api $IBMCLOUD_FUNCTIONS_API_TYPE"
   printf "\nAPI_TYPE=$IBMCLOUD_FUNCTIONS_API_TYPE" >> $ENV_FUNCTION_FILE
@@ -133,9 +133,9 @@ function install() {
   echo "Parmater: $IBMCLOUD_SCOREAPI_CLIENT_SECRET"
   echo "Parmater: $FUNCTIONS_APIHOST"
   echo "Parmater: $FUNCTIONS_AUTHORIZATION"
-  echo "Parmater: $SCORE_USER"
-  echo "Parmater: $SCORE_PASSWORD"
-  echo "Parmater: $SCORE_URL"
+  echo "Parmater: $IBMCLOUD_CF_APP_USER"
+  echo "Parmater: $IBMCLOUD_CF_APP_PASSWORD"
+  echo "Parmater: https://$IBMCLOUD_CF_APP_SERVICE_NAME.mybluemix.net/"
   echo "Parmater: $API_TYPE"
   
   
@@ -145,10 +145,10 @@ function install() {
     --param SCOREAPI_CLIENT_SECRET $IBMCLOUD_SCOREAPI_CLIENT_SECRET\
     --param FUNCTIONS_APIHOST $FUNCTIONS_APIHOST\
     --param FUNCTIONS_AUTHORIZATION $FUNCTIONS_AUTHORIZATION\
-    --param SCORE_USER $SCORE_USER\
-    --param SCORE_PASSWORD $SCORE_PASSWORD\
-    --param SCORE_URL $SCORE_URL\
-    --param API_TYPE $API_TYPE
+    --param SCORE_USER $IBMCLOUD_CF_APP_USER\
+    --param SCORE_PASSWORD $IBMCLOUD_CF_APP_PASSWORD\
+    --param SCORE_URL "https://$IBMCLOUD_CF_APP_SERVICE_NAME.mybluemix.net/"\
+    --param API_TYPE $IBMCLOUD_FUNCTIONS_API_TYPE
 
   _out _creating actions
   ibmcloud wsk action create "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_addScore" scoreAPI_addScore.js
