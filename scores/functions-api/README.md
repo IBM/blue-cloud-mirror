@@ -6,7 +6,7 @@
 
 * Setup the **functions API**
 Take 4 minutes and have a look in the YouTube video: How to setup the scores functions api?
-[![You Tube Setup](https://img.youtube.com/vi/nQWhW9h6j1s/0.jpg)](https://www.youtube.com/watch?v=nQWhW9h6j1s "Click play on youtube")
+[![You Tube Setup](https://img.youtube.com/vi/EShNx6y6AsY/0.jpg)](https://www.youtube.com/watch?v=EShNx6y6AsY "Click play on youtube")
 
 ## Services used
 
