@@ -108,7 +108,7 @@ This is the environment ariable: **IBMCLOUD_FUNCTIONS_API_TYPE**:
   
 
    **Important for the setup:**
-   - API Connect URL (score-service-api) must end with YOUR_URL*/*.
+   - API Connect URL (score-service-api) must end with YOUR_URL **/**.
 
     * IBMCLOUD_SCOREAPI_URL="YOUR_URL/"
     * IBMCLOUD_SCOREAPI_CLIENT_ID=""
