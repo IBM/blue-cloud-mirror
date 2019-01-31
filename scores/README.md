@@ -71,7 +71,7 @@ To configure these bash scripts you need to insert values in the **scores.local.
 There are two major steps the **core scores services** and the **High Score Web App** setup.
 
 _Note:_ The setup description is for IBM Cloud, but you can run the Node.js apps also locally.
-The **scores service** uses port 3000 and **webapp server** the port 3000.
+The **scores service** uses port 3000 and **webapp server** the port 3001.
 
 Sample for the **scores service**.
 
