@@ -102,8 +102,14 @@ function configureAPIDefinitionCF() {
   _out
 }
 
+function endMessage() {
+  _out
+  _out "Now please verify the setup in IBM Cloud and for details use the logfile"
+  _out
+}
+
 # Main tasks
 ibmcloud_login
 createAPIConnect
 configureAPIDefinitionCF
-echo "Now please verify the setup in IBM Cloud and for details use the logfile"
+endMessage

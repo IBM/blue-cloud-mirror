@@ -198,10 +198,17 @@ function showenv() {
   echo -e "${NC}"
 }
 
+function endMessage() {
+  _out
+  _out "Now please verify the setup in IBM Cloud and for details use the logfile"
+  _out
+}
+
 case "$1" in
 "--install" )
 ibmcloud_login
 install
+endMessage
 ;;
 "--uninstall" )
 ibmcloud_login
@@ -211,6 +218,7 @@ uninstall
 ibmcloud_login
 uninstall
 install
+endMessage
 ;;
 "--env" )
 ibmcloud_login
