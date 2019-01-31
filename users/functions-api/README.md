@@ -1,29 +1,18 @@
-# Functions API
+## Functions API
 
 [Back](../README.md) 
 
-**Important:**  in .env file:
+### Objective
 
-- Resource Group is case sensitive (Default vs default)
+* This README describes the setup the **Functions API**
 
-- API Connect URL must end on /
+### Services used
+
+* IBM Cloud Functions
+* Lite API Management, which is part of IBM Cloud Functions
 
 
-
-## Objective
-
-* Setup the **functions API**
-
-## Services used
-
-* Cloud Functions
-* Lite API Management
-
-## Architecture
-
-TBD
-
-## Setup the users functions API on IBM Cloud
+### Setup the users functions API on IBM Cloud
 
 The setup is automated in a bash script.
 You need an IBM Cloud account and an IBM platform key.
@@ -40,7 +29,7 @@ This in an overview of the steps to follow.
 
 ### 1. Get IBM platform key <a name="part-SETUP-00"></a>
 
-_Note:_ You don't have to do this step, if you already have an IBM platform key.
+_Note:_ You have most likely completed this step when you set up the Scores API
 
 1. Logon to IBM Cloud use the **"us-south"** Region with the  **https://api.ng.bluemix.net** API endpoint.
 ```
@@ -56,7 +45,7 @@ Leave your terminal open.
 
 ### 2. Configurations for bash script automation <a name="part-SETUP-01"></a>
 
-1. Open the file **[YOUR-ROOT]bluecloudmirror/scores/scores.local.root.env**. This file contains environment variables.
+1. Open the file **[YOUR-ROOT]bluecloudmirror/scores/scores.local.root.env**. This file contains environment variables. This is a copy of scores.local.root.env-template. Most of the information will have been entered when setting up the Scores API.
 
 2. Insert the needed values for following entries and do not change the rest.
 
@@ -68,18 +57,18 @@ Leave your terminal open.
     _Cloud Foundry Apps and services relevant:_
      * IBMCLOUD_CF_ORGANIZATION_NAME="**[YOUR_ORGANIZATION_NAME]**
 
-#### Definitions:
 
-  * "USERS_SERVICE_API" == use API defined with API Connect  **users service API**
+#### Configuration relevant to Users API
 
-#### Configurations
-
-  1. To use the **service api** ensure these environment variables are set for the **service-api**. 
-  _Note:_ You shoud have configured them in the chapter **service api**.
+These values can be found in the API Connect Explorer for the users-api in step 5 at the very end of this [README](../README.md)
 
     * IBMCLOUD_USERAPI_URL=""
     * IBMCLOUD_USERAPI_CLIENT_ID=""
     * IBMCLOUD_USERAPI_CLIENT_SECRET=""
+
+**Note:** The IBMCLOUD_USERAPI_URL must have a trailing "/" (.../users-api/")
+
+**Note2:** Check that IBMCLOUD_RESOURCE_GROUP="Default" matches the name of your Resource Group on IBM Cloud, Resource Groups seem to be case sensitive!
 
 ### 3. Enable the bash script for automation <a name="part-SETUP-03"></a>
 
@@ -92,15 +81,15 @@ chmod u+x *.sh
 ### 4. Execute the bash script and deploy the scores functions api <a name="part-SETUP-04"></a>
 
 This bash script will deploy the **users functions api**.
-It uses the IBM Functions based on Open Whisk and IBM Lite API Management. 
-It creates **actions**, **sequences** and a **api**.
+It uses the IBM Cloud Functions based on OpenWhisk and IBM Lite API Management. 
+It creates **actions**, **sequences** and an **api**.
 
 The bash script shows the execution steps. Some steps do take time, be patient.
 
 After the excution you can find a log file in the this folder. The log is called **ibmcloud-create-user-api.log**. This log contains detailed information about the execution.
 
 ```sh
-./ibmcloud-create-users-api.sh -install
+./ibmcloud-create-users-api.sh --install
 ```
 
 Here is a sample output of the bash scipt.
@@ -175,11 +164,11 @@ curl --request POST \ --url https://service.us.apiconnect.ibmcloud.com/gws/apiga
 
 Example API call for addscore: **https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/32e3eb69b8120/users/adduser**
 
-* API_USERS=users-url-not-defined
+* API_USERS=users-url-not-defined  (Change this parameter)
 
 Now you can use the **Users functions API** in your Game App. :-)
 
-Back [webapp](../README.md) !
+Back [Users API](../README.md) !
 
 
 

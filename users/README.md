@@ -31,6 +31,12 @@ These are the major components:
     - Manage and secure the exposed API.
     - Access to the API Connect managed Users API requires an API Key. 
     - See *service-api* directory.
+5. __Functions API__
+    - Serverless approach to secure the Users API and the API's credentials
+    - Option to later extend this with IBM AppID service for user login.
+    - For details look at [functions-api/README.md](functions-api/README.md)
+
+  
 
 ### Security
 
@@ -265,5 +271,13 @@ IBM API Connect documentation can be found [here](https://console.bluemix.net/do
     ![APIC Explore](images/apic-explore.png)
 
     **Note:** At the time of this writing there seems to be a bug in the API Connect Explorer. The URI at (2) is incorrect, it is missing "users-api". The URI at (1) is correct. 
+
+You will need the URL at (1), e.g. "https://api.eu-de.apiconnect.appdomain.cloud/******/sb/users-api/" plus the values from the curl example for 'x-ibm-client-id' and 'x-ibm-client-secret' in the next step as parameters for the Bash automation. 
+
+* IBMCLOUD_USERAPI_URL="https://api.eu-de.apiconnect.appdomain.cloud/.../sb/users-api/"
+* IBMCLOUD_USERAPI_CLIENT_ID="abc...ba1a"
+* IBMCLOUD_USERAPI_CLIENT_SECRET="bS1...bX"
+
+Continue with [functions-api/README.md](functions-api/README.md).
 
 
