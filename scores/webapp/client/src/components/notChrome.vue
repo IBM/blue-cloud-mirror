@@ -1,7 +1,7 @@
 <template>
   <div id="notchrome">
     <div v-if="isChrome == false">
-     <b-alert variant="warning" show>Only Chrome has been tested !</b-alert>
+     <b-alert variant="warning" show>Only Chrome on desktops has been tested !</b-alert>
      <div style="margin-top:30px;"></div>
     </div>
   </div>
