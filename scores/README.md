@@ -4,6 +4,9 @@
 
 * Setup the **Scores Service and WebApp**
 
+Test the 
+[YouTube playlist](https://www.youtube.com/playlist?list=PLUte4WEyMEjWjJSL_MG692rL_hOna7MbD) with a sample setup for all scores parts.
+
 ## Services used
 
 * Cloud Foundry Apps Node.js Buildpack

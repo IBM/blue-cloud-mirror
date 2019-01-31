@@ -6,6 +6,9 @@
 
 * Setup the **webapp**
 
+Take 3 minutes and have a look in the YouTube video: How to setup the scores webapp?
+[![You Tube Setup](https://img.youtube.com/vi/KSN_hZHgGso/0.jpg)](https://www.youtube.com/watch?v=KSN_hZHgGso "Click play on youtube")
+
 ## Services used
 
 * Cloud Foundry Apps Node.js Buildpack
