@@ -163,3 +163,4 @@ setEnv
 prepareVUEClientCode
 createClient
 deployClientToServer
+echo "Now please verify the setup in IBM Cloud and for details use the logfile"

@@ -230,6 +230,7 @@ case "$1" in
 "--install" )
 ibmcloud_login
 install
+echo "Now please verify the setup in IBM Cloud and for details use the logfile"
 ;;
 "--uninstall" )
 ibmcloud_login
@@ -239,6 +240,7 @@ uninstall
 ibmcloud_login
 uninstall
 install
+echo "Now please verify the setup in IBM Cloud and for details use the logfile"
 ;;
 "--env" )
 ibmcloud_login

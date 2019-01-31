@@ -106,3 +106,4 @@ function configureAPIDefinitionCF() {
 ibmcloud_login
 createAPIConnect
 configureAPIDefinitionCF
+echo "Now please verify the setup in IBM Cloud and for details use the logfile"
