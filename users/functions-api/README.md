@@ -2,6 +2,14 @@
 
 [Back](../README.md) 
 
+**Important:**  in .env file:
+
+- Resource Group is case sensitive (Default vs default)
+
+- API Connect URL must end on /
+
+
+
 ## Objective
 
 * Setup the **functions API**
@@ -18,7 +26,7 @@ TBD
 ## Setup the users functions API on IBM Cloud
 
 The setup is automated in a bash script.
-You need a IBM Cloud account and an IBM platform key.
+You need an IBM Cloud account and an IBM platform key.
 This in an overview of the steps to follow.
 
 1. [Get IBM platform key](#part-SETUP-00)
@@ -92,7 +100,7 @@ The bash script shows the execution steps. Some steps do take time, be patient.
 After the excution you can find a log file in the this folder. The log is called **ibmcloud-create-user-api.log**. This log contains detailed information about the execution.
 
 ```sh
-./ibmcloud-create-users-api.sh
+./ibmcloud-create-users-api.sh -install
 ```
 
 Here is a sample output of the bash scipt.
