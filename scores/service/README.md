@@ -126,7 +126,7 @@ It will create a **Cloudant** service and bind the service to the **scores servi
 
 The bash script shows the execution steps. Some steps do take time, be patient.
 
-After the excution you can find a log file in the **./deploy_apps** folder. The log is called **ibmcloud-deploy-service-to-cf**. This log contains detailed information about the deployment.
+After the execution you can find a log file in the **./deploy_apps** folder. The log is called **ibmcloud-deploy-service-to-cf**. This log contains detailed information about the deployment.
 
 Execute the bash script.
 
