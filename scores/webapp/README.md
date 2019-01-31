@@ -73,17 +73,23 @@ Leave your terminal open.
 
 2. Insert the needed values for following entries and do not change the rest.
 
-  _Login relevant:_
+   **Important for the setup:**
+   - Resource Group is case sensitive depending on your system you have to change **d** efault** to **D** efault.
 
-  * IBMCLOUD_CLI_DEVOPS_PLATFORM_KEY="**[YOUR_PLATFORM_KEY]**"
-  * IBMCLOUD_USER_ID="**[YOUR_IBMCLOUD_ID]**"
-  * IBMCLOUD_CF_ORGANIZATION_NAME="**[YOUR_ORGANIZATION_NAME]**
+    _Login relevant:_
 
-  _WebClient relevant:_
+     * IBMCLOUD_CLI_DEVOPS_PLATFORM_KEY="**[YOUR_PLATFORM_KEY]**"
+     * IBMCLOUD_USER_ID="**[YOUR_IBMCLOUD_ID]**"
+     * IBMCLOUD_RESOURCE_GROUP=**"default" # or "Default"**
 
-  * IBMCLOUD_CF_APP_WEBAPP_NAME="bluecloudmirror-highscore-**[YOUR_NAME]**"
-  * IBMCLOUD_CF_APP_WEBAPP_FUNCTIONS_API_URL=**YOU GET THIS URL IN THE CHAPTER SCORES FUNCTIONS API** 
-  * IBMCLOUD_CF_APP_WEBAPP_GAME_URL=**YOU GET THIS URL IN THE GAME CHAPTER**
+    _Cloud Foundry Apps and services relevant:_
+     * IBMCLOUD_CF_ORGANIZATION_NAME="**[YOUR_ORGANIZATION_NAME]**
+
+    _WebClient relevant:_
+
+    * IBMCLOUD_CF_APP_WEBAPP_NAME="bluecloudmirror-highscore-**[YOUR_NAME]**"
+    * IBMCLOUD_CF_APP_WEBAPP_FUNCTIONS_API_URL=**YOU GET THIS URL IN THE CHAPTER SCORES FUNCTIONS API** 
+    * IBMCLOUD_CF_APP_WEBAPP_GAME_URL=**YOU GET THIS URL IN THE GAME CHAPTER**
 
 ### 3. Enable the bash script for automation <a name="part-SETUP-02"></a>
 

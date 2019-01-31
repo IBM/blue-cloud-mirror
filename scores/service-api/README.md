@@ -59,13 +59,17 @@ Leave your terminal open.
 
 2. Insert the needed values for following entries and do not change the rest.
 
-  _Login relevant:_
-  * IBMCLOUD_CLI_DEVOPS_PLATFORM_KEY="**[YOUR_PLATFORM_KEY]**"
-  * IBMCLOUD_USER_ID="**[YOUR_IBMCLOUD_ID]**"
+   **Important for the setup:**
+   - Resource Group is case sensitive depending on your system you have to change **d** efault** to **D** efault.
+   _Login relevant:_
 
-  _Service API relevant:_
-  * IBMCLOUD_CF_APP_SERVICE_NAME="bluecloudmirror-scores-service-**[YOUR_NAME]**"
-  * IBMCLOUD_CF_ORGANIZATION_NAME="**[YOUR_ORGANIZATION_NAME]**
+     * IBMCLOUD_CLI_DEVOPS_PLATFORM_KEY="**[YOUR_PLATFORM_KEY]**"
+     * IBMCLOUD_USER_ID="**[YOUR_IBMCLOUD_ID]**"
+     * IBMCLOUD_RESOURCE_GROUP=**"default" # or "Default"**
+
+      _Service API relevant:_
+      * IBMCLOUD_CF_APP_SERVICE_NAME="bluecloudmirror-scores-service-**[YOUR_NAME]**"
+      * IBMCLOUD_CF_ORGANIZATION_NAME="**[YOUR_ORGANIZATION_NAME]**
 
 ### 3. Enable the bash script for automation <a name="part-SETUP-02"></a>
 

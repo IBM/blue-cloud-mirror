@@ -90,10 +90,13 @@ This file contains environment variables.
 
 2. Insert the needed values for following entries and do not change the rest.
 
+   **Important for the setup:**
+   - Resource Group is case sensitive depending on your system you have to change **d** efault** to **D** efault.
    _Login relevant:_
 
-      * IBMCLOUD_CLI_DEVOPS_PLATFORM_KEY="**[YOUR_PLATFORM_KEY]**"
-      * IBMCLOUD_USER_ID="**[YOUR_IBMCLOUD_ID]**"
+     * IBMCLOUD_CLI_DEVOPS_PLATFORM_KEY="**[YOUR_PLATFORM_KEY]**"
+     * IBMCLOUD_USER_ID="**[YOUR_IBMCLOUD_ID]**"
+     * IBMCLOUD_RESOURCE_GROUP=**"default" # or "Default"**
 
    _Cloud Foundry Apps and services relevant:_
 

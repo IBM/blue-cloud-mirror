@@ -72,10 +72,14 @@ Leave your terminal open.
 
 2. Insert the needed values for following entries and do not change the rest.
 
+   **Important for the setup:**
+   - Resource Group is case sensitive depending on your system you have to change **d** efault** to **D** efault.
+
     _Login relevant:_
 
      * IBMCLOUD_CLI_DEVOPS_PLATFORM_KEY="**[YOUR_PLATFORM_KEY]**"
      * IBMCLOUD_USER_ID="**[YOUR_IBMCLOUD_ID]**"
+     * IBMCLOUD_RESOURCE_GROUP=**"default" # or "Default"**
 
     _Cloud Foundry Apps and services relevant:_
      * IBMCLOUD_CF_ORGANIZATION_NAME="**[YOUR_ORGANIZATION_NAME]**
@@ -101,8 +105,12 @@ This is the environment ariable: **IBMCLOUD_FUNCTIONS_API_TYPE**:
 
   1. To use the **service api** ensure these environment variables are set for the **service-api**. 
   _Note:_ You shoud have configured them in the chapter **service api**.
+  
 
-    * IBMCLOUD_SCOREAPI_URL=""
+   **Important for the setup:**
+   - API Connect URL (score-service-api) must end with YOUR_URL*/*.
+
+    * IBMCLOUD_SCOREAPI_URL="YOUR_URL/"
     * IBMCLOUD_SCOREAPI_CLIENT_ID=""
     * IBMCLOUD_SCOREAPI_CLIENT_SECRET=""
 
