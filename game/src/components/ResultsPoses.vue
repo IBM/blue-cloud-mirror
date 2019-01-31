@@ -230,7 +230,8 @@ export default {
             if (!pose5) pose5 = document.getElementById('pose5');
             if (
               val[10].score > 0.7 &&
-              val[2].score > 0.7
+              val[2].score > 0.7 &&
+              val[9].score < 0.5
             ) {
               if (val[10].position.y < val[2].position.y) {
                 if (
