@@ -9,10 +9,14 @@
 Take 3 minutes and have a look in the YouTube video: How to setup the scores service api?
 [![You Tube Setup](https://img.youtube.com/vi/xpMjO9ZTzq0/0.jpg)](https://www.youtube.com/watch?v=xpMjO9ZTzq0 "Click play on youtube")
 
+---
+
 ## Services used
 
 * Cloud Foundry Apps Node.js Buildpack
 * Cloudant
+
+---
 
 ## Architecture
 
@@ -52,6 +56,8 @@ The focus is only on the  **scores service**.
    * Get the score list
    * Add a score value
    * Delete a score value
+
+---
 
 ## Setup the score service on IBM Cloud
 
@@ -120,7 +126,7 @@ It will create a **Cloudant** service and bind the service to the **scores servi
 
 The bash script shows the execution steps. Some steps do take time, be patient.
 
-After the excution you can find a log file in the **./deploy_apps** folder. The log is called **ibmcloud-deploy-service-to-cf**. This log contains detailed information about the deployment.
+After the execution you can find a log file in the **./deploy_apps** folder. The log is called **ibmcloud-deploy-service-to-cf**. This log contains detailed information about the deployment.
 
 Execute the bash script.
 

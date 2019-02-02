@@ -4,6 +4,10 @@
 
 * Setup the **Scores Service and WebApp**
 
+Test the 
+[YouTube playlist](https://www.youtube.com/playlist?list=PLUte4WEyMEjWjJSL_MG692rL_hOna7MbD) with a sample setup for all scores parts.
+
+---
 ## Services used
 
 * Cloud Foundry Apps Node.js Buildpack
@@ -12,6 +16,7 @@
 * Lite API Management
 * API Connect
 
+---
 ## Architecture
 
 This is a simplified view on the scores architecture.
@@ -32,7 +37,7 @@ Here is a small description for each major elements in the diagram.
 
   You can navigate from the **High Scores App** to the **Blue Cloud Mirror Game**.
 
-  At the moment the there is no auth implemented in the game app, to display or delete scores from this App.
+  At the moment there is no auth implemented in the game app, to display or delete scores from this App.
   But this will be realized with usage of the [**APP ID**](https://www.ibm.com/cloud/app-id) service inside the **Functions API** in the future.
 
   To ensure no password is stored inside the browser, when using the WebApp, the current **functions API** does not request user auth.
@@ -44,7 +49,7 @@ Here is a small description for each major elements in the diagram.
     
   At the moment the IBM Lite API management exposes the APIs, which are implemented with **actions** or **sequences** inside IBM Functions. [IBM Functions](https://console.bluemix.net/openwhisk/) is based on [Apache OpenWhisk](https://openwhisk.apache.org/).
 
-  Inside the **actions**, the access to the **service API** or direclty to **scores service** is enabled and can be configured. The action do contain the **auth** information for each of them.
+  Inside the **actions**, the access to the **service API** or directly to **scores service** is enabled and can be configured. The action do contain the **auth** information for each of them.
 
 * **Service API**
 
@@ -55,7 +60,7 @@ Here is a small description for each major elements in the diagram.
   
   The **scores service** implements the access to a nosql database Cloudant. The major objective of **scores service** is to provide the add score and list score functionality.
    
-
+---
 ## Setup Instructions
 
 The setup is organized in separated chapters.
@@ -66,7 +71,7 @@ To configure these bash scripts you need to insert values in the **scores.local.
 There are two major steps the **core scores services** and the **High Score Web App** setup.
 
 _Note:_ The setup description is for IBM Cloud, but you can run the Node.js apps also locally.
-The **scores service** uses port 3000 and **webapp server** the port 3000.
+The **scores service** uses port `3000` and **webapp server** the port `3001`.
 
 Sample for the **scores service**.
 

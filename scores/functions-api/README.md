@@ -5,13 +5,18 @@
 ## Objective
 
 * Setup the **functions API**
+
 Take 4 minutes and have a look in the YouTube video: How to setup the scores functions api?
 [![You Tube Setup](https://img.youtube.com/vi/EShNx6y6AsY/0.jpg)](https://www.youtube.com/watch?v=EShNx6y6AsY "Click play on youtube")
+
+---
 
 ## Services used
 
 * Cloud Functions
 * Lite API Management
+
+---
 
 ## Architecture
 
@@ -20,7 +25,7 @@ The **functions API** is our serverless approach to secure the **service API** o
     
   At the moment the IBM Lite API management exposes the APIs, which are implemented with **actions** or **sequences** inside IBM Functions. [IBM Functions](https://console.bluemix.net/openwhisk/) is based on [Apache OpenWhisk](https://openwhisk.apache.org/).
 
-  Inside the **actions**, the access to the **service API** or direclty to **scores service** is enabled and can be configured. The actions will contain the **auth** information for each of them, depening on your the configuration.
+  Inside the **actions**, the access to the **service API** or direclty to **scores service** is enabled and can be configured. The actions will contain the **auth** information for each of them, depending on your configuration.
 
 In the following image you can see the dependencies of **scores service**, **service API** and **functions API**.
 
@@ -36,6 +41,7 @@ You have **two options** in the setup configuration for the **functions api**.
 
     ![scores functions api option 2](docimages/scores-architecture-scores-functions-api-options-2.png)
 
+---
 
 ## Setup the scores functions API on IBM Cloud
 
@@ -61,7 +67,7 @@ _Note:_ You don't have to do this step, if you already have an IBM platform key.
 ibmcloud login -a https://api.ng.bluemix.net
 ```
 
-2. Create a IBM platform for your API key and name it (example **my-ibmplatform-key**) and provide a filename  (example **my-ibmplatform-key-key_file**).
+2. Create a IBM platform for your API key and name it (example **my-ibmplatform-key**) and provide a filename (example **my-ibmplatform-key-key_file**).
 ```
 ibmcloud iam api-key-create my-ibmplatform-key -d "This is my API key to access the IBM platform" --file my-ibmplatform-key-key_file
 ```
@@ -72,7 +78,7 @@ Leave your terminal open.
 
 1. Open the file **[YOUR-ROOT]bluecloudmirror/scores/scores.local.root.env**. This file contains environment variables.
 
-2. Insert the needed values for following entries and do not change the rest.
+2. Insert the needed values for the following entries and do not change the rest.
 
    **Important for the setup:**
    - Resource Group is case sensitive depending on your system you have to change **d** efault** to **D** efault.
@@ -93,7 +99,7 @@ You can set two options for the API usage.
  * Usage of the pure **scores-service**
  * Usage of the API defined with API Connect **scores-service-api**
  
-This is the environment ariable: **IBMCLOUD_FUNCTIONS_API_TYPE**:
+This is the environment variable: **IBMCLOUD_FUNCTIONS_API_TYPE**:
 
 #### Definitions:
 
@@ -208,7 +214,7 @@ Here you can see the installed **actions** and **sequences**.
 6. Choose **Definition**
 
 Here you can see the uploaded API configuration.
-In **Path** you can find the API calls with the releated Actions.
+In **Path** you can find the API calls with the related Actions.
 At the moment all related actions are sequences.
 
 ![scores-functions-navigation-05](docimages/scores-functions-navigation-05.png)
