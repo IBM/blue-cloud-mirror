@@ -127,16 +127,17 @@ function install() {
 
   _out _adding parameter to package $IBMCLOUD_FUNCTIONS_PACKAGE_NAME
   _out _list parameter 
-  echo "Parmater: $IBMCLOUD_FUNCTIONS_PACKAGE_NAME"
-  echo "Parmater: $IBMCLOUD_SCOREAPI_URL"
-  echo "Parmater: $IBMCLOUD_SCOREAPI_CLIENT_ID" 
-  echo "Parmater: $IBMCLOUD_SCOREAPI_CLIENT_SECRET"
-  echo "Parmater: $FUNCTIONS_APIHOST"
-  echo "Parmater: $FUNCTIONS_AUTHORIZATION"
-  echo "Parmater: $IBMCLOUD_CF_APP_USER"
-  echo "Parmater: $IBMCLOUD_CF_APP_PASSWORD"
-  echo "Parmater: https://$IBMCLOUD_CF_APP_SERVICE_NAME.mybluemix.net/"
-  echo "Parmater: $API_TYPE"
+  echo "Parameter: $IBMCLOUD_FUNCTIONS_PACKAGE_NAME"
+  echo "Parameter: $IBMCLOUD_SCOREAPI_URL"
+  echo "Parameter: $IBMCLOUD_SCOREAPI_CLIENT_ID" 
+  echo "Parameter: $IBMCLOUD_SCOREAPI_CLIENT_SECRET"
+  echo "Parameter: $FUNCTIONS_APIHOST"
+  echo "Parameter: $FUNCTIONS_AUTHORIZATION"
+  echo "Parameter: $IBMCLOUD_CF_APP_USER"
+  echo "Parameter: $IBMCLOUD_CF_APP_PASSWORD"
+  echo "Parameter: https://$IBMCLOUD_CF_APP_SERVICE_NAME.mybluemix.net/"
+  echo "Parameter: $API_TYPE"
+  echo "Parameter: $IBMCLOUD_FUNCTIONS_API_SECRET"
   
   
   ibmcloud wsk package update $IBMCLOUD_FUNCTIONS_PACKAGE_NAME\
@@ -148,16 +149,20 @@ function install() {
     --param SCORE_USER $IBMCLOUD_CF_APP_USER\
     --param SCORE_PASSWORD $IBMCLOUD_CF_APP_PASSWORD\
     --param SCORE_URL "https://$IBMCLOUD_CF_APP_SERVICE_NAME.mybluemix.net/"\
-    --param API_TYPE $IBMCLOUD_FUNCTIONS_API_TYPE
+    --param API_TYPE $IBMCLOUD_FUNCTIONS_API_TYPE\
+    --param SECRET $IBMCLOUD_FUNCTIONS_API_SECRET
 
   _out _creating actions
   ibmcloud wsk action create "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_addScore" scoreAPI_addScore.js
   ibmcloud wsk action create "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_deleteScore" scoreAPI_deleteScore.js
   ibmcloud wsk action create "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_listScore" scoreAPI_listScore.js
+  ibmcloud wsk action create "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_deleteSecret" scoreAPI_deleteSecret.js
 
   _out _creating action sequence
   ibmcloud wsk action create "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/addScoreSequence" --sequence "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_addScore"
   ibmcloud wsk action create "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/deleteScoreSequence" --sequence "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_deleteScore"
+  ibmcloud wsk action update "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/deleteScoreSequence" --sequence "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_deleteSecret"
+ 
   ibmcloud wsk action create "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/listScoreSequence" --sequence "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_listScore"
 
   _out _creating API
@@ -208,6 +213,7 @@ function uninstall() {
   ibmcloud wsk action delete "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_addScore"
   ibmcloud wsk action delete "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_deleteScore"
   ibmcloud wsk action delete "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_listScore"
+  ibmcloud wsk action delete "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_deleteSecret"
 
   _out  _removing packages...
   ibmcloud wsk package delete "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME"

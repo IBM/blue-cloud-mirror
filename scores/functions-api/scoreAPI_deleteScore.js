@@ -4,7 +4,6 @@ function main(args) {
 
   // require the openwhisk npm package
   var ow = require("openwhisk");
-  var btoa = require('btoa');
 
   // read apihost, auth, and namespace from params
   var apiHost = args.FUNCTIONS_APIHOST;
@@ -19,48 +18,37 @@ function main(args) {
   // instantiate the openwhisk instance before you can use it
   var openwhisk = ow(options);
 
-  if ( args.API_TYPE === "SCORES_SERVICE_API" ){
-    var httpHeaderOptions = {
-      accept: "application/json",
-      "content-type": "application/json",
-      "x-ibm-client-secret": args.SCOREAPI_CLIENT_SECRET,
-      "x-ibm-client-id": args.SCOREAPI_CLIENT_ID
-    }; 
-
-    var reqURL = args.SCOREAPI_URL + "api/v1/deletescore";
-  };
-
-  if ( args.API_TYPE === "SCORES_SERVICE" ){
-    //auth_SCORE_SERVICE =  '{"'+ args.SCORE_USER +'":"'+args.SCORE_PASSWORD+'"}';
-    auth_SCORE_SERVICE = args.SCORE_USER + ":" + args.SCORE_PASSWORD;
-
-    //var score_base64Auth = new Buffer(auth_SCORE_SERVICE).toString("base64");
-    var score_base64Auth = btoa(auth_SCORE_SERVICE);
-
-    var score_KEY = "Basic " + score_base64Auth;
-    var httpHeaderOptions = {
-      accept: "application/json",
-      "content-type": "application/json",
-      "Authorization": score_KEY
-    };
-
-    var reqURL = args.SCORE_URL + "api/v1/deletescore";  
-  };
-
-  console.log("reqURL: ", reqURL);
-  console.log("httpHeaderOptions : " +
-  JSON.stringify(httpHeaderOptions) );
-
   // http://www.stevenatkin.com/index.php/2017/05/16/using-async-and-promises-in-openwhisk/
 
   return new Promise(function(resolve, reject) {
     //  REST api
+    if (args.score.secret != undefined) {
+      if (args.score.secret == "false") {
+        var body = {
+          score: {
+            id: args.score.id,
+            rev: args.score.rev,
+            secret: args.score.secret,
+            ok: false
+          }
+        };
+        console.log("return secret", JSON.stringify(body));
+        reject(body);
+      }
+    }
+
     var request = require("request");
+    var reqURL = args.SCOREAPI_URL + "api/v1/deletescore";
     console.log("URL: \n", reqURL);
     var restoptions = {
       method: "POST",
       url: reqURL,
-      headers: httpHeaderOptions,
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
+        "x-ibm-client-secret": args.SCOREAPI_CLIENT_SECRET,
+        "x-ibm-client-id": args.SCOREAPI_CLIENT_ID
+      },
       body: { score: { id: args.score.id, rev: args.score.rev } },
       json: true
     };
@@ -72,9 +60,18 @@ function main(args) {
         reject(error);
       } else {
         var value = JSON.stringify(body);
-        console.log("Success: ", value);
-        console.log("Response:", response);
-        resolve(body);
+        console.log("Success real value: ", value);
+        console.log("Response value:", response);
+        var value = {
+          score: {
+            id: body.id,
+            body: body.rev,
+            secret: args.score.secret,
+            ok: true
+          }
+        };
+        console.log("Success created value: ", value);
+        resolve(value);
       }
     });
   });
