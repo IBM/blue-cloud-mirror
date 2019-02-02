@@ -17,6 +17,39 @@ function main(args) {
 
   // instantiate the openwhisk instance before you can use it
   var openwhisk = ow(options);
+  var btoa = require('btoa');
+
+  if ( args.API_TYPE === "SCORES_SERVICE_API" ){
+    var httpHeaderOptions = {
+      accept: "application/json",
+      "content-type": "application/json",
+      "x-ibm-client-secret": args.SCOREAPI_CLIENT_SECRET,
+      "x-ibm-client-id": args.SCOREAPI_CLIENT_ID
+    }; 
+
+    var reqURL = args.SCOREAPI_URL + "api/v1/deletescore";
+  };
+
+  if ( args.API_TYPE === "SCORES_SERVICE" ){
+    //auth_SCORE_SERVICE =  '{"'+ args.SCORE_USER +'":"'+args.SCORE_PASSWORD+'"}';
+    auth_SCORE_SERVICE = args.SCORE_USER + ":" + args.SCORE_PASSWORD;
+
+    //var score_base64Auth = new Buffer(auth_SCORE_SERVICE).toString("base64");
+    var score_base64Auth = btoa(auth_SCORE_SERVICE);
+
+    var score_KEY = "Basic " + score_base64Auth;
+    var httpHeaderOptions = {
+      accept: "application/json",
+      "content-type": "application/json",
+      "Authorization": score_KEY
+    };
+
+    var reqURL = args.SCORE_URL + "api/v1/deletescore";  
+  };
+
+  console.log("reqURL: ", reqURL);
+  console.log("httpHeaderOptions : " +
+  JSON.stringify(httpHeaderOptions) );
 
   // http://www.stevenatkin.com/index.php/2017/05/16/using-async-and-promises-in-openwhisk/
 
@@ -43,12 +76,7 @@ function main(args) {
     var restoptions = {
       method: "POST",
       url: reqURL,
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-        "x-ibm-client-secret": args.SCOREAPI_CLIENT_SECRET,
-        "x-ibm-client-id": args.SCOREAPI_CLIENT_ID
-      },
+      headers: httpHeaderOptions,
       body: { score: { id: args.score.id, rev: args.score.rev } },
       json: true
     };
