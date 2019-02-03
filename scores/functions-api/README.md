@@ -240,7 +240,7 @@ The reason is that the uploaded API imformation does contain older auth informat
 
 ![scores-functions-navigation-08](docimages/scores-functions-navigation-08.png)
 
-4. Because of the sequence for the minimal secured delete of score values, you must change back to the usage of the **sequenscore-functions-API_listScore** and save.
+4. Because of the delete sequence containing the minimal secured delete of score values, you must change back to the usage of the **sequenscore-functions-API_listScore** and save.
 
 ### 7. Save the needed data for the WebApp and Game configuration <a name="part-SETUP-07"></a>
 
