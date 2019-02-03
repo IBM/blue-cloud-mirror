@@ -55,7 +55,9 @@ console.log("VUE Environment: ", process.env);
 export default {
   name: "app",
   data() {
-    return {};
+    return {
+       gameurls: gameurls
+    };
   },
   components: {
     scoreMain,

@@ -22,11 +22,23 @@ game/twitter-functions/config.json
 # webapp
 dist
 *.log
-scores.local.root.env
-App.vue
-scoreMain.vue
-scores/functions-api/api-definition/template-scores-functions-API-1.0.0.json
-scores/scores-api/scores-service-API-CF-1.0.0.yaml
+scores/service/.env
+scores/service/text-replace/node_modules
+scores/service/deploy_apps/*.log
+scores/service/public/lib
+scores/service-api/scores-service-API-CF-1.0.0.yaml
+scores/service-api/.env
+scores/service-api/text-replace/node_modules
+scores/functions-api/api-definition/scores-functions-API-1.0.0.json
+scores/functions-api/text-replace/node_modules
+scores/webapp/text-replace/node_modules
+scores/webapp/server/.env
+scores/webapp/server/dist
+scores/webapp/client/dist
+scores/webapp/client/src/App.vue
+scores/webapp/client/src/components/scoreMain.vue
+scores/webapp/deploy_apps/*.log
+scores/scores.local.root.env
 
 # icp-k8s  harald
 icp-k8s/hiscore-api/node_modules

@@ -56,7 +56,7 @@ function main(args) {
   return new Promise(function(resolve, reject) {
     //  REST api
     if (args.score.secret != undefined) {
-      if (args.score.secret == "false") {
+      if (args.score.secret === "false") {
         var body = {
           score: {
             id: args.score.id,
@@ -71,7 +71,6 @@ function main(args) {
     }
 
     var request = require("request");
-    var reqURL = args.SCOREAPI_URL + "api/v1/deletescore";
     console.log("URL: \n", reqURL);
     var restoptions = {
       method: "POST",
