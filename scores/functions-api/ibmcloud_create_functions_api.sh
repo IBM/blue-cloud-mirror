@@ -160,8 +160,7 @@ function install() {
 
   _out _creating action sequence
   ibmcloud wsk action create "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/addScoreSequence" --sequence "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_addScore"
-  ibmcloud wsk action create "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/deleteScoreSequence" --sequence "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_deleteScore"
-  ibmcloud wsk action update "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/deleteScoreSequence" --sequence "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_deleteSecret"
+  ibmcloud wsk action create "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/deleteScoreSequence" --sequence "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_deleteSecret","$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_deleteScore" 
  
   ibmcloud wsk action create "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/listScoreSequence" --sequence "$IBMCLOUD_FUNCTIONS_PACKAGE_NAME/score-functions-API_listScore"
 
@@ -248,6 +247,7 @@ echo "Now please verify the setup in IBM Cloud and for details use the logfile"
 "--uninstall" )
 ibmcloud_login
 uninstall
+endMessage
 ;;
 "--reinstall" )
 ibmcloud_login
@@ -259,6 +259,7 @@ echo "Now please verify the setup in IBM Cloud and for details use the logfile"
 "--env" )
 ibmcloud_login
 showenv
+endMessage
 ;;
 * )
 usage
