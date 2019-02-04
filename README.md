@@ -1,6 +1,6 @@
 # Blue Cloud Mirror - IBM Cloud Technology Showcase
 
-This project contains a game where players need to show five specific emotions and do five specific poses in two levels. The fastest player wins.
+This project contains a game where players need to show five specific emotions and do five specific poses in two levels. The fastest player wins. The game uses various key cloud technologies to demonstrate the value of a diverse, interconnected system, with both public and private cloud environments.
 
 [Play the Game.](https://blue-cloud-mirror.mybluemix.net/)
 
@@ -10,16 +10,17 @@ Here is an example of a successful game:
 
 **Showcase of IBM Cloud Technologies**
 
-The game utilizes various key IBM Cloud technologies to demonstrate the value of the IBM Cloud.
+The game utilizes various key IBM Cloud technologies to demonstrate the value of the IBM Cloud. There are three main parts:
 
-The game has three main parts:
-* Core game: Implemented as web application and via Cloud Functions since it is only used during conferences
-* User management service: Implemented via IBM Cloud Private to avoid having the personal data in a public cloud
-* Highscore list: Implemented via Cloud Foundry Enterprise Edition to show easy theme adoptions for different conferences
+* Core game: Implemented as serverless web application since it is primarily used during conferences only
+* Users service: Implemented via IBM Cloud Private to avoid storing personal data in a public cloud
+* Scores service: Implemented via Cloud Foundry Enterprise Edition to highlight easy changes via the ‘cf push experience’ (for example theme adoptions for different conferences)
 
-This diagram shows the key components:
+**Note:** In order to allow developers to easily set up the game with an IBM Cloud Lite account, this project contains documentation how to use Cloud Foundry Publication Applications rather than Cloud Foundry Enterprise Environment and how to use Minikube rather than IBM Cloud Private.
 
-![alt text](images/diagram-overview-900.jpeg "architecture diagram")
+The following diagram shows the key components that are used in this project. More diagrams, including a diagram showing IBM Cloud Private and Cloud Foundry Enterprise Environment, can be found in the [images](https://github.com/IBM/blue-cloud-mirror/tree/master/images) folder.
+
+![alt text](images/diagram-overview-lite-900.jpeg "architecture diagram")
 
 This is a list of used technologies:
 * [IBM Cloud](https://cloud.ibm.com/)
@@ -68,11 +69,11 @@ $ yarn install
 $ yarn run serve
 ```
 
-The full setup includes IBM Cloud Functions, Cloud Foundry Public Applications on the IBM Cloud and IBM Cloud Private. Please refer to the instructions of the three main components:
+The full setup includes IBM Cloud Functions, Cloud Foundry and an on-premises environment. Please refer to the instructions of the three main components:
 
-* [Game](game/README.md): Web application hosted on IBM Cloud Functions
-* [Highscores](scores/README.md): API and web application hosted via Cloud Foundry Public Applications
-* [Users](users/README.md): API hosted on IBM Cloud Private
+* [Game](game/README.md): Web application hosted on the IBM Cloud
+* [Scores service](scores/README.md): API and web application hosted on the IBM Cloud
+* [Users service](users/README.md): API hosted on-premises
 
 ## Prerequisites
 
