@@ -27,7 +27,7 @@
       <b-card title="Table description" tag="article" class="mb-2">
         <p
           class="card-text"
-        >This is the <b>high score list</b>.
+        >This is the <b>highscore list</b>.
         </p> 
         <p>You can <b>sort each</b> column in the list and you can <b>filter</b> for <b>text</b> inside this list.</p>
       </b-card>
@@ -56,7 +56,7 @@ export default {
   name: "app",
   data() {
     return {
-      gameurls: gameurls
+       gameurls: gameurls
     };
   },
   components: {

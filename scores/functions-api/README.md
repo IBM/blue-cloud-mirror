@@ -92,6 +92,10 @@ Leave your terminal open.
     _Cloud Foundry Apps and services relevant:_
      * IBMCLOUD_CF_ORGANIZATION_NAME="**[YOUR_ORGANIZATION_NAME]**
 
+    _Functions API_
+     * IBMCLOUD_FUNCTIONS_API_TYPE=**[SCORES_SERVICE]**
+     * IBMCLOUD_FUNCTIONS_API_SECRET=**[YOUR_SECRET]**
+
 #### Options for the API usage in the functions API <a name="part-SETUP-02"></a>
 
 You can set two options for the API usage.
@@ -232,9 +236,11 @@ The reason is that the uploaded API imformation does contain older auth informat
 
 ![scores-functions-navigation-07](docimages/scores-functions-navigation-07.png)
 
-3. After the change it should look like this and you can explpore the API definition
+3. After the change it should look like this and you can explpore the API definition. Save this configuration.
 
 ![scores-functions-navigation-08](docimages/scores-functions-navigation-08.png)
+
+4. Because of the delete sequence containing the minimal secured delete of score values, you must change back to the usage of the **sequenscore-functions-API_listScore** and save.
 
 ### 7. Save the needed data for the WebApp and Game configuration <a name="part-SETUP-07"></a>
 

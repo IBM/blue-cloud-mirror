@@ -4,7 +4,6 @@ function main(args) {
 
   // require the openwhisk npm package
   var ow = require("openwhisk");
-  var btoa = require('btoa');
 
   // read apihost, auth, and namespace from params
   var apiHost = args.FUNCTIONS_APIHOST;
@@ -18,6 +17,7 @@ function main(args) {
 
   // instantiate the openwhisk instance before you can use it
   var openwhisk = ow(options);
+  var btoa = require('btoa');
 
   if ( args.API_TYPE === "SCORES_SERVICE_API" ){
     var httpHeaderOptions = {
@@ -55,6 +55,21 @@ function main(args) {
 
   return new Promise(function(resolve, reject) {
     //  REST api
+    if (args.score.secret != undefined) {
+      if (args.score.secret === "false") {
+        var body = {
+          score: {
+            id: args.score.id,
+            rev: args.score.rev,
+            secret: args.score.secret,
+            ok: false
+          }
+        };
+        console.log("return secret", JSON.stringify(body));
+        reject(body);
+      }
+    }
+
     var request = require("request");
     console.log("URL: \n", reqURL);
     var restoptions = {
@@ -72,9 +87,18 @@ function main(args) {
         reject(error);
       } else {
         var value = JSON.stringify(body);
-        console.log("Success: ", value);
-        console.log("Response:", response);
-        resolve(body);
+        console.log("Success real value: ", value);
+        console.log("Response value:", response);
+        var value = {
+          score: {
+            id: body.id,
+            body: body.rev,
+            secret: args.score.secret,
+            ok: true
+          }
+        };
+        console.log("Success created value: ", value);
+        resolve(value);
       }
     });
   });

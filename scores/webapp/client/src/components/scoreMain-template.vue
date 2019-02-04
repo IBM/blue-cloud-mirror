@@ -2,12 +2,12 @@
   <div v-bind:style="{ background: activeColor}">
     <div class="vld-parent">
       <!-- Loading -->
-      <loading 
-        :active.sync="isLoading" 
-        :can-cancel="true" 
+      <loading
+        :active.sync="isLoading"
+        :can-cancel="true"
         :on-cancel="onCancel"
-        :is-full-page="fullPage">
-      </loading>
+        :is-full-page="fullPage"
+      ></loading>
       <!-- Table -->
       <b-table
         striped
@@ -38,21 +38,21 @@
       <br>
       <!-- Display page options and search -->
       <b-row>
-      <b-col md="6" class="my-1">
-        <b-form-group horizontal label="Per page" class="mb-0">
-          <b-form-select :options="pageOptions" v-model="perPage"/>
-        </b-form-group>
-      </b-col>
-      <b-col md="6" class="my-1">
-        <b-form-group horizontal label="Filter" class="mb-0">
-          <b-input-group>
-            <b-form-input v-model="filter" placeholder="Type to Search"/>
-            <b-input-group-append>
-              <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
-            </b-input-group-append>
-          </b-input-group>
-        </b-form-group>
-      </b-col>
+        <b-col md="6" class="my-1">
+          <b-form-group horizontal label="Per page" class="mb-0">
+            <b-form-select :options="pageOptions" v-model="perPage"/>
+          </b-form-group>
+        </b-col>
+        <b-col md="6" class="my-1">
+          <b-form-group horizontal label="Filter" class="mb-0">
+            <b-input-group>
+              <b-form-input v-model="filter" placeholder="Type to Search"/>
+              <b-input-group-append>
+                <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
+              </b-input-group-append>
+            </b-input-group>
+          </b-form-group>
+        </b-col>
       </b-row>
 
       <b-row>
@@ -71,9 +71,9 @@
 
 <script>
 // Import component
-import Loading from 'vue-loading-overlay';
+import Loading from "vue-loading-overlay";
 // Import stylesheet
-import 'vue-loading-overlay/dist/vue-loading.css';
+import "vue-loading-overlay/dist/vue-loading.css";
 // Vars
 var scores = [];
 var defaultdate = "1547135645804";
@@ -101,6 +101,7 @@ const fields = [
 // API URLs
 var urlScores = "FUNCTIONS_API_URL/getscorelist"; // TEXT REPLACE
 var urlDelete = "FUNCTIONS_API_URL/deletescore"; // TEXT REPLACE
+
 var functionsapi = true;
 
 export default {
@@ -138,11 +139,11 @@ export default {
         var returnlist = [];
 
         // IF functions API is used "JSON.parse(response.data.payload);"
-        if (functionsapi){
+        if (functionsapi) {
           returnlist = JSON.parse(response.data.payload);
         } else {
           returnlist = response.data;
-        };
+        }
 
         var rowcount = returnlist.length;
         this.totalRows = rowcount;
@@ -176,12 +177,11 @@ export default {
 
           // Mark high score, the first 5 high scores in list
           if (i < highscorerange) {
-            
-            if ( lasthighscore != returnlist[i].score){
+            if (lasthighscore != returnlist[i].score) {
               lasthighscore = returnlist[i].score;
               ranking = ranking + 1;
             }
-           
+
             list.push({
               ranking: ranking,
               id: returnlist[i]._id,
@@ -204,7 +204,7 @@ export default {
                 gameDate: prettydate.format(d),
                 firstName: returnlist[i].firstName,
                 lastName: returnlist[i].lastName,
-                uid: returnlist[i].uid,
+                uid: returnlist[i].uid
                 // _rowVariant: "success"
               });
             } else {
@@ -249,45 +249,71 @@ export default {
     },
 
     onCancel() {
-        console.log('User cancelled the loader.')
+      console.log("User cancelled the loader.");
     },
 
     // delete row item
     rowDblClickHandler(score, index) {
       console.log("-> Response: \n" + JSON.stringify(score) + " !\n");
 
-      let isBoss = confirm(
+      var message =
         "Do you want to delete the score value \n[" +
-          score.score +
-          "]" +
-          "\n[" +
-          score.firstName +
-          "]" +
-          "\n[" +
-          score.lastName +
-          "] ?"
-      );
+        score.score +
+        "]" +
+        "\n[" +
+        score.firstName +
+        "]" +
+        "\n[" +
+        score.lastName +
+        "] ?";
+      ("\n Insert secret to delete:");
+      var theSecrect = prompt(message, "YOUR SECRET");
+      console.log("Secret: ", theSecrect);
 
-      // Ask to delete the item
-      alert(isBoss);
-
-      var sendData = { score: { id: score.id, rev: score.rev } };
-      if (isBoss == true) {
+      if (theSecrect != null) {
+        var sendData = {
+          score: { id: score.id, rev: score.rev, secret: theSecrect }
+        };
         axios
           .post(urlDelete, sendData, restPostOptions)
           .then(response => {
-            if (response.data.ok == true) {
-              //Delete item from list
-              if (index > -1) {
-                this.scores.splice(index, 1);
-                this.isBusy = false;
-                this.isLoading = false;
+            console.log("reponse urlDelete", JSON.stringify(response));
+            if (response.data.score.secret != undefined) {
+              if (response.data.score.secret === "true") {
+                console.log("OK", response.data.score.ok);
+                if (response.data.score.ok == true) {
+                  //Delete item from list
+                  if (index > -1) {
+                    this.scores.splice(index, 1);
+                    this.isBusy = false;
+                    this.isLoading = false;
+                  }
+                  message =
+                    "The value " +
+                    "\n[" +
+                    score.score +
+                    "]" +
+                    "\n[" +
+                    score.firstName +
+                    "]" +
+                    "\n[" +
+                    score.lastName +
+                    "] is deleted!";
+                  alert(message);
+                } else {
+                  this.isBusy = false;
+                  this.isLoading = false;
+                  alert("SCORE IS NOT DELETED\n" + JSON.stringify(response));
+                }
+              } else {
+                message =
+                  "The " +
+                  theSecrect +
+                  " is not valid! Contact your administrator.";
+                alert(message);
               }
-              alert("SCORE IS DELETED");
             } else {
-              this.isBusy = false;
-              this.isLoading = false;
-              alert("SCORE NOT DELETED\n" + JSON.stringify(response));
+              alert("SECRET IS NOT DEFINED!");
             }
           })
           .catch(error => {
@@ -299,9 +325,11 @@ export default {
           .finally(() => {
             console.log("Loading done");
             this.isBusy = false;
-            this.isLoading = false;          
+            this.isLoading = false;
           });
-      } // true if OK is pressed
+      } else {
+        alert("Canceled");
+      }
     },
 
     handleCurrentChange(val) {

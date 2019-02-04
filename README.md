@@ -57,6 +57,7 @@ This is a list of used technologies:
 * [Blue Cloud Mirror – Of Kubes and Couches](https://haralduebele.blog/2019/02/01/blue-cloud-mirror-of-kubes-and-couches/ )
 * [Awesome Developer Experience with Vue.js](http://heidloff.net/article/awesome-developer-experience-vuejs)
 * [Videos: How to setup the Highscores part in IBM Cloud?](https://www.youtube.com/playlist?list=PLUte4WEyMEjWjJSL_MG692rL_hOna7MbD)
+* [Highscores overview blog post](https://suedbroecker.net/2019/02/01/bluecloudmirror-game-highscores/)
 
 ## Setup
 
