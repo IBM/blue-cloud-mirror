@@ -52,6 +52,8 @@ This is a list of used technologies:
 * [Screenshots and Diagrams](https://github.com/IBM/blue-cloud-mirror/tree/master/images)
 * [Three awesome TensorFlow.js Models for Visual Recognition](http://heidloff.net/article/tensorflowjs-visual-recognition)
 * [Serverless Vue.js Applications on the IBM Cloud](http://heidloff.net/article/serverless-vuejs-ibm-cloud)
+* [Blue Cloud Mirror — A fun IBM Cloud showcase](https://haralduebele.blog/2019/01/31/blue-cloud-mirror-a-fun-ibm-cloud-showcase/)
+* [Blue Cloud Mirror – Of Kubes and Couches](https://haralduebele.blog/2019/02/01/blue-cloud-mirror-of-kubes-and-couches/ )
 * [Awesome Developer Experience with Vue.js](http://heidloff.net/article/awesome-developer-experience-vuejs)
 * [Videos: How to setup the Highscores part in IBM Cloud?](https://www.youtube.com/playlist?list=PLUte4WEyMEjWjJSL_MG692rL_hOna7MbD)
 
