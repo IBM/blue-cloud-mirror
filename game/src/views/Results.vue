@@ -197,7 +197,7 @@
           variant="primary"
           style="margin-right:20px;background-color: #053c9f !important;border-color:#053c9f !important;"
           :disabled="isPlayerAnonymous"
-        >Save Score</b-button>
+        >Save Score</b-button> 
         <b-button
           v-on:click="onTweet"
           variant="primary"
@@ -303,6 +303,8 @@ export default {
       }
     },
     tweetButtonDisabled: function() {
+      return true;
+      /* disabled for live demo app
       if (this.$store.state.apis.users.url != "twitter-url-not-defined") {
         if (this.bothLevelsCompleted == false) {
           return true;
@@ -316,6 +318,7 @@ export default {
       } else {
         return true;
       }
+      */
     },
     isPlayerAnonymous: function() {
       return this.$store.state.currentPlayer.isAnonymous;

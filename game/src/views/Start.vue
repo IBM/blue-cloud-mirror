@@ -42,7 +42,7 @@
         <p v-if="errors.length > 0">
           <b style="color: #ffc107 !important">Please accept the terms.</b>
         </p>
-
+        <div style="margin-bottom:10px">Note: The player's first and last name is stored in a demo on-premises environment which is frequently wiped. Email adresses are not stored. If you don't want to provide this data, play anonymously or enter fake user names.</div>
         <b-button type="submit" variant="primary" style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;">Let's go</b-button>
       </b-form>
       <div></div>
@@ -133,7 +133,7 @@ export default {
             .post(this.$store.state.apis.users.url, {
               firstName: this.form.firstname,
               lastName: this.form.lastname,
-              email: this.form.email,
+              email: "demo@email.com", //this.form.email, // disabled for live demo app
               signedTerms: "true",
               registrationDate: new Date().getTime()
             })
