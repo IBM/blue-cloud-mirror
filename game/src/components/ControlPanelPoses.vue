@@ -36,6 +36,7 @@
         v-if="isLevelCompleted == false"
         style="font-size:smaller"
       >From left to right. As quickly as you can.</div>
+      <div v-if="isLevelCompleted == false" style="font-size:smaller; margin-top:10px">Note: The taken screenshots are only available in the browser and not saved.</div>
       <b-button
         v-if="isLevelCompleted"
         v-on:click="onClickNext"

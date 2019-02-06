@@ -17,6 +17,7 @@ const POSE_POSE5 = "Pose5";
 export default new Vuex.Store({
   strict: true,
   state: {
+    demoMode: true,
     otherDomainUrl: "other-domain-url-not-defined", // default: other-domain-url-not-defined
     apis: {
       users: {

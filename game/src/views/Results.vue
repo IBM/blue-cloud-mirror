@@ -107,7 +107,12 @@
               <div style="max-width:100px;display: table-cell;vertical-align: top;">
                 <div :class="fearClass">
                   <div style="text-align:center">Fear</div>
-                  <img class="face" id="facefear" ref="facefear" :src="otherDomainUrl('white.jpeg')">
+                  <img
+                    class="face"
+                    id="facefear"
+                    ref="facefear"
+                    :src="otherDomainUrl('white.jpeg')"
+                  >
                 </div>
               </div>
               <div style="max-width:100px;display: table-cell;vertical-align: top;">
@@ -197,7 +202,7 @@
           variant="primary"
           style="margin-right:20px;background-color: #053c9f !important;border-color:#053c9f !important;"
           :disabled="isPlayerAnonymous"
-        >Save Score</b-button> 
+        >Save Score</b-button>
         <b-button
           v-on:click="onTweet"
           variant="primary"
@@ -210,6 +215,11 @@
           style="margin-right:20px;background-color: #053c9f !important;border-color:#053c9f !important;"
         >Download Image</b-button>
       </b-col>
+    </b-row>
+    <b-row v-if="this.$store.state.demoMode == true" style="margin-top:10px">
+      <b-col>
+        <div style="margin-bottom:2px">Note: In this demo version, real user names cannot be stored in the highscore list. A user 'Demo Player' is used instead.</div>
+      </b-col>  
     </b-row>
     <a id="exportElementHidden" style="display:none"/>
     <b-modal ref="modelDialog" hide-footer title="Error saving Scores">
@@ -284,11 +294,11 @@ export default {
   },
   computed: {
     tweetLabel: function() {
-      let output = "Tweet";
+      let output = "Prepare Twitter Card";
       if (this.$store.state.apis.users.url != "twitter-url-not-defined") {
         if (this.tweeting == true) {
-          output = "Preparing Tweet ...";
-        } 
+          output = "Saving Twitter Card ...";
+        }
       }
       return output;
     },
@@ -303,22 +313,23 @@ export default {
       }
     },
     tweetButtonDisabled: function() {
-      return true;
-      /* disabled for live demo app
-      if (this.$store.state.apis.users.url != "twitter-url-not-defined") {
-        if (this.bothLevelsCompleted == false) {
-          return true;
-        } else {
-          if (this.tweeting == true) {
+      if (this.$store.state.demoMode == true) {
+        return true;
+      } else {
+        if (this.$store.state.apis.users.url != "twitter-url-not-defined") {
+          if (this.bothLevelsCompleted == false) {
             return true;
           } else {
-            return false;
+            if (this.tweeting == true) {
+              return true;
+            } else {
+              return false;
+            }
           }
+        } else {
+          return true;
         }
-      } else {
-        return true;
       }
-      */
     },
     isPlayerAnonymous: function() {
       return this.$store.state.currentPlayer.isAnonymous;
@@ -501,8 +512,15 @@ export default {
     },
     onSaveScore() {
       if (this.$store.state.apis.scores.url != "scores-url-not-defined") {
+        let email = "demo@email.com";
+        let firstName = "Demo";
+        let lastName = "Player";
+        if (this.$store.state.demoMode == false) {
+          firstName = this.$store.state.currentPlayer.firstName;
+          lastName = this.$store.state.currentPlayer.lastName;
+        }
         const axiosService = axios.create({
-          timeout: 5000,
+          timeout: 10000,
           headers: {
             accept: "application/json",
             "content-type": "application/json"
@@ -512,8 +530,8 @@ export default {
         let that = this;
         axiosService
           .post(this.$store.state.apis.scores.url, {
-            firstName: this.$store.state.currentPlayer.firstName,
-            lastName: this.$store.state.currentPlayer.lastName,
+            firstName: firstName,
+            lastName: lastName,
             gameDate: this.$store.state.currentGame.id,
             score: this.$store.state.currentGame.totalTimeWithPenalties
           })
@@ -531,11 +549,11 @@ export default {
     },
     onDownloadImage() {
       html2canvas(document.querySelector("#capture")).then(canvas => {
-          let imageEncoded = canvas.toDataURL("image/png");
-          let exportElement = document.getElementById('exportElementHidden');
-          exportElement.setAttribute("href", imageEncoded);
-          exportElement.setAttribute("download", "blue-cloud-mirror.png");
-          exportElement.click();
+        let imageEncoded = canvas.toDataURL("image/png");
+        let exportElement = document.getElementById("exportElementHidden");
+        exportElement.setAttribute("href", imageEncoded);
+        exportElement.setAttribute("download", "blue-cloud-mirror.png");
+        exportElement.click();
       });
     },
     onTweet() {
