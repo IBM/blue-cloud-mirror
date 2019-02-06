@@ -75,6 +75,18 @@
 import Loading from "vue-loading-overlay";
 // Import stylesheet
 import "vue-loading-overlay/dist/vue-loading.css";
+import Vue from 'vue';
+// Init plugin
+var loader_options = {color: '#000000',
+  loader: 'spinner',
+  width: 64,
+  height: 64,
+  backgroundColor: '#ffffff',
+  opacity: 0.5  
+};
+Vue.use(Loading);
+
+
 // Vars
 var scores = [];
 var defaultdate = "1547135645804";
@@ -101,12 +113,12 @@ const fields = [
 ];
 
 // API URLs
-// API URLs
 var urlScores = "FUNCTIONS_API_URL/getscorelist"; // TEXT REPLACE
 var urlDelete = "FUNCTIONS_API_URL/deletescore"; // TEXT REPLACE
 
 var functionsapi = true;
 var log = false;
+
 function debuglog(message, theobject){
   if (log){
     if ((theobject != undefined)&&(message!=undefined)) {
@@ -147,14 +159,17 @@ export default {
       currentPage: 1,
       totalRows: 0,
       pageOptions: [5, 10, 15],
-      activeColor: "white" //"#ccf5ff" //"lightblue"  // "lightgreen"
+      activeColor: "white", //"#ccf5ff" //"lightblue"  // "lightgreen"
     };
   },
 
   mounted() {
+    //loader
+    let loader = this.$loading.show(loader_options);
+    
     axios
       .get(urlScores, restGetOptions)
-      .then(response => {
+      .then(response => {   
         this.isBusy = true;
         this.isLoading = true;
         var returnlist = [];
@@ -258,16 +273,19 @@ export default {
         }
         debuglog("-> List: \n" + JSON.stringify(list) + "!");
         this.scores = list;
+        loader.hide();
         this.isBusy = false;
         this.isLoading = false;
       })
       .catch(error => {
         alert("Error " + error + "!");
+        loader.hide();
         this.errored = true;
         this.isBusy = false;
         this.isLoading = false;
       })
       .finally(() => {
+        loader.hide();
         this.isBusy = false;
         this.isLoading = false;
       });
