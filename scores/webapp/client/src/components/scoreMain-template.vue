@@ -27,6 +27,7 @@
       >
         <!-- A virtual column template to show the index-->
         <!--  <template slot="index" slot-scope="data">{{data.index + 1}}</template> -->
+        <span slot="image" slot-scope="data" v-html="data.value"></span>
       </b-table>
       <!-- Sorting information -->
       <p>
@@ -74,6 +75,18 @@
 import Loading from "vue-loading-overlay";
 // Import stylesheet
 import "vue-loading-overlay/dist/vue-loading.css";
+import Vue from 'vue';
+// Init plugin
+var loader_options = {color: '#000000',
+  loader: 'spinner',
+  width: 64,
+  height: 64,
+  backgroundColor: '#ffffff',
+  opacity: 0.5  
+};
+Vue.use(Loading);
+
+
 // Vars
 var scores = [];
 var defaultdate = "1547135645804";
@@ -95,7 +108,8 @@ const fields = [
   { key: "score", label: "Score", sortable: true },
   { key: "firstName", label: "First Name", sortable: true },
   { key: "lastName", label: "Last Name", sortable: true },
-  { key: "gameDate", label: "Date", sortable: true }
+  { key: "gameDate", label: "Date", sortable: true },
+  { key: "image", label: "Award", sortable: false}
 ];
 
 // API URLs
@@ -103,6 +117,25 @@ var urlScores = "FUNCTIONS_API_URL/getscorelist"; // TEXT REPLACE
 var urlDelete = "FUNCTIONS_API_URL/deletescore"; // TEXT REPLACE
 
 var functionsapi = true;
+var log = false;
+
+function debuglog(message, theobject){
+  if (log){
+    if ((theobject != undefined)&&(message!=undefined)) {
+      console.log("_DEBUG_MESSAGE_");
+      console.log(message, theobject);
+    } else { 
+      if ((theobject)&&(message!=undefined)){
+        console.log("_DEBUG_MESSAGE_");
+        console.log("_Object:", theobject);
+      };
+      if ((theobject!=undefined)&&(message)){
+        console.log("_DEBUG_MESSAGE_");
+        console.log("_Object:", theobject);
+      };
+    };
+  };
+};
 
 export default {
   name: "scoreMain",
@@ -126,14 +159,17 @@ export default {
       currentPage: 1,
       totalRows: 0,
       pageOptions: [5, 10, 15],
-      activeColor: "white" //"#ccf5ff" //"lightblue"  // "lightgreen"
+      activeColor: "white", //"#ccf5ff" //"lightblue"  // "lightgreen"
     };
   },
 
   mounted() {
+    //loader
+    let loader = this.$loading.show(loader_options);
+    
     axios
       .get(urlScores, restGetOptions)
-      .then(response => {
+      .then(response => {   
         this.isBusy = true;
         this.isLoading = true;
         var returnlist = [];
@@ -148,8 +184,8 @@ export default {
         var rowcount = returnlist.length;
         this.totalRows = rowcount;
 
-        console.log("- Response: \n " + JSON.stringify(response) + "!");
-        console.log(
+        debuglog("- Response: \n " + JSON.stringify(response) + "!");
+        debuglog(
           "- Return list: \n" +
             JSON.stringify(returnlist) +
             "! Rows: " +
@@ -161,10 +197,11 @@ export default {
         var highscorerange = 5;
         var lasthighscore = 0;
         var ranking = 0;
+        var image = null;
 
-        console.log("-> START  ITERATION: !\n");
+        debuglog("-> START  ITERATION: !\n");
         for (i = 0; i < rowcount; i++) {
-          console.log(
+          debuglog(
             "-> Return list: \n" + JSON.stringify(returnlist[i]) + "!"
           );
 
@@ -173,7 +210,7 @@ export default {
           if (isNaN(d)) {
             d = defaultdate;
           }
-          console.log("-> Prettydate: \n", prettydate.format(d));
+          debuglog("-> Prettydate: \n", prettydate.format(d));
 
           // Mark high score, the first 5 high scores in list
           if (i < highscorerange) {
@@ -182,6 +219,12 @@ export default {
               ranking = ranking + 1;
             }
 
+            if (i == 0) {
+                image = '<img class="responsive" width="35" height="35" src="winner.png"/>'; 
+              } else {
+                image = '<img class="responsive" width="30" height="30"  src="great.png"/>';
+            };
+            
             list.push({
               ranking: ranking,
               id: returnlist[i]._id,
@@ -190,12 +233,14 @@ export default {
               gameDate: prettydate.format(d),
               firstName: returnlist[i].firstName,
               lastName: returnlist[i].lastName,
-              uid: returnlist[i].uid
+              uid: returnlist[i].uid,
               //_rowVariant: "success"
+              image: image
             });
           } else {
             if (returnlist[i].score == lasthighscore) {
               ranking = highscorerange;
+              image = '<img class="responsive" width="30" height="30"  src="great.png"/>'; 
               list.push({
                 ranking: ranking,
                 id: returnlist[i]._id,
@@ -204,11 +249,13 @@ export default {
                 gameDate: prettydate.format(d),
                 firstName: returnlist[i].firstName,
                 lastName: returnlist[i].lastName,
-                uid: returnlist[i].uid
+                uid: returnlist[i].uid,
                 // _rowVariant: "success"
+                image: image
               });
             } else {
               ranking = ranking + 1;
+              image = '<img class="responsive" width="30" height="30"  src="sleep.png"/>';
               list.push({
                 ranking: ranking,
                 id: returnlist[i]._id,
@@ -217,24 +264,28 @@ export default {
                 gameDate: prettydate.format(d),
                 firstName: returnlist[i].firstName,
                 lastName: returnlist[i].lastName,
-                uid: returnlist[i].uid
+                uid: returnlist[i].uid,
                 // _rowVariant: "warning"
+                image: image
               });
             }
           }
         }
-        console.log("-> List: \n" + JSON.stringify(list) + "!");
+        debuglog("-> List: \n" + JSON.stringify(list) + "!");
         this.scores = list;
+        loader.hide();
         this.isBusy = false;
         this.isLoading = false;
       })
       .catch(error => {
         alert("Error " + error + "!");
+        loader.hide();
         this.errored = true;
         this.isBusy = false;
         this.isLoading = false;
       })
       .finally(() => {
+        loader.hide();
         this.isBusy = false;
         this.isLoading = false;
       });
@@ -249,12 +300,12 @@ export default {
     },
 
     onCancel() {
-      console.log("User cancelled the loader.");
+      debuglog("User cancelled the loader.");
     },
 
     // delete row item
     rowDblClickHandler(score, index) {
-      console.log("-> Response: \n" + JSON.stringify(score) + " !\n");
+      debuglog("-> Response: \n" + JSON.stringify(score) + " !\n");
 
       var message =
         "Do you want to delete the score value \n[" +
@@ -268,7 +319,7 @@ export default {
         "] ?";
       ("\n Insert secret to delete:");
       var theSecrect = prompt(message, "YOUR SECRET");
-      console.log("Secret: ", theSecrect);
+      debuglog("Secret: ", theSecrect);
 
       if (theSecrect != null) {
         var sendData = {
@@ -277,10 +328,10 @@ export default {
         axios
           .post(urlDelete, sendData, restPostOptions)
           .then(response => {
-            console.log("reponse urlDelete", JSON.stringify(response));
+            debuglog("reponse urlDelete", JSON.stringify(response));
             if (response.data.score.secret != undefined) {
               if (response.data.score.secret === "true") {
-                console.log("OK", response.data.score.ok);
+                debuglog("OK", response.data.score.ok);
                 if (response.data.score.ok == true) {
                   //Delete item from list
                   if (index > -1) {
@@ -323,7 +374,7 @@ export default {
             this.isLoading = false;
           })
           .finally(() => {
-            console.log("Loading done");
+            debuglog("Loading done");
             this.isBusy = false;
             this.isLoading = false;
           });
@@ -357,5 +408,9 @@ li {
 }
 a {
   color: #42b983;
+}
+.responsive {
+  width: 100%;
+  height: auto;
 }
 </style>
