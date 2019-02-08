@@ -59,7 +59,7 @@
     </ul>
 
     <div style="margin-top:15px;"></div>
-    The showcase application has been deploped by:
+    The showcase application has been developed by:
     <ul>
       <li><a target="_blank" style="color:#053c9f" href="https://twitter.com/nheidloff">Niklas Heidloff</a></li>
       <li><a target="_blank" style="color:#053c9f" href="https://twitter.com/tsuedbroecker">Thomas Südbröcker</a></li>
