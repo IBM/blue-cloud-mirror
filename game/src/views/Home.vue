@@ -26,7 +26,12 @@
       v-on:click="onGetTheCode"
       variant="primary"
       style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-    >Get the Code</b-button>
+    >Download Code</b-button>
+    <b-button
+      v-on:click="onTweet"
+      variant="primary"
+      style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+    >Tweet</b-button>
 
     <div style="margin-top:15px;">
       The game can be used at conferences as conversation starter with developers. It's fun, interactive and uses key technologies of the IBM Cloud.
@@ -82,9 +87,6 @@
     </ul>
 
     <div style="margin-top:25px;"></div>
-    <blockquote class="twitter-tweet" data-link-color="#053c9f"><p lang="en" dir="ltr">Get the Code 👩🏻‍💻👨🏽‍💻: See key <a href="https://twitter.com/hashtag/cloud?src=hash&amp;ref_src=twsrc%5Etfw">#cloud</a> technologies working together in the <a href="https://twitter.com/hashtag/BlueCloudMirror?src=hash&amp;ref_src=twsrc%5Etfw">#BlueCloudMirror</a> sample app <a href="https://t.co/jflvu983XD">https://t.co/jflvu983XD</a></p>&mdash; IBM Developer (@IBMDeveloper) <a href="https://twitter.com/IBMDeveloper/status/1093739953392107520?ref_src=twsrc%5Etfw">February 8, 2019</a></blockquote>
-
-    <div style="margin-top:25px;"></div>
     <img src="blue-cloud-mirror-900.jpeg">
   </div>
 </template>
@@ -99,6 +101,9 @@ export default {
     },
     onGetAccount() {
       window.location="https://ibm.biz/nheidloff";
+    },
+    onTweet() {
+      window.location="https://twitter.com/intent/tweet?hashtags=BlueCloudMirror,IBMDeveloper&text=Check%20out%20the%20IBM%20Cloud%20showcase%20https://blue-cloud-mirror.mybluemix.net";
     },
     onReadPattern() {
       window.location="https://developer.ibm.com/patterns/cloud-showcase-blue-mirror/";
