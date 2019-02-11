@@ -12,6 +12,21 @@
       variant="primary"
       style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
     >Start Game</b-button>
+     <b-button
+      v-on:click="onGetAccount"
+      variant="primary"
+      style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+    >Get free IBM Cloud Account</b-button>
+     <b-button
+      v-on:click="onReadPattern"
+      variant="primary"
+      style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+    >Read Pattern</b-button>
+    <b-button
+      v-on:click="onGetTheCode"
+      variant="primary"
+      style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+    >Get the Code</b-button>
 
     <div style="margin-top:15px;">
       The game can be used at conferences as conversation starter with developers. It's fun, interactive and uses key technologies of the IBM Cloud.
@@ -66,12 +81,8 @@
       <li><a target="_blank" style="color:#053c9f" href="https://twitter.com/harald_u">Harald Uebele</a></li>
     </ul>
 
-    <div style="margin-top:15px;"></div>
-    <b-button
-      v-on:click="onGetTheCode"
-      variant="primary"
-      style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-    >Get the Code</b-button>
+    <div style="margin-top:25px;"></div>
+    <blockquote class="twitter-tweet" data-link-color="#053c9f"><p lang="en" dir="ltr">Get the Code 👩🏻‍💻👨🏽‍💻: See key <a href="https://twitter.com/hashtag/cloud?src=hash&amp;ref_src=twsrc%5Etfw">#cloud</a> technologies working together in the <a href="https://twitter.com/hashtag/BlueCloudMirror?src=hash&amp;ref_src=twsrc%5Etfw">#BlueCloudMirror</a> sample app <a href="https://t.co/jflvu983XD">https://t.co/jflvu983XD</a></p>&mdash; IBM Developer (@IBMDeveloper) <a href="https://twitter.com/IBMDeveloper/status/1093739953392107520?ref_src=twsrc%5Etfw">February 8, 2019</a></blockquote>
 
     <div style="margin-top:25px;"></div>
     <img src="blue-cloud-mirror-900.jpeg">
@@ -85,6 +96,12 @@ export default {
   methods: {
     onGetTheCode() {
       window.location="https://github.com/ibm/blue-cloud-mirror";
+    },
+    onGetAccount() {
+      window.location="https://ibm.biz/nheidloff";
+    },
+    onReadPattern() {
+      window.location="https://developer.ibm.com/patterns/cloud-showcase-blue-mirror/";
     },
     onStartNewGame() {
       this.$router.push("start");
