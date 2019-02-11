@@ -12,6 +12,26 @@
       variant="primary"
       style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
     >Start Game</b-button>
+     <b-button
+      v-on:click="onGetAccount"
+      variant="primary"
+      style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+    >Get free IBM Cloud Account</b-button>
+     <b-button
+      v-on:click="onReadPattern"
+      variant="primary"
+      style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+    >Read Pattern</b-button>
+    <b-button
+      v-on:click="onGetTheCode"
+      variant="primary"
+      style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+    >Download Code</b-button>
+    <b-button
+      v-on:click="onTweet"
+      variant="primary"
+      style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+    >Tweet</b-button>
 
     <div style="margin-top:15px;">
       The game can be used at conferences as conversation starter with developers. It's fun, interactive and uses key technologies of the IBM Cloud.
@@ -59,19 +79,12 @@
     </ul>
 
     <div style="margin-top:15px;"></div>
-    The showcase application has been deploped by:
+    The showcase application has been developed by:
     <ul>
       <li><a target="_blank" style="color:#053c9f" href="https://twitter.com/nheidloff">Niklas Heidloff</a></li>
       <li><a target="_blank" style="color:#053c9f" href="https://twitter.com/tsuedbroecker">Thomas Südbröcker</a></li>
       <li><a target="_blank" style="color:#053c9f" href="https://twitter.com/harald_u">Harald Uebele</a></li>
     </ul>
-
-    <div style="margin-top:15px;"></div>
-    <b-button
-      v-on:click="onGetTheCode"
-      variant="primary"
-      style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-    >Get the Code</b-button>
 
     <div style="margin-top:25px;"></div>
     <img src="blue-cloud-mirror-900.jpeg">
@@ -85,6 +98,15 @@ export default {
   methods: {
     onGetTheCode() {
       window.location="https://github.com/ibm/blue-cloud-mirror";
+    },
+    onGetAccount() {
+      window.location="https://ibm.biz/nheidloff";
+    },
+    onTweet() {
+      window.location="https://twitter.com/intent/tweet?hashtags=BlueCloudMirror,IBMDeveloper&text=Check%20out%20the%20IBM%20Cloud%20showcase%20https://blue-cloud-mirror.mybluemix.net";
+    },
+    onReadPattern() {
+      window.location="https://developer.ibm.com/patterns/cloud-showcase-blue-mirror/";
     },
     onStartNewGame() {
       this.$router.push("start");

@@ -107,7 +107,12 @@
               <div style="max-width:100px;display: table-cell;vertical-align: top;">
                 <div :class="fearClass">
                   <div style="text-align:center">Fear</div>
-                  <img class="face" id="facefear" ref="facefear" :src="otherDomainUrl('white.jpeg')">
+                  <img
+                    class="face"
+                    id="facefear"
+                    ref="facefear"
+                    :src="otherDomainUrl('white.jpeg')"
+                  >
                 </div>
               </div>
               <div style="max-width:100px;display: table-cell;vertical-align: top;">
@@ -190,25 +195,53 @@
         <b-button
           v-on:click="onStartNewGame"
           variant="primary"
-          style="margin-right:20px;background-color: #053c9f !important;border-color:#053c9f !important;"
+          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
         >Start new Game</b-button>
         <b-button
           v-on:click="onSaveScore"
           variant="primary"
-          style="margin-right:20px;background-color: #053c9f !important;border-color:#053c9f !important;"
+          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
           :disabled="isPlayerAnonymous"
         >Save Score</b-button>
         <b-button
-          v-on:click="onTweet"
+          v-on:click="onGetAccount"
           variant="primary"
-          style="margin-right:20px;background-color: #053c9f !important;border-color:#053c9f !important;"
-          :disabled="tweetButtonDisabled == true"
-        >{{tweetLabel}}</b-button>
+          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+        >Get IBM Cloud Account</b-button>
+        <b-button
+          v-on:click="onReadPattern"
+          variant="primary"
+          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+        >Read Pattern</b-button>
+        <b-button
+          v-on:click="onGetTheCode"
+          variant="primary"
+          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+        >Download Code</b-button>
         <b-button
           v-on:click="onDownloadImage"
           variant="primary"
-          style="margin-right:20px;background-color: #053c9f !important;border-color:#053c9f !important;"
+          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
         >Download Image</b-button>
+        <b-button
+          v-on:click="onTweet"
+          variant="primary"
+          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+        >Tweet</b-button>
+        <b-button
+          v-if="tweetButtonDisabled == false"
+          v-on:click="onTweetCard"
+          variant="primary"
+          style="margin-right:20px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+          :disabled="tweetButtonDisabled == true"
+        >{{tweetLabel}}</b-button>
+      </b-col>
+    </b-row>
+    <b-row v-if="this.$store.state.demoMode == true" style="margin-top:10px">
+      <b-col>
+        <div
+          style="margin-bottom:2px"
+        >Note: In this demo version, real user names cannot be stored in the highscore list. A user 'Demo Player' is used instead.</div>
       </b-col>
     </b-row>
     <a id="exportElementHidden" style="display:none"/>
@@ -284,11 +317,11 @@ export default {
   },
   computed: {
     tweetLabel: function() {
-      let output = "Tweet";
+      let output = "Prepare Twitter Card";
       if (this.$store.state.apis.users.url != "twitter-url-not-defined") {
         if (this.tweeting == true) {
-          output = "Preparing Tweet ...";
-        } 
+          output = "Saving Twitter Card ...";
+        }
       }
       return output;
     },
@@ -303,18 +336,22 @@ export default {
       }
     },
     tweetButtonDisabled: function() {
-      if (this.$store.state.apis.users.url != "twitter-url-not-defined") {
-        if (this.bothLevelsCompleted == false) {
-          return true;
-        } else {
-          if (this.tweeting == true) {
+      if (this.$store.state.demoMode == true) {
+        return true;
+      } else {
+        if (this.$store.state.apis.users.url != "twitter-url-not-defined") {
+          if (this.bothLevelsCompleted == false) {
             return true;
           } else {
-            return false;
+            if (this.tweeting == true) {
+              return true;
+            } else {
+              return false;
+            }
           }
+        } else {
+          return true;
         }
-      } else {
-        return true;
       }
     },
     isPlayerAnonymous: function() {
@@ -416,6 +453,20 @@ export default {
     }
   },
   methods: {
+    onGetTheCode() {
+      window.location = "https://github.com/ibm/blue-cloud-mirror";
+    },
+    onGetAccount() {
+      window.location = "https://ibm.biz/nheidloff";
+    },
+    onTweet() {
+      window.location =
+        "https://twitter.com/intent/tweet?hashtags=BlueCloudMirror,IBMDeveloper&text=Check%20out%20the%20IBM%20Cloud%20showcase%20https://blue-cloud-mirror.mybluemix.net";
+    },
+    onReadPattern() {
+      window.location =
+        "https://developer.ibm.com/patterns/cloud-showcase-blue-mirror/";
+    },
     otherDomainUrl: function(image) {
       let otherDomainUrl = this.$store.state.otherDomainUrl;
       let output = image;
@@ -498,8 +549,15 @@ export default {
     },
     onSaveScore() {
       if (this.$store.state.apis.scores.url != "scores-url-not-defined") {
+        let email = "demo@email.com";
+        let firstName = "Demo";
+        let lastName = "Player";
+        if (this.$store.state.demoMode == false) {
+          firstName = this.$store.state.currentPlayer.firstName;
+          lastName = this.$store.state.currentPlayer.lastName;
+        }
         const axiosService = axios.create({
-          timeout: 5000,
+          timeout: 10000,
           headers: {
             accept: "application/json",
             "content-type": "application/json"
@@ -509,8 +567,8 @@ export default {
         let that = this;
         axiosService
           .post(this.$store.state.apis.scores.url, {
-            firstName: this.$store.state.currentPlayer.firstName,
-            lastName: this.$store.state.currentPlayer.lastName,
+            firstName: firstName,
+            lastName: lastName,
             gameDate: this.$store.state.currentGame.id,
             score: this.$store.state.currentGame.totalTimeWithPenalties
           })
@@ -528,14 +586,14 @@ export default {
     },
     onDownloadImage() {
       html2canvas(document.querySelector("#capture")).then(canvas => {
-          let imageEncoded = canvas.toDataURL("image/png");
-          let exportElement = document.getElementById('exportElementHidden');
-          exportElement.setAttribute("href", imageEncoded);
-          exportElement.setAttribute("download", "blue-cloud-mirror.png");
-          exportElement.click();
+        let imageEncoded = canvas.toDataURL("image/png");
+        let exportElement = document.getElementById("exportElementHidden");
+        exportElement.setAttribute("href", imageEncoded);
+        exportElement.setAttribute("download", "blue-cloud-mirror.png");
+        exportElement.click();
       });
     },
-    onTweet() {
+    onTweetCard() {
       if (this.$store.state.apis.users.url != "twitter-url-not-defined") {
         this.tweeting = true;
         const axiosService = axios.create({

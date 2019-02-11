@@ -15,6 +15,7 @@
     <div v-if="isLevelCompleted == false" ref="seconds" id="seconds">{{getDuration}}</div>
     <div v-if="isLevelCompleted == false" style="margin-top:15px;font-size:smaller">Show the five emotions as shown below.</div>
     <div v-if="isLevelCompleted == false" style="font-size:smaller">From left to right. As quickly as you can.</div>
+    <div v-if="isLevelCompleted == false" style="font-size:smaller; margin-top:10px">Note: The taken screenshots are only available in the browser and not saved.</div>
     <b-button v-if="isLevelCompleted"
       v-on:click="onClickNext"
       variant="primary"
