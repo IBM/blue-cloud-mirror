@@ -38,7 +38,7 @@
             v-model="form.checked"
             value="accepted"
             unchecked-value="not_accepted"
-          >I accept the terms</b-form-checkbox>
+          >I accept the terms <div style="margin-top:10px;margin-bottom:10px;font-size: smaller;color: darkgray;"><a target="_blank" style="color:#053c9f" href="https://www.ibm.com/privacy/us/en/">IBM Privacy Statement</a> and <a target="_blank" style="color:#053c9f" href="https://www.ibm.com/legal/us/en/">Terms of Use</a></div></b-form-checkbox>
         </b-form-group>
         <p v-if="errors.length > 0">
           <b style="color: #ffc107 !important">Please accept the terms.</b>
