@@ -47,6 +47,7 @@ This is a list of used technologies:
 
 ## Documentation and Articles
 
+* [One Minute Video](https://www.youtube.com/watch?v=RxPvvCUwclM)
 * Code Pattern: [Mirror game app showcases 15 cloud technologies and components](https://developer.ibm.com/patterns/cloud-showcase-blue-mirror/)
 * [Introducing Blue Cloud Mirror, a Fun IBM Cloud Showcase](http://heidloff.net/article/introducing-blue-cloud-mirror)
 * [Blue Cloud Mirror Architecture Diagrams](http://heidloff.net/article/blue-cloud-mirror-architecture-diagrams)
@@ -56,6 +57,7 @@ This is a list of used technologies:
 * [Serverless Vue.js Applications on the IBM Cloud](http://heidloff.net/article/serverless-vuejs-ibm-cloud)
 * [Blue Cloud Mirror — A fun IBM Cloud showcase](https://haralduebele.blog/2019/01/31/blue-cloud-mirror-a-fun-ibm-cloud-showcase/)
 * [Blue Cloud Mirror – Of Kubes and Couches](https://haralduebele.blog/2019/02/01/blue-cloud-mirror-of-kubes-and-couches/ )
+* [IBM Secure Gateway Setup](https://haralduebele.blog/2019/02/17/blue-cloud-mirror-dont-open-the-doors/)
 * [Awesome Developer Experience with Vue.js](http://heidloff.net/article/awesome-developer-experience-vuejs)
 * [Videos: How to setup the Highscores part in IBM Cloud?](https://www.youtube.com/playlist?list=PLUte4WEyMEjWjJSL_MG692rL_hOna7MbD)
 * [Highscores overview blog post](https://suedbroecker.net/2019/02/01/bluecloudmirror-game-highscores/)
