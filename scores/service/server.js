@@ -54,7 +54,7 @@ var highscoreViewDef = "highscore_view.json";
 var scoreIndexDef = "score_index.json";
 // server
 var base_path = process.env.BASE_PATH;
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3002;
 var defaultStatusReturn = 500;
 // auth
 var service_userid = process.env.SERVICE_USER;

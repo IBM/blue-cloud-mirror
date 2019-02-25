@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scores-service
+  labels:
+    app: scores-service
+    version: "1.0"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scores-service
+  template:
+    metadata:
+      labels:
+        app: scores-service
+        version: "1.0"
+    spec:
+      containers:
+      - name: scores-service
+        image: "registry.eu-de.bluemix.net/scores-services/scores-service:v1"
+        ports:
+        - name: http-server
+          containerPort: 3002
