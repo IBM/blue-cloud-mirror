@@ -6,7 +6,9 @@ metadata:
     app: scores-service
 spec:
   ports:
-  - port: 3000
+  - port: 8080
     name: http-server
+    targetPort: 3000
   selector:
     app: scores-service
+type: LoadBalancer

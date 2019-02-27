@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: scores-service-ingress
+spec:
+  tls:
+   - hosts:
+     - paid-test-cluster-de.eu-de.containers.appdomain.cloud
+     secretName: paid-test-cluster-de
+  rules:
+  - host: "paid-test-cluster-de.eu-de.containers.appdomain.cloud"
+    http:
+      paths:
+        - path: /score
+          backend:
+            serviceName: "scores-service-v1"
+            servicePort: 3000
+        - path: /api/v1/setupDB
+          backend:
+            serviceName: "scores-service-v1"
+            servicePort: 3000
+        - path: /api/v1/addscore
+          backend:
+            serviceName: "scores-service-v1"
+            servicePort: 3000
+        - path: /api/v1/deletescore
+          backend:
+            serviceName: "scores-service-v1"
+            servicePort: 3000
+        - path: /api/v1/searchscore
+          backend:
+            serviceName: "scores-service-v1"
+            servicePort: 3000
+        - path: /api/v1/gethighscore
+          backend:
+            serviceName: "scores-service-v1"
+            servicePort: 3000
+        - path: /api/v1/getscorelist
+          backend:
+            serviceName: "scores-service-v1"
+            servicePort: 3000            

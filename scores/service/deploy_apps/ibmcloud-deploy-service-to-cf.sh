@@ -148,9 +148,9 @@ function createScoreCloudantDB() {
     -X POST \
     -H "Content-Type: application/json" \
     -d "$JSON"
-
   JSON=$(<../sampledata.json)
   #_out _data $JSON
+
   _out _upload sample data
   #_out _url "$CLOUDANT_URL/$IBMCLOUD_CLOUDANT_NAME/_bulk_docs"
   curl "$CLOUDANT_URL/$IBMCLOUD_CLOUDANT_NAME/_bulk_docs" \
