@@ -42,6 +42,9 @@ function ibmcloud_login() {
   # Skip version check updates
   ibmcloud config --check-version=false
 
+  cd "$ROOT_FOLDER/scores/service"
+  pwd
+
   # Login to Cloud
   _out 1. Login to IBM Cloud
   _out
@@ -68,17 +71,13 @@ function ibmcloud_login() {
   _out
 }
 
-function createScoreCloudantDB() {
-  _out 2. Create scores cloudant DB start
+function scoreCloudantDBcredentials() {
+  _out 2. ScoreCloudantDBcredentials start
   _out
-  ibmcloud resource service-instance-create $IBMCLOUD_CLOUDANT_NAME cloudantnosqldb lite $IBMCLOUD_REGION -p '{"legacyCredentials": true}'
-  
-  _out _create $ALIAS
-  ibmcloud resource service-alias-create $ALIAS --instance-name $IBMCLOUD_CLOUDANT_NAME
 
-  _out _create $KEY
-  ibmcloud resource service-key-create $KEY Manager --instance-name $IBMCLOUD_CLOUDANT_NAME
-  
+  cd "$ROOT_FOLDER/scores/service"
+  pwd
+
   _out _get credentials
   CLOUDANT_USERNAME=$(ibmcloud resource service-key $KEY | awk '/username/{ print $2 }')
 
@@ -88,7 +87,7 @@ function createScoreCloudantDB() {
   rm $ENV_SERVER_FILE
   touch $ENV_SERVER_FILE
   
-  # set env
+  # set Cloud CF env
   printf "\n# CF APP" >> $ENV_SERVER_FILE  
   printf "\nSERVICE_USER=$IBMCLOUD_CF_APP_USER" >> $ENV_SERVER_FILE
   printf "\nSERVICE_PASSWORD=$IBMCLOUD_CF_APP_PASSWORD" >> $ENV_SERVER_FILE
@@ -97,14 +96,6 @@ function createScoreCloudantDB() {
   printf "\n# CLOUDANT" >> $ENV_SERVER_FILE 
   printf "\nCLOUDANT_NAME=$IBMCLOUD_CLOUDANT_NAME" >> $ENV_CLOUDANT_FILE
   printf "\nCLOUDANT_NAME=$IBMCLOUD_CLOUDANT_NAME" >> $ENV_SERVER_FILE
-  printf "\nCLOUDANT_DES_SCORES=$IBMCLOUD_CLOUDANT_DES_SCORES"  >> $ENV_CLOUDANT_FILE
-  printf "\nCLOUDANT_DES_SCORES=$IBMCLOUD_CLOUDANT_DES_SCORES"  >> $ENV_SERVER_FILE
-  printf "\nCLOUDANT_IDX_SCORES=$IBMCLOUD_CLOUDANT_IDX_SCORES"  >> $ENV_CLOUDANT_FILE
-  printf "\nCLOUDANT_IDX_SCORES=$IBMCLOUD_CLOUDANT_IDX_SCORES"  >> $ENV_SERVER_FILE
-  printf "\nCLOUDANT_DES_HIGHSCORE=$IBMCLOUD_CLOUDANT_DES_HIGHSCORE"  >> $ENV_CLOUDANT_FILE
-  printf "\nCLOUDANT_DES_HIGHSCORE=$IBMCLOUD_CLOUDANT_DES_HIGHSCORE"  >> $ENV_SERVER_FILE
-  printf "\nCLOUDANT_IDX_HIGHSCORE=$IBMCLOUD_CLOUDANT_IDX_HIGHSCORE"  >> $ENV_CLOUDANT_FILE
-  printf "\nCLOUDANT_IDX_HIGHSCORE=$IBMCLOUD_CLOUDANT_IDX_HIGHSCORE"  >> $ENV_SERVER_FILE
   
   CLOUDANT_USERNAME=$(ibmcloud resource service-key $KEY | awk '/username/{ print $2 }')
   printf "\nCLOUDANT_USERNAME=$CLOUDANT_USERNAME" >> $ENV_CLOUDANT_FILE
@@ -126,78 +117,119 @@ function createScoreCloudantDB() {
   printf "\nCLOUDANT_PORT=$CLOUDANT_PORT " >> $ENV_CLOUDANT_FILE
   printf "\nCLOUDANT_PORT=$CLOUDANT_PORT " >> $ENV_SERVER_FILE
 
-  #_out _install npm modules 
-  #  cd cloudant 
-  #  npm install
-  #  cd ..
-
-  _out _create database 
-  # npm --prefix ${CURRENT_FOLDER}/cloudant start ${CURRENT_FOLDER}/cloudant
-  curl "$CLOUDANT_URL/$IBMCLOUD_CLOUDANT_NAME" -X PUT
-
-  _out _upload view 
-  JSON=$(<../highscore_view.json)
-  curl "$CLOUDANT_URL/$IBMCLOUD_CLOUDANT_NAME" \
-    -X POST \
-    -H "Content-Type: application/json" \
-    -d "$JSON"
-
-  _out _upload search index 
-  JSON=$(<../score_index.json)
-  curl "$CLOUDANT_URL/$IBMCLOUD_CLOUDANT_NAME" \
-    -X POST \
-    -H "Content-Type: application/json" \
-    -d "$JSON"
-  JSON=$(<../sampledata.json)
-  #_out _data $JSON
-
-  _out _upload sample data
-  #_out _url "$CLOUDANT_URL/$IBMCLOUD_CLOUDANT_NAME/_bulk_docs"
-  curl "$CLOUDANT_URL/$IBMCLOUD_CLOUDANT_NAME/_bulk_docs" \
-    -X POST \
-    -H "Content-Type: application/json" \
-    -d "$JSON"
   _out
-  _out Create scores cloudant DB end
+  _out  ScoreCloudantDBcredentials end
   _out
 }
 
-function deployServiceToServer() {
+function createIBMCloudContainerRegistry() {
 
-  _out 3. Deploy service start
   _out
-  #_out _path "${ROOT_FOLDER}/scores/service"
+  _out 3. createIBMCloudContainerRegistry - start
+  _out
+  _out _path "${ROOT_FOLDER}/scores/service"
+  cd "$ROOT_FOLDER/scores/service"
+  pwd
+  _out
+  _out logon to the IBM Cloud container registry
+  _out   
+  ibmcloud cr login
+  
+  _out create IBM Cloud container namespace
+  _out
+  ibmcloud cr namespace-add $IBMCLOUD_CONTAINER_NAMESPACE
+  
+  _out
+  _out List container registry name spaces
+  ibmcloud cr namespace-list
+
+  _out
+  _out End
+}
+
+function createContainerImage() {
+
+  _out
+  _out 4. Create Container Image and Push to IBM Container registry - start
+  _out
+  _out _path "${ROOT_FOLDER}/scores/service"
+  _out
+  _out Build the local docker image
+  cd "${ROOT_FOLDER}/scores/service/"
+  docker build -t "$IBMCLOUD_CONTAINER_REGISTRY/$IBMCLOUD_CONTAINER_NAMESPACE/$IBMCLOUD_DOCKER_IMAGE_NAME:$IBMCLOUD_DOCKER_TAG" .
+
+  _out  
+  _out Run the image local on docker
+  docker run -p 3002:3002 -d "$IBMCLOUD_CONTAINER_REGISTRY/$IBMCLOUD_CONTAINER_NAMESPACE/$IBMCLOUD_DOCKER_IMAGE_NAME:$IBMCLOUD_DOCKER_TAG"
+
+  _out List container registry name spaces
+  _out *****************
+  ibmcloud cr namespace-list
+  
+  _out 
+  _out Build docker image with for IBM Cloud registry with tag
+  #docker build --tag $CONTAINER_REGISTRY/$CONTAINER_NAMESPACE/$DOCKER_IMAGE_NAME .
+  ibmcloud cr build -t $IBMCLOUD_CONTAINER_REGISTRY/$IBMCLOUD_CONTAINER_NAMESPACE/$IBMCLOUD_DOCKER_IMAGE_NAME:$IBMCLOUD_DOCKER_TAG .
+  
+  _out
+  _out Push the docker image $IBMCLOUD_DOCKER_IMAGE_NAME to the '$IBMCLOUD_CONTAINER_REGISTRY/$IBMCLOUD_CONTAINER_NAMESPACE' registry
+  _out
+  _out *****************
+  docker push "$IBMCLOUD_CONTAINER_REGISTRY/$IBMCLOUD_CONTAINER_NAMESPACE/$IBMCLOUD_DOCKER_IMAGE_NAME:$IBMCLOUD_DOCKER_TAG"
+
+  _out
+  _out End
+}
+
+function deployServiceToKubernetes() {
+
+  _out 5. Deploy Service To Kubernetes start
+  _out
+  _out _path "${ROOT_FOLDER}/scores/service"
 
   cd "$ROOT_FOLDER/scores/service"
   pwd
 
-  _out _npm install
-  npm install
-
-  _out _bower install public/lib
-  bower install
- 
-  _out _show existing spaces
-  ibmcloud cf spaces
-
-  _out _show existing apps
-  ibmcloud cf apps
-
-  _out _push "${IBMCLOUD_CF_APP_SERVICE_NAME}"
-  ibmcloud cf push $IBMCLOUD_CF_APP_SERVICE_NAME
-
-  _out _create binding
-  ibmcloud resource service-binding-create $ALIAS $IBMCLOUD_CF_APP_SERVICE_NAME Manager
-
-  _out _restage binding $IBMCLOUD_CF_APP_SERVICE_NAME
-  ibmcloud cf restage $IBMCLOUD_CF_APP_SERVICE_NAME
-
-  SERVICE_CLOUD_FOUNDRY=$(ibmcloud cf r | awk "'/$IBMCLOUD_CF_APP_SERVICE_NAME*/'" | awk '{print $2}')
-  _out _application has been deployed "${SERVICE_CLOUD_FOUNDRY}"
-  printf "\nSERVICE_URL=$SERVICE_CLOUD_FOUNDRY"  >> $ENV_SERVER_FILE
-
+  ibmcloud cs region-set $IBMCLOUD_CLUSTER_REGION_SETTING
   _out
-  _out Deploy service end
+  _out list clusters with cs
+  _out 
+  ibmcloud cs clusters
+  _out list clusters with ks
+  _out
+  _out List workers for cluster '$CLUSTER_NAME'
+  _out 
+  ibmcloud ks workers $IBMCLOUD_CLUSTER_NAME
+  _out
+  _out get the configuration information
+  _out
+  ibmcloud cs cluster-get $IBMCLOUD_CLUSTER_NAME --json
+  _out
+  _out get cluster configuration for '$CLUSTER_NAME'
+  _out
+  ibmcloud cs cluster-config $IBMCLOUD_CLUSTER_NAME -admin
+  _out
+  _out copy and past the cluster configuration export path
+  _out 
+  read CLUSTER_CONFIGURATION_PATH
+  _out 
+  _out execution of the export
+  _out 
+  $CLUSTER_CONFIGURATION_PATH
+  _out 
+  _out show kubectl version
+  _out 
+  kubectl version
+  _out
+  _out create deployment $IBMCLOUD_KUBE_DEPLOYMENT_YAML
+  kubectl create -f $IBMCLOUD_KUBE_DEPLOYMENT_YAML
+  _out
+  _out create service $IBMCLOUD_KUBE_SERVICE_YAML
+  kubectl create -f $IBMCLOUD_KUBE_SERVICE_YAML
+  _out 
+  _out kubectl get pods
+  _out
+  _out Deploy Service To Kubernetes end
   _out
 }
 
@@ -209,6 +241,8 @@ function endMessage() {
 
 # Main tasks
 ibmcloud_login
-createScoreCloudantDB
-deployServiceToServer
+scoreCloudantDBcredentials
+createIBMCloudContainerRegistry
+createContainerImage
+deployServiceToKubernetes
 endMessage

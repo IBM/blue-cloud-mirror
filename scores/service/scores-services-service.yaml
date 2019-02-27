@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name:  scores-service-v1
+  labels:
+    app: scores-service
+spec:
+  ports:
+  - port: 3000
+    name: http-server
+  selector:
+    app: scores-service
