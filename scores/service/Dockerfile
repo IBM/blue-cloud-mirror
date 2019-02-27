@@ -1,16 +1,8 @@
-# How to run and access the container?
-#
-# docker run -d -p HOST_PORT:CONTAINER_PORT IMAGENAME
-# docker container stop [ID]
-
-# https://hub.docker.com/_/node/
 FROM centos
 
 RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash -
 RUN yum install -y nodejs
 RUN yum install -y git
-
-# https://stackoverflow.com/questions/39845687/how-to-run-bower-install-inside-a-dockerfile
 
 # setup folder structure in centos
 # service (node server)
@@ -33,7 +25,7 @@ COPY ./.env /usr/app
 # create group and user
 RUN groupadd installer
 RUN useradd -ms /bin/bash bower --group installer
-# set userrights to allow the bower user to setup custom lib folder
+# set user rights to allow the bower user to setup custom lib folder
 RUN chown -R bower:installer usr
 RUN chown -R bower:installer usr/app
 RUN chown -R bower:installer usr/app/public
