@@ -5,7 +5,7 @@
       <div style="margin-top:30px;"></div>
     </div>
     <div v-if="((isMobileDevice_iOS_safarie == false) && (isMobileDevice == true))">
-      <b-alert variant="warning" show>Only Safarie on iOS has been tested ! {{browserInfo}}</b-alert>
+      <b-alert variant="warning" show>Only Safari on iOS has been tested ! {{browserInfo}}</b-alert>
       <div style="margin-top:30px;"></div>
     </div>
   </div>
@@ -30,10 +30,9 @@ export default {
     browserInfo: function(){
       var browser_info = "";
       if(isBrowser){
-        browser_info = "Your browser type : " + browserName+ ".v"+ browserVersion;
+        //browser_info = "Your browser type : " + browserName+ ".v"+ browserVersion;
         return browser_info;
       } else {
-        browser_info = "Your browser type is not detected!"
         return browser_info;
       }      
     },
@@ -44,7 +43,7 @@ export default {
           return false;
         }
     },
-    isMobileDevice_iOS_safarie: function() {
+    isMobileDevice_iOS_safari: function() {
       if (isMobile){
         if( isIOS && isSafari) {
           return true;
