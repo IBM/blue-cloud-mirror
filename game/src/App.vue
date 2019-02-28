@@ -36,7 +36,7 @@
     </b-navbar>
     <b-container>
       <div style="margin-top:20px;"></div>
-      <notchrome></notchrome>
+      <browserVerification></browserVerification>
       <router-view/>
       <b-row>
         <b-col style="text-align:center">
@@ -52,13 +52,13 @@
 
 
 <script>
-import notchrome from '@/components/NotChrome.vue';
+import browserVerification from '@/components/browserVerification.vue';
 
 export default {
   mounted() { 
   },
   components: {
-    notchrome
+    browserVerification
   }
 }
 </script>
