@@ -4,7 +4,7 @@
       <b-alert variant="warning" show>Only Chrome on desktop has been tested ! {{browserInfo}} </b-alert>
       <div style="margin-top:30px;"></div>
     </div>
-    <div v-if="((isMobileDevice_iOS_safarie == false) && (isMobileDevice == true))">
+    <div v-if="((isMobileDevice_iOS_safari == false) && (isMobileDevice == true))">
       <b-alert variant="warning" show>Only Safari on iOS has been tested ! {{browserInfo}}</b-alert>
       <div style="margin-top:30px;"></div>
     </div>
