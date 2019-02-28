@@ -22,6 +22,7 @@
 
     <!-- High score -->
     <b-container>
+      <browserVerification></browserVerification>
       <scoreMain/>
       <b-card title="Table description" tag="article" class="mb-2">
         <p class="card-text">This is the
@@ -38,7 +39,6 @@
     <!-- Footer -->
     <b-container>
       <div style="margin-top:20px;"></div>
-      <notchrome></notchrome>
       <b-row>
         <b-col style="text-align:center">
           <div style="margin-top:50px;margin-bottom:10px;font-size: smaller;color: darkgray;">Brought to you by the <a target="_blank" style="color:#053c9f" href="https://developer.ibm.com/cities/berlin-de/">IBM Developer Advocacy DACH</a> team</div>
@@ -53,7 +53,7 @@
 
 <script>
 import scoreMain from "./components/scoreMain.vue";
-import notchrome from "./components/notChrome.vue";
+import browserVerification from "./components/browserVerification.vue";
 //console.log("VUE Environment: ", process.env);
 
 export default {
@@ -63,7 +63,7 @@ export default {
   },
   components: {
     scoreMain,
-    notchrome
+    browserVerification
   },
   configureWebpack: {
     devtool: "source-map"
