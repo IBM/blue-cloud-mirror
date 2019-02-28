@@ -14,6 +14,7 @@
     "bootstrap-vue": "2.0.0-rc.11",
     "face-api.js": "0.16.2",
     "html2canvas": "1.0.0-alpha.12",
+    "mobile-device-detect": "^0.2.3",
     "vue": "2.5.17",
     "vue-class-component": "6.0.0",
     "vue-property-decorator": "7.0.0",
