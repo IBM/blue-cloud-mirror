@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: scores-service
-        image: "registry.eu-de.bluemix.net/scores-services/scores-service:v1"
+        image: "registry.eu-gb.bluemix.net/scores-services/scores-service:v1"
         ports:
-        - name: http-server
+        - name: scores-http
           containerPort: 3000
