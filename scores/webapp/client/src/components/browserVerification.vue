@@ -23,7 +23,6 @@ export default {
   name: "browserVerification",
   data() {
     return {
-      msg: msg
     };
   },
   computed: {
