@@ -93,7 +93,7 @@ Make sure you have the following tools installed:
 * [ibmcloud](https://console.bluemix.net/docs/cli/index.html)
 * [node](https://nodejs.org/en/download/)
 * [curl](https://curl.haxx.se/download.html)
-* [vue](https://cli.vuejs.org/)
+* [vue CLI](https://cli.vuejs.org/)
 * [yarn](https://yarnpkg.com/lang/en/docs/install/#mac-stable)
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
@@ -102,15 +102,14 @@ Make sure you have the following tools installed:
 Invoke the following commands:
 
 ```
-$ git clone git@github.ibm.com:niklas-heidloff/visual-recognition-demo.git
-$ cd visual-recognition-demo/
+$ git clone https://github.com/IBM/blue-cloud-mirror.git
+$ cd blue-cloud-mirror/
 $ ibmcloud login
-$ ibmcloud target --cf
-$ ibmcloud iam api-key-create emotion-recognition-application \
-  -d "emotion-recognition-application" \
+$ ibmcloud iam api-key-create blue-cloud-mirror \
+  -d "blue-cloud-mirror" \
   --file emotion-recognition-application.json
-$ cat emotion-recognition-application.json
+$ cat blue-cloud-mirror.json
 $ cp template.local.env local.env
 ```
 
-In [local.env](local.env) define 'IBMCLOUD_API_KEY', 'IBMCLOUD_ORG', 'IBMCLOUD_SPACE' and 'BLUEMIX_REGION' to match the apikey in [emotion-recognition-application.json](emotion-recognition-application.json) and the org, space and region name that you're using (see the outputs in your terminal when following the steps above).
+In [local.env](local.env) define 'IBMCLOUD_API_KEY', 'IBMCLOUD_ORG', 'IBMCLOUD_SPACE' and 'BLUEMIX_REGION' to match the apikey in [blue-cloud-mirror.json](blue-cloud-mirror.json) and the org, space and region name that you're using (see the outputs in your terminal when following the steps above).
