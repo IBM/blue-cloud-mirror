@@ -160,22 +160,21 @@ function createContainerImage() {
 
   _out  
   _out Run the image local on docker
-  docker run -p 3002:3002 -d "$IBMCLOUD_CONTAINER_REGISTRY/$IBMCLOUD_CONTAINER_NAMESPACE/$IBMCLOUD_DOCKER_IMAGE_NAME:$IBMCLOUD_DOCKER_TAG"
+  docker run -p $IBMCLOUD_DOCKER_PORT:$IBMCLOUD_DOCKER_PORT -d "$IBMCLOUD_CONTAINER_REGISTRY/$IBMCLOUD_CONTAINER_NAMESPACE/$IBMCLOUD_DOCKER_IMAGE_NAME:$IBMCLOUD_DOCKER_TAG"
 
   _out List container registry name spaces
   _out *****************
   ibmcloud cr namespace-list
   
   _out 
-  _out Build docker image with for IBM Cloud registry with tag
-  #docker build --tag $CONTAINER_REGISTRY/$CONTAINER_NAMESPACE/$DOCKER_IMAGE_NAME .
+  _out Build container image for IBM Cloud registry with tag
   ibmcloud cr build -t $IBMCLOUD_CONTAINER_REGISTRY/$IBMCLOUD_CONTAINER_NAMESPACE/$IBMCLOUD_DOCKER_IMAGE_NAME:$IBMCLOUD_DOCKER_TAG .
   
   _out
   _out Push the docker image $IBMCLOUD_DOCKER_IMAGE_NAME to the '$IBMCLOUD_CONTAINER_REGISTRY/$IBMCLOUD_CONTAINER_NAMESPACE' registry
   _out
   _out *****************
-  docker push "$IBMCLOUD_CONTAINER_REGISTRY/$IBMCLOUD_CONTAINER_NAMESPACE/$IBMCLOUD_DOCKER_IMAGE_NAME:$IBMCLOUD_DOCKER_TAG"
+  ibmcloud cr push "$IBMCLOUD_CONTAINER_REGISTRY/$IBMCLOUD_CONTAINER_NAMESPACE/$IBMCLOUD_DOCKER_IMAGE_NAME:$IBMCLOUD_DOCKER_TAG"
 
   _out
   _out End
@@ -195,11 +194,10 @@ function deployServiceToKubernetes() {
   _out list clusters with cs
   _out 
   ibmcloud cs clusters
-  _out list clusters with ks
   _out
-  _out List workers for cluster '$CLUSTER_NAME'
+  _out List workers for cluster '$IBMCLOUD_CLUSTER_NAME'
   _out 
-  ibmcloud ks workers $IBMCLOUD_CLUSTER_NAME
+  ibmcloud cs workers $IBMCLOUD_CLUSTER_NAME
   _out
   _out get the configuration information
   _out

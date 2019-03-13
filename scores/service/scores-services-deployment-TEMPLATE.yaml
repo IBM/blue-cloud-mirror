@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: scores-service
-        image: "registry.eu-gb.bluemix.net/scores-services/scores-service:v1"
+        image: "REPLACE_CONTAINER_IMAGE_LOCATION_NAME"
         ports:
         - name: scores-http
-          containerPort: 3000
+          containerPort: REPLACE_CONTAINER_PORT
