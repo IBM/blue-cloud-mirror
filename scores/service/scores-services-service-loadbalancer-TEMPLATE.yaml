@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: scores-service-lb
+  labels:
+      app: scores-service-lb
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 3000
+    name: scores-http
+  selector:
+    app: scores-service

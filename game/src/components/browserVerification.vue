@@ -18,12 +18,10 @@ import { isSafari } from 'mobile-device-detect';
 import { isBrowser } from 'mobile-device-detect';
 import { browserVersion } from 'mobile-device-detect';
 import { browserName } from 'mobile-device-detect';
-
 export default {
   name: "browserVerification",
   data() {
     return {
-      msg: msg
     };
   },
   computed: {

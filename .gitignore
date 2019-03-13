@@ -27,6 +27,8 @@ scores/service/text-replace/node_modules
 scores/service/deploy_apps/*.log
 scores/service/public/lib
 scores/service/deploy_apps/basic.sh
+scores/service/scores-services-deployment.yaml
+scores/service/scores-services-ingress-http.yaml
 scores/service-api/scores-service-API-CF-1.0.0.yaml
 scores/service-api/.env
 scores/service-api/text-replace/node_modules

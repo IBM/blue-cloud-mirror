@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scores-service
+  labels:
+    app: scores-service
+    version: "1.0"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scores-service
+  template:
+    metadata:
+      labels:
+        app: scores-service
+        version: "1.0"
+    spec:
+      containers:
+      - name: scores-service
+        image: "REPLACE_CONTAINER_IMAGE_LOCATION_NAME"
+        ports:
+        - name: scores-http
+          containerPort: REPLACE_CONTAINER_PORT
