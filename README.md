@@ -107,7 +107,7 @@ $ cd blue-cloud-mirror/
 $ ibmcloud login
 $ ibmcloud iam api-key-create blue-cloud-mirror \
   -d "blue-cloud-mirror" \
-  --file emotion-recognition-application.json
+  --file blue-cloud-mirror.json
 $ cat blue-cloud-mirror.json
 $ cp template.local.env local.env
 ```
