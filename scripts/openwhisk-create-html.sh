@@ -54,11 +54,11 @@ function ibmcloud_login() {
   # Obtain the API endpoint from BLUEMIX_REGION and set it as default
   _out Logging in to IBM cloud
   ibmcloud api --unset
-  IBMCLOUD_API_ENDPOINT=$(ibmcloud api | awk '/'$BLUEMIX_REGION'/{ print $2 }')
-  ibmcloud api $IBMCLOUD_API_ENDPOINT
+  #IBMCLOUD_API_ENDPOINT=$(ibmcloud api | awk '/'$BLUEMIX_REGION'/{ print $2 }')
+  ibmcloud api https://cloud.ibm.com
 
   # Login to ibmcloud, generate .wskprops
-  ibmcloud login --apikey $IBMCLOUD_API_KEY -a $IBMCLOUD_API_ENDPOINT
+  ibmcloud login --apikey $IBMCLOUD_API_KEY -r $BLUEMIX_REGION
   ibmcloud target -o "$IBMCLOUD_ORG" -s "$IBMCLOUD_SPACE"
   ibmcloud fn api list > /dev/null
 
@@ -67,6 +67,9 @@ function ibmcloud_login() {
 }
 
 function setup() {
+  _out Prepare Text Replace function
+  cd ${root_folder}/text-replace
+  npm install
   _out Generating function-html.js
   cd ${root_folder}/../game/html-function
   rm function-html.js
