@@ -17,7 +17,9 @@ The web application can be hosted and run in four different ways:
 
 ## Option 1: Local Setup of the Web Application
 
-In the easiest case the game can be set up on a local machine in less than five minutes. In this case only the game web application is run without being able to register users and having highscores. To set up the game locally, invoke the following commands:
+In the easiest case the game can be set up on a local machine in less than five minutes. In this case only the game web application is run without being able to register users and having highscores. To set up the game locally, make sure you have installed the first four prerequisites below ([git](https://git-scm.com/downloads), [node](https://nodejs.org/en/download/),  [vue](https://cli.vuejs.org/) and [yarn](https://yarnpkg.com/lang/en/docs/install/#mac-stable)).
+
+Then invoke the following commands:
 
 ```
 $ git clone https://github.com/IBM/blue-cloud-mirror.git

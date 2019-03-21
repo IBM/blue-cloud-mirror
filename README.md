@@ -64,7 +64,9 @@ This is a list of used technologies:
 
 ## Setup
 
-In the easiest case the game can be set up on a local machine in less than five minutes. In this case only the game web application is run without being able to register users and having highscores. To set up the game locally, invoke the following commands:
+In the easiest case the game can be set up on a local machine in less than five minutes. In this case only the game web application is run without being able to register users and having highscores. To set up the game locally, make sure you have installed the first four prerequisites below ([git](https://git-scm.com/downloads), [node](https://nodejs.org/en/download/), [vue](https://cli.vuejs.org/) and [yarn](https://yarnpkg.com/lang/en/docs/install/#mac-stable)).
+
+Then invoke the following commands:
 
 ```
 $ git clone https://github.com/IBM/blue-cloud-mirror.git
@@ -90,11 +92,11 @@ Create an IBM Cloud lite account (free, no credit card required):
 Make sure you have the following tools installed:
 
 * [git](https://git-scm.com/downloads)
-* [ibmcloud](https://console.bluemix.net/docs/cli/index.html)
 * [node](https://nodejs.org/en/download/)
-* [curl](https://curl.haxx.se/download.html)
-* [vue CLI](https://cli.vuejs.org/)
+* [vue](https://cli.vuejs.org/)
 * [yarn](https://yarnpkg.com/lang/en/docs/install/#mac-stable)
+* [ibmcloud](https://console.bluemix.net/docs/cli/index.html)
+* [curl](https://curl.haxx.se/download.html)
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 ## Local Environment Setup
