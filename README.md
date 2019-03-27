@@ -47,6 +47,7 @@ This is a list of used technologies:
 
 ## Documentation and Articles
 
+* [Webinar](http://heidloff.net/article/replay-blue-cloud-mirror-webinar/)
 * [One Minute Video](https://www.youtube.com/watch?v=RxPvvCUwclM)
 * Code Pattern: [Mirror game app showcases 15 cloud technologies and components](https://developer.ibm.com/patterns/cloud-showcase-blue-mirror/)
 * [Introducing Blue Cloud Mirror, a Fun IBM Cloud Showcase](http://heidloff.net/article/introducing-blue-cloud-mirror)
