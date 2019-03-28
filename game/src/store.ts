@@ -31,8 +31,8 @@ export default new Vuex.Store({
       }
     },
     webcam: {
-      width: 320,
-      height: 240,
+      width: 520,
+      height: 440,
       lastImage: "",
       delay: 500
     },

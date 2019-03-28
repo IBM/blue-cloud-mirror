@@ -40,10 +40,14 @@
       <router-view/>
       <b-row>
         <b-col style="text-align:center">
+          <div style="margin-top:25px;"></div>
+     <div>
           <div style="margin-top:50px;margin-bottom:10px;font-size: smaller;color: darkgray;">Brought to you by the <a target="_blank" style="color:#053c9f" href="https://developer.ibm.com/cities/berlin-de/">IBM Developer Advocacy DACH</a> team</div>
           <div style="margin-top:10px;margin-bottom:10px;font-size: smaller;color: darkgray;">Read more about the code pattern <a target="_blank" style="color:#053c9f" href="https://developer.ibm.com/patterns/cloud-showcase-blue-mirror/">Mirror game app showcases 15 cloud technologies and components</a></div>
           <div style="margin-top:10px;margin-bottom:10px;font-size: smaller;color: darkgray;">Get a free <a target="_blank" style="color:#053c9f" href="https://ibm.biz/nheidloff">IBM Cloud</a> account. Get the <a target="_blank" style="color:#053c9f" href="https://github.com/ibm/blue-cloud-mirror">code</a></div>
           <div style="margin-top:10px;margin-bottom:10px;font-size: smaller;color: darkgray;"><a target="_blank" style="color:#053c9f" href="https://www.ibm.com/privacy/us/en/">IBM Privacy Statement</a> and <a target="_blank" style="color:#053c9f" href="https://www.ibm.com/legal/us/en/">Terms of Use</a></div>
+          <center><img src="blue-cloud-mirror-900.jpeg" alt="ICON" style="width: 25%;max-height: 25%" /></center>
+         </div>
         </b-col>
       </b-row>
     </b-container>

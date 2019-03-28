@@ -1,7 +1,16 @@
 <template>
   <div class="about">
-    <h4 v-if="this.$store.state.demoMode == false" style="margin-bottom:25px">Enter your Data if you want to win a Prize</h4>
-    <h4 v-if="this.$store.state.demoMode == true" style="margin-bottom:25px">Enter your Data to save Scores in the HighScore List</h4>
+    <center><b-button
+        v-on:click="onClickAnonymous"
+        variant="primary"
+        style="margin-right:10px;font-size:30px;margin-top:13px;background-color: #053c9f !important;border-color:#053c9f !important;"
+      >Play anonymously</b-button>
+    </center>
+    <div></div>
+    <div></div>
+    <div style="margin-top:15px;"></div>
+    <h4 v-if="this.$store.state.demoMode == false" style="margin-bottom:25px">I want the chance to win a prize</h4>
+    <div v-if="this.$store.state.demoMode == true" style="margin-bottom:10px">Note: In this demo version, the user registration is <b>not supported</b>. The name <b>'Demo Player'</b> is used to your save game scores result in the HighScore list.</div>
     <div>
       <b-form @submit="onSubmit">
         <b-form-group id="exampleInputGroup1" label="EMail:" label-for="exampleInput1">
@@ -13,7 +22,7 @@
             placeholder="Enter email"
           ></b-form-input>
         </b-form-group>
-        <b-form-group id="exampleInputGroup2" label="First Name:" label-for="exampleInput2">
+        <b-form-group v-if="this.$store.state.demoMode == false" id="exampleInputGroup2" label="First Name:" label-for="exampleInput2">
           <b-form-input
             id="exampleInput2"
             required
@@ -22,7 +31,7 @@
             placeholder="Enter first name"
           ></b-form-input>
         </b-form-group>
-        <b-form-group id="exampleInputGroup2" label="Last Name:" label-for="exampleInput2">
+        <b-form-group v-if="this.$store.state.demoMode == false" id="exampleInputGroup2" label="Last Name:" label-for="exampleInput2">
           <b-form-input
             id="exampleInput2"
             required
@@ -34,6 +43,7 @@
 
         <b-form-group id="exampleGroup5">
           <b-form-checkbox
+            v-if="this.$store.state.demoMode == false"
             id="checkbox1"
             v-model="form.checked"
             value="accepted"
@@ -43,16 +53,9 @@
         <p v-if="errors.length > 0">
           <b style="color: #ffc107 !important">Please accept the terms.</b>
         </p>
-        <div v-if="this.$store.state.demoMode == true" style="margin-bottom:10px">Note: In this demo version, registration with real user information is not supported. A user 'Demo Player' is used instead.</div>
-        <b-button type="submit" variant="primary" style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;">Let's go</b-button>
+        <b-button type="submit" variant="primary" style="margin-right:10px;background-color: #038f9f !important;border-color:#038f9f !important;">Let's go</b-button>
       </b-form>
       <div></div>
-      <div style="margin-top: 40px;">I just want to have fun and don't want to provide my data.</div>
-      <b-button
-        v-on:click="onClickAnonymous"
-        variant="primary"
-        style="margin-right:10px;margin-top:13px;background-color: #053c9f !important;border-color:#053c9f !important;"
-      >Play anonymously</b-button>
     </div>
     <b-modal ref="modelDialog" hide-footer title="Error saving User Data">
       <div >
@@ -81,10 +84,10 @@ export default {
     errors() {
       const errs = [];
       if (this.submitClicked === true) {
-        if (!this.form.checked) {
+        if (!this.form.checked && (this.$store.state.demoMode == false)) {
           errs.push("sign terms");
         } else {
-          if (!this.form.checked.includes("accepted")) {
+          if (!this.form.checked.includes("accepted") && (this.$store.state.demoMode == false)) {
             errs.push("sign terms");
           }
         }
@@ -93,14 +96,21 @@ export default {
     }
   },
   mounted() {
-    this.form.email = "";
-    this.form.firstName = "";
-    this.form.lastName = "";
-    this.form.checked = [];
-    this.show = false;
-    this.$nextTick(() => {
-      this.show = true;
-    });
+
+    if (this.$store.state.demoMode == false) {
+      this.form.email = "";
+      this.form.firstName = "";
+      this.form.lastName = "";
+      this.form.checked = [];
+      this.show = false;
+      this.$nextTick(() => {
+          this.show = true;
+      });
+    } else {
+      this.form.email = "demo@email.com";
+      this.form.firstName = "Demo";
+      this.form.lastName = "Player";
+    }
     this.$store.commit("clearCurrentPlayer");
   },
   methods: {
