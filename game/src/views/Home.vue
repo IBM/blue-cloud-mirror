@@ -88,7 +88,7 @@
               <h3 class="mt-cloud-foundry">Cloud Foundry</h3>
                 <li>developer productivity first</li> 
                 <li>easy build and deploy</li>
-                <li>easy integration of service</li>
+                <li>easy integration of services</li>
                 <p>... and a lot more.</p>
             </b-media>
           </b-card>
