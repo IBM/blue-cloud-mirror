@@ -7,11 +7,12 @@
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav>
           <b-nav-item>
-            <router-link style="color:white" to="/about">About</router-link>
+            <router-link style="color:white" to="/home">Home</router-link>
           </b-nav-item>
           <b-nav-item>
-            <router-link style="color:white" to="/start">Start</router-link>
+            <router-link style="color:white" to="/register">Register</router-link>
           </b-nav-item>
+          <!-- ****NOT IN THE MENU****
           <b-nav-item>
             <router-link style="color:white" to="/emotions">Emotions</router-link>
           </b-nav-item>
@@ -21,6 +22,7 @@
           <b-nav-item>
             <router-link style="color:white" to="/results">Results</router-link>
           </b-nav-item>
+          -->
           <li class="nav-item">
             <a href="#" class="nav-link">
               <a

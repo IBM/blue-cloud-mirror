@@ -6,13 +6,13 @@
     <b-button v-if="isLevelCompleted == false"
       v-on:click="onClickStart"
       variant="primary"
-      style="margin-right:10px;font-size:30px;background-color: #02759f;border-colobackground-color: #053c9f !important;border-color:#053c9f !important;"
+      style="margin-right:10px;font-size:25px;background-color: #02759f;border-colobackground-color: #053c9f !important;border-color:#053c9f !important;"
       :disabled="isStartButtonDisabled"
     >{{startButtonLabel}} </b-button>
     <div style="margin-top:15px"></div>
     <progress v-show="false" :value="getDuration" :max="getDuration" font-size:20px ref="progressBar" id="progressBar"> </progress>
     <div v-if="isLevelCompleted == false">Count down:</div>
-    <div v-if="isLevelCompleted == false" ref="seconds" id="seconds">{{getDuration}}</div>
+    <div v-if="isLevelCompleted == false" ref="seconds" id="seconds"><font size="+4">{{getDuration}}</font></div>
     <div v-if="isLevelCompleted == false" style="margin-top:15px;font-size:smaller">Show the five emotions as shown below.</div>
     <div v-if="isLevelCompleted == false" style="font-size:smaller">From left to right. As quickly as you can.</div>
     <div v-if="isLevelCompleted == false" style="font-size:smaller; margin-top:10px">Note: The taken screenshots are only available in the browser and not saved.</div>

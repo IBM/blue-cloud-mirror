@@ -194,54 +194,48 @@
       <b-col>
         <b-button
           v-on:click="onStartNewGame"
-          variant="primary"
-          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+          style="margin-right:10px;background-color: #053c9f;border-color:#053c9f;"
         >Start new Game</b-button>
         <b-button
           v-on:click="onSaveScore"
           variant="primary"
-          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
           :disabled="isPlayerAnonymous"
-        >Save Score</b-button>
+        ><font color="black">Save Score</font></b-button>
         <b-button
           v-on:click="onGetAccount"
-          variant="primary"
-          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-        >Get IBM Cloud Account</b-button>
+          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+        ><font color="black">Get IBM Cloud Account</font></b-button>
         <b-button
           v-on:click="onReadPattern"
-          variant="primary"
-          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-        >Read Pattern</b-button>
+          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+        ><font color="black">Read Pattern</font></b-button>
         <b-button
           v-on:click="onGetTheCode"
-          variant="primary"
-          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-        >Download Code</b-button>
+          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+        ><font color="black">Download Code</font></b-button>
         <b-button
           v-on:click="onDownloadImage"
-          variant="primary"
-          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-        >Download Image</b-button>
+          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+        ><font color="black">Download Image</font></b-button>
         <b-button
           v-on:click="onTweet"
           variant="primary"
-          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-        >Tweet</b-button>
+          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+        ><font color="black">Tweet</font></b-button>
         <b-button
           v-if="tweetButtonDisabled == false"
           v-on:click="onTweetCard"
-          variant="primary"
-          style="margin-right:20px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
           :disabled="tweetButtonDisabled == true"
-        >{{tweetLabel}}</b-button>
+        ><font color="black">{{tweetLabel}}</font></b-button>
       </b-col>
     </b-row>
     <b-row v-if="this.$store.state.demoMode == true" style="margin-top:10px">
       <b-col>
         <div
           style="margin-bottom:2px"
-        >Note: In this demo version, real user names cannot be stored in the highscore list. A user 'Demo Player' is used instead.</div>
+        >Note: In this demo version, the user registration is <b>not supported</b>. The name <b>'Demo Player'</b> is used to your save game scores result in the HighScore list.</div>
       </b-col>
     </b-row>
     <a id="exportElementHidden" style="display:none"/>

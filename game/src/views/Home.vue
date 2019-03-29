@@ -1,65 +1,42 @@
 <template>
   <div class="home">
-    <center><h4 style="margin-top:15px;margin-bottom:25px"><p>Welcome to our <b>#BlueCloudMirror</b> game</p></h4></center>
+    <h1 style="margin-top:15px;margin-bottom:25px"><p>Welcome to our <b>#BlueCloudMirror</b> game</p></h1>
 
-    <center><div style="margin-top:15px;">
+    <div style="margin-top:15px;">
       Players need to show five <b>emotions</b> and five <b>poses</b> in <b>two levels</b>. 
       The <b>fastest player wins</b>.
-    </div></center>
+    </div>
+
+    <div style="margin-top:15px;">
+      <p>The game is designed to be a conversation starter at conferences for developers. Having fun, being interactive and using key technologies of the IBM Cloud at the same time. Developers can play anonymously or can they register themselvs and accept the terms and conditions to get the chance to win gadgets at the end of conferences.</p>
+    </div>
 
     <div style="margin-top:10px;"></div>
     <div style="margin-top:10px;">
-    <center><b-button
+    <center><b-button block variant="primary"
       v-on:click="onStartNewGame"
-      style="margin-right:10px;font-size:30px;background-color: #053c9f !important;border-color:#053c9f !important;"
     >Start game</b-button></center>
-    </div>
-    <div style="margin-top:10px;"></div>
-    <center><div style="margin-top:10px;">
-    <b-button
-      v-on:click="onTweet"
-      style="margin-right:12px;font-size:17px;background-color: #038f9f;border-color:#038f9f;"
-    >Share on Twitter</b-button>
-    <b-button
-      v-on:click="onGetAccount"
-      style="margin-right:12px;background-color: #038f9f;border-color:#038f9f;"
-    >Get free IBM Cloud Account</b-button>
-     <b-button
-      v-on:click="onReadPattern"
-      style="margin-right:12px;background-color: #038f9f;border-color:#038f9f ;"
-    >Read pattern</b-button>
-    <b-button
-      v-on:click="onGetTheCode"
-      style="margin-right:12px;background-color: #038f9f;border-color:#038f9f;"
-    >Download code</b-button>
-    </div></center>
-
-    <div style="margin-top:15px;">
-      The game is designed to be a conversation starter at conferences for developers. Having fun, being interactive and using key technologies of the IBM Cloud at the same time.
-    </div>
-    <div style="margin-top:15px;">
-      Developers can <font size="+1"><b>play anonymously</b></font> or can they register themselvs and accept the terms and conditions to get the chance to win gadgets at the end of conferences.
     </div>
 
     <div style="margin-top:35px;"></div>
     <h5 style="margin-top:15px;margin-bottom:25px"><b>IBM Cloud Technologies</b></h5>
     <div style="margin-top:15px;">
-      The following diagram shows the used IBM Cloud technologies. <a target="_blank" style="color:#053c9f" href="https://developer.ibm.com/patterns/cloud-showcase-blue-mirror/">For more just visit the IBM Developer Pattern of the game</a>:
+      The following diagram shows a simplified overview of used IBM Cloud technologies. <a target="_blank" style="color:#053c9f" href="https://developer.ibm.com/patterns/cloud-showcase-blue-mirror/">For more technology and implementation details visit IBM Developer Pattern of <b>#BlueCloudMirror</b> </a>:
     </div>
 
     <div style="margin-top:15px;"></div>
-    <a target="_blank" style="color:#053c9f" href="diagram-overview.png"><img src="diagram-overview-900.jpeg"/></a>
+    <center><a target="_blank" style="color:#053c9f" href="https://developer.ibm.com/patterns/cloud-showcase-blue-mirror/"><img src="diagram-overview-900.jpeg" lt="ICON" style="width: 40%;max-height: 40%" /></a></center>
 
     <div style="margin-top:15px;">
-      The game has three main parts:
+      The <b>#BlueCloudMirror</b> has three main parts:
     </div>
     <ul>
-      <li><font size="+1"><b>Core game:</b></font> Implemented as web application and via Cloud Functions since it is only used during conferences</li>
-      <li><font size="+1"><b>User management service:</b></font> Implemented via IBM Cloud Private to avoid having the personal data in a public cloud</li>
-      <li><font size="+1"><b>Highscore list:</b></font> Implemented via Cloud Foundry Enterprise Edition to show easy theme adoptions for different conferences</li>
+      <li><a target="_blank" style="color:#053c9f" href="https://github.com/IBM/blue-cloud-mirror/blob/master/game/README.md"><b>Core game:</b></a>Implemented as web application and via Cloud Functions since it is only used during conferences</li>
+      <li><a target="_blank" style="color:#053c9f" href="https://github.com/IBM/blue-cloud-mirror/blob/master/users/README.md"><b>User management service:</b></a> Implemented via IBM Cloud Private to avoid having the personal data in a public cloud</li>
+      <li><a target="_blank" style="color:#053c9f" href="https://github.com/IBM/blue-cloud-mirror/blob/master/scores/README.md"><b>Highscore list:</b></a> Implemented via Cloud Foundry Enterprise Edition to show easy theme adoptions for different conferences</li>
     </ul>
     <div style="margin-top:15px;">
-      This is a list of used technologies:
+     Used technologies:
     </div>
     <ul>
       <li><a target="_blank" style="color:#053c9f" href="https://cloud.ibm.com/">IBM Cloud</a></li>
@@ -80,7 +57,8 @@
     </ul>
 
     <div style="margin-top:15px;"></div>
-    If you had fun and you got useful technologies insides, just follow the developer of <b>#BlueCloudMirror</b> on twitter:
+    You had fun and got useful technologies insides?
+    Just follow the developers of <b>#BlueCloudMirror</b> on twitter:
     <ul>
       <li><a target="_blank" style="color:#053c9f" href="https://twitter.com/nheidloff">Niklas Heidloff</a></li>
       <li><a target="_blank" style="color:#053c9f" href="https://twitter.com/tsuedbroecker">Thomas Südbröcker</a></li>

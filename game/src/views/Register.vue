@@ -3,7 +3,7 @@
     <center><b-button
         v-on:click="onClickAnonymous"
         variant="primary"
-        style="margin-right:10px;font-size:30px;margin-top:13px;background-color: #053c9f !important;border-color:#053c9f !important;"
+        style="margin-right:10px;font-size:25px;margin-top:13px;background-color: #053c9f !important;border-color:#053c9f !important;"
       >Play anonymously</b-button>
     </center>
     <div></div>
@@ -22,7 +22,7 @@
             placeholder="Enter email"
           ></b-form-input>
         </b-form-group>
-        <b-form-group v-if="this.$store.state.demoMode == false" id="exampleInputGroup2" label="First Name:" label-for="exampleInput2">
+        <b-form-group id="exampleInputGroup2" label="First Name:" label-for="exampleInput2">
           <b-form-input
             id="exampleInput2"
             required
@@ -31,9 +31,9 @@
             placeholder="Enter first name"
           ></b-form-input>
         </b-form-group>
-        <b-form-group v-if="this.$store.state.demoMode == false" id="exampleInputGroup2" label="Last Name:" label-for="exampleInput2">
+        <b-form-group id="exampleInputGroup3" label="Last Name:" label-for="exampleInput3">
           <b-form-input
-            id="exampleInput2"
+            id="exampleInput3"
             required
             type="text"
             v-model="form.lastname"
@@ -43,7 +43,6 @@
 
         <b-form-group id="exampleGroup5">
           <b-form-checkbox
-            v-if="this.$store.state.demoMode == false"
             id="checkbox1"
             v-model="form.checked"
             value="accepted"
@@ -68,16 +67,17 @@
 
 <script>
 import axios from "axios";
+var form = {
+        email: '',
+        firstName: '',
+        lastName: '',
+        checked: []
+      };
 export default {
   data() {
     return {
       submitClicked: false,
-      form: {
-        email: "",
-        firstName: "",
-        lastName: "",
-        checked: []
-      }
+      form: form
     };
   },
   computed: {
@@ -106,12 +106,14 @@ export default {
       this.$nextTick(() => {
           this.show = true;
       });
+      this.$store.commit("clearCurrentPlayer");
     } else {
       this.form.email = "demo@email.com";
       this.form.firstName = "Demo";
       this.form.lastName = "Player";
+      this.show = false;
     }
-    this.$store.commit("clearCurrentPlayer");
+    
   },
   methods: {
     showModal () {
@@ -125,13 +127,23 @@ export default {
       this.submitClicked = true;
 
       if (this.errors.length === 0) {
-        const player = {
-          firstName: this.form.firstname,
-          lastName: this.form.lastname,
-          email: this.form.email
-        };
+        if (this.$store.state.demoMode == false){
+          const player = {
+            firstName: this.form.firstname,
+            lastName: this.form.lastname,
+            email: this.form.email
+          };
+        } else {
+          const player = {
+            firstName: "Demo",
+            lastName: "User",
+            email: "demo@email.com"
+          };
+        }
 
-        if (this.$store.state.apis.users.url != "users-url-not-defined") {
+        that.$store.commit("updateCurrentPlayer", player);
+        if ((this.$store.state.apis.users.url != "users-url-not-defined") &&
+            (this.$store.state.demoMode == false)) {
           const axiosService = axios.create({
             timeout: 10000,
             headers: {
