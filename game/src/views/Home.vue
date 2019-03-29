@@ -8,7 +8,7 @@
     </div>
 
     <div style="margin-top:15px;">
-      <p>The game is designed to be a conversation starter at conferences for developers. Having fun, being interactive and using key technologies of the IBM Cloud at the same time. Developers can play anonymously or can they register themselvs and accept the terms and conditions to get the chance to win gadgets at the end of conferences.</p>
+      <p>The game is designed to be a conversation starter at conferences for developers. Having fun, being interactive and using key technologies of the IBM Cloud at the same time. Developers can play anonymously or they can register themselvs and accept the terms and conditions to get the chance to win gadgets at the end of conferences.</p>
     </div>
 
     <div style="margin-top:10px;"></div>
