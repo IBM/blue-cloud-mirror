@@ -1,86 +1,14 @@
 <template>
   <div class="architecture">
-    <h1 style="margin-top:15px;margin-bottom:25px"><p>Welcome to our <b>#BlueCloudMirror</b> game</p></h1>
-
-    <div style="margin-top:15px;">
-      Players need to show five <b>emotions</b> and five <b>poses</b> in <b>two levels</b>. 
-      The <b>fastest player wins</b>.
-    </div>
-
-    <div style="margin-top:15px;">
-      <p>The game is designed to be a conversation starter at conferences for developers. Having fun, being interactive and using key technologies of the IBM Cloud at the same time. Developers can play anonymously or can they register themselvs and accept the terms and conditions to get the chance to win gadgets at the end of conferences.</p>
-    </div>
-
-    <div style="margin-top:10px;"></div>
-    <div style="margin-top:10px;">
-    <center><b-button block size="lg" variant="primary"
-      v-on:click="onStartNewGame"
-    >Start game</b-button></center>
-    </div>
-
-    <div style="margin-top:35px;"></div>
-    <h2 style="margin-top:15px;margin-bottom:25px"><b>#BlueCloudMirror</b> is based on these three major technologies</h2>
-
-    <b-container class="major-technologies">
-      <b-row>
-        <b-col>
-          <b-card>
-            <b-media>
-              <b-img slot="aside" v-bind="imageProps" alt="ibm-cloud-functions-icon" wid
-              rounded="circle"
-              src="ibm-cloud-functions-icon.png"></b-img>
-              <h2 class="mt-serverless">Serverless</h2>
-              <p>
-                <li>automated scale up and to zero</li>
-                <li>event driven code</li>
-                <li>stateless compute</li>
-              </p>
-            </b-media>
-          </b-card>
-        </b-col>
-        <b-col>2 of 2</b-col>
-      </b-row>
-      <b-row>
-        <b-col>
-          <b-card>
-            <b-media>
-              <b-img slot="aside" v-bind="imageProps" alt="kubernetes-icon" 
-              rounded="circle"
-              src="kubernetes-icon.png"></b-img>
-              <h2 class="mt-kubernetes">Kubernetes</h2>
-              <p>
-                Some kubernetes information
-              </p>
-            </b-media>
-          </b-card>
-        </b-col>
-        <b-col>2 of 2</b-col>
-      </b-row>
-      <b-row>
-        <b-col>
-          <b-card>
-            <b-media>
-              <b-img slot="aside" v-bind="imageProps" alt="kubernetes-icon" 
-              rounded="circle" src="cloud-foundry-icon.png"></b-img>
-              <h2 class="mt-cloud-foundry">Cloud Foundry</h2>
-              <p>
-                Some cloud foundry information
-              </p>
-            </b-media>
-          </b-card>
-        </b-col>
-        <b-col>2 of 2</b-col>
-      </b-row>
-    </b-container>
+    <h1 style="margin-top:15px;margin-bottom:25px"><p>  <b>#BlueCloudMirror</b> Architecture</p></h1>
     
-
     <div style="margin-top:15px;">
-      The <b>#BlueCloudMirror</b> has three main parts:
+      The three main parts:
     </div>
     <ul>
-      <li><a target="_blank" style="color:#053c9f" href="https://github.com/IBM/blue-cloud-mirror/blob/master/game/README.md"><b>Core game:</b></a>Implemented as web application and via Cloud Functions since it is only used during conferences</li>
-      <li><a target="_blank" style="color:#053c9f" href="https://github.com/IBM/blue-cloud-mirror/blob/master/users/README.md"><b>User management service:</b></a> Implemented via IBM Cloud Private to avoid having the personal data in a public cloud</li>
-      <li><a target="_blank" style="color:#053c9f" href="https://github.com/IBM/blue-cloud-mirror/blob/master/scores/README.md"><b>Highscore list:</b></a> Implemented via Cloud Foundry Enterprise Edition to show easy theme adoptions for different conferences</li>
+      <li><a target="_blank" style="color:#053c9f" href="https://github.com/IBM/blue-cloud-mirror/blob/master/game/README.md"><b>Game</b></a>The core game implemented as web application and via Cloud Functions since it is only used during conferences</li>
+      <li><a target="_blank" style="color:#053c9f" href="https://github.com/IBM/blue-cloud-mirror/blob/master/users/README.md"><b>Users</b></a> The user management is smplemented via IBM Cloud Private to avoid having the personal data in a public cloud</li>
+      <li><a target="_blank" style="color:#053c9f" href="https://github.com/IBM/blue-cloud-mirror/blob/master/scores/README.md"><b>Scores</b></a> The Highscore list is implemented via Cloud Foundry Enterprise Edition to show easy theme adoptions for different conferences</li>
     </ul>
     <div style="margin-top:15px;">
      Used technologies:
