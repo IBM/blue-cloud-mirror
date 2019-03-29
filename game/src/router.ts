@@ -5,6 +5,8 @@ import Register from './views/Register.vue';
 import Emotions from './views/Emotions.vue';
 import Poses from './views/Poses.vue';
 import Results from './views/Results.vue';
+import Architecture from './views/Architecture.vue';
+import Help from './views/Help.vue';
 
 Vue.use(Router);
 
@@ -38,6 +40,16 @@ export default new Router({
       path: '/results',
       name: 'results',
       component: Results,
-    }
+    },
+    {
+      path: '/architecture',
+      name: 'architecture',
+      component: Architecture,
+    },
+    {
+      path: '/help',
+      name: 'help',
+      component: Help
+    },
   ],
 });

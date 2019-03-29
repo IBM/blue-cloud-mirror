@@ -23,6 +23,9 @@
             <router-link style="color:white" to="/results">Results</router-link>
           </b-nav-item>
           -->
+          <b-nav-item>
+            <router-link style="color:white" to="/architecture">Architecture</router-link>
+          </b-nav-item>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <a
@@ -33,6 +36,9 @@
               >Highscores</a>
             </a>
           </li>
+          <b-nav-item>
+            <router-link style="color:white" to="/help">Help</router-link>
+          </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
