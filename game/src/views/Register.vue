@@ -73,12 +73,7 @@
 
 <script>
 import axios from "axios";
-/*var form = {
-        email: 'demo@email.com',
-        firstName: 'Demo',
-        lastName: 'User',
-        checked: []
-      };*/
+
 export default {
   data() {
     return {
@@ -139,21 +134,12 @@ export default {
       this.submitClicked = true;
 
       if (this.errors.length === 0) {
-        if (this.$store.state.demoMode == false){
-          const player = {
-            firstName: this.form.firstname,
-            lastName: this.form.lastname,
+        const player = {
+            firstName: this.form.firstName,
+            lastName: this.form.lastName,
             email: this.form.email
-          };
-        } else {
-          const player = {
-            firstName: "Demo",
-            lastName: "User",
-            email: "demo@email.com"
-          };
-        }
+        };
 
-        that.$store.commit("updateCurrentPlayer", player);
         if ((this.$store.state.apis.users.url != "users-url-not-defined") &&
             (this.$store.state.demoMode == false)) {
           const axiosService = axios.create({
@@ -168,8 +154,8 @@ export default {
           let firstName = "Demo";
           let lastName = "Player";
           if (this.$store.state.demoMode == false) {
-            firstName = this.form.firstname;
-            lastName = this.form.lastname;
+            firstName = this.form.firstName;
+            lastName = this.form.lastName;
             email = this.form.email;
           }
           axiosService

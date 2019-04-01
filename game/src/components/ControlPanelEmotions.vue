@@ -1,30 +1,36 @@
 <template>
   <div>
-    <div v-if="isLevelCompleted == false">Welcome, {{ player }} !</div>
-    <div v-if="isLevelCompleted">Level completed !</div>
+    <div v-if="(isLevelCompleted == false) && (isGaming == false)">Welcome {{ player }}, &#x1F600; </div>
+    <div v-if="(isLevelCompleted == false) && (isGaming == false)">show the five emotions as shown below.</div>
+    <div v-if="(isLevelCompleted == false) && (isGaming == false)">From left to right. As quickly as you can.</div>
+    <div v-if="isLevelCompleted" style="background-color: #FFFFFF !important;border-color:##FFFFFF !important; font-size:300%"> Level completed ! <span>&#128077;</span></div>
     <div style="margin-top:15px"></div>
-    <b-button v-if="isLevelCompleted == false"
+    <b-button v-if="(isLevelCompleted == false) && (isGaming == false)"
       v-on:click="onClickStart"
-      variant="primary"
-      style="margin-right:10px;font-size:25px;background-color: #02759f;border-colobackground-color: #053c9f !important;border-color:#053c9f !important;"
+      block 
+      size="lg"
+      style="background-color: #053c9f !important;border-color:#053c9f !important;"
       :disabled="isStartButtonDisabled"
     >{{startButtonLabel}} </b-button>
     <div style="margin-top:15px"></div>
-    <progress v-show="false" :value="getDuration" :max="getDuration" font-size:20px ref="progressBar" id="progressBar"> </progress>
-    <div v-if="isLevelCompleted == false">Count down:</div>
-    <div v-if="isLevelCompleted == false" ref="seconds" id="seconds"><font size="+4">{{getDuration}}</font></div>
-    <div v-if="isLevelCompleted == false" style="margin-top:15px;font-size:smaller">Show the five emotions as shown below.</div>
-    <div v-if="isLevelCompleted == false" style="font-size:smaller">From left to right. As quickly as you can.</div>
-    <div v-if="isLevelCompleted == false" style="font-size:smaller; margin-top:10px">Note: The taken screenshots are only available in the browser and not saved.</div>
+    <div v-if="isLevelCompleted == false">
+       <progress v-show="false" :value="getDuration" :max="getDuration" style="background-color: #FFFFFF !important;border-color:##FFFFFF !important; font-size:300%" ref="progressBar" id="progressBar"></progress>
+    </div>
+    <div v-if="(isLevelCompleted == false) && (isGaming == false)">Count down:</div>
+    <div v-if="isLevelCompleted == false" ref="seconds" style="background-color: #FFFFFF !important;border-color:#FFFFFF !important; font-size:300%" id="seconds">{{getDuration}}</div>
+
+    <div v-if="isLevelCompleted == false" style="margin-top:10px"><b>Note:</b> All taken screenshots stay only in the browser.</div>
     <b-button v-if="isLevelCompleted"
       v-on:click="onClickNext"
-      variant="primary"
-      style="margin-top:15px;background-color: #053c9f !important;border-color:#053c9f !important;"
+      block 
+      size="lg"
+      style="background-color: #053c9f !important;border-color:#053c9f !important;"
     >Play Level 2 ...</b-button>
   </div>
 </template>
 
 <script>
+
 export default {
   name: "controlpanelemotions",
   data() {
@@ -33,6 +39,9 @@ export default {
     };
   },
   computed: {
+    isGaming(){
+      return this.$state.currentGame.emotions.ongoing;
+    },
     startButtonLabel() {
       if (this.$store.state.emotionRecognition.modelLoaded == false) {
         return 'Loading Model ...';

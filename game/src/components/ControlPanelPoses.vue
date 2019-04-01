@@ -14,8 +14,9 @@
       <b-button
         v-if="isLevelCompleted == false"
         v-on:click="onClickStart"
-        variant="primary"
-        style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+        block 
+        size="lg"
+        style="background-color: #053c9f !important;border-color:#053c9f !important;"
         :disabled="isStartButtonDisabled"
       >{{startButtonLabel}}</b-button>
       <div style="margin-top:15px"></div>
