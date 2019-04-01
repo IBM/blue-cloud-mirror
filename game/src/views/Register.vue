@@ -1,13 +1,5 @@
 <template>
   <div class="about">
-    <center><b-button
-        v-on:click="onClickAnonymous"
-        variant="primary"
-        style="margin-right:10px;font-size:25px;margin-top:13px;background-color: #053c9f !important;border-color:#053c9f !important;"
-      >Play anonymously</b-button>
-    </center>
-    <div></div>
-    <div></div>
     <div style="margin-top:15px;"></div>
     <h4 v-if="this.$store.state.demoMode == false" style="margin-bottom:25px">I want the chance to win a prize</h4>
     <div v-if="this.$store.state.demoMode == true" style="margin-bottom:10px">Note: In this demo version, the user registration is <b>not supported</b>. The name <b>'Demo Player'</b> is used to your save game scores result in the HighScore list.</div>
@@ -52,7 +44,11 @@
         <p v-if="errors.length > 0">
           <b style="color: #ffc107 !important">Please accept the terms.</b>
         </p>
-        <b-button type="submit" variant="primary" style="margin-right:10px;background-color: #038f9f !important;border-color:#038f9f !important;">Let's go</b-button>
+        <b-button
+        block 
+        size="lg"
+        type="submit" 
+        style="margin-right:10px;background-color: #FFFFFF !important;border-color:#FFFFFF !important;">Let's go</b-button>
       </b-form>
       <div></div>
     </div>
@@ -62,6 +58,16 @@
       </div>
       <b-btn class="mt-3" @click="hideModal">Close</b-btn>
     </b-modal>
+    <div style="margin-top:15px;"></div>
+    <center><b-button
+        block 
+        size="lg"
+        style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
+        v-on:click="onClickAnonymous"
+      >Play anonymously</b-button>
+    </center>
+    <div></div>
+    <div></div>
   </div>
 </template>
 
