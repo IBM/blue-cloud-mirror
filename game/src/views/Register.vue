@@ -19,7 +19,7 @@
             id="exampleInput2"
             required
             type="text"
-            v-model="form.firstname"
+            v-model="form.firstName"
             placeholder="Enter first name"
           ></b-form-input>
         </b-form-group>
@@ -28,7 +28,7 @@
             id="exampleInput3"
             required
             type="text"
-            v-model="form.lastname"
+            v-model="form.lastName"
             placeholder="Enter last name"
           ></b-form-input>
         </b-form-group>
@@ -48,7 +48,7 @@
         block 
         size="lg"
         type="submit" 
-        style="margin-right:10px;background-color: #FFFFFF !important;border-color:#FFFFFF !important;">Let's go</b-button>
+        style="margin-right:10px;background-color: #FFFFFF !important;border-color:black !important;"><font color="black">Play</font></b-button>
       </b-form>
       <div></div>
     </div>
@@ -73,17 +73,22 @@
 
 <script>
 import axios from "axios";
-var form = {
-        email: '',
-        firstName: '',
-        lastName: '',
+/*var form = {
+        email: 'demo@email.com',
+        firstName: 'Demo',
+        lastName: 'User',
         checked: []
-      };
+      };*/
 export default {
   data() {
     return {
       submitClicked: false,
-      form: form
+      form: {
+        email: 'demo@email.com',
+        firstName: 'Demo',
+        lastName: 'User',
+        checked: []
+      }
     };
   },
   computed: {
@@ -118,6 +123,7 @@ export default {
       this.form.firstName = "Demo";
       this.form.lastName = "Player";
       this.show = false;
+      //this.$store.commit("updateCurrentPlayer");
     }
     
   },

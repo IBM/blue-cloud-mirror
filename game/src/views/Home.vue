@@ -121,20 +121,8 @@ export default {
     }
   },
   methods: {
-    onGetTheCode() {
-      window.location="https://github.com/ibm/blue-cloud-mirror";
-    },
-    onGetAccount() {
-      window.location="https://ibm.biz/nheidloff";
-    },
-    onTweet() {
-      window.location="https://twitter.com/intent/tweet?hashtags=BlueCloudMirror,IBMDeveloper&text=Check%20out%20the%20IBM%20Cloud%20showcase%20https://blue-cloud-mirror.mybluemix.net";
-    },
-    onReadPattern() {
-      window.location="https://developer.ibm.com/patterns/cloud-showcase-blue-mirror/";
-    },
     onStartNewGame() {
-      this.$router.push("start");
+      this.$router.push("register");
     }
   }
 }
