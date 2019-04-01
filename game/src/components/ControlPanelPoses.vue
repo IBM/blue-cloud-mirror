@@ -1,51 +1,65 @@
 <template>
-  <div>
-    <div v-if="firstLevelCompleted == false">
-      <div>Howdy, hold your horses, buddy :)</div>
-      <div style="margin-top:15px"></div>
-      <div>Play level 1 first</div>
-      <div style="margin-top:15px"></div>
-      <b-button v-on:click="onClickBack" variant="primary" style="margin-top:15px;background-color: #053c9f !important;border-color:#053c9f !important;">Play Level 1 ...</b-button>
-    </div>
-    <div v-if="firstLevelCompleted == true">
-      <div v-if="isLevelCompleted == false">Ok, here comes the second level !</div>
-      <div v-if="isLevelCompleted">Level completed !</div>
-      <div style="margin-top:15px"></div>
-      <b-button
-        v-if="isLevelCompleted == false"
-        v-on:click="onClickStart"
-        block 
-        size="lg"
-        style="background-color: #053c9f !important;border-color:#053c9f !important;"
-        :disabled="isStartButtonDisabled"
-      >{{startButtonLabel}}</b-button>
-      <div style="margin-top:15px"></div>
-      <progress
-        v-show="false"
-        :value="getDuration"
-        :max="getDuration"
-        ref="progressBarPoses"
-        id="progressBarPoses"
-      ></progress>
-      <div v-if="isLevelCompleted == false">Seconds left:</div>
-      <div v-if="isLevelCompleted == false" ref="secondsPoses" id="secondsPoses">{{getDuration}}</div>
-      <div
-        v-if="isLevelCompleted == false"
-        style="margin-top:15px;font-size:smaller"
-      >Do the five poses as shown below.</div>
-      <div
-        v-if="isLevelCompleted == false"
-        style="font-size:smaller"
-      >From left to right. As quickly as you can.</div>
-      <div v-if="isLevelCompleted == false" style="font-size:smaller; margin-top:10px">Note: The taken screenshots are only available in the browser and not saved.</div>
-      <b-button
-        v-if="isLevelCompleted"
-        v-on:click="onClickNext"
-        variant="primary"
-        style="margin-top:15px"
-      >Show Results ...</b-button>
-    </div>
-  </div>
+   <b-row>
+    <b-col>
+        <div>
+          <div v-if="firstLevelCompleted == false">
+            <div>Howdy, hold your horses, buddy <span>&#127943; &#128513;</span></div>
+            <div style="margin-top:15px"></div>
+            <div>You have to play level 1 first</div>
+            <div style="margin-top:15px"></div>
+            <b-button v-on:click="onClickBack" 
+                      block 
+                      size="lg"
+                      style="background-color: #053c9f !important;border-color:#053c9f !important;">Go to level 1 ...</b-button>
+          </div>
+          <div v-if="firstLevelCompleted == true">
+            <div v-if="(isLevelCompleted == false) && (isGaming == false)">Ok, it is time for the second level ! <span>&#128526;</span></div>
+            <div
+              v-if="(isLevelCompleted == false) && (isGaming == false)"
+              style="margin-top:15px;font-size:smaller"
+            >Do the five poses as shown below.</div>
+            <div
+              v-if="(isLevelCompleted == false) && (isGaming == false)"
+              style="font-size:smaller"
+            >From left to right. As quickly as you can.</div>
+            <div v-if="isLevelCompleted" 
+                 style="background-color: #FFFFFF !important;border-color:##FFFFFF !important; font-size:300%">Level and game completed !<span>&#128170;</span></div>
+            <div style="margin-top:15px"></div>
+            <b-button
+              v-if="(isLevelCompleted == false) && (isGaming == false)"
+              v-on:click="onClickStart"
+              block 
+              size="lg"
+              style="background-color: #053c9f !important;border-color:#053c9f !important;"
+              :disabled="isStartButtonDisabled"
+            >{{startButtonLabel}}</b-button>
+            <div style="margin-top:15px"></div>
+            <progress
+              v-show="false"
+              :value="getDuration"
+              :max="getDuration"
+              style="background-color: #FFFFFF !important;border-color:##FFFFFF !important; font-size:300%"
+              ref="progressBarPoses"
+              id="progressBarPoses"
+            ></progress>
+            <div v-if="(isLevelCompleted == false) && (isGaming == false)">Count down:</div>
+            <div v-if="(isLevelCompleted == false) && (isGaming == false)" 
+            style="background-color: #FFFFFF !important;border-color:#FFFFFF !important; font-size:300%"
+            ref="secondsPoses" 
+            id="secondsPoses">{{getDuration}}</div>
+        
+            <div v-if="isLevelCompleted == false" style="font-size:smaller; margin-top:10px"><b>Note:</b> All taken screenshots stay only in the browser.</div>
+            <b-button
+              v-if="isLevelCompleted"
+              v-on:click="onClickNext"
+              block 
+              size="lg"
+              style="background-color: #053c9f !important;border-color:#053c9f !important;"
+            >Show game results ...</b-button>
+          </div>
+        </div>
+     </b-col>
+  </b-row>
 </template>
 
 <script>
@@ -57,6 +71,15 @@ export default {
     };
   },
   computed: {
+    isGaming(){
+      var value = false;
+      if (this.$store.state.currentGame != undefined){
+        value = this.$store.state.currentGame.poses.ongoing;
+      } else {
+        value = false;
+      }
+      return value;
+    },
     startButtonLabel() {
       if (this.$store.state.posesRecognition.modelLoaded == false) {
         return 'Loading Model ...';

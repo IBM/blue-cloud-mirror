@@ -2,7 +2,7 @@
   <div class="emotions">
     <h2 style="margin-top:15px;margin-bottom:25px">Level 1 (of 2): Emotions</h2>
     <b-row>
-      <b-col style="min-width: 330px;">        
+      <b-col style="min-width: 520px;">        
         <webcam></webcam>
         <facemodel></facemodel>
         <emotionmodel></emotionmodel> 
