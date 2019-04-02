@@ -8,20 +8,22 @@
           From left to right. As quickly as you can.<br>
         </div>
         
-        <div v-if="isLevelCompleted" 
+        <div v-if="isLevelCompleted == true" 
              style="background-color: #FFFFFF !important;border-color:##FFFFFF !important; font-size:300%"> Level completed ! <span>&#128077;</span>
         </div>
         
         <div style="margin-top:15px"></div>
 
-        <b-button v-if="(isLevelCompleted == false) && (isGaming == false)"
+        <b-button 
+          v-if="(isLevelCompleted == false) && 
+                        (isGaming == false)"
           v-on:click="onClickStart" 
           block size="lg" 
           style="background-color: #053c9f !important;border-color:#053c9f !important;" 
           :disabled="isStartButtonDisabled">{{startButtonLabel}}</b-button>
         
         <div style="margin-top:15px"></div>
-        <div v-if="(isLevelCompleted == false)">
+        <div v-if="(isLevelCompleted == false) && (isGaming == false)">
           <progress v-show="false"
                     ref="progressBar"
                     id="progressBar"

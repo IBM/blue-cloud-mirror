@@ -44,11 +44,15 @@
         <p v-if="errors.length > 0">
           <b style="color: #ffc107 !important">Please accept the terms.</b>
         </p>
-        <b-button
-        block 
-        size="lg"
-        type="submit" 
-        style="margin-right:10px;background-color: #FFFFFF !important;border-color:black !important;"><font color="black">Play</font></b-button>
+        <div style="margin-right:30px; margin-left:30px">
+          <center>
+          <b-button
+          block 
+          size="lg"
+          type="submit" 
+          style="height:10%;width:30%; background-color: #FFFFFF !important;border-color:black !important;"><font color="black">Play</font></b-button>
+          </center>
+        </div>
       </b-form>
       <div></div>
     </div>
@@ -59,13 +63,15 @@
       <b-btn class="mt-3" @click="hideModal">Close</b-btn>
     </b-modal>
     <div style="margin-top:15px;"></div>
-    <center><b-button
-        block 
-        size="lg"
-        style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-        v-on:click="onClickAnonymous"
-      >Play anonymously</b-button>
-    </center>
+    <div style="margin-right:30px; margin-left:30px">
+      <center><b-button
+          block 
+          size="lg"
+          style="height:10%;width:30%;background-color: #053c9f !important;border-color:#053c9f !important;"
+          v-on:click="onClickAnonymous"
+        >Play anonymously</b-button>
+      </center>
+    </div>
     <div></div>
     <div></div>
   </div>

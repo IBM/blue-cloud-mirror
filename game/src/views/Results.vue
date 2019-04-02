@@ -24,30 +24,30 @@
 
 <template>
   <div class="results">
+    <table style="width:100%">
+    <td style="width:70%">
     <b-row>
       <b-col>
-        <h4 style="margin-top:1px;margin-bottom:25px">Results from {{ player }}</h4>
+        <h2 style="margin-top:1px;margin-bottom:25px">Results of your game "{{ player }}"</h2>
       </b-col>
     </b-row>
     <b-row v-if="bothLevelsCompleted == false">
       <b-col>
         <b
-          style="margin-top:1px;margin-bottom:5px;color: #ffc107 !important"
+         style="margin-top:1px;margin-bottom:5px;color: #ffc107 !important"
         >Both levels need to be completed first !</b>
       </b-col>
     </b-row>
     <b-row v-if="bothLevelsCompleted == true">
       <b-col>
-        <b
-          style="margin-top:1px;margin-bottom:15px;"
-        >Overall Duration: {{ durationWithPenalties }} Seconds</b>
+        <h4>Overall Duration: {{ durationWithPenalties }} Seconds <span>&#127881;</span></h4>
         <div style="min-height:20px"></div>
         <div style="display: table;width:100%">
           <div style="display: table-row;">
-            <div style="max-width:80px;display: table-cell;vertical-align: top;">Level</div>
-            <div style="max-width:80px;display: table-cell;vertical-align: top;">Duration (secs)</div>
-            <div style="max-width:80px;display: table-cell;vertical-align: top;">Not Completed</div>
-            <div style="display: table-cell;vertical-align: top;">Penalty (secs)</div>
+            <div style="max-width:80px;display: table-cell;vertical-align: top;"><b>Level</b></div>
+            <div style="max-width:80px;display: table-cell;vertical-align: top;"><b>Duration (secs)</b></div>
+            <div style="max-width:80px;display: table-cell;vertical-align: top;"><b>Not Completed</b></div>
+            <div style="display: table-cell;vertical-align: top;"><b>Penalty (secs)</b></div>
           </div>
           <div style="display: table-row;">
             <div style="max-width:80px;display: table-cell;vertical-align: top;">1: Emotions</div>
@@ -74,7 +74,7 @@
     </b-row>
     <b-row>
       <b-col>
-        <h4 style="margin-top:35px;margin-bottom:25px">Level 1: Emotions</h4>
+        <h4 style="margin-top:35px;margin-bottom:25px">Level 1: Emotions <span> &#128516;</span></h4>
       </b-col>
     </b-row>
     <div id="capture">
@@ -143,7 +143,7 @@
       </b-row>
       <b-row data-html2canvas-ignore="true">
         <b-col>
-          <h4 style="margin-bottom:20px">Level 2: Poses</h4>
+          <h4 style="margin-bottom:20px">Level 2: Poses <span> &#128587;</span></h4>
         </b-col>
       </b-row>
       <b-row>
@@ -190,52 +190,51 @@
         </b-col>
       </b-row>
     </div>
-    <b-row style="margin-top:40px">
+    <b-row v-if="this.$store.state.demoMode == true" style="margin-top:10px">
+      <b-col>
+        <div
+          style="margin-bottom:2px">Note: In this demo version, the user registration is <b>not supported</b>. The name <b>'Demo Player'</b> is used to your save game scores result in the HighScore list.</div>
+      </b-col>
+    </b-row>
+    <b-row>
       <b-col>
         <b-button
+          block
           v-on:click="onStartNewGame"
           style="margin-right:10px;background-color: #053c9f;border-color:#053c9f;"
-        >Start new Game</b-button>
+        >Start new game</b-button>
+      </b-col>
+      <b-col>
         <b-button
+          block
           v-on:click="onSaveScore"
           variant="primary"
           style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
           :disabled="isPlayerAnonymous"
-        ><font color="black">Save Score</font></b-button>
-        <b-button
-          v-on:click="onGetAccount"
-          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
-        ><font color="black">Get IBM Cloud Account</font></b-button>
-        <b-button
-          v-on:click="onReadPattern"
-          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
-        ><font color="black">Read Pattern</font></b-button>
-        <b-button
-          v-on:click="onGetTheCode"
-          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
-        ><font color="black">Download Code</font></b-button>
-        <b-button
-          v-on:click="onDownloadImage"
-          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
-        ><font color="black">Download Image</font></b-button>
-        <b-button
-          v-on:click="onTweet"
-          variant="primary"
-          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
-        ><font color="black">Tweet</font></b-button>
-        <b-button
-          v-if="tweetButtonDisabled == false"
-          v-on:click="onTweetCard"
-          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
-          :disabled="tweetButtonDisabled == true"
-        ><font color="black">{{tweetLabel}}</font></b-button>
+        ><font color="black">Save score</font></b-button>
       </b-col>
-    </b-row>
-    <b-row v-if="this.$store.state.demoMode == true" style="margin-top:10px">
       <b-col>
-        <div
-          style="margin-bottom:2px"
-        >Note: In this demo version, the user registration is <b>not supported</b>. The name <b>'Demo Player'</b> is used to your save game scores result in the HighScore list.</div>
+        <b-button
+            block
+            v-on:click="onTweet"
+            variant="primary"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          ><font color="black">Tweet</font></b-button>
+      </b-col>
+      <b-col v-if="tweetButtonDisabled == false">
+        <b-button
+            v-if="tweetButtonDisabled == false"
+            v-on:click="onTweetCard"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+            :disabled="tweetButtonDisabled == true"
+          ><font color="black">{{tweetLabel}}</font></b-button>
+      </b-col>
+      <b-col>
+          <b-button
+            block 
+            v-on:click="onDownloadImage"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          ><font color="black">Get game image</font></b-button>
       </b-col>
     </b-row>
     <a id="exportElementHidden" style="display:none"/>
@@ -245,6 +244,35 @@
       </div>
       <b-btn class="mt-3" @click="hideModal">Close</b-btn>
     </b-modal>
+    </td>
+    <td style="width:30%" bgcolor="#f9f7f7">
+      <center><h5>Behind the scenes of #BlueCloudMirror?</h5></center>
+      <b-row style="margin-top:10px; margin-left:10px; margin-right:10px">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Z4wU03JnEcU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </b-row>
+      <b-row style="margin-top:10px; margin-left:10px; margin-right:10px">
+        <b-button
+          block
+          v-on:click="onGetAccount"
+          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+        ><font color="black">Get IBM Cloud Account</font></b-button>
+      </b-row>
+      <b-row style="margin-top:10px; margin-left:10px; margin-right:10px">
+        <b-button
+          block
+          v-on:click="onReadPattern"
+          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+        ><font color="black">Read Pattern</font></b-button>
+      </b-row>
+      <b-row style="margin-top:10px; margin-left:10px; margin-right:10px">
+        <b-button
+          block
+          v-on:click="onGetTheCode"
+          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+        ><font color="black">Get code from GitHub</font></b-button>
+      </b-row>
+    </td> 
+    </table>
   </div>
 </template>
 
@@ -576,7 +604,7 @@ export default {
       }
     },
     onStartNewGame() {
-      this.$router.push("start");
+      this.$router.push("register");
     },
     onDownloadImage() {
       html2canvas(document.querySelector("#capture")).then(canvas => {

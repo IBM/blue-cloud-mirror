@@ -13,8 +13,11 @@
 
     <div style="margin-top:10px;"></div>
     <div style="margin-top:10px;">
-    <center><b-button block size="lg" style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-      v-on:click="onStartNewGame"
+    <center><b-button 
+       block 
+       size="lg" 
+       style="height:10%;width:30%;background-color: #053c9f !important;border-color:#053c9f !important;"
+       v-on:click="onStartNewGame"
     >Start game</b-button></center>
     </div>
 
