@@ -22,6 +22,7 @@
               v-if="(isLevelCompleted == false) && (isGaming == false)"
               style="font-size:smaller"
             >From left to right. As quickly as you can.</div>
+            <div style="margin-top:15px"></div>
             <div v-if="isLevelCompleted" 
                  style="background-color: #FFFFFF !important;border-color:##FFFFFF !important; font-size:300%">Level and game completed !<span>&#128170;</span></div>
             <div style="margin-top:15px"></div>
@@ -39,14 +40,13 @@
               :value="getDuration"
               :max="getDuration"
               style="background-color: #FFFFFF !important;border-color:##FFFFFF !important; font-size:300%"
-              ref="progressBarPoses"
+              ref="progressBarPoses"            
               id="progressBarPoses"
             ></progress>
             <div v-if="(isLevelCompleted == false) && (isGaming == false)">Count down:</div>
             <div v-if="(isLevelCompleted == false) && (isGaming == false)" 
-            style="background-color: #FFFFFF !important;border-color:#FFFFFF !important; font-size:300%"
-            ref="secondsPoses" 
-            id="secondsPoses">{{getDuration}}</div>
+             ref="seconds" style="background-color: #FFFFFF !important;border-color:#FFFFFF !important; font-size:300%" id="secondsPoses">{{getDuration}}</div>
+            <div v-if="(isLevelCompleted == false) && (isGaming == false)" style="background-color: #FFFFFF !important;border-color:#FFFFFF !important; font-size:300%" ref="secondsPoses" id="secondsPoses">{{getDuration}}</div>
         
             <div v-if="isLevelCompleted == false" style="font-size:smaller; margin-top:10px"><b>Note:</b> All taken screenshots stay only in the browser.</div>
             <b-button
