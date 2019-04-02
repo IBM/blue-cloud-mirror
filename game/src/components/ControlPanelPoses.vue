@@ -37,11 +37,11 @@
             <div style="margin-top:15px"></div>
             <progress
               v-show="false"
+              ref="progressBarPoses"            
+              id="progressBarPoses"
               :value="getDuration"
               :max="getDuration"
               style="background-color: #FFFFFF !important;border-color:##FFFFFF !important; font-size:300%"
-              ref="progressBarPoses"            
-              id="progressBarPoses"
             ></progress>
             <div v-if="(isLevelCompleted == false) && (isGaming == false)">Count down:</div>
             <div v-if="(isLevelCompleted == false) && (isGaming == false)" 
