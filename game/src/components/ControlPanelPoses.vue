@@ -31,18 +31,17 @@
               style="background-color: #053c9f !important;border-color:#053c9f !important; margin-left:10px"
               :disabled="isStartButtonDisabled"
             >{{startButtonLabel}}</b-button>
-            
-            <div style="margin-top:15px"></div>
-            
-            <div v-if="(isLevelCompleted == false)">
-              <progress
+                        
+            <div style="margin-top:15px" v-if="(isLevelCompleted == false)">
+            <progress  
+                v-if="(isLevelCompleted == false)"
                 v-show="false"
                 ref="progressBarPoses"            
                 id="progressBarPoses"
                 :value="getDuration"
                 :max="getDuration"
                 style="background-color: #FFFFFF !important;border-color:##FFFFFF !important; font-size:300%"
-              ></progress>
+            ></progress>
             </div>
 
             <div v-if="(isLevelCompleted == false)">Count down:</div>
