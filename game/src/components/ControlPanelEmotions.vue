@@ -23,7 +23,7 @@
           :disabled="isStartButtonDisabled">{{startButtonLabel}}</b-button>
         
         <div style="margin-top:15px"></div>
-        <div v-if="(isLevelCompleted == false) && (isGaming == false)">
+        <div v-if="(isLevelCompleted == false)">
           <progress v-show="false"
                     ref="progressBar"
                     id="progressBar"

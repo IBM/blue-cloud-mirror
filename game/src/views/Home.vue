@@ -3,7 +3,7 @@
     <h1 style="margin-top:15px;margin-bottom:25px"><p>Welcome to our <b>#BlueCloudMirror</b> game</p></h1>
 
     <div style="margin-top:15px;">
-      Players need to show five <b>emotions</b> and five <b>poses</b> in <b>two levels</b>. 
+      You need to show five <b>emotions</b> and five <b>poses</b> in <b>two levels</b>. 
       The <b>fastest player wins</b>.
     </div>
 

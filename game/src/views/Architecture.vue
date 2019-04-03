@@ -4,6 +4,43 @@
     <div style="margin-top:15px;">
       The game uses various key cloud technologies to demonstrate the value of a diverse, interconnected system, with both public and private cloud environments.
     </div>
+      
+    <!-- DRAFT 
+    <div>
+    <table style="width:100%">
+        <td style="width:33%">
+              <b-card>       
+                <b-media right-align vertical-align="center">
+                  <b-img slot="aside" rounded v-bind="diagramProps" alt="game-serverless" 
+                  src="game-serverless.png"></b-img>
+                  <h3 class="mt-game">Game</h3>
+                  <a target="_blank" style="color:#053c9f" href="https://github.com/IBM/blue-cloud-mirror/blob/master/game/README.md"><b>Game: </b></a> The core game implemented as web application and via Cloud Functions since it is only used during conferences.
+                </b-media>       
+              </b-card>
+        </td>
+        <td style="width:33%">
+                <b-card>
+                <b-media right-align vertical-align="center">
+                  <b-img slot="aside" style="height=20%; width=20%" rounded v-bind="diagramProps" left alt="users-kubernetes" 
+                  src="users-kubernetes.png"></b-img>
+                  <h3 class="mt-users">Users</h3>
+                    <a target="_blank" style="color:#053c9f" href="https://github.com/IBM/blue-cloud-mirror/blob/master/users/README.md"><b>Users: </b></a> The user management is implemented via IBM Cloud Private to avoid having the personal data in a public cloud.
+                </b-media>
+              </b-card>
+        </td>
+        <td style="width:33%">
+                <b-card>
+                  <b-media right-align vertical-align="center">
+                    <b-img slot="aside" rounded v-bind="diagramProps" left alt="scores-cloud-foundry" 
+                    src="scores-cloud-foundry.png"></b-img>
+                    <h3 class="mt-scores">Scores</h3>
+                    <a target="_blank" style="color:#053c9f" href="https://github.com/IBM/blue-cloud-mirror/blob/master/scores/README.md"><b>Scores: </b></a> The Highscore list is implemented via Cloud Foundry Enterprise Edition to show easy theme adoptions for different conferences
+                  </b-media>
+                </b-card>
+        </td>
+      </table>
+    </div>
+    -->
     <div style="margin-top:15px;">
       These are the three main parts of #BlueCloudMirror:
     </div>
