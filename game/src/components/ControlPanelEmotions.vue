@@ -22,19 +22,22 @@
           style="background-color: #053c9f !important;border-color:#053c9f !important;" 
           :disabled="isStartButtonDisabled">{{startButtonLabel}}</b-button>
         
-        <div style="margin-top:15px"></div>
-        <div v-if="(isLevelCompleted == false)">
-          <progress v-show="false"
+
+
+        <div style="margin-top:15px" v-if="(isLevelCompleted == false)">
+        <progress   v-if="(isLevelCompleted == false)"
+                    v-show="false"
                     ref="progressBar"
                     id="progressBar"
                     :value="getDuration" 
-                    :max="getDuration" 
+                    :max="getDuration"
                     style="background-color: #FFFFFF !important;border-color:##FFFFFF !important; font-size:300%"></progress>
         </div>
 
         <div v-if="(isLevelCompleted == false)">Count down:</div>
         <div v-if="(isLevelCompleted == false)" 
              ref="seconds" id="seconds" style="background-color: #FFFFFF !important;border-color:#FFFFFF !important; font-size:300%">{{getDuration}}</div>
+
 
         <div v-if="isLevelCompleted == false" 
              style="margin-top:10px"><b>Note:</b> All taken screenshots stay only in the browser.</div>
@@ -51,12 +54,15 @@
 </template>
 
 <script>
-var value = false;
+var inGame = false;
+var dontShow = false;
+
 export default {
   name: "controlpanelemotions",
   data() {
     return {
-      player: ""
+      player: "",
+      inGame: inGame
     };
   },
   computed: {
@@ -64,17 +70,17 @@ export default {
       if (this.$store.state.currentGame != undefined){
         if (this.$store.state.currentGame.emotions != undefined){
           if (this.$store.state.currentGame.emotions.ongoing != undefined){
-              value = this.$store.state.currentGame.emotions.ongoing;
+            inGame = this.$store.state.currentGame.emotions.ongoing;
           } else {
-            value = false;
+            inGame = false;
           }
         } else {
-          value = false;
+          inGame = false;
         }
       } else {
-        value = false;
+        inGame = false;
       }
-      return value;
+      return inGame;
     },
     startButtonLabel() {
       if (this.$store.state.emotionRecognition.modelLoaded == false) {
@@ -117,6 +123,15 @@ export default {
     onClickNext() {
       this.$router.push("poses");
     },
+    forceRerender() {
+        // Remove my-component from the DOM
+        this.renderComponent = false;
+        
+        this.$nextTick(() => {
+          // Add the component back in
+          this.renderComponent = true;
+        });
+    },
     onClickStart() {
       this.progressBar = this.$refs.progressBar;
       this.seconds = this.$refs.seconds;
@@ -132,8 +147,8 @@ export default {
           clearInterval(downloadTimer);
         } else {
           if (timeleft <= 0) {
-            that.$store.commit("endEmotionsGame", new Date().getTime());
             clearInterval(downloadTimer);
+            that.$store.commit("endEmotionsGame", new Date().getTime());           
           }
         }
       }, 1000);
