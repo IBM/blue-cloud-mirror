@@ -1,7 +1,7 @@
 <template>
    <b-row>
     <b-col>
-        <div>
+        <div style="margin-top:30px">
           <div v-if="firstLevelCompleted == false">
             <div>Howdy, hold your horses, buddy <span>&#127943; &#128513;</span></div>
             <div style="margin-top:15px"></div>

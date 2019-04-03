@@ -1,7 +1,7 @@
 <template>
   <b-row>
     <b-col>
-      <div>
+      <div style="margin-top:30px">
         <div v-if="(isLevelCompleted == false) && (isGaming == false)">
           Welcome <b>{{ player }}</b> &#x1F600;,<br>
           show the five emotions as shown below.<br>

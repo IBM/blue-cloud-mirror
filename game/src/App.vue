@@ -48,7 +48,7 @@
       <router-view/>
       <b-row>
         <b-col style="text-align:center">
-          <div style="margin-top:50px;margin-bottom:10px;font-size: smaller;color: darkgray;">          <b>GDPR Consent for the processing of Personal Data within BlueCloudMirror Showcase:</b>
+          <div style="margin-top:50px;margin-bottom:10px;font-size: smaller;color: darkgray;"><b>GDPR Consent for the processing of Personal Data within BlueCloudMirror Showcase:</b>
             <br>
             Data protection and privacy are important to us, which is why we want to ensure transparency.  Your consent to play the IBM BlueCloudMirror game is absolutely freely and voluntarily.
             <br>
