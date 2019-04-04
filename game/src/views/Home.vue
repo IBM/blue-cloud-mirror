@@ -60,21 +60,22 @@
           </td>
           <td style="width:25%; vertical-align:top">
               <h5 class="mt-kubernetes">Kubernetes</h5>
-              <li>container orchestration framework</li>
-              <li>production-grade open source project</li>
-              <li>portable workloads</li> 
+              <li>Container orchestration framework</li>
+              <li>Production-grade open source project</li>
+              <li>Portable workloads</li> 
           </td>
           <td style="width:35%; vertical-align:top">    
-                  <h5 class="mt-game">Users service</h5>
-                  Implemented via on-premises Kubernetes environments to ...
-                  <li>avoid storing personal data in a public cloud</li>
-                  <li>allow the service to be moved easily on other environments</li>
+                  <h5 class="mt-game">IBM Watson Studio</h5>
+                  The AI models have been trained with IBM Watson Studio,<br>
+                  to  ...
+                  <li>Leverage resources in the cloud</li>
+                  <li>Run training more efficiently</li>
           </td>
           <td style="width:35%; vertical-align:top">
                   <h5 class="mt-game">Technologies</h5>
-                  <li>Vue.js</li>
-                  <li>TensorFlow.js</li>
-                  <li>IBM Cloud Functions based on Apache OpenWhisk</li>
+                  <li>IBM Watson Studios</li>
+                  <li>TensorFlow</li>
+                  <li>Open source models</li>
           </td>
           </table>
       </b-row>
@@ -88,20 +89,20 @@
                 src="cloud-foundry-icon.png"></b-img></b-link>
           </td>
           <td style="width:25%; vertical-align:top">
-              <h5 class="mt-kubernetes">Cloud Foundry</h5>
-              <li>speed and simplify development</li> 
-              <li>open source project for public and private clouds</li>
-              <li>easy integration of services</li>
+              <h5 class="mt-cloud-foundry">Cloud Foundry</h5>
+              <li>Speed and simplify development</li> 
+              <li>Open source project for public and private clouds</li>
+              <li>Easy integration of services</li>
           </td>
           <td style="width:35%; vertical-align:top">    
-                  <h5 class="mt-game">Users service</h5>
+                  <h5 class="mt-scores">Users service</h5>
                   Scores service and web application <br>
                   Implemented via Cloud Foundry to ...
-                  <li>allow quick theme updates to the web application</li>
-                  <li>allow developers to focus on code rather than infrastructure </li>
+                  <li>Allow quick theme updates to the web application</li>
+                  <li>Allow developers to focus on code rather than infrastructure </li>
           </td>
           <td style="width:35%; vertical-align:top">
-                  <h5 class="mt-game">Technologies</h5>
+                  <h5 class="mt-scores">Technologies</h5>
                   <li>IBM's Cloud Foundry Enterprise Environment</li>
                   <li>Vue.js</li>
                   <li>IBM Cloudant (NoSQL database)</li>
@@ -109,6 +110,46 @@
           </table>
       </b-row>
       <hr>
+      <b-row style="border-style:solid; border-width:0px;">
+          <table style="width:100%">
+          <td style="width:10%; text-align:center; vertical-align:middle">  
+                <b-link :to="'architecture'"><b-img 
+                v-bind="iconProps" alt="watson-studio-icon" 
+                rounded="circle"
+                src="watson-studio-icon.png"></b-img></b-link>
+          </td>
+          <td style="width:25%; vertical-align:top">
+              <h5 class="mt-watson-studio">IBM Watson Studio</h5>
+              <li>Collaboration platform for data focussed tasks</li> 
+              <li>Training of AI models</li>
+              <li>Tools for end to end AI life cycle</li>
+          </td>
+          <td style="width:35%; vertical-align:top">    
+                  <h5 class="mt-watson-studio">IBM Watson Studio</h5>
+                  The AI models have been trained with IBM Watson Studio,<br>
+                  to  ...
+                  <li>Leverage resources in the cloud</li>
+                  <li>Run training more efficiently</li>
+          </td>
+          <td style="width:35%; vertical-align:top">
+                  <h5 class="mt-watson-studio">Technologies</h5>
+                  <li>IBM Watson Studios</li>
+                  <li>TensorFlow</li>
+                  <li>Open source models</li>
+          </td>
+          </table>
+      </b-row>
+      <hr>
+      <b-col>
+        <center>
+        <b-button
+          block
+          v-on:click="onLearnMore"
+          size="lg" 
+          style="height:10%;width:30%;background-color: #FFFFFF !important;border-color:##030303 !important;"     
+        ><font color="black">Learn more about the architecture</font></b-button>
+        </center>
+      </b-col>
     </b-container>
     </div>
 </template>
@@ -126,6 +167,9 @@ export default {
   methods: {
     onStartNewGame() {
       this.$router.push("register");
+    },
+    onLearnMore() {
+      this.$router.push("architecture");
     }
   }
 }
