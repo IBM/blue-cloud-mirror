@@ -44,10 +44,12 @@
         <h4 style="margin-top:35px;margin-bottom:25px">Level 1: Emotions <span> &#128516;</span></h4>
       </b-col>
     </b-row>
+    
     <div id="capture">
+      <!-- EMOTIONS -->
       <b-row>
         <b-col>
-          <div style="display: table;width:50%">
+          <div style="display: table;width:100%">
             <div style="display: table-row;">
               <div style="max-width:100px;display: table-cell;vertical-align: top;">
                 <div :class="happyClass">
@@ -103,6 +105,7 @@
           </div>
         </b-col>
       </b-row>
+      <!-- POSES -->
       <b-row>
         <b-col>
           <h4 style="margin-top:35px;margin-bottom:5px"></h4>
@@ -158,13 +161,13 @@
       </b-row>
     </div>
 
-    <!-- LEVEL DETAILS -->
+    <!-- GAME LEVEL DETAILS -->
     <div style="min-height:20px"></div>
     <b-row v-if="bothLevelsCompleted == true">
       <b-col>
         <h4>Result details</h4>
         <div style="min-height:5px"></div>
-        <div style="display: table;width:100%">
+        <div style="display: table;width:50%">
           <div style="display: table-row;">
             <div style="max-width:5%;display: table-cell;vertical-align: top;"><b>Level</b></div>
             <div style="max-width:15%;display: table-cell;vertical-align: top;"><b>Duration (secs)</b></div>
@@ -200,7 +203,7 @@
     <b-row v-if="this.$store.state.demoMode == true" style="margin-top:10px">
       <b-col>
         <div
-          style="margin-bottom:2px">Note: In this demo version, the user registration is <b>not supported</b>. The name <b>'Demo Player'</b> is used to your save game scores result in the HighScore list.</div>
+          style="margin-bottom:2px"><b>Note:</b> In this demo version, the user registration is <b>not supported</b>. The name <b>'Demo Player'</b> is used to your save game scores result in the HighScore list.</div>
       </b-col>
     </b-row>
 
@@ -263,7 +266,12 @@ import html2canvas from "html2canvas";
 
 export default {
   mounted() {
-    this.$store.commit("setTotalTime", this.getDurationWithPenalties());
+
+    var preResult = this.getDurationWithPenalties();
+    var str = preResult.toString().split('.');
+    var gameResult = str[1].slice(0, 2);
+
+    this.$store.commit("setTotalTime", gameResult);
 
     if (this.$store.state.currentPlayer.isAnonymous == true) {
       this.player = "my secret friend";
