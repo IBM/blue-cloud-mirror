@@ -24,8 +24,6 @@
 
 <template>
   <div class="results">
-    <table style="width:100%">
-    <td style="width:70%">
     <b-row>
       <b-col>
         <h2 style="margin-top:1px;margin-bottom:25px">Results of your game "{{ player }}"</h2>
@@ -244,35 +242,6 @@
       </div>
       <b-btn class="mt-3" @click="hideModal">Close</b-btn>
     </b-modal>
-    </td>
-    <td style="width:30%" bgcolor="#f9f7f7">
-      <center><h5>Behind the scenes of #BlueCloudMirror?</h5></center>
-      <b-row style="margin-top:10px; margin-left:10px; margin-right:10px">
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Z4wU03JnEcU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </b-row>
-      <b-row style="margin-top:10px; margin-left:10px; margin-right:10px">
-        <b-button
-          block
-          v-on:click="onGetAccount"
-          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
-        ><font color="black">Get IBM Cloud Account</font></b-button>
-      </b-row>
-      <b-row style="margin-top:10px; margin-left:10px; margin-right:10px">
-        <b-button
-          block
-          v-on:click="onReadPattern"
-          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
-        ><font color="black">Read Pattern</font></b-button>
-      </b-row>
-      <b-row style="margin-top:10px; margin-left:10px; margin-right:10px">
-        <b-button
-          block
-          v-on:click="onGetTheCode"
-          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
-        ><font color="black">Get code from GitHub</font></b-button>
-      </b-row>
-    </td> 
-    </table>
   </div>
 </template>
 

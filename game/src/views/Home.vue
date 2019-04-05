@@ -8,25 +8,26 @@
     </div>
 
     <div style="margin-top:10px;">
-    <center><b-button 
-       block 
+    <b-button 
        size="lg" 
        style="height:10%;width:30%;background-color: #053c9f !important;border-color:#053c9f !important;"
        v-on:click="onStartNewGame"
-    >Start game</b-button></center>
+    >Start game</b-button>
     </div>
 
     <div style="margin-top:35px;"></div>
-    <h2 style="margin-top:15px;margin-bottom:25px">Explore the architecture of #BlueCloudMirror</h2>
+    <p style="margin-top:15px;margin-bottom:25px">Explore the architecture of <b>#BlueCloudMirror</b></p>
 
     <b-container class="major-technologies">
       <hr>
-      <b-row style="border-style:solid; border-width:0px;">
+      <!-- FUNCTIONS -->
+      <b-row id="FUNCTIONS" style="border-style:solid; border-width:0px;">
           <table style="width:100%">
+          <b-link :to="'architecture'" ><font color="black">
           <td style="width:10%; text-align:center; vertical-align:middle"> 
-                <b-link :to="'architecture'"><b-img  v-bind="iconProps" alt="ibm-cloud-functions-icon" wid
+                <b-img  v-bind="iconProps" alt="ibm-cloud-functions-icon" wid
                 rounded="circle"
-                src="ibm-cloud-functions-icon.png"></b-img></b-link>
+                src="ibm-cloud-functions-icon.png"></b-img>
           </td>
           <td style="width:25%; vertical-align:top">
                 <h5 class="mt-serverless">Serverless</h5>             
@@ -47,11 +48,15 @@
                   <li>TensorFlow.js</li>
                   <li>IBM Cloud Functions based on Apache OpenWhisk</li>
           </td>
+          </font></b-link>
           </table>
       </b-row>
       <hr>
-      <b-row style="border-style:solid; border-width:0px;">
+
+      <!-- KUBERNETES -->
+      <b-row id="KUBERNETES" style="border-style:solid; border-width:0px;">
           <table style="width:100%">
+          <b-link :to="'architecture'" ><font color="black">
           <td style="width:10%; text-align:center; vertical-align:middle">  
                 <b-link :to="'architecture'"><b-img 
                 v-bind="iconProps" alt="kubernetes-icon" 
@@ -77,11 +82,15 @@
                   <li>TensorFlow</li>
                   <li>Open source models</li>
           </td>
+          </font></b-link>
           </table>
       </b-row>
       <hr>
-      <b-row style="border-style:solid; border-width:0px;">
+
+      <!-- CLOUD FOUNDRY -->
+      <b-row id="CLOUD_FOUNDRY" style="border-style:solid; border-width:0px;">
           <table style="width:100%">
+          <b-link :to="'architecture'" ><font color="black">
           <td style="width:10%; text-align:center; vertical-align:middle">  
                 <b-link :to="'architecture'"><b-img 
                 v-bind="iconProps" alt="cloud-foundry-icon" 
@@ -107,11 +116,15 @@
                   <li>Vue.js</li>
                   <li>IBM Cloudant (NoSQL database)</li>
           </td>
+          </font></b-link>
           </table>
       </b-row>
       <hr>
-      <b-row style="border-style:solid; border-width:0px;">
+
+      <!-- WATSON STUDION -->
+      <b-row id="WATSON_STUDION" style="border-style:solid; border-width:0px;">
           <table style="width:100%">
+          <b-link :to="'architecture'" ><font color="black">
           <td style="width:10%; text-align:center; vertical-align:middle">  
                 <b-link :to="'architecture'"><b-img 
                 v-bind="iconProps" alt="watson-studio-icon" 
@@ -137,8 +150,16 @@
                   <li>TensorFlow</li>
                   <li>Open source models</li>
           </td>
+          </font></b-link>
           </table>
       </b-row>
+
+      <!-- Tooltip title specified via prop title -->
+      <b-tooltip target="WATSON_STUDION" title="Click for details"></b-tooltip>
+      <b-tooltip target="CLOUD_FOUNDRY" title="Click for details"></b-tooltip>
+      <b-tooltip target="KUBERNETES" title="Click for details"></b-tooltip>
+      <b-tooltip target="FUNCTIONS" title="Click for details"></b-tooltip>
+
       <hr>
       <b-col>
         <center>
