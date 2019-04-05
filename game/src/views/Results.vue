@@ -32,44 +32,13 @@
     <b-row v-if="bothLevelsCompleted == false">
       <b-col>
         <b
-         style="margin-top:1px;margin-bottom:5px;color: #ffc107 !important"
+         style="margin-top:1px;margin-bottom:5px;color:darkgreen !important"
         >Both levels need to be completed first !</b>
       </b-col>
     </b-row>
-    <b-row v-if="bothLevelsCompleted == true">
-      <b-col>
-        <h4>Overall Duration: {{ durationWithPenalties }} Seconds <span>&#127881;</span></h4>
-        <div style="min-height:20px"></div>
-        <div style="display: table;width:100%">
-          <div style="display: table-row;">
-            <div style="max-width:80px;display: table-cell;vertical-align: top;"><b>Level</b></div>
-            <div style="max-width:80px;display: table-cell;vertical-align: top;"><b>Duration (secs)</b></div>
-            <div style="max-width:80px;display: table-cell;vertical-align: top;"><b>Not Completed</b></div>
-            <div style="display: table-cell;vertical-align: top;"><b>Penalty (secs)</b></div>
-          </div>
-          <div style="display: table-row;">
-            <div style="max-width:80px;display: table-cell;vertical-align: top;">1: Emotions</div>
-            <div
-              style="max-width:80px;display: table-cell;vertical-align: top;"
-            >{{ durationLevelOne }}</div>
-            <div
-              style="max-width:80px;display: table-cell;vertical-align: top;"
-            >{{ amountNotCompletedEmotions }}</div>
-            <div style="display: table-cell;vertical-align: top;">{{ penaltiyEmotions }}</div>
-          </div>
-          <div style="display: table-row;">
-            <div style="max-width:80;display: table-cell;vertical-align: top;">2: Poses</div>
-            <div
-              style="max-width:80px;display: table-cell;vertical-align: top;"
-            >{{ durationLevelTwo }}</div>
-            <div
-              style="max-width:80px;display: table-cell;vertical-align: top;"
-            >{{ amountNotCompletedPoses }}</div>
-            <div style="display: table-cell;vertical-align: top;">{{ penaltiyPoses }}</div>
-          </div>
-        </div>
-      </b-col>
-    </b-row>
+    <div v-if="bothLevelsCompleted == true">
+    <h4>Overall Duration: {{ durationWithPenalties }} Seconds <span>&#127881;</span></h4>
+    </div>
     <b-row>
       <b-col>
         <h4 style="margin-top:35px;margin-bottom:25px">Level 1: Emotions <span> &#128516;</span></h4>
@@ -78,7 +47,7 @@
     <div id="capture">
       <b-row>
         <b-col>
-          <div style="display: table;width:100%">
+          <div style="display: table;width:50%">
             <div style="display: table-row;">
               <div style="max-width:100px;display: table-cell;vertical-align: top;">
                 <div :class="happyClass">
@@ -188,12 +157,55 @@
         </b-col>
       </b-row>
     </div>
+
+    <!-- LEVEL DETAILS -->
+    <div style="min-height:20px"></div>
+    <b-row v-if="bothLevelsCompleted == true">
+      <b-col>
+        <h4>Result details</h4>
+        <div style="min-height:5px"></div>
+        <div style="display: table;width:100%">
+          <div style="display: table-row;">
+            <div style="max-width:5%;display: table-cell;vertical-align: top;"><b>Level</b></div>
+            <div style="max-width:15%;display: table-cell;vertical-align: top;"><b>Duration (secs)</b></div>
+            <div style="max-width:15%;display: table-cell;vertical-align: top;"><b>Not Completed</b></div>
+            <div style="max-width:15%;display: table-cell;vertical-align: top;"><b>Penalty (secs)</b></div>
+          </div>
+          <div style="display: table-row;">
+            <div style="max-width:80px;display: table-cell;vertical-align: top;">1: Emotions</div>
+            <div
+              style="max-width:80px;display: table-cell;vertical-align: top;"
+            >{{ durationLevelOne }}</div>
+            <div
+              style="max-width:80px;display: table-cell;vertical-align: top;"
+            >{{ amountNotCompletedEmotions }}</div>
+            <div style="display: table-cell;vertical-align: top;">{{ penaltiyEmotions }}</div>
+          </div>
+          <div style="display: table-row;">
+            <div style="max-width:80;display: table-cell;vertical-align: top;">2: Poses</div>
+            <div
+              style="max-width:80px;display: table-cell;vertical-align: top;"
+            >{{ durationLevelTwo }}</div>
+            <div
+              style="max-width:80px;display: table-cell;vertical-align: top;"
+            >{{ amountNotCompletedPoses }}</div>
+            <div style="display: table-cell;vertical-align: top;">{{ penaltiyPoses }}</div>
+          </div>
+        </div>
+      </b-col>
+    </b-row>
+
+    <!-- DEMO MODE INFORMATION -->
+    <div style="margin-top:10px"></div>
     <b-row v-if="this.$store.state.demoMode == true" style="margin-top:10px">
       <b-col>
         <div
           style="margin-bottom:2px">Note: In this demo version, the user registration is <b>not supported</b>. The name <b>'Demo Player'</b> is used to your save game scores result in the HighScore list.</div>
       </b-col>
     </b-row>
+
+    <!-- BUTTONS -->
+    <div style="margin-top:10px"></div>
     <b-row>
       <b-col>
         <b-button
