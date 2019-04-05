@@ -50,14 +50,15 @@
                   <h5 class="mt-game">Core game</h5>
                   Implemented as serverless web application, since ...
                   <br>
+                  <br>
                   <table style="width:100%">
                   <tr>
                       <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>it is not accessed 24x7</blockquote></td>
+                      <td style="width:97%; vertical-align:top"><blockquote>It is not accessed 24x7</blockquote></td>
                   </tr>
                   <tr>
                       <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>to make developers productive</blockquote></td>
+                      <td style="width:97%; vertical-align:top"><blockquote>To make developers productive</blockquote></td>
                   </tr>
                   </table>
           </td>
@@ -113,6 +114,7 @@
                   <h5 class="mt-game">IBM Watson Studio</h5>
                   The AI models have been trained with IBM Watson Studio, to ...
                   <br>
+                  <br>
                   <table style="width:100%">
                   <tr>
                       <td style="width:3%; vertical-align:top"><li></li></td>
@@ -164,7 +166,7 @@
               </tr>
               <tr>
                   <td style="width:3%; vertical-align:top"><li></li></td>
-                  <td style="width:97%; vertical-align:top"><blockquote>source project for public and private clouds</blockquote></td>
+                  <td style="width:97%; vertical-align:top"><blockquote>Source project for public and private clouds</blockquote></td>
               </tr>
               <tr>
                   <td style="width:3%; vertical-align:top"><li></li></td>
@@ -175,7 +177,9 @@
           <td style="width:35%; vertical-align:top">    
                   <h5 class="mt-scores">Users service</h5>
                   Scores service and web application
-                  Implemented via Cloud Foundry to ...<br>
+                  Implemented via Cloud Foundry to ...
+                  <br>
+                  <br>
                   <table style="width:100%">
                   <tr>
                       <td style="width:3%; vertical-align:top"><li></li></td>
@@ -254,7 +258,7 @@
                   <table style="width:100%">
                   <tr>
                       <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>BM Watson Studios</blockquote></td>
+                      <td style="width:97%; vertical-align:top"><blockquote>IBM Watson Studios</blockquote></td>
                   </tr>
                   <tr>
                       <td style="width:3%; vertical-align:top"><li></li></td>
@@ -276,7 +280,6 @@
       <b-tooltip target="KUBERNETES" title="Click for details in architecture"></b-tooltip>
       <b-tooltip target="FUNCTIONS" title="Click for details in architecture"></b-tooltip>
 
-      <hr>
       <b-col>
         <center>
         <b-button
