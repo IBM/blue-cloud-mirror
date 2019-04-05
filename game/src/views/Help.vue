@@ -11,10 +11,10 @@
       <p>The game is designed to be a conversation starter at conferences for developers. Having fun, being interactive and using key technologies of the IBM Cloud at the same time. Developers can play anonymously or can they register themselvs and accept the terms and conditions to get the chance to win gadgets at the end of conferences.</p>
     </div>
     <div style="margin-top:10px;">
-         <p>Just watch the YouTube video how the game works.</p>
+      <p>Just watch the YouTube video to see how the game works.</p>
     </div>
-    <center><div style="margin-top:10px;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/jkDWoHjMAig" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></center>
+    <div style="margin-top:10px;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/jkDWoHjMAig" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
     <div style="margin-top:15px;"></div>
     You had fun and got useful technologies insides?
