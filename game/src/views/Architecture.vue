@@ -10,14 +10,14 @@
           block
           v-on:click="onGetAccount"
           style="background-color: #053c9f !important;border-color:#053c9f !important;"
-        >Get IBM Cloud Account</b-button>
+        >Get free IBM Cloud Account</b-button>
        </b-col>
       <b-col>
         <b-button
           block
           v-on:click="onReadPattern"
           style="background-color: #FFFFFF;border-color:#030303;"
-        ><font color="black">Read Pattern</font></b-button>
+        ><font color="black">Read code pattern</font></b-button>
       </b-col>
       <b-col>
          <b-button
@@ -45,11 +45,11 @@
         <area target="_blank" alt="IBM Cloudant" title="IBM Cloudant" href="https://cloud.ibm.com/docs/services/Cloudant?topic=cloudant-ibm-cloudant-basics#ibm-cloudant-basics" coords="389,109,389,167,437,168,434,108,392,109" shape="poly">
         <area target="_blank" alt="IBM APP ID" title="IBM APP ID" href="https://cloud.ibm.com/docs/services/appid?topic=appid-about#about" coords="300,35,299,98,351,98,352,36" shape="poly">
         <area target="_blank" alt="Tensor Flow" title="Tensor Flow" href="https://www.tensorflow.org/js/" coords="382,465,443,465,443,405,384,405" shape="poly">
-        <area target="_blank" alt="IBM Watson Studio" title="IBM Watson Studio" href="https://dataplatform.cloud.ibm.com/" coords="290,400,290,464,360,465,359,402" shape="poly">
+        <area target="_blank" alt="IBM Watson Studio" title="IBM Watson Studio" href="https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/welcome-main.html?context=analytics" coords="290,400,290,464,360,465,359,402" shape="poly">
         <area target="_blank" alt="IBM Cloud Foundry Enterprise Environment" title="IBM Cloud Foundry Enterprise Environment" href="https://cloud.ibm.com/docs/cloud-foundry?topic=cloud-foundry-about#about" coords="282,254,280,322,374,323,371,256" shape="poly">
         <area target="_blank" alt="Couch DB" title="Couch DB" href="https://couchdb.apache.org/" coords="511,244,511,298,577,300,574,243" shape="poly">
         <area target="_blank" alt="Node.JS" title="Node.JS" href="https://nodejs.org/en/" coords="507,176,505,229,577,231,576,176" shape="poly">
-        <area target="_blank" alt="IBM Cloud Object Storage" title="IBM Cloud Object Storage" href="https://cloud.ibm.com/catalog/services/cloud-object-storage" coords="209,35,210,96,274,97,272,37" shape="poly">
+        <area target="_blank" alt="IBM Cloud Object Storage" title="IBM Cloud Object Storage" href="https://cloud.ibm.com/docs/services/cloud-object-storage?topic=cloud-object-storage-about-ibm-cloud-object-storage#about-ibm-cloud-object-storage" coords="209,35,210,96,274,97,272,37" shape="poly">
         <area target="_blank" alt="Lite API Management" title="Lite API Management" href="https://cloud.ibm.com/docs/api-management?topic=api-management-manage_openwhisk_apis#manage_openwhisk_apis" coords="190,110,190,165,288,167,288,111" shape="poly">
     </map>
     </div>

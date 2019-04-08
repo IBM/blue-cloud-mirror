@@ -59,7 +59,7 @@
       <hr>
 
       <!-- KUBERNETES -->
-      <b-link :to="'architecture'" style="decoration:none; text-decoration:none;"><font color="black"><hover style="decoration:none;">
+      <b-link :to="'architecture'" style="decoration:none; text-decoration:none;"><font color="black">
       <b-row id="KUBERNETES" style="border-style:solid; border-width:0px;">
           <table style="width:100%">
           <td style="width:10%; text-align:center; vertical-align:middle">  
@@ -95,7 +95,7 @@
           </td>
           </table>
       </b-row>
-      </hover></font></b-link>
+      </font></b-link>
       <hr>
 
       <!-- CLOUD FOUNDRY -->
@@ -177,10 +177,10 @@
       </font></b-link>
     
       <!-- Tooltip title specified via prop title -->
-      <b-tooltip target="WATSON_STUDION" title="See details in architecture"></b-tooltip>
-      <b-tooltip target="CLOUD_FOUNDRY" title="See details in architecture"></b-tooltip>
-      <b-tooltip target="KUBERNETES" title="See details in architecture"></b-tooltip>
-      <b-tooltip target="FUNCTIONS" title="See details in architecture"></b-tooltip>
+      <b-tooltip target="WATSON_STUDION" title="Get more details in the architecture page"></b-tooltip>
+      <b-tooltip target="CLOUD_FOUNDRY" title="Get more details in the architecture page"></b-tooltip>
+      <b-tooltip target="KUBERNETES" title="Get more details in the architecture page"></b-tooltip>
+      <b-tooltip target="FUNCTIONS" title="Get more details in the architecture page"></b-tooltip>
 
       <b-col>
         <center>
