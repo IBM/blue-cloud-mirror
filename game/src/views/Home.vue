@@ -19,11 +19,10 @@
     <p style="margin-top:15px;margin-bottom:25px">Explore the architecture of <b>#BlueCloudMirror</b></p>
 
     <b-container class="major-technologies">
-      <hr>
       <!-- FUNCTIONS -->
+      <b-link :to="'architecture'" style="text-decoration:none;decoration:none;"><font color="black">
       <b-row id="FUNCTIONS" style="border-style:solid; border-width:0px;">
           <table style="width:100%">
-          <b-link :to="'architecture'" ><font color="black">
           <td style="width:10%; text-align:center; vertical-align:middle"> 
                 <b-img  v-bind="iconProps" alt="ibm-cloud-functions-icon" wid
                 rounded="circle"
@@ -38,13 +37,13 @@
                 </ul>
           </td>
           <td style="width:35%; vertical-align:top">    
-                  <h5 class="mt-game">Core game</h5>
-                  Implemented as serverless web application, since ...
-                  <ul style="margin-right: 20px">
+                <h5 class="mt-game">Core game</h5>
+                Implemented as serverless web application, since ...
+                <ul style="margin-right: 20px">
                     <li>Automated scale up and to zero</li>
                     <li>Event driven code</li>
                     <li>Stateless compute</li>
-                  </ul>
+                </ul>
           </td>
           <td style="width:35%; vertical-align:top">
                   <h5 class="mt-game">Technologies</h5>
@@ -54,19 +53,20 @@
                     <li>IBM Cloud Functions based on Apache OpenWhisk</li>
                   </ul>
           </td>
-          </font></b-link>
           </table>
       </b-row>
+      </font></b-link>
       <hr>
+
       <!-- KUBERNETES -->
+      <b-link :to="'architecture'" style="decoration:none; text-decoration:none;"><font color="black"><hover style="decoration:none;">
       <b-row id="KUBERNETES" style="border-style:solid; border-width:0px;">
           <table style="width:100%">
-          <b-link :to="'architecture'" style="decoration:none" ><font color="black">
           <td style="width:10%; text-align:center; vertical-align:middle">  
-                <b-link :to="'architecture'"><b-img 
+                <b-img 
                 v-bind="iconProps" alt="kubernetes-icon" 
                 rounded="circle"
-                src="kubernetes-icon.png"></b-img></b-link>
+                src="kubernetes-icon.png"></b-img>
           </td>
           <td style="width:25%; vertical-align:top">
               <h5 class="mt-game">Kubernetes</h5>
@@ -86,26 +86,27 @@
               </ul>
           </td>
           <td style="width:35%; vertical-align:top:">
-                  <h5 class="mt-game">Technologies</h5>
-                  <ul style="margin-right: 20px">
-                            <li>IBM Cloud Private</li>
-                            <li>Other Kubernetes environments like Minikube</li>
-                            <li>IBM Secure Gateway</li>
-                  </ul>
+              <h5 class="mt-game">Technologies</h5>
+               <ul style="margin-right: 20px">
+                     <li>IBM Cloud Private</li>
+                     <li>Other Kubernetes environments like Minikube</li>
+                     <li>IBM Secure Gateway</li>
+               </ul>
           </td>
-          </font></b-link>
           </table>
       </b-row>
+      </hover></font></b-link>
       <hr>
+
       <!-- CLOUD FOUNDRY -->
-      <b-link :to="'architecture'" style="decoration: none;"><font color="black"> 
+      <b-link :to="'architecture'" style="decoration: none; text-decoration:none;"><font color="black"> 
       <b-row id="CLOUD_FOUNDRY" style="border-style:solid; border-width:0px;">
           <table style="width:100%">
           <td style="width:10%; text-align:center; vertical-align:middle">  
-                <b-link :to="'architecture'"><b-img 
+                <b-img 
                 v-bind="iconProps" alt="cloud-foundry-icon" 
                 rounded="circle"
-                src="cloud-foundry-icon.png"></b-img></b-link>
+                src="cloud-foundry-icon.png"></b-img>
           </td>
           <td style="width:25%; vertical-align:top">
               <h5 class="mt-game">Cloud Foundry</h5>
@@ -136,15 +137,16 @@
       </b-row>
       </font></b-link>
       <hr>
+
       <!-- WATSON STUDION -->
-      <b-link :to="'architecture'" style="text-decoration: none;" ><font color="black">
+      <b-link :to="'architecture'" style="text-decoration:none;" ><font color="black">
       <b-row id="WATSON_STUDION" style="border-style:solid; border-width:0px;">
           <table style="width:100%">
           <td style="width:10%; text-align:center; vertical-align:middle">  
-                <b-link :to="'architecture'" style="decoration:none"><b-img 
+                <b-img 
                 v-bind="iconProps" alt="watson-studio-icon" 
                 rounded="circle"
-                src="watson-studio-icon.png"></b-img></b-link>
+                src="watson-studio-icon.png"></b-img>
           </td>
           <td style="width:25%; vertical-align:top">
               <h5 class="mt-scores">IBM Watson Studio</h5>
@@ -173,7 +175,7 @@
           </table>
       </b-row>
       </font></b-link>
-
+    
       <!-- Tooltip title specified via prop title -->
       <b-tooltip target="WATSON_STUDION" title="See details in architecture"></b-tooltip>
       <b-tooltip target="CLOUD_FOUNDRY" title="See details in architecture"></b-tooltip>

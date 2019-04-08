@@ -5,7 +5,7 @@ package-lock.json
 emotion-recognition-application.json
 local.env
 scripts/object-storage.log
-scripts/game-cloud-foundry.log
+scripts/game-deploy-cloud-foundry.log
 scripts/openwhisk-create-html.log
 scripts/game-configure-apis.log
 scripts/game-deploy-cloudant.log

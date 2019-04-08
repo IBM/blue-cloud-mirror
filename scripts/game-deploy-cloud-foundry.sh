@@ -18,7 +18,7 @@
 root_folder=$(cd $(dirname $0); pwd)
 
 # SETUP logging (redirect stdout and stderr to a log file)
-readonly LOG_FILE="${root_folder}/game-cloud-foundry.log"
+readonly LOG_FILE="${root_folder}/game-deploy-cloud-foundry.log"
 readonly ENV_FILE="${root_folder}/../game/local.env"
 touch $LOG_FILE
 exec 3>&1 # Save stdout
