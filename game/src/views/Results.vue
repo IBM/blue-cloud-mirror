@@ -24,9 +24,10 @@
 
 <template>
   <div class="results">
+    <!-- MAIN RESULT -->
     <b-row>
       <b-col>
-        <h2 style="margin-top:1px;margin-bottom:25px">Results of your game "{{ player }}"</h2>
+        <h2 style="margin-top:1px;margin-bottom:25px">Results of your game {{ player }}</h2>
       </b-col>
     </b-row>
     <b-row v-if="bothLevelsCompleted == false">
@@ -35,16 +36,81 @@
          style="margin-top:1px;margin-bottom:5px;color:darkgreen !important"
         >Both levels need to be completed first !</b>
       </b-col>
-    </b-row>
+    </b-row>    
+    <div style="min-height:20px"></div>
     <div v-if="bothLevelsCompleted == true">
     <h4>Overall Duration: {{ durationWithPenalties }} Seconds <span>&#127881;</span></h4>
     </div>
+    <!-- BUTTONS -->
+    <div style="margin-top:10px"></div>
+    <b-row>
+      <b-col>
+        <b-button
+          block
+          v-on:click="onStartNewGame"
+          style="margin-right:10px;background-color: #053c9f;border-color:#053c9f;"
+        >Start new game</b-button>
+      </b-col>
+      <b-col>
+        <b-button
+          block
+          v-on:click="onSaveScore"
+          variant="primary"
+          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          :disabled="isPlayerAnonymous"
+        ><font color="black">Save score</font></b-button>
+      </b-col>
+      <b-col>
+        <b-button
+            block
+            v-on:click="onTweet"
+            variant="primary"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          ><font color="black">Tweet</font></b-button>
+      </b-col>
+      <b-col v-if="tweetButtonDisabled == false">
+        <b-button
+            v-if="tweetButtonDisabled == false"
+            v-on:click="onTweetCard"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+            :disabled="tweetButtonDisabled == true"
+          ><font color="black">{{tweetLabel}}</font></b-button>
+      </b-col>
+      <b-col>
+          <b-button
+            block 
+            v-on:click="onDownloadImage"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          ><font color="black">Get game image</font></b-button>
+      </b-col>
+    </b-row>
+       <b-col>
+          <center><b-button
+            block 
+            v-on:click="onArchitecture"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          ><font color="black">Get details of the game architecture.</font></b-button></center>
+      </b-col>
+    <b-row>
+    </b-row>
+    <a id="exportElementHidden" style="display:none"/>
+    <b-modal ref="modelDialog" hide-footer title="Error saving Scores">
+      <div>
+        <div>The user's score couldn't be stored.</div>
+      </div>
+      <b-btn class="mt-3" @click="hideModal">Close</b-btn>
+    </b-modal>
+    <hr>
+    <!-- DETAIL RESULTS -->
+    <div style="min-height:10x"></div>
+    <h4>Result details</h4>
+    <div style="min-height:10x"></div>
+    <h4>Images</h4>
     <b-row>
       <b-col>
         <h4 style="margin-top:35px;margin-bottom:25px">Level 1: Emotions <span> &#128516;</span></h4>
       </b-col>
     </b-row>
-    
     <div id="capture">
       <!-- EMOTIONS -->
       <b-row>
@@ -165,7 +231,7 @@
     <div style="min-height:20px"></div>
     <b-row v-if="bothLevelsCompleted == true">
       <b-col>
-        <h4>Result details</h4>
+        <h4>Time</h4>
         <div style="min-height:5px"></div>
         <div style="display: table;width:50%">
           <div style="display: table-row;">
@@ -206,57 +272,6 @@
           style="margin-bottom:2px"><b>Note:</b> In this demo version, the user registration is <b>not supported</b>. The name <b>'Demo Player'</b> is used to your save game scores result in the HighScore list.</div>
       </b-col>
     </b-row>
-
-    <!-- BUTTONS -->
-    <div style="margin-top:10px"></div>
-    <b-row>
-      <b-col>
-        <b-button
-          block
-          v-on:click="onStartNewGame"
-          style="margin-right:10px;background-color: #053c9f;border-color:#053c9f;"
-        >Start new game</b-button>
-      </b-col>
-      <b-col>
-        <b-button
-          block
-          v-on:click="onSaveScore"
-          variant="primary"
-          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
-          :disabled="isPlayerAnonymous"
-        ><font color="black">Save score</font></b-button>
-      </b-col>
-      <b-col>
-        <b-button
-            block
-            v-on:click="onTweet"
-            variant="primary"
-            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
-          ><font color="black">Tweet</font></b-button>
-      </b-col>
-      <b-col v-if="tweetButtonDisabled == false">
-        <b-button
-            v-if="tweetButtonDisabled == false"
-            v-on:click="onTweetCard"
-            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
-            :disabled="tweetButtonDisabled == true"
-          ><font color="black">{{tweetLabel}}</font></b-button>
-      </b-col>
-      <b-col>
-          <b-button
-            block 
-            v-on:click="onDownloadImage"
-            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
-          ><font color="black">Get game image</font></b-button>
-      </b-col>
-    </b-row>
-    <a id="exportElementHidden" style="display:none"/>
-    <b-modal ref="modelDialog" hide-footer title="Error saving Scores">
-      <div>
-        <div>The user's score couldn't be stored.</div>
-      </div>
-      <b-btn class="mt-3" @click="hideModal">Close</b-btn>
-    </b-modal>
   </div>
 </template>
 

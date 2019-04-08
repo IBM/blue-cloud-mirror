@@ -56,10 +56,10 @@
     <hr>
     <!-- YouTube -->
     <div style="margin-top:15px;">
-    Watch the webinar to understand how the components are used and interact.
+    Watch the webinar to understand how the components are used and interact. Select you starting point of the YouTube video.
     <div style="margin-top:15px;"></div>
     <b-row>
-      <b-col>
+      <b-col>     
         <center><iframe
           v-for="data in youtubeJSON"
           v-bind:key="data.width"
@@ -73,24 +73,55 @@
         </iframe></center>
       </b-col>
       <b-col>
-          Select your start:
+          <b-button-group vertical>
+          <b-button
+            block 
+            v-on:click="onYouTubeDemo"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          ><font color="black">Game demo [5:03 mins]</font></b-button>
           <div style="margin-top:5px;"></div>
-          <b-link v-on:click="onYouTubeDemo"><li>Game demo [5:03 mins]</li></b-link>
+          <b-button
+            block 
+            v-on:click="onYouTubeMotivation"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          ><font color="black">Motivation to build #BlueCloudMirror [7:05 mins]</font></b-button>
           <div style="margin-top:5px;"></div>
-          <b-link v-on:click="onYouTubeMotivation"><li>Motivation to build #BlueCloudMirror [7:05 mins]</li></b-link>
+          <b-button
+            block 
+            v-on:click="onYouTubeArchitecture"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          ><font color="black">Architecture and four main components [8:30 mins] [7:05 mins]</font></b-button>
           <div style="margin-top:5px;"></div>
-          <b-link v-on:click="onYouTubeArchitecture"><li>Architecture and four main components [8:30 mins]</li></b-link>
+          <b-button
+            block 
+            v-on:click="onYouTubeSetup"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          ><font color="black">Setup #BlueCloudMirror in five minutes [13:45 mins]</font></b-button>
           <div style="margin-top:5px;"></div>
-          <b-link v-on:click="onYouTubeSetup"><li>Setup #BlueCloudMirror in five minutes [13:45 mins]</li></b-link>
-          <div style="margin-top:5px;"></div> 
-          <b-link v-on:click="onYouTubeTensorFlow"><li>Three TensorFlow.js visual recognition models [14:37 mins]</li></b-link>
+          <b-button
+            block 
+            v-on:click="onYouTubeTensorFlow"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          ><font color="black">Three TensorFlow.js visual recognition models [14:37 mins]</font></b-button>
           <div style="margin-top:5px;"></div>
-          <b-link v-on:click="onYouTubeCoreGame"><li>Architecture of the core game [21:50 mins]</li></b-link>
+          <b-button
+            block 
+            v-on:click="onYouTubeCoreGame"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          ><font color="black">Architecture of the core game [21:50 mins]</font></b-button>
           <div style="margin-top:5px;"></div>
-          <b-link v-on:click="onYouTubeUsers"><li>Architecture of the users service [27:20 mins]</li></b-link>
+          <b-button
+            block 
+            v-on:click="onYouTubeUsers"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          ><font color="black">Architecture of the users service [27:20 mins]</font></b-button>
           <div style="margin-top:5px;"></div>
-          <b-link v-on:click="onYouTubeScores"><li>Architecture of the scores service [35:38 mins]</li></b-link> 
-          <div style="margin-top:5px;"></div>        
+          <b-button
+            block 
+            v-on:click="onYouTubeScores"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          ><font color="black">Architecture of the scores service [35:38 mins]</font></b-button>
+          </b-button-group>     
       </b-col>
     </b-row>
     </div>

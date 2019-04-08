@@ -31,53 +31,28 @@
           </td>
           <td style="width:25%; vertical-align:top">
                 <h5 class="mt-serverless">Serverless</h5>
-                <table style="width:100%; cellspacing:; cellpadding:">
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>Automated scale up and to zero</blockquote></td>
-                  </tr>
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>Event driven code</blockquote></td>
-                  </tr>
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>Stateless compute</blockquote></td>
-                  </tr>
-                </table>
+                <ul style="margin-right: 20px">
+                    <li>Automated scale up and to zero</li>
+                    <li>Event driven code</li>
+                    <li>Stateless compute</li>
+                </ul>
           </td>
           <td style="width:35%; vertical-align:top">    
                   <h5 class="mt-game">Core game</h5>
                   Implemented as serverless web application, since ...
-                  <br>
-                  <br>
-                  <table style="width:100%">
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>It is not accessed 24x7</blockquote></td>
-                  </tr>
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>To make developers productive</blockquote></td>
-                  </tr>
-                  </table>
+                  <ul style="margin-right: 20px">
+                    <li>Automated scale up and to zero</li>
+                    <li>Event driven code</li>
+                    <li>Stateless compute</li>
+                  </ul>
           </td>
           <td style="width:35%; vertical-align:top">
                   <h5 class="mt-game">Technologies</h5>
-                  <table style="width:100%">
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>Vue.js</blockquote></td>
-                  </tr>
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>TensorFlow.js</blockquote></td>
-                  </tr>
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>IBM Cloud Functions based on Apache OpenWhisk</blockquote></td>
-                  </tr>
-                  </table>
+                  <ul style="margin-right: 20px">
+                    <li>Vue.js</li>
+                    <li>TensorFlow.js</li>
+                    <li>IBM Cloud Functions based on Apache OpenWhisk</li>
+                  </ul>
           </td>
           </font></b-link>
           </table>
@@ -86,7 +61,7 @@
       <!-- KUBERNETES -->
       <b-row id="KUBERNETES" style="border-style:solid; border-width:0px;">
           <table style="width:100%">
-          <b-link :to="'architecture'" ><font color="black">
+          <b-link :to="'architecture'" style="decoration:none" ><font color="black">
           <td style="width:10%; text-align:center; vertical-align:middle">  
                 <b-link :to="'architecture'"><b-img 
                 v-bind="iconProps" alt="kubernetes-icon" 
@@ -94,63 +69,38 @@
                 src="kubernetes-icon.png"></b-img></b-link>
           </td>
           <td style="width:25%; vertical-align:top">
-              <h5 class="mt-kubernetes">Kubernetes</h5>
-              <table style="width:100%">
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>Container orchestration framework</blockquote></td>
-                  </tr>
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>Production-grade open source project</blockquote></td>
-                  </tr>
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>Portable workloads</blockquote></td>
-                  </tr>
-              </table>
+              <h5 class="mt-game">Kubernetes</h5>
+              <ul style="margin-right: 20px">
+                    <li>Container orchestration framework</li>
+                    <li>Production-grade open source project</li>
+                    <li>Portable workloads</li>
+              </ul>
           </td>
-          <td style="width:35%; vertical-align:top">    
-                  <h5 class="mt-game">IBM Watson Studio</h5>
-                  The AI models have been trained with IBM Watson Studio, to ...
-                  <br>
-                  <br>
-                  <table style="width:100%">
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>Leverage resources in the cloud</blockquote></td>
-                  </tr>
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>Run training more efficiently</blockquote></td>
-                  </tr>
-                  </table> 
+          <td style="width:35%; vertical-align:top"> 
+              <h5 class="mt-game">Users service</h5>
+              Implemented via on-premises Kubernetes environments to ...
+              <ul style="margin-right: 20px">
+                    <li>Avoid storing personal data in a public cloud</li>
+                    <li>Allow the service to be moved easily on other environments</li>
+                    <li>Allow the service to be moved easily on other environments</li>
+              </ul>
           </td>
-          <td style="width:35%; vertical-align:top">
+          <td style="width:35%; vertical-align:top:">
                   <h5 class="mt-game">Technologies</h5>
-                  <table style="width:100%">
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>IBM Watson Studios</blockquote></td>
-                  </tr>
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>TensorFlow</blockquote></td>
-                  </tr>
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>Open source models</blockquote></td>
-                  </tr>
-                  </table> 
+                  <ul style="margin-right: 20px">
+                            <li>IBM Cloud Private</li>
+                            <li>Other Kubernetes environments like Minikube</li>
+                            <li>IBM Secure Gateway</li>
+                  </ul>
           </td>
           </font></b-link>
           </table>
       </b-row>
       <hr>
       <!-- CLOUD FOUNDRY -->
+      <b-link :to="'architecture'" style="decoration: none;"><font color="black"> 
       <b-row id="CLOUD_FOUNDRY" style="border-style:solid; border-width:0px;">
           <table style="width:100%">
-          <b-link :to="'architecture'" ><font color="black">
           <td style="width:10%; text-align:center; vertical-align:middle">  
                 <b-link :to="'architecture'"><b-img 
                 v-bind="iconProps" alt="cloud-foundry-icon" 
@@ -158,127 +108,77 @@
                 src="cloud-foundry-icon.png"></b-img></b-link>
           </td>
           <td style="width:25%; vertical-align:top">
-              <h5 class="mt-cloud-foundry">Cloud Foundry</h5>
-              <table style="width:100%">
-              <tr>
-                  <td style="width:3%; vertical-align:top"><li></li></td>
-                  <td style="width:97%; vertical-align:top"><blockquote>Speed and simplify development</blockquote></td>
-              </tr>
-              <tr>
-                  <td style="width:3%; vertical-align:top"><li></li></td>
-                  <td style="width:97%; vertical-align:top"><blockquote>Source project for public and private clouds</blockquote></td>
-              </tr>
-              <tr>
-                  <td style="width:3%; vertical-align:top"><li></li></td>
-                  <td style="width:97%; vertical-align:top"><blockquote>Easy integration of services</blockquote></td>
-              </tr>
-              </table>
+              <h5 class="mt-game">Cloud Foundry</h5>
+              <ul style="margin-right: 20px">
+                    <li>Speed and simplify development</li>
+                    <li>Source project for public and private clouds</li>
+                    <li>Easy integration of services</li>
+              </ul>
           </td>
           <td style="width:35%; vertical-align:top">    
-                  <h5 class="mt-scores">Users service</h5>
+                  <h5 class="mt-scores">Scores service</h5>
                   Scores service and web application
                   Implemented via Cloud Foundry to ...
-                  <br>
-                  <br>
-                  <table style="width:100%">
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>Allow quick theme updates to the web application</blockquote></td>
-                  </tr>
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>Allow developers to focus on code rather than infrastructure</blockquote></td>
-                  </tr>
-                  </table>
+                  <ul style="margin-right: 20px">
+                    <li>Allow quick theme updates to the web application</li>
+                    <li>Allow developers to focus on code rather than infrastructure</li>
+                 </ul>
           </td>
           <td style="width:35%; vertical-align:top">
                   <h5 class="mt-scores">Technologies</h5>
-                                    <table style="width:100%">
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>IBM's Cloud Foundry Enterprise Environment</blockquote></td>
-                  </tr>
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>Vue.js</blockquote></td>
-                  </tr>
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>IBM Cloudant (NoSQL database)</blockquote></td>
-                  </tr>
-                  </table>
+                  <ul style="margin-right: 20px">
+                    <li>IBM's Cloud Foundry Enterprise Environment</li>
+                    <li>Vue.js</li>
+                    <li>IBM Cloudant (NoSQL database)</li>
+                 </ul>
           </td>
-          </font></b-link>
           </table>
       </b-row>
+      </font></b-link>
       <hr>
       <!-- WATSON STUDION -->
+      <b-link :to="'architecture'" style="text-decoration: none;" ><font color="black">
       <b-row id="WATSON_STUDION" style="border-style:solid; border-width:0px;">
           <table style="width:100%">
-          <b-link :to="'architecture'" ><font color="black">
           <td style="width:10%; text-align:center; vertical-align:middle">  
-                <b-link :to="'architecture'"><b-img 
+                <b-link :to="'architecture'" style="decoration:none"><b-img 
                 v-bind="iconProps" alt="watson-studio-icon" 
                 rounded="circle"
                 src="watson-studio-icon.png"></b-img></b-link>
           </td>
           <td style="width:25%; vertical-align:top">
-              <h5 class="mt-watson-studio">IBM Watson Studio</h5>
-              <table style="width:100%">
-              <tr>
-                  <td style="width:3%; vertical-align:top"><li></li></td>
-                  <td style="width:97%; vertical-align:top"><blockquote>Collaboration platform for data focussed tasks</blockquote></td>
-              </tr>
-              <tr>
-                  <td style="width:3%; vertical-align:top"><li></li></td>
-                  <td style="width:97%; vertical-align:top"><blockquote>Training of AI models</blockquote></td>
-              </tr>
-              <tr>
-                  <td style="width:3%; vertical-align:top"><li></li></td>
-                  <td style="width:97%; vertical-align:top"><blockquote>Tools for end to end AI life cycle</blockquote></td>
-              </tr>
-              </table>
+              <h5 class="mt-scores">IBM Watson Studio</h5>
+              <ul style="margin-right: 20px">
+                    <li>Collaboration platform for data focussed tasks</li>
+                    <li>Training of AI models</li>
+                    <li>Tools for end to end AI life cycle</li>
+              </ul>
           </td>
           <td style="width:35%; vertical-align:top">    
                   <h5 class="mt-watson-studio">IBM Watson Studio</h5>
                   The AI models have been trained with IBM Watson Studio, to ...
-                  <table style="width:100%">
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>Leverage resources in the cloud</blockquote></td>
-                  </tr>
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>Run training more efficiently</blockquote></td>
-                  </tr>
-                  </table>              
+                  <ul style="margin-right: 20px">
+                    <li>Leverage resources in the cloud</li>
+                    <li>Run training more efficiently</li>
+                  </ul>              
           </td>
           <td style="width:35%; vertical-align:top">
                   <h5 class="mt-watson-studio">Technologies</h5>
-                  <table style="width:100%">
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>IBM Watson Studios</blockquote></td>
-                  </tr>
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>TensorFlow</blockquote></td>
-                  </tr>
-                  <tr>
-                      <td style="width:3%; vertical-align:top"><li></li></td>
-                      <td style="width:97%; vertical-align:top"><blockquote>Open source models</blockquote></td>
-                  </tr>
-                  </table>
+                  <ul style="margin-right: 20px">
+                    <li>IBM Watson Studios</li>
+                    <li>TensorFlow</li>
+                    <li>Open source models</li>
+                  </ul> 
           </td>
-          </font></b-link>
           </table>
       </b-row>
+      </font></b-link>
 
       <!-- Tooltip title specified via prop title -->
-      <b-tooltip target="WATSON_STUDION" title="Click for details in architecture"></b-tooltip>
-      <b-tooltip target="CLOUD_FOUNDRY" title="Click for details in architecture"></b-tooltip>
-      <b-tooltip target="KUBERNETES" title="Click for details in architecture"></b-tooltip>
-      <b-tooltip target="FUNCTIONS" title="Click for details in architecture"></b-tooltip>
+      <b-tooltip target="WATSON_STUDION" title="See details in architecture"></b-tooltip>
+      <b-tooltip target="CLOUD_FOUNDRY" title="See details in architecture"></b-tooltip>
+      <b-tooltip target="KUBERNETES" title="See details in architecture"></b-tooltip>
+      <b-tooltip target="FUNCTIONS" title="See details in architecture"></b-tooltip>
 
       <b-col>
         <center>
