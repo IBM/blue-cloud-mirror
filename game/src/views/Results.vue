@@ -84,7 +84,7 @@
           ><font color="black">Get game image</font></b-button>
       </b-col>
     </b-row>
-       <div style="margin-top:10px"></div>
+       <div style="margin-top:20px"></div>
        <b-col>
           <center><b-button
             v-on:click="onArchitecture"
@@ -279,10 +279,7 @@ import html2canvas from "html2canvas";
 
 export default {
   mounted() {
-
-    var preResult = this.getDurationWithPenalties();
-    var str = preResult.toString().split('.');
-    var gameResult = str[1].slice(0, 2);
+    var gameResult = this.getDurationWithPenalties();
 
     this.$store.commit("setTotalTime", gameResult);
 
@@ -467,7 +464,8 @@ export default {
       return this.getAmountNotCompletedPoses();
     },
     durationWithPenalties: function() {
-      return this.getDurationWithPenalties();
+      var result = Math.round(((parseFloat(this.getDurationWithPenalties()) * 100) / 100));
+      return result;
     },
     penaltiyEmotions: function() {
       return this.getPenaltiyEmotions();
@@ -490,6 +488,9 @@ export default {
     onReadPattern() {
       window.location =
         "https://developer.ibm.com/patterns/cloud-showcase-blue-mirror/";
+    },
+    onArchitecture() {
+      this.$router.push("architecture");
     },
     otherDomainUrl: function(image) {
       let otherDomainUrl = this.$store.state.otherDomainUrl;
@@ -598,6 +599,7 @@ export default {
           })
           .then(function(response) {
             that.$router.push("start");
+            window.open(this.$store.state.apis.scores.url, '_blank');
           })
           .catch(function(error) {
             console.log(error);
