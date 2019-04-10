@@ -71,7 +71,7 @@
 import browserVerification from '@/components/browserVerification.vue';
 
 export default {
-  mounted() { 
+  mounted() {
   },
   components: {
     browserVerification

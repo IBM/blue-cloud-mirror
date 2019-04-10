@@ -128,7 +128,22 @@ export default {
       this.show = false;
       //this.$store.commit("updateCurrentPlayer");
     }
-    
+
+    if (process.env.NODE_ENV === "development"){
+        console.log("process env development",process.env);
+    };
+    if (process.env.NODE_ENV === "production"){
+        console.log("process env production",process.env);
+    };
+    if (process.env.VUE_APP_API_SCORES != "scores-url-not-defined"){
+        this.$store.commit("setApiScores",process.env.VUE_APP_API_SCORES);
+    };
+    if (process.env.VUE_APP_API_USERS != "users-url-not-defined"){
+        this.$store.commit("setApiUsers",process.env.VUE_APP_API_USERS);
+    };
+    if (process.env.HIGHSCORE_URL != "highscore-url-not-defined"){
+        this.$store.commit("setHighScoreURL",process.env.VUE_APP_HIGHSCORE_URL);
+    };
   },
   methods: {
     showModal () {
@@ -180,7 +195,7 @@ export default {
               that.$router.push("emotions");
             })
             .catch(function(error) {
-              console.log(error);
+              console.log("error:",error);
               that.$store.commit("clearCurrentPlayer");
               that.showModal();
             });

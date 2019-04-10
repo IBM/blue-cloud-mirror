@@ -94,11 +94,22 @@
     <b-row>
     </b-row>
     <a id="exportElementHidden" style="display:none"/>
-    <b-modal ref="modelDialog" hide-footer title="Error saving Scores">
+    <!-- MODAL DIALOG-->
+    <b-modal ref="modalDialog" 
+             hide-footer 
+             title="Information">
       <div>
-        <div>The user's score couldn't be stored.</div>
+        <div>{{message}}</div>
       </div>
       <b-btn class="mt-3" @click="hideModal">Close</b-btn>
+    </b-modal>
+    <b-modal ref="modalDialogError" 
+             hide-footer 
+             title="Error">
+      <div>
+        <div>{{message}}</div>>
+      </div>
+      <b-btn class="mt-3" @click="hideModalError">Close</b-btn>
     </b-modal>
     <hr>
     <!-- DETAIL RESULTS -->
@@ -276,6 +287,7 @@
 <script>
 import axios from "axios";
 import html2canvas from "html2canvas";
+import { MomentumOptimizer } from '@tensorflow/tfjs';
 
 export default {
   mounted() {
@@ -330,10 +342,11 @@ export default {
       facepose5.src = this.$store.state.currentGame.poses.results.imagePose5;
     }
   },
-  data() {
+  data () {
     return {
       player: "",
-      tweeting: false
+      tweeting: false,
+      message: ""
     };
   },
   computed: {
@@ -475,6 +488,7 @@ export default {
     }
   },
   methods: {
+    
     onGetTheCode() {
       window.location = "https://github.com/ibm/blue-cloud-mirror";
     },
@@ -505,10 +519,16 @@ export default {
       return output;
     },
     showModal() {
-      this.$refs.modelDialog.show();
+      this.$refs['modalDialog'].show();
     },
     hideModal() {
-      this.$refs.modelDialog.hide();
+      this.$refs['modalDialog'].hide();
+    },
+    showModalError() {
+      this.$refs['modalDialogError'].show();
+    },
+    hideModalError() {
+      this.$refs['modalDialogError'].hide();
     },
     getPenaltiyEmotions() {
       return this.getAmountNotCompletedEmotions() * 2;
@@ -577,6 +597,11 @@ export default {
         let email = "demo@email.com";
         let firstName = "Demo";
         let lastName = "Player";
+        
+        console.log("scores url",this.$store.state.apis.scores.url);
+        console.log("highscore url",this.$store.state.highscore.url);
+        var highscore_url = this.$store.state.highscore.url;
+
         if (this.$store.state.demoMode == false) {
           firstName = this.$store.state.currentPlayer.firstName;
           lastName = this.$store.state.currentPlayer.lastName;
@@ -597,13 +622,18 @@ export default {
             gameDate: this.$store.state.currentGame.id,
             score: this.$store.state.currentGame.totalTimeWithPenalties
           })
-          .then(function(response) {
-            that.$router.push("start");
-            window.open(this.$store.state.apis.scores.url, '_blank');
+          .then(function(response) { 
+            that.message = "<p>Hello "+ firstName + "</p>, <br>your scores data is stored. Take a look in the highscore list.";
+            that.showModal();
+            //that.$router.push("register");
+            /*if(highscore_url != "highscore-url-not-defined") {
+              window.open(highscore_url, '_blank');
+            };*/
           })
           .catch(function(error) {
-            console.log(error);
-            that.showModal();
+            console.log("error save scores",error);
+            that.message = "The user's score couldn't be stored. Error: ' "+error+" '";
+            that.showModalError();
           });
       }
     },

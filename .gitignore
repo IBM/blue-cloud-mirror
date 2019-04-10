@@ -18,6 +18,7 @@ game/html-function/swagger.json
 game/twitter-functions/swagger-read.json
 game/twitter-functions/swagger-write.json
 game/twitter-functions/config.json
+game/.env
 
 # webapp
 dist

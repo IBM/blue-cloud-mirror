@@ -30,6 +30,9 @@ export default new Vuex.Store({
         url: "twitter-url-not-defined" // default: twitter-url-not-defined
       }
     },
+    highscore: { 
+      url: "highscore-url-not-defined"
+    },
     webcam: {
       width: 520,
       height: 440,
@@ -330,6 +333,15 @@ export default new Vuex.Store({
     },
     setTotalTime(state, payload) {
       state.currentGame.totalTimeWithPenalties = payload;
+    },
+    setApiUsers(state, payload) {
+      state.apis.users.url = payload;
+    },
+    setApiScores(state, payload) {
+      state.apis.scores.url = payload;    
+    },
+    setHighScoreURL(state, payload) {
+      state.highscore.url = payload;    
     }
   },
   actions: {
