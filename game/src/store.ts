@@ -17,6 +17,7 @@ const POSE_POSE5 = "Pose5";
 export default new Vuex.Store({
   strict: true,
   state: {
+    saving: { status: false},
     demoMode: true,
     otherDomainUrl: "other-domain-url-not-defined", // default: other-domain-url-not-defined
     apis: {
@@ -30,9 +31,12 @@ export default new Vuex.Store({
         url: "twitter-url-not-defined" // default: twitter-url-not-defined
       }
     },
+    highscore: { 
+      url: "highscore-url-not-defined" // / default: highscore-url-not-defined
+    },
     webcam: {
-      width: 320,
-      height: 240,
+      width: 520,
+      height: 440,
       lastImage: "",
       delay: 500
     },
@@ -330,6 +334,18 @@ export default new Vuex.Store({
     },
     setTotalTime(state, payload) {
       state.currentGame.totalTimeWithPenalties = payload;
+    },
+    setApiUsers(state, payload) {
+      state.apis.users.url = payload;
+    },
+    setApiScores(state, payload) {
+      state.apis.scores.url = payload;    
+    },
+    setHighScoreURL(state, payload) {
+      state.highscore.url = payload;    
+    },
+    setSavingStatus(state, payload) {
+      state.saving.status = payload;    
     }
   },
   actions: {

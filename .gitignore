@@ -71,3 +71,4 @@ game/*.sw*
 
 game/vue.config.js
 
+game/.env

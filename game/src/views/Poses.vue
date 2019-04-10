@@ -1,11 +1,11 @@
 <template>
   <div class="poses">
-    <h4 style="margin-top:15px;margin-bottom:25px">Level 2 (of 2): Poses</h4>
+    <h2 style="margin-top:15px;margin-bottom:25px">Level 2 (of 2): Poses</h2>
     <div>
       <img id="lastcapturedimage" ref="lastcapturedimage">
     </div>
     <b-row>
-      <b-col style="min-width: 330px;">
+      <b-col style="min-width: 520px;">
         <webcam></webcam>
       </b-col>
       <b-col style="text-align:center">

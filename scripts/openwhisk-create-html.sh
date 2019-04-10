@@ -67,10 +67,9 @@ function ibmcloud_login() {
 }
 
 function setup() {
-  _out Prepare Text Replace function
+ _out Prepare Text Replace function
   cd ${root_folder}/text-replace
-  npm install
-  _out Generating function-html.js
+  npm install  _out Generating function-html.js
   cd ${root_folder}/../game/html-function
   rm function-html.js
   cp ${root_folder}/../game/html-function/function-html-template.js ${root_folder}/../game/html-function/function-html.js

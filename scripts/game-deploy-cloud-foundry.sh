@@ -18,8 +18,8 @@
 root_folder=$(cd $(dirname $0); pwd)
 
 # SETUP logging (redirect stdout and stderr to a log file)
-readonly LOG_FILE="${root_folder}/game-cloud-foundry.log"
-readonly ENV_FILE="${root_folder}/../local.env"
+readonly LOG_FILE="${root_folder}/game-deploy-cloud-foundry.log"
+readonly ENV_FILE="${root_folder}/../game/local.env"
 touch $LOG_FILE
 exec 3>&1 # Save stdout
 exec 4>&2 # Save stderr
@@ -53,13 +53,14 @@ function ibmcloud_login() {
 
   # Obtain the API endpoint from BLUEMIX_REGION and set it as default
   _out Logging in to IBM cloud
-  ibmcloud api --unset
+  #ibmcloud api --unset
   #IBMCLOUD_API_ENDPOINT=$(ibmcloud api | awk '/'$BLUEMIX_REGION'/{ print $2 }')
-  ibmcloud api https://cloud.ibm.com
+  #ibmcloud api
+  IBMCLOUD_API_ENDPOINT=$BLUEMIX_CF_API
 
   # Login to ibmcloud, generate .wskprops
   ibmcloud login --apikey $IBMCLOUD_API_KEY -r $BLUEMIX_REGION
-  ibmcloud target -o "$IBMCLOUD_ORG" -s "$IBMCLOUD_SPACE"
+  ibmcloud target --cf-api $IBMCLOUD_API_ENDPOINT -o "$IBMCLOUD_ORG" -s "$IBMCLOUD_SPACE"
   ibmcloud fn api list > /dev/null
 
   # Show the result of login to stdout

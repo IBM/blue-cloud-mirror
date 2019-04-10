@@ -55,7 +55,7 @@ function ibmcloud_login() {
   # Obtain the API endpoint from BLUEMIX_REGION and set it as default
   _out Logging in to IBM cloud
   ibmcloud api --unset
-  #IBMCLOUD_API_ENDPOINT=$(ibmcloud api | awk '/'$BLUEMIX_REGION'/{ print $2 }')
+   #IBMCLOUD_API_ENDPOINT=$(ibmcloud api | awk '/'$BLUEMIX_REGION'/{ print $2 }')
   ibmcloud api https://cloud.ibm.com
 
   # Login to ibmcloud, generate .wskprops

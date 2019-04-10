@@ -58,8 +58,8 @@ function ibmcloud_login() {
   ibmcloud api https://cloud.ibm.com
 
   # Login to ibmcloud, generate .wskprops
-  ibmcloud login --apikey $IBMCLOUD_API_KEY -r $BLUEMIX_REGION
-  ibmcloud target -o "$IBMCLOUD_ORG" -s "$IBMCLOUD_SPACE"
+   ibmcloud login --apikey $IBMCLOUD_API_KEY -r $BLUEMIX_REGION
+   ibmcloud target -o "$IBMCLOUD_ORG" -s "$IBMCLOUD_SPACE"
   ibmcloud fn api list > /dev/null
 
   # Show the result of login to stdout

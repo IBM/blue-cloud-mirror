@@ -1,116 +1,225 @@
 <template>
   <div class="home">
-    <h4 style="margin-top:15px;margin-bottom:25px">Welcome to Blue Cloud Mirror, an IBM Cloud Technology Showcase !</h4>
+    <h1 style="margin-top:15px;margin-bottom:25px"><p>Welcome to our <b>#BlueCloudMirror</b> game</p></h1>
 
     <div style="margin-top:15px;">
-      In this game players need to show five specific emotions and do five specific poses in two levels. The fastest player wins.
+      Show five <b>emotions</b> and five <b>poses</b> in <b>two levels</b>. 
+      The <b>faster, the better</b>.
+    </div>
+
+    <div style="margin-top:15px;">
+    <b-button 
+       size="lg" 
+       style="height:10%;width:30%;background-color: #053c9f !important;border-color:#053c9f !important;"
+       v-on:click="onStartNewGame"
+    >Start game</b-button>
     </div>
 
     <div style="margin-top:15px;"></div>
-    <b-button
-      v-on:click="onStartNewGame"
-      variant="primary"
-      style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-    >Start Game</b-button>
-     <b-button
-      v-on:click="onGetAccount"
-      variant="primary"
-      style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-    >Get free IBM Cloud Account</b-button>
-     <b-button
-      v-on:click="onReadPattern"
-      variant="primary"
-      style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-    >Read Pattern</b-button>
-    <b-button
-      v-on:click="onGetTheCode"
-      variant="primary"
-      style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-    >Download Code</b-button>
-    <b-button
-      v-on:click="onTweet"
-      variant="primary"
-      style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-    >Tweet</b-button>
+    <p style="margin-top:15px;margin-bottom:25px">Explore the architecture of <b>#BlueCloudMirror</b></p>
 
-    <div style="margin-top:15px;">
-      The game can be used at conferences as conversation starter with developers. It's fun, interactive and uses key technologies of the IBM Cloud.
+    <b-container class="major-technologies">
+      <!-- FUNCTIONS -->
+      <b-link :to="'architecture'" style="text-decoration:none;decoration:none;"><font color="black">
+      <b-row id="FUNCTIONS" style="border-style:solid; border-width:0px;">
+          <table style="width:100%">
+          <td style="width:10%; text-align:center; vertical-align:middle"> 
+                <b-img  v-bind="iconProps" alt="ibm-cloud-functions-icon" wid
+                rounded="circle"
+                src="ibm-cloud-functions-icon.png"></b-img>
+          </td>
+          <td style="width:25%; vertical-align:top">
+                <h5 class="mt-serverless">Serverless</h5>
+                <ul style="margin-right: 20px">
+                    <li>Automated scale up and to zero</li>
+                    <li>Event driven code</li>
+                    <li>Stateless compute</li>
+                </ul>
+          </td>
+          <td style="width:35%; vertical-align:top">    
+                <h5 class="mt-game">Core game</h5>
+                Implemented as serverless web application, since ...
+                <ul style="margin-right: 20px">
+                    <li>Automated scale up and to zero</li>
+                    <li>Event driven code</li>
+                    <li>Stateless compute</li>
+                </ul>
+          </td>
+          <td style="width:35%; vertical-align:top">
+                  <h5 class="mt-game">Technologies</h5>
+                  <ul style="margin-right: 20px">
+                    <li>Vue.js</li>
+                    <li>TensorFlow.js</li>
+                    <li>IBM Cloud Functions based on Apache OpenWhisk</li>
+                  </ul>
+          </td>
+          </table>
+      </b-row>
+      </font></b-link>
+      <hr>
+
+      <!-- KUBERNETES -->
+      <b-link :to="'architecture'" style="decoration:none; text-decoration:none;"><font color="black">
+      <b-row id="KUBERNETES" style="border-style:solid; border-width:0px;">
+          <table style="width:100%">
+          <td style="width:10%; text-align:center; vertical-align:middle">  
+                <b-img 
+                v-bind="iconProps" alt="kubernetes-icon" 
+                rounded="circle"
+                src="kubernetes-icon.png"></b-img>
+          </td>
+          <td style="width:25%; vertical-align:top">
+              <h5 class="mt-game">Kubernetes</h5>
+              <ul style="margin-right: 20px">
+                    <li>Container orchestration framework</li>
+                    <li>Production-grade open source project</li>
+                    <li>Portable workloads</li>
+              </ul>
+          </td>
+          <td style="width:35%; vertical-align:top"> 
+              <h5 class="mt-game">Users service</h5>
+              Implemented via on-premises Kubernetes environments to ...
+              <ul style="margin-right: 20px">
+                    <li>Avoid storing personal data in a public cloud</li>
+                    <li>Allow the service to be moved easily on other environments</li>
+                    <li>Allow the service to be moved easily on other environments</li>
+              </ul>
+          </td>
+          <td style="width:35%; vertical-align:top:">
+              <h5 class="mt-game">Technologies</h5>
+               <ul style="margin-right: 20px">
+                     <li>IBM Cloud Private</li>
+                     <li>Other Kubernetes environments like Minikube</li>
+                     <li>IBM Secure Gateway</li>
+               </ul>
+          </td>
+          </table>
+      </b-row>
+      </font></b-link>
+      <hr>
+
+      <!-- CLOUD FOUNDRY -->
+      <b-link :to="'architecture'" style="decoration: none; text-decoration:none;"><font color="black"> 
+      <b-row id="CLOUD_FOUNDRY" style="border-style:solid; border-width:0px;">
+          <table style="width:100%">
+          <td style="width:10%; text-align:center; vertical-align:middle">  
+                <b-img 
+                v-bind="iconProps" alt="cloud-foundry-icon" 
+                rounded="circle"
+                src="cloud-foundry-icon.png"></b-img>
+          </td>
+          <td style="width:25%; vertical-align:top">
+              <h5 class="mt-game">Cloud Foundry</h5>
+              <ul style="margin-right: 20px">
+                    <li>Speed and simplify development</li>
+                    <li>Source project for public and private clouds</li>
+                    <li>Easy integration of services</li>
+              </ul>
+          </td>
+          <td style="width:35%; vertical-align:top">    
+                  <h5 class="mt-scores">Scores service</h5>
+                  Scores service and web application
+                  Implemented via Cloud Foundry to ...
+                  <ul style="margin-right: 20px">
+                    <li>Allow quick theme updates to the web application</li>
+                    <li>Allow developers to focus on code rather than infrastructure</li>
+                 </ul>
+          </td>
+          <td style="width:35%; vertical-align:top">
+                  <h5 class="mt-scores">Technologies</h5>
+                  <ul style="margin-right: 20px">
+                    <li>IBM's Cloud Foundry Enterprise Environment</li>
+                    <li>Vue.js</li>
+                    <li>IBM Cloudant (NoSQL database)</li>
+                 </ul>
+          </td>
+          </table>
+      </b-row>
+      </font></b-link>
+      <hr>
+
+      <!-- WATSON STUDION -->
+      <b-link :to="'architecture'" style="text-decoration:none;" ><font color="black">
+      <b-row id="WATSON_STUDION" style="border-style:solid; border-width:0px;">
+          <table style="width:100%">
+          <td style="width:10%; text-align:center; vertical-align:middle">  
+                <b-img 
+                v-bind="iconProps" alt="watson-studio-icon" 
+                rounded="circle"
+                src="watson-studio-icon.png"></b-img>
+          </td>
+          <td style="width:25%; vertical-align:top">
+              <h5 class="mt-scores">IBM Watson Studio</h5>
+              <ul style="margin-right: 20px">
+                    <li>Collaboration platform for data focussed tasks</li>
+                    <li>Training of AI models</li>
+                    <li>Tools for end to end AI life cycle</li>
+              </ul>
+          </td>
+          <td style="width:35%; vertical-align:top">    
+                  <h5 class="mt-watson-studio">IBM Watson Studio</h5>
+                  The AI models have been trained with IBM Watson Studio, to ...
+                  <ul style="margin-right: 20px">
+                    <li>Leverage resources in the cloud</li>
+                    <li>Run training more efficiently</li>
+                  </ul>              
+          </td>
+          <td style="width:35%; vertical-align:top">
+                  <h5 class="mt-watson-studio">Technologies</h5>
+                  <ul style="margin-right: 20px">
+                    <li>IBM Watson Studios</li>
+                    <li>TensorFlow</li>
+                    <li>Open source models</li>
+                  </ul> 
+          </td>
+          </table>
+      </b-row>
+      </font></b-link>
+    
+      <!-- Tooltip title specified via prop title -->
+      <b-tooltip target="WATSON_STUDION" title="Get more details in the architecture page"></b-tooltip>
+      <b-tooltip target="CLOUD_FOUNDRY" title="Get more details in the architecture page"></b-tooltip>
+      <b-tooltip target="KUBERNETES" title="Get more details in the architecture page"></b-tooltip>
+      <b-tooltip target="FUNCTIONS" title="Get more details in the architecture page"></b-tooltip>
+
+      <b-col>
+        <center>
+        <b-button
+          block
+          v-on:click="onLearnMore"
+          size="lg" 
+          style="height:10%;width:30%;background-color: #FFFFFF !important;border-color:##030303 !important;"     
+        ><font color="black">Learn more about the architecture</font></b-button>
+        </center>
+      </b-col>
+    </b-container>
     </div>
-    <div style="margin-top:15px;">
-      Visitors at the booth can play anonymously or they can enter their email addresses, names and sign the terms to win some gadgets at the end of the conferences.
-    </div>
-
-    <div style="margin-top:35px;"></div>
-    <b>Showcase of IBM Cloud Technologies</b>
-    <div style="margin-top:15px;">
-      The game utilizes various key IBM Cloud technologies to demonstrate the value of the IBM Cloud:
-    </div>
-
-    <div style="margin-top:15px;"></div>
-    <a target="_blank" style="color:#053c9f" href="diagram-overview.png"><img src="diagram-overview-900.jpeg"/></a>
-
-    <div style="margin-top:15px;">
-      The game has three main parts:
-    </div>
-    <ul>
-      <li>Core game: Implemented as web application and via Cloud Functions since it is only used during conferences</li>
-      <li>User management service: Implemented via IBM Cloud Private to avoid having the personal data in a public cloud</li>
-      <li>Highscore list: Implemented via Cloud Foundry Enterprise Edition to show easy theme adoptions for different conferences</li>
-    </ul>
-    <div style="margin-top:15px;">
-      This is a list of used technologies:
-    </div>
-    <ul>
-      <li><a target="_blank" style="color:#053c9f" href="https://cloud.ibm.com/">IBM Cloud</a></li>
-      <li><a target="_blank" style="color:#053c9f" href="https://www.ibm.com/cloud/private">IBM Cloud Private</a></li>
-      <li><a target="_blank" style="color:#053c9f" href="https://cloud.ibm.com/openwhisk">IBM Cloud Functions</a></li>
-      <li><a target="_blank" style="color:#053c9f" href="https://cloud.ibm.com/cfadmin/create">IBM Cloud Foundry Enterprise Edition</a></li>
-      <li><a target="_blank" style="color:#053c9f" href="https://cloud.ibm.com/catalog?search=runtime">IBM Cloud Foundry Public Applications</a></li>
-      <li><a target="_blank" style="color:#053c9f" href="https://cloud.ibm.com/catalog/services/cloud-object-storage">IBM Cloud Object Storage</a></li>
-      <li><a target="_blank" style="color:#053c9f" href="https://cloud.ibm.com/catalog/services/api-connect">IBM API Connect</a></li>
-      <li><a target="_blank" style="color:#053c9f" href="https://cloud.ibm.com/catalog/services/secure-gateway">IBM Secure Gateway</a></li>
-      <li><a target="_blank" style="color:#053c9f" href="https://dataplatform.cloud.ibm.com/">IBM Watson Studio</a></li>
-      <li><a target="_blank" style="color:#053c9f" href="https://cloud.ibm.com/catalog/services/app-id">IBM App ID</a></li>
-      <li><a target="_blank" style="color:#053c9f" href="https://cloud.ibm.com/catalog/services/cloudant">IBM Cloudant</a></li>
-      <li><a target="_blank" style="color:#053c9f" href="https://couchdb.apache.org/">Apache CouchDB</a></li>
-      <li><a target="_blank" style="color:#053c9f" href="https://js.tensorflow.org">TensorFlow.js</a></li>
-      <li><a target="_blank" style="color:#053c9f" href="https://vuejs.org/">Vue.js</a></li>
-      <li><a target="_blank" style="color:#053c9f" href="https://github.com/kubernetes/minikube">Minikube</a></li>
-    </ul>
-
-    <div style="margin-top:15px;"></div>
-    The showcase application has been developed by:
-    <ul>
-      <li><a target="_blank" style="color:#053c9f" href="https://twitter.com/nheidloff">Niklas Heidloff</a></li>
-      <li><a target="_blank" style="color:#053c9f" href="https://twitter.com/tsuedbroecker">Thomas Südbröcker</a></li>
-      <li><a target="_blank" style="color:#053c9f" href="https://twitter.com/harald_u">Harald Uebele</a></li>
-    </ul>
-
-    <div style="margin-top:25px;"></div>
-    <img src="blue-cloud-mirror-900.jpeg">
-  </div>
 </template>
 
 <script>
 import { Component, Vue } from "vue-property-decorator";
 
 export default {
+  data(){
+    return {
+    iconProps: { blank: false, blankColor: '#777', width: 60, height : 60, class: 'm1' }
+    }
+  },
   methods: {
-    onGetTheCode() {
-      window.location="https://github.com/ibm/blue-cloud-mirror";
-    },
-    onGetAccount() {
-      window.location="https://ibm.biz/nheidloff";
-    },
-    onTweet() {
-      window.location="https://twitter.com/intent/tweet?hashtags=BlueCloudMirror,IBMDeveloper&text=Check%20out%20the%20IBM%20Cloud%20showcase%20https://blue-cloud-mirror.mybluemix.net";
-    },
-    onReadPattern() {
-      window.location="https://developer.ibm.com/patterns/cloud-showcase-blue-mirror/";
-    },
     onStartNewGame() {
-      this.$router.push("start");
+      this.$router.push("register");
+    },
+    onLearnMore() {
+      this.$router.push("architecture");
     }
   }
 }
 </script>
+
+<style scoped>
+html {
+  min-height: 100%;
+  min-width: 100%;
+}
+</style>
+

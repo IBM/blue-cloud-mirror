@@ -1,38 +1,87 @@
 <template>
-  <div>
-    <div v-if="isLevelCompleted == false">Welcome, {{ player }} !</div>
-    <div v-if="isLevelCompleted">Level completed !</div>
-    <div style="margin-top:15px"></div>
-    <b-button v-if="isLevelCompleted == false"
-      v-on:click="onClickStart"
-      variant="primary"
-      style="margin-right:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-      :disabled="isStartButtonDisabled"
-    >{{startButtonLabel}}</b-button>
-    <div style="margin-top:15px"></div>
-    <progress v-show="false" :value="getDuration" :max="getDuration" ref="progressBar" id="progressBar"> </progress>
-    <div v-if="isLevelCompleted == false">Seconds left:</div>
-    <div v-if="isLevelCompleted == false" ref="seconds" id="seconds">{{getDuration}}</div>
-    <div v-if="isLevelCompleted == false" style="margin-top:15px;font-size:smaller">Show the five emotions as shown below.</div>
-    <div v-if="isLevelCompleted == false" style="font-size:smaller">From left to right. As quickly as you can.</div>
-    <div v-if="isLevelCompleted == false" style="font-size:smaller; margin-top:10px">Note: The taken screenshots are only available in the browser and not saved.</div>
-    <b-button v-if="isLevelCompleted"
-      v-on:click="onClickNext"
-      variant="primary"
-      style="margin-top:15px;background-color: #053c9f !important;border-color:#053c9f !important;"
-    >Play Level 2 ...</b-button>
-  </div>
+  <b-row>
+    <b-col>
+      <div style="margin-top:30px">
+        <div v-if="(isLevelCompleted == false) && (isGaming == false)">
+          Welcome <b>{{ player }}</b> &#x1F600;,<br>
+          show the five emotions as shown below.<br>
+          From left to right. As quickly as you can.<br>
+        </div>
+        
+        <div v-if="isLevelCompleted == true" 
+             style="background-color: #FFFFFF !important;border-color:##FFFFFF !important; font-size:300%"> Level completed ! <span>&#128077;</span>
+        </div>
+        
+        <div style="margin-top:15px"></div>
+
+        <b-button 
+          v-if="(isLevelCompleted == false) && 
+                        (isGaming == false)"
+          v-on:click="onClickStart" 
+          block size="lg" 
+          style="background-color: #053c9f !important;border-color:#053c9f !important;" 
+          :disabled="isStartButtonDisabled">{{startButtonLabel}}</b-button>
+        
+
+
+        <div style="margin-top:15px" v-if="(isLevelCompleted == false)">
+        <progress   v-if="(isLevelCompleted == false)"
+                    v-show="false"
+                    ref="progressBar"
+                    id="progressBar"
+                    :value="getDuration" 
+                    :max="getDuration"
+                    style="background-color: #FFFFFF !important;border-color:##FFFFFF !important; font-size:300%"></progress>
+        </div>
+
+        <div v-if="(isLevelCompleted == false)">Count down:</div>
+        <div v-if="(isLevelCompleted == false)" 
+             ref="seconds" id="seconds" style="background-color: #FFFFFF !important;border-color:#FFFFFF !important; font-size:300%">{{getDuration}}</div>
+
+
+        <div v-if="isLevelCompleted == false" 
+             style="margin-top:10px"><b>Note:</b> All taken screenshots stay only in the browser.</div>
+        
+        <b-button v-if="isLevelCompleted"
+          v-on:click="onClickNext"
+          block 
+          size="lg"
+          style="background-color: #053c9f !important;border-color:#053c9f !important;"
+        >Time for level 2 ...</b-button>
+      </div>
+   </b-col>
+  </b-row>
 </template>
 
 <script>
+var inGame = false;
+var dontShow = false;
+
 export default {
   name: "controlpanelemotions",
   data() {
     return {
-      player: ""
+      player: "",
+      inGame: inGame
     };
   },
   computed: {
+    isGaming(){
+      if (this.$store.state.currentGame != undefined){
+        if (this.$store.state.currentGame.emotions != undefined){
+          if (this.$store.state.currentGame.emotions.ongoing != undefined){
+            inGame = this.$store.state.currentGame.emotions.ongoing;
+          } else {
+            inGame = false;
+          }
+        } else {
+          inGame = false;
+        }
+      } else {
+        inGame = false;
+      }
+      return inGame;
+    },
     startButtonLabel() {
       if (this.$store.state.emotionRecognition.modelLoaded == false) {
         return 'Loading Model ...';
@@ -74,6 +123,15 @@ export default {
     onClickNext() {
       this.$router.push("poses");
     },
+    forceRerender() {
+        // Remove my-component from the DOM
+        this.renderComponent = false;
+        
+        this.$nextTick(() => {
+          // Add the component back in
+          this.renderComponent = true;
+        });
+    },
     onClickStart() {
       this.progressBar = this.$refs.progressBar;
       this.seconds = this.$refs.seconds;
@@ -89,8 +147,8 @@ export default {
           clearInterval(downloadTimer);
         } else {
           if (timeleft <= 0) {
-            that.$store.commit("endEmotionsGame", new Date().getTime());
             clearInterval(downloadTimer);
+            that.$store.commit("endEmotionsGame", new Date().getTime());           
           }
         }
       }, 1000);

@@ -20,64 +20,132 @@
   padding-right: 2px;
   width: 100%;
 }
+
+.loader {
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #3498db;
+  width: 15px;
+  height: 15px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 </style>
 
 <template>
   <div class="results">
+    <!-- MAIN RESULT -->
     <b-row>
       <b-col>
-        <h4 style="margin-top:1px;margin-bottom:25px">Results from {{ player }}</h4>
+        <h2 style="margin-top:1px;margin-bottom:25px">Results of your game {{ player }}</h2>
       </b-col>
     </b-row>
     <b-row v-if="bothLevelsCompleted == false">
       <b-col>
-        <b
-          style="margin-top:1px;margin-bottom:5px;color: #ffc107 !important"
-        >Both levels need to be completed first !</b>
+        <h2
+         style="margin-top:1px;margin-bottom:5px;color:darkgreen !important"
+        >Both levels need to be completed first !</h2>
       </b-col>
-    </b-row>
+    </b-row>    
+    <div style="min-height:20px"></div>
+    <div v-if="bothLevelsCompleted == true">
+    <h4>Your overall duration: {{ durationWithPenalties }} seconds <span>&#127881;</span></h4>
+    </div>
+    <!-- BUTTONS -->
+    <div style="margin-top:20px"></div>
+    <center><div v-if="isSavingStatus == true">Saving scores</div></center>
+    <center><div v-if="isSavingStatus == true" class="loader"></div></center>
     <b-row v-if="bothLevelsCompleted == true">
       <b-col>
-        <b
-          style="margin-top:1px;margin-bottom:15px;"
-        >Overall Duration: {{ durationWithPenalties }} Seconds</b>
-        <div style="min-height:20px"></div>
-        <div style="display: table;width:100%">
-          <div style="display: table-row;">
-            <div style="max-width:80px;display: table-cell;vertical-align: top;">Level</div>
-            <div style="max-width:80px;display: table-cell;vertical-align: top;">Duration (secs)</div>
-            <div style="max-width:80px;display: table-cell;vertical-align: top;">Not Completed</div>
-            <div style="display: table-cell;vertical-align: top;">Penalty (secs)</div>
-          </div>
-          <div style="display: table-row;">
-            <div style="max-width:80px;display: table-cell;vertical-align: top;">1: Emotions</div>
-            <div
-              style="max-width:80px;display: table-cell;vertical-align: top;"
-            >{{ durationLevelOne }}</div>
-            <div
-              style="max-width:80px;display: table-cell;vertical-align: top;"
-            >{{ amountNotCompletedEmotions }}</div>
-            <div style="display: table-cell;vertical-align: top;">{{ penaltiyEmotions }}</div>
-          </div>
-          <div style="display: table-row;">
-            <div style="max-width:80;display: table-cell;vertical-align: top;">2: Poses</div>
-            <div
-              style="max-width:80px;display: table-cell;vertical-align: top;"
-            >{{ durationLevelTwo }}</div>
-            <div
-              style="max-width:80px;display: table-cell;vertical-align: top;"
-            >{{ amountNotCompletedPoses }}</div>
-            <div style="display: table-cell;vertical-align: top;">{{ penaltiyPoses }}</div>
-          </div>
-        </div>
+        <b-button
+          block
+          v-on:click="onStartNewGame"
+          style="margin-right:10px;background-color: #053c9f;border-color:#053c9f;"
+        >Start new game</b-button>
+      </b-col>
+      <b-col>
+        <b-button
+          block
+          v-on:click="onSaveScore"
+          variant="primary"
+          style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          :disabled="isPlayerAnonymous"
+        ><font color="black">Save score</font></b-button>
+      </b-col>
+      <b-col>
+        <b-button
+            block
+            v-on:click="onTweet"
+            variant="primary"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          ><font color="black">Tweet</font></b-button>
+      </b-col>
+      <b-col v-if="tweetButtonDisabled == false">
+        <b-button
+            v-if="tweetButtonDisabled == false"
+            v-on:click="onTweetCard"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+            :disabled="tweetButtonDisabled == true"
+          ><font color="black">{{tweetLabel}}</font></b-button>
+      </b-col>
+      <b-col>
+          <b-button
+            block 
+            v-on:click="onDownloadImage"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          ><font color="black">Get game image</font></b-button>
       </b-col>
     </b-row>
+    <div style="margin-top:20px"></div>
+    <b-row>
+       <div style="margin-top:20px"></div>
+       <b-col>
+          <center><b-button
+            v-on:click="onArchitecture"
+            style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
+          ><font color="black">Get more details about the game architecture</font></b-button></center>
+      </b-col>
+    </b-row>
+    <a id="exportElementHidden" style="display:none"/>
+    <!-- MODAL DIALOG-->
+    <b-modal ref="modalDialog" 
+             hide-footer 
+             title="Information">
+      <div>
+        <div>{{message}}</div>
+      </div>
+      <b-btn class="mt-3" @click="hideModal">Close</b-btn>
+    </b-modal>
+    <b-modal ref="modalDialogError" 
+             hide-footer 
+             title="Error">
+      <div>
+        <div>{{message}}</div>>
+      </div>
+      <b-btn class="mt-3" @click="hideModalError">Close</b-btn>
+    </b-modal>
+    <hr>
+    <!-- DETAIL RESULTS -->
+    <div style="min-height:10x"></div>
+    <h4>Result details</h4>
     <b-row>
       <b-col>
-        <h4 style="margin-top:35px;margin-bottom:25px">Level 1: Emotions</h4>
+        <h4 style="margin-top:35px;margin-bottom:25px">Level 1: Emotions <span> &#128516;</span></h4>
       </b-col>
     </b-row>
     <div id="capture">
+      <!-- EMOTIONS -->
       <b-row>
         <b-col>
           <div style="display: table;width:100%">
@@ -136,6 +204,7 @@
           </div>
         </b-col>
       </b-row>
+      <!-- POSES -->
       <b-row>
         <b-col>
           <h4 style="margin-top:35px;margin-bottom:5px"></h4>
@@ -143,7 +212,7 @@
       </b-row>
       <b-row data-html2canvas-ignore="true">
         <b-col>
-          <h4 style="margin-bottom:20px">Level 2: Poses</h4>
+          <h4 style="margin-bottom:20px">Level 2: Poses <span> &#128587;</span></h4>
         </b-col>
       </b-row>
       <b-row>
@@ -190,77 +259,66 @@
         </b-col>
       </b-row>
     </div>
-    <b-row style="margin-top:40px">
+
+    <!-- GAME LEVEL DETAILS -->
+    <div style="min-height:20px"></div>
+    <b-row v-if="bothLevelsCompleted == true">
       <b-col>
-        <b-button
-          v-on:click="onStartNewGame"
-          variant="primary"
-          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-        >Start new Game</b-button>
-        <b-button
-          v-on:click="onSaveScore"
-          variant="primary"
-          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-          :disabled="isPlayerAnonymous"
-        >Save Score</b-button>
-        <b-button
-          v-on:click="onGetAccount"
-          variant="primary"
-          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-        >Get IBM Cloud Account</b-button>
-        <b-button
-          v-on:click="onReadPattern"
-          variant="primary"
-          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-        >Read Pattern</b-button>
-        <b-button
-          v-on:click="onGetTheCode"
-          variant="primary"
-          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-        >Download Code</b-button>
-        <b-button
-          v-on:click="onDownloadImage"
-          variant="primary"
-          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-        >Download Image</b-button>
-        <b-button
-          v-on:click="onTweet"
-          variant="primary"
-          style="margin-right:10px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-        >Tweet</b-button>
-        <b-button
-          v-if="tweetButtonDisabled == false"
-          v-on:click="onTweetCard"
-          variant="primary"
-          style="margin-right:20px;margin-bottom:10px;background-color: #053c9f !important;border-color:#053c9f !important;"
-          :disabled="tweetButtonDisabled == true"
-        >{{tweetLabel}}</b-button>
+        <h4>Times in game</h4>
+        <div style="min-height:5px"></div>
+        <div style="display: table;width:50%">
+          <div style="display: table-row;">
+            <div style="max-width:5%;display: table-cell;vertical-align: top;"><b>Level</b></div>
+            <div style="max-width:15%;display: table-cell;vertical-align: top;"><b>Duration (secs)</b></div>
+            <div style="max-width:15%;display: table-cell;vertical-align: top;"><b>Not Completed</b></div>
+            <div style="max-width:15%;display: table-cell;vertical-align: top;"><b>Penalty (secs)</b></div>
+          </div>
+          <div style="display: table-row;">
+            <div style="max-width:80px;display: table-cell;vertical-align: top;">1: Emotions</div>
+            <div
+              style="max-width:80px;display: table-cell;vertical-align: top;"
+            >{{ durationLevelOne }}</div>
+            <div
+              style="max-width:80px;display: table-cell;vertical-align: top;"
+            >{{ amountNotCompletedEmotions }}</div>
+            <div style="display: table-cell;vertical-align: top;">{{ penaltiyEmotions }}</div>
+          </div>
+          <div style="display: table-row;">
+            <div style="max-width:80;display: table-cell;vertical-align: top;">2: Poses</div>
+            <div
+              style="max-width:80px;display: table-cell;vertical-align: top;"
+            >{{ durationLevelTwo }}</div>
+            <div
+              style="max-width:80px;display: table-cell;vertical-align: top;"
+            >{{ amountNotCompletedPoses }}</div>
+            <div style="display: table-cell;vertical-align: top;">{{ penaltiyPoses }}</div>
+          </div>
+        </div>
       </b-col>
     </b-row>
+
+    <!-- DEMO MODE INFORMATION -->
+    <div style="margin-top:10px"></div>
     <b-row v-if="this.$store.state.demoMode == true" style="margin-top:10px">
       <b-col>
         <div
-          style="margin-bottom:2px"
-        >Note: In this demo version, real user names cannot be stored in the highscore list. A user 'Demo Player' is used instead.</div>
+          style="margin-bottom:2px"><b>Note:</b> In this demo version, the user registration is <b>not supported</b>. The name <b>'Demo Player'</b> is used to your save game scores result in the HighScore list.</div>
       </b-col>
     </b-row>
-    <a id="exportElementHidden" style="display:none"/>
-    <b-modal ref="modelDialog" hide-footer title="Error saving Scores">
-      <div>
-        <div>The user's score couldn't be stored.</div>
-      </div>
-      <b-btn class="mt-3" @click="hideModal">Close</b-btn>
-    </b-modal>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import html2canvas from "html2canvas";
+import { MomentumOptimizer } from '@tensorflow/tfjs';
 
 export default {
   mounted() {
-    this.$store.commit("setTotalTime", this.getDurationWithPenalties());
+    var gameResult = this.getDurationWithPenalties();
+
+    this.$store.commit("setTotalTime", gameResult);
+    this.$store.commit("setSavingStatus", false);
 
     if (this.$store.state.currentPlayer.isAnonymous == true) {
       this.player = "my secret friend";
@@ -309,10 +367,11 @@ export default {
       facepose5.src = this.$store.state.currentGame.poses.results.imagePose5;
     }
   },
-  data() {
+  data () {
     return {
       player: "",
-      tweeting: false
+      tweeting: false,
+      message: ""
     };
   },
   computed: {
@@ -356,6 +415,9 @@ export default {
     },
     isPlayerAnonymous: function() {
       return this.$store.state.currentPlayer.isAnonymous;
+    },
+    isSavingStatus: function(){
+       return this.$store.state.saving.status;
     },
     happyClass: function() {
       if (this.$store.state.currentGame.emotions.results.happy == false) {
@@ -443,7 +505,8 @@ export default {
       return this.getAmountNotCompletedPoses();
     },
     durationWithPenalties: function() {
-      return this.getDurationWithPenalties();
+      var result = Math.round(((parseFloat(this.getDurationWithPenalties()) * 100) / 100));
+      return result;
     },
     penaltiyEmotions: function() {
       return this.getPenaltiyEmotions();
@@ -453,6 +516,7 @@ export default {
     }
   },
   methods: {
+    
     onGetTheCode() {
       window.location = "https://github.com/ibm/blue-cloud-mirror";
     },
@@ -467,6 +531,9 @@ export default {
       window.location =
         "https://developer.ibm.com/patterns/cloud-showcase-blue-mirror/";
     },
+    onArchitecture() {
+      this.$router.push("architecture");
+    },
     otherDomainUrl: function(image) {
       let otherDomainUrl = this.$store.state.otherDomainUrl;
       let output = image;
@@ -480,10 +547,16 @@ export default {
       return output;
     },
     showModal() {
-      this.$refs.modelDialog.show();
+      this.$refs['modalDialog'].show();
     },
     hideModal() {
-      this.$refs.modelDialog.hide();
+      this.$refs['modalDialog'].hide();
+    },
+    showModalError() {
+      this.$refs['modalDialogError'].show();
+    },
+    hideModalError() {
+      this.$refs['modalDialogError'].hide();
     },
     getPenaltiyEmotions() {
       return this.getAmountNotCompletedEmotions() * 2;
@@ -552,6 +625,11 @@ export default {
         let email = "demo@email.com";
         let firstName = "Demo";
         let lastName = "Player";
+        
+        if (this.$store.state.highscore.url != "highscore-url-not-defined"){
+           var highscore_url = this.$store.state.highscore.url;
+        } 
+
         if (this.$store.state.demoMode == false) {
           firstName = this.$store.state.currentPlayer.firstName;
           lastName = this.$store.state.currentPlayer.lastName;
@@ -565,6 +643,8 @@ export default {
         });
 
         let that = this;
+        this.$store.commit("setSavingStatus", true);
+
         axiosService
           .post(this.$store.state.apis.scores.url, {
             firstName: firstName,
@@ -573,16 +653,20 @@ export default {
             score: this.$store.state.currentGame.totalTimeWithPenalties
           })
           .then(function(response) {
-            that.$router.push("start");
+            that.$store.commit("setSavingStatus", false);
+            that.message = "Hello "+ firstName + ", your scores data is stored. Take a look in the highscore list.";
+            that.showModal();
           })
           .catch(function(error) {
-            console.log(error);
-            that.showModal();
+            console.log("error save scores",error);
+            that.$store.commit("setSavingStatus", false);
+            that.message = "The user's score couldn't be stored. Error: ' "+error+" '";
+            that.showModalError();
           });
       }
     },
     onStartNewGame() {
-      this.$router.push("start");
+      this.$router.push("register");
     },
     onDownloadImage() {
       html2canvas(document.querySelector("#capture")).then(canvas => {
@@ -634,3 +718,27 @@ export default {
   }
 };
 </script>
+
+<!-- Loader -->
+<style>
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>

@@ -1,33 +1,37 @@
 <template>
-  <div>
-    <div style="position: relative;display: table-cell;vertical-align: top;">
-        <video
-      ref="video"
-      id="video"
-      v-on:play="onPlay"
-      :width="this.$store.state.webcam.width"
-      :height="this.$store.state.webcam.height"
-      muted
-      playsinline style=" -moz-transform: scaleX(-1);
-        -o-transform: scaleX(-1);
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-        "
-    ></video>
-    <canvas style="position: absolute;top: 0;left: 0;"
-      ref="videooverlaycanvas"
-      id="videooverlaycanvas"
-      :width="this.$store.state.webcam.width"
-      :height="this.$store.state.webcam.height"
-    ></canvas>       
-               </div>    
-    <canvas
-      ref="capturecanvas"
-      id="capturecanvas"
-      :width="this.$store.state.webcam.width"
-      :height="this.$store.state.webcam.height"
-    ></canvas>
-  </div>
+  <b-row>
+    <b-col>
+      <div>
+        <div style="position: relative;display: table-cell;vertical-align: top;">
+            <video
+          ref="video"
+          id="video"
+          v-on:play="onPlay"
+          :width="this.$store.state.webcam.width"
+          :height="this.$store.state.webcam.height"
+          muted
+          playsinline style=" -moz-transform: scaleX(-1);
+            -o-transform: scaleX(-1);
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+            "
+        ></video>
+        <canvas style="position: absolute;top: 0;left: 0;"
+          ref="videooverlaycanvas"
+          id="videooverlaycanvas"
+          :width="this.$store.state.webcam.width"
+          :height="this.$store.state.webcam.height"
+        ></canvas>       
+                  </div>    
+        <canvas
+          ref="capturecanvas"
+          id="capturecanvas"
+          :width="this.$store.state.webcam.width"
+          :height="this.$store.state.webcam.height"
+        ></canvas>
+      </div>
+    </b-col>
+  </b-row>
 </template>
 
 <script>

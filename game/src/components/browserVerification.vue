@@ -62,7 +62,6 @@ export default {
           window.navigator.userAgent.indexOf("Edge") > -1 === false
         ) {
           return true;
-          console.log("Browser:", isMobile );
         } else {
           return false;
         }
