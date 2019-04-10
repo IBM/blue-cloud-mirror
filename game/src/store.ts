@@ -32,7 +32,7 @@ export default new Vuex.Store({
       }
     },
     highscore: { 
-      url: "highscore-url-not-defined"
+      url: "highscore-url-not-defined" // / default: highscore-url-not-defined
     },
     webcam: {
       width: 520,

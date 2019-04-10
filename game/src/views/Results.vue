@@ -417,7 +417,6 @@ export default {
       return this.$store.state.currentPlayer.isAnonymous;
     },
     isSavingStatus: function(){
-       console.log("getSavingStatus",this.$store.state.saving.status);
        return this.$store.state.saving.status;
     },
     happyClass: function() {
@@ -627,9 +626,9 @@ export default {
         let firstName = "Demo";
         let lastName = "Player";
         
-        console.log("scores url",this.$store.state.apis.scores.url);
-        console.log("highscore url",this.$store.state.highscore.url);
-        var highscore_url = this.$store.state.highscore.url;
+        if (this.$store.state.highscore.url != "highscore-url-not-defined"){
+           var highscore_url = this.$store.state.highscore.url;
+        } 
 
         if (this.$store.state.demoMode == false) {
           firstName = this.$store.state.currentPlayer.firstName;
