@@ -644,7 +644,7 @@ export default {
 
         let that = this;
         this.$store.commit("setSavingStatus", true);
-        console.log("saving",that.$store.state.saving.status);
+
         axiosService
           .post(this.$store.state.apis.scores.url, {
             firstName: firstName,
@@ -654,14 +654,8 @@ export default {
           })
           .then(function(response) {
             that.$store.commit("setSavingStatus", false);
-            console.log("saving",that.$store.state.saving.status);
             that.message = "Hello "+ firstName + ", your scores data is stored. Take a look in the highscore list.";
             that.showModal();
-
-            //that.$router.push("register");
-            /*if(highscore_url != "highscore-url-not-defined") {
-              window.open(highscore_url, '_blank');
-            };*/
           })
           .catch(function(error) {
             console.log("error save scores",error);

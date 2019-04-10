@@ -22,7 +22,7 @@
           <b-nav-item>
             <router-link style="color:white" to="/results">Results</router-link>
           </b-nav-item>
-          -->
+               ****NOT IN THE MENU**** -->
           <b-nav-item>
             <router-link style="color:white" to="/architecture">Architecture</router-link>
           </b-nav-item>
