@@ -17,6 +17,7 @@ const POSE_POSE5 = "Pose5";
 export default new Vuex.Store({
   strict: true,
   state: {
+    saving: { status: false},
     demoMode: true,
     otherDomainUrl: "other-domain-url-not-defined", // default: other-domain-url-not-defined
     apis: {
@@ -342,6 +343,9 @@ export default new Vuex.Store({
     },
     setHighScoreURL(state, payload) {
       state.highscore.url = payload;    
+    },
+    setSavingStatus(state, payload) {
+      state.saving.status = payload;    
     }
   },
   actions: {

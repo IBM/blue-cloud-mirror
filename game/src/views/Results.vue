@@ -20,6 +20,27 @@
   padding-right: 2px;
   width: 100%;
 }
+
+.loader {
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #3498db;
+  width: 15px;
+  height: 15px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 </style>
 
 <template>
@@ -43,6 +64,8 @@
     </div>
     <!-- BUTTONS -->
     <div style="margin-top:20px"></div>
+    <center><div v-if="isSavingStatus == true">Saving scores</div></center>
+    <center><div v-if="isSavingStatus == true" class="loader"></div></center>
     <b-row v-if="bothLevelsCompleted == true">
       <b-col>
         <b-button
@@ -84,6 +107,8 @@
           ><font color="black">Get game image</font></b-button>
       </b-col>
     </b-row>
+    <div style="margin-top:20px"></div>
+    <b-row>
        <div style="margin-top:20px"></div>
        <b-col>
           <center><b-button
@@ -91,7 +116,6 @@
             style="margin-right:10px;background-color: #FFFFFF;border-color:#030303;"
           ><font color="black">Get more details about the game architecture</font></b-button></center>
       </b-col>
-    <b-row>
     </b-row>
     <a id="exportElementHidden" style="display:none"/>
     <!-- MODAL DIALOG-->
@@ -294,6 +318,7 @@ export default {
     var gameResult = this.getDurationWithPenalties();
 
     this.$store.commit("setTotalTime", gameResult);
+    this.$store.commit("setSavingStatus", false);
 
     if (this.$store.state.currentPlayer.isAnonymous == true) {
       this.player = "my secret friend";
@@ -390,6 +415,10 @@ export default {
     },
     isPlayerAnonymous: function() {
       return this.$store.state.currentPlayer.isAnonymous;
+    },
+    isSavingStatus: function(){
+       console.log("getSavingStatus",this.$store.state.saving.status);
+       return this.$store.state.saving.status;
     },
     happyClass: function() {
       if (this.$store.state.currentGame.emotions.results.happy == false) {
@@ -615,6 +644,8 @@ export default {
         });
 
         let that = this;
+        this.$store.commit("setSavingStatus", true);
+        console.log("saving",that.$store.state.saving.status);
         axiosService
           .post(this.$store.state.apis.scores.url, {
             firstName: firstName,
@@ -622,9 +653,12 @@ export default {
             gameDate: this.$store.state.currentGame.id,
             score: this.$store.state.currentGame.totalTimeWithPenalties
           })
-          .then(function(response) { 
-            that.message = "<p>Hello "+ firstName + "</p>, <br>your scores data is stored. Take a look in the highscore list.";
+          .then(function(response) {
+            that.$store.commit("setSavingStatus", false);
+            console.log("saving",that.$store.state.saving.status);
+            that.message = "Hello "+ firstName + ", your scores data is stored. Take a look in the highscore list.";
             that.showModal();
+
             //that.$router.push("register");
             /*if(highscore_url != "highscore-url-not-defined") {
               window.open(highscore_url, '_blank');
@@ -632,6 +666,7 @@ export default {
           })
           .catch(function(error) {
             console.log("error save scores",error);
+            that.$store.commit("setSavingStatus", false);
             that.message = "The user's score couldn't be stored. Error: ' "+error+" '";
             that.showModalError();
           });
@@ -690,3 +725,27 @@ export default {
   }
 };
 </script>
+
+<!-- Loader -->
+<style>
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
