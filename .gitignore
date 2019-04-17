@@ -72,3 +72,6 @@ game/*.sw*
 game/vue.config.js
 
 game/.env
+
+# images
+images/~$architecture.pptx

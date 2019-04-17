@@ -45,7 +45,7 @@ function ibmcloud_login() {
   # Login to Cloud
   _out 1. Login to IBM Cloud
   _out
-  ibmcloud login -u $IBMCLOUD_USER_ID -apikey $IBMCLOUD_CLI_DEVOPS_PLATFORM_KEY -a $IBMCLOUD_API_ENDPOINT
+  ibmcloud login -u $IBMCLOUD_USER_ID -apikey $IBMCLOUD_CLI_DEVOPS_PLATFORM_KEY -r $IBMCLOUD_REGION
   
   # Set target for Cloud Foundry Apps and Resource Groups
   _out   _set -o $IBMCLOUD_CF_ORGANIZATION_NAME
@@ -71,7 +71,7 @@ function ibmcloud_login() {
 function createScoreCloudantDB() {
   _out 2. Create scores cloudant DB start
   _out
-  ibmcloud resource service-instance-create $IBMCLOUD_CLOUDANT_NAME cloudantnosqldb lite $IBMCLOUD_REGION -p '{"legacyCredentials": true}'
+  ibmcloud resource service-instance-create $IBMCLOUD_CLOUDANT_NAME cloudantnosqldb lite -p  '{"location": "$$IBMCLOUD_REGION", "hipaa": "false", "legacyCredentials": true}'
   
   _out _create $ALIAS
   ibmcloud resource service-alias-create $ALIAS --instance-name $IBMCLOUD_CLOUDANT_NAME

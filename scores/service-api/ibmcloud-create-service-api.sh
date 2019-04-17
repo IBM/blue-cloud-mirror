@@ -36,7 +36,7 @@ function ibmcloud_login() {
   # Login to Cloud
   _out 1. Login to IBM Cloud
   _out
-  ibmcloud login -u $IBMCLOUD_USER_ID -apikey $IBMCLOUD_CLI_DEVOPS_PLATFORM_KEY -a $IBMCLOUD_API_ENDPOINT
+  ibmcloud login -u $IBMCLOUD_USER_ID -apikey $IBMCLOUD_CLI_DEVOPS_PLATFORM_KEY -r $IBMCLOUD_REGION
   
   # Set target for Cloud Foundry Apps and Resource Groups
   _out   _set -o $IBMCLOUD_CF_ORGANIZATION_NAME
