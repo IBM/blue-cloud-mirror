@@ -9,9 +9,8 @@ cd $CURRENT_FOLDER
 # SETUP logging (redirect stdout and stderr to a log file)
 readonly LOG_FILE="${CURRENT_FOLDER}/ibmcloud-create-service-api.log"
 readonly ENV_ROOT_FILE="${ROOT_FOLDER}/scores/scores.local.root.env"
-ENV_SCORES_API="${CURRENT_FOLDER}/.env"
 source $ENV_ROOT_FILE
-source $ENV_SCORES_API
+
 
 
 touch $LOG_FILE
@@ -75,27 +74,23 @@ function configureAPIDefinitionCF() {
   _out
 
   _out __copy API Definition
-  rm "$API_DEFINITION"
-  cp "$API_DEFINITION_TEMPLATE" "$API_DEFINITION"
-
-  _out __copy API Product Definition
-  rm "$API_PRODUCT_DEFINITION"
-  cp "$API_PRODUCT_DEFINITION_TEMPLATE" "$API_PRODUCT_DEFINITION"
+  rm "$IBMCLOUD_API_CONNECT_DEFINITION"
+  cp "$IBMCLOUD_API_CONNECT_DEFINITION_TEMPLATE" "$IBMCLOUD_API_CONNECT_DEFINITION"
 
   _out __setup text-replace
   cd text-replace
   npm install
   cd ..
 
-  _out __replace $REPLACE_USER with $IBMCLOUD_CF_APP_USER
-  npm --prefix "${ROOT_FOLDER}/scores/service-api/text-replace" start "${ROOT_FOLDER}/scores/service-api/$API_DEFINITION" $REPLACE_USER $IBMCLOUD_CF_APP_USER
+  _out __replace $IBMCLOUD_API_CONNECT_REPLACE_USER with $IBMCLOUD_CF_APP_USER
+  npm --prefix "${ROOT_FOLDER}/scores/service-api/text-replace" start "${ROOT_FOLDER}/scores/service-api/$IBMCLOUD_API_CONNECT_DEFINITION" $IBMCLOUD_API_CONNECT_REPLACE_USER $IBMCLOUD_CF_APP_USER
 
-  _out __replace $REPLACE_PASSWORD with $IBMCLOUD_CF_APP_PASSWORD
-  npm --prefix "${ROOT_FOLDER}/scores/service-api/text-replace" start "${ROOT_FOLDER}/scores/service-api/$API_DEFINITION" $REPLACE_PASSWORD $IBMCLOUD_CF_APP_PASSWORD
+  _out __replace $IBMCLOUD_API_CONNECT_REPLACE_PASSWORD with $IBMCLOUD_CF_APP_PASSWORD
+  npm --prefix "${ROOT_FOLDER}/scores/service-api/text-replace" start "${ROOT_FOLDER}/scores/service-api/$IBMCLOUD_API_CONNECT_DEFINITION" $IBMCLOUD_API_CONNECT_REPLACE_PASSWORD  $IBMCLOUD_CF_APP_PASSWORD
 
   URL="https://$IBMCLOUD_CF_APP_SERVICE_NAME.mybluemix.net"
-  _out __replace $REPLACE_URL with $URL
-  npm --prefix "${ROOT_FOLDER}/scores/service-api/text-replace" start "${ROOT_FOLDER}/scores/service-api/$API_DEFINITION" $REPLACE_URL $URL
+  _out __replace $IBMCLOUD_API_CONNECT_REPLACE_URL with $URL
+  npm --prefix "${ROOT_FOLDER}/scores/service-api/text-replace" start "${ROOT_FOLDER}/scores/service-api/$IBMCLOUD_API_CONNECT_DEFINITION" $IBMCLOUD_API_CONNECT_REPLACE_URL $URL
 
   _out  
   _out Configure API defintion end
