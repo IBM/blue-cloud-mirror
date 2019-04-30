@@ -77,9 +77,10 @@ This is an overview of the steps you have to follow.
 
 _Note:_ You don't have to do this step, if you already have an IBM platform key.
 
-Logon to IBM Cloud and use the **"us-south"** Region with the  **https://api.ng.bluemix.net** API endpoint.
-```
-ibmcloud login -a https://api.ng.bluemix.net
+1. Logon to IBM Cloud use the **"us-south"** Region.
+
+```sh
+ibmcloud login -r us-south
 ```
 
 Create a IBM platform for your API key and name it (example **my-ibmplatform-key**) and provide a filename  (example **my-ibmplatform-key-key_file**).
