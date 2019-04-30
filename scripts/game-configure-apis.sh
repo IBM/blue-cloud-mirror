@@ -50,6 +50,11 @@ function check_tools() {
 function setup() {
   _out Configuring game application with API URLs
 
+  _out __setup text-replace
+  cd text-replace
+  npm install
+  cd ..
+
   npm --prefix ${root_folder}/text-replace start ${root_folder}/text-replace ${root_folder}/../game/src/store.ts users-url-not-defined $API_USERS
   npm --prefix ${root_folder}/text-replace start ${root_folder}/text-replace ${root_folder}/../game/src/store.ts scores-url-not-defined $API_SCORES
   
