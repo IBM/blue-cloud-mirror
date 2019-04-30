@@ -116,4 +116,11 @@ $ cat blue-cloud-mirror.json
 $ cp template.local.env local.env
 ```
 
-In [local.env](local.env) define 'IBMCLOUD_API_KEY', 'IBMCLOUD_ORG', 'IBMCLOUD_SPACE' and 'BLUEMIX_REGION' to match the apikey in [blue-cloud-mirror.json](blue-cloud-mirror.json) and the org, space and region name that you're using (see the outputs in your terminal when following the steps above).
+In [local.env](local.env) define 
+* **'IBMCLOUD_API_KEY'**
+* **'IBMCLOUD_ORG'**
+* **'IBMCLOUD_SPACE'** 
+* **'BLUEMIX_REGION'**
+* **'BLUEMIX_CF_API'''
+
+to match the apikey in [blue-cloud-mirror.json](blue-cloud-mirror.json) and the org, space, region and cloud foundry endpoint name that you're using (see the outputs in your terminal when following the steps above).
