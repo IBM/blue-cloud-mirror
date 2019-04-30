@@ -194,7 +194,7 @@ var mapdata = {
     target:'_blank',
     alt:"Lite API Management",
     title:"Lite API Management",
-    href:"ttps://cloud.ibm.com/docs/api-management?topic=api-management-manage_openwhisk_apis#manage_openwhisk_apis",
+    href:"https://cloud.ibm.com/docs/api-management?topic=api-management-manage_openwhisk_apis#manage_openwhisk_apis",
     coords:"190,110,190,164,288,164,288,110",
     shape:"poly"
   },
