@@ -52,6 +52,7 @@ function ibmcloud_login() {
   ibmcloud config --check-version=false
 
   # Obtain the API endpoint from BLUEMIX_REGION and set it as default
+
   _out Logging in to IBM cloud
   #ibmcloud api --unset
   #IBMCLOUD_API_ENDPOINT=$(ibmcloud api | awk '/'$BLUEMIX_REGION'/{ print $2 }')
@@ -60,7 +61,7 @@ function ibmcloud_login() {
 
   # Login to ibmcloud, generate .wskprops
   ibmcloud login --apikey $IBMCLOUD_API_KEY -r $BLUEMIX_REGION
-  ibmcloud target --cf  -o "$IBMCLOUD_ORG" -s "$IBMCLOUD_SPACE"
+  ibmcloud target --cf-api $IBMCLOUD_API_ENDPOINT -o "$IBMCLOUD_ORG" -s "$IBMCLOUD_SPACE"
   ibmcloud fn api list > /dev/null
 
   # Show the result of login to stdout
