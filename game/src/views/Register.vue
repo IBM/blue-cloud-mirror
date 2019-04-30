@@ -129,20 +129,24 @@ export default {
       //this.$store.commit("updateCurrentPlayer");
     }
 
+    if ((process.env.VUE_APP_API_SCORES != "scores-url-not-defined") && (process.env.VUE_APP_API_SCORES != undefined)){
+        this.$store.commit("setApiScores",process.env.VUE_APP_API_SCORES);
+        // console.log("scores-url-not-defined");
+    };
+    if ((process.env.VUE_APP_API_USERS != "users-url-not-defined")
+        && (process.env.VUE_APP_API_USERS!= undefined)){
+        this.$store.commit("setApiUsers",process.env.VUE_APP_API_USERS);
+        // console.log("users-url-not-defined");
+    };
+    if ((process.env.VUE_HIGHSCORE_URL != "highscore-url-not-defined") && (process.env.VUE_HIGHSCORE_URL!= undefined)){
+        this.$store.commit("setHighScoreURL",process.env.VUE_APP_HIGHSCORE_URL);
+        // console.log("highscore-url-not-defined");
+    };
     if (process.env.NODE_ENV === "development"){
         console.log("process env development",process.env);
     };
     if (process.env.NODE_ENV === "production"){
         console.log("process env production",process.env);
-    };
-    if (process.env.VUE_APP_API_SCORES != "scores-url-not-defined"){
-        this.$store.commit("setApiScores",process.env.VUE_APP_API_SCORES);
-    };
-    if (process.env.VUE_APP_API_USERS != "users-url-not-defined"){
-        this.$store.commit("setApiUsers",process.env.VUE_APP_API_USERS);
-    };
-    if (process.env.HIGHSCORE_URL != "highscore-url-not-defined"){
-        this.$store.commit("setHighScoreURL",process.env.VUE_APP_HIGHSCORE_URL);
     };
   },
   methods: {
