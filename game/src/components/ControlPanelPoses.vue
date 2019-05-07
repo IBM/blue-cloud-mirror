@@ -84,10 +84,10 @@
             </div>
 
             <div v-if="state=='extro'" class="font-size-1_25 m-5">
-                <div class="display-1">Level 1</div>
+                <div class="display-1">Level 2</div>
                 <div class="display-1 ibm-plex-sans mb-3" style="margin-top: -1rem;">Completed</div>
                 <br>
-                <b-button outline-white block @click="onClickNext()">Time for level 2 ...</b-button>
+                <b-button outline-white block @click="onClickNext()">Show game results ...</b-button>
             </div>
         </div>
     </div>
@@ -125,37 +125,37 @@
                 return this.$store.state.posesRecognition.modelLoaded;
             },
 
-            startButtonLabel() {
-                if (this.$store.state.posesRecognition.modelLoaded == false) {
-                    return 'Loading Model ...';
-                } else {
-                    return 'Start level 2';
-                }
-            },
+            // startButtonLabel() {
+            //     if (this.$store.state.posesRecognition.modelLoaded == false) {
+            //         return 'Loading Model ...';
+            //     } else {
+            //         return 'Start level 2';
+            //     }
+            // },
             firstLevelCompleted() {
                 return this.$store.state.currentGame.emotions.completed;
-            },
-            isLevelCompleted: function () {
-                return this.$store.state.currentGame.poses.completed;
-            },
-            getDuration: function () {
-                return this.$store.state.posesRecognition.duration;
-            },
-            isStartButtonDisabled: function () {
-                if (this.$store.state.posesRecognition.modelLoaded == false) {
-                    return true;
-                } else {
-                    if (this.$store.state.currentGame.poses.ongoing == true) {
-                        return true;
-                    } else {
-                        if (this.$store.state.currentGame.poses.completed == true) {
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }
-                }
-            }
+            }, // isLevelCompleted: function () {
+            //     return this.$store.state.currentGame.poses.completed;
+            // },
+
+            // getDuration: function () {
+            //     return this.$store.state.posesRecognition.duration;
+            // },
+            // isStartButtonDisabled: function () {
+            //     if (this.$store.state.posesRecognition.modelLoaded == false) {
+            //         return true;
+            //     } else {
+            //         if (this.$store.state.currentGame.poses.ongoing == true) {
+            //             return true;
+            //         } else {
+            //             if (this.$store.state.currentGame.poses.completed == true) {
+            //                 return true;
+            //             } else {
+            //                 return false;
+            //             }
+            //         }
+            //     }
+            // }
         },
         mounted() {
             if (this.$store.state.currentPlayer.isAnonymous == true) {
@@ -163,6 +163,17 @@
             } else {
                 this.player = this.$store.state.currentPlayer.firstName;
             }
+
+            this.$store.watch(
+                state => {
+                    return state.currentGame.poses.ongoing;
+                },
+                val => {
+                    if (!val) {
+                        this.state = 'extro';
+                    }
+                }
+            );
         },
         methods: {
             onClickNext() {
@@ -185,7 +196,7 @@
                     } else {
                         if (timeleft <= 0) {
                             clearInterval(downloadTimer);
-                            this.$store.commit("endEmotionsGame", new Date().getTime());
+                            this.$store.commit("endPosesGame", new Date().getTime());
                             setTimeout(()=>{
                                 this.$emit('gameEnded');
                                 this.state = 'extro';

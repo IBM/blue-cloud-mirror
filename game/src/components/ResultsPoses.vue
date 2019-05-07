@@ -110,9 +110,8 @@
                 },
                 val => {
                     //console.log("state.emotionRecognition.lastResult changed");
-
                     if (Date.now() > this.nextRecognitionTime) {
-                        this.processPoses();
+                        this.processPoses(val);
                     }
                 },
                 {
@@ -125,23 +124,16 @@
             this.unwatch1();
         },
         methods: {
-            // otherDomainUrl: function (image) {
-            //     let otherDomainUrl = this.$store.state.otherDomainUrl;
-            //     let output = image;
-            //     if ((otherDomainUrl) && (otherDomainUrl != "") && (otherDomainUrl != "other-domain-url-not-defined")) {
-            //         output = otherDomainUrl + image;
-            //     }
-            //     return output;
-            // },
+
             selectNextPose() {
                 let action = this.currentAction = this.poses[this.index++];
-                let icon = this.$refs[action];
+                let icon = this.currentIcon = this.$refs[action];
                 icon.setState('active');
                 this.$store.commit('updateCurrentAction', {action: action, title: icon.title});
 
-                let delay = Math.floor(this.$store.state.posesRecognition.duration / 5) * 1000;
-
                 this.nextRecognitionTime = Date.now() + this.$store.state.posesRecognition.delay;
+
+                let delay = Math.floor(this.$store.state.posesRecognition.duration / 5) * 1000;
 
                 if (this.index < this.poses.length) {
                     this.timeOut = setTimeout(() => {
@@ -150,11 +142,22 @@
                     }, delay);
                 }
             },
-            processPoses() {
+            handleSuccess() {
+                this.currentIcon.setState('success');
+                clearTimeout(this.timeOut);
+                if (this.index < this.poses.length) {
+                    this.selectNextPose();
+                } else {
+                    this.$store.commit("endPosesGame", new Date().getTime());
+                }
+
+            },
+            processPoses(val) {
+
+                console.log('process', this.currentAction);
+
                 // capitulation
-                if (this.$store.state.currentGame.poses.currentPose == POSE_POSE1) {
-                    let pose1 = this.$refs.pose1;
-                    if (!pose1) pose1 = document.getElementById('pose1');
+                if (this.currentAction == POSE_POSE1) {
                     if (
                         val[9].score > 0.4 &&
                         val[10].score > 0.4 &&
@@ -172,31 +175,27 @@
                                     "successPose1",
                                     this.$store.state.webcam.lastImage
                                 );
-                                pose1.src = this.$store.state.webcam.lastImage;
+                                this.handleSuccess();
                             }
                         }
                     }
-                }
+                } else
 
                 // left ear only
-                if (this.$store.state.currentGame.poses.currentPose == POSE_POSE2) {
-                    let pose2 = this.$refs.pose2;
-                    if (!pose2) pose2 = document.getElementById('pose2');
+                if (this.currentAction == POSE_POSE2) {
                     if (val[3].score > 0.8 && val[4].score < 0.2) {
                         if (this.$store.state.currentGame.poses.results.pose2 == false) {
                             this.$store.commit(
                                 "successPose2",
                                 this.$store.state.webcam.lastImage
                             );
-                            pose2.src = this.$store.state.webcam.lastImage;
+                            this.handleSuccess();
                         }
                     }
-                }
+                } else
 
                 // dance
-                if (this.$store.state.currentGame.poses.currentPose == POSE_POSE3) {
-                    let pose3 = this.$refs.pose3;
-                    if (!pose3) pose3 = document.getElementById('pose3');
+                if (this.currentAction == POSE_POSE3) {
                     if (
                         val[0].score > 0.7 &&
                         val[10].score > 0.5 &&
@@ -214,16 +213,14 @@
                                     "successPose3",
                                     this.$store.state.webcam.lastImage
                                 );
-                                pose3.src = this.$store.state.webcam.lastImage;
+                                this.handleSuccess();
                             }
                         }
                     }
-                }
+                } else
 
                 // elbows
-                if (this.$store.state.currentGame.poses.currentPose == POSE_POSE4) {
-                    let pose4 = this.$refs.pose4;
-                    if (!pose4) pose4 = document.getElementById('pose4');
+                if (this.currentAction == POSE_POSE4) {
                     if (
                         val[7].score > 0.7 &&
                         val[8].score > 0.7 &&
@@ -235,13 +232,13 @@
                                 "successPose4",
                                 this.$store.state.webcam.lastImage
                             );
-                            pose4.src = this.$store.state.webcam.lastImage;
+                            this.handleSuccess();
                         }
                     }
-                }
+                } else
 
                 // winner
-                if (this.$store.state.currentGame.poses.currentPose == POSE_POSE5) {
+                if (this.currentAction == POSE_POSE5) {
                     let pose5 = this.$refs.pose5;
                     if (!pose5) pose5 = document.getElementById('pose5');
                     if (
@@ -257,37 +254,13 @@
                                     "successPose5",
                                     this.$store.state.webcam.lastImage
                                 );
-                                pose5.src = this.$store.state.webcam.lastImage;
+                                this.handleSuccess();
                             }
                         }
                     }
                 }
             }
-            /* moveToNextPoseIfTooLong() {
-                 let now = new Date().getTime();
-                 let lastTime = this.$store.state.currentGame.poses.lastSuccess;
-                 if (lastTime == 0) {
-                     lastTime = this.$store.state.currentGame.poses.startDate;
-                 }
-                 let difference = now - lastTime;
-                 if (difference > this.$store.state.posesRecognition.skipPoseAfter) {
-                     this.$store.commit("moveToNextPose");
-                 }
-             },
-             enforceLastEmotionDetectionDelay() {
-                 let now = new Date().getTime();
-                 let lastTime = this.$store.state.currentGame.poses.lastSuccess;
-                 if (lastTime == 0) {
-                     return false;
-                 } else {
-                     let difference = now - lastTime;
-                     if (difference > this.$store.state.posesRecognition.delay) {
-                         return false;
-                     } else {
-                         return true;
-                     }
-                 }
-             }*/
+
         }
     };
 </script>

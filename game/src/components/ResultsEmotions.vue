@@ -123,7 +123,7 @@
                 },
                 val => {
                     if (val) {
-                        this.selectNextPose();
+                        this.selectNextEmotion();
                     }
                 }
             );
@@ -140,119 +140,13 @@
                             this.$store.commit(`success${val.label}`, this.$store.state.emotionRecognition.lastFace);
                             clearTimeout(this.timeOut);
                             if (this.index < this.emotions.length) {
-                                this.selectNextPose();
+                                this.selectNextEmotion();
                             } else {
                                 this.$store.commit("endEmotionsGame", new Date().getTime());
                             }
                         }
                     }
-
-                    /*
-                    console.log("state.emotionRecognition.lastResult changed", val);
-
-                    this.moveToNextEmotionIfTooLong();
-
-                    if (this.enforceLastEmotionDetectionDelay() == false) {
-                        if (
-                            this.$store.state.currentGame.emotions.currentEmotion ==
-                            EMOTION_HAPPY
-                        ) {
-                            let facehappy = this.$refs.facehappy;
-                            if (!facehappy) facehappy = document.getElementById('facehappy');
-                            if (val.label == "Happy") {
-                                if (
-                                    this.$store.state.currentGame.emotions.results.happy == false
-                                ) {
-                                    this.$store.commit(
-                                        "successHappy",
-                                        this.$store.state.emotionRecognition.lastFace
-                                    );
-                                    facehappy.src = this.$store.state.emotionRecognition.lastFace;
-                                }
-                            }
-                        }
-                    }
-                    if (this.enforceLastEmotionDetectionDelay() == false) {
-                        if (
-                            this.$store.state.currentGame.emotions.currentEmotion ==
-                            EMOTION_ANGRY
-                        ) {
-                            let faceangry = this.$refs.faceangry;
-                            if (!faceangry) faceangry = document.getElementById('faceangry');
-                            if (val.label == "Angry") {
-                                if (
-                                    this.$store.state.currentGame.emotions.results.angry == false
-                                ) {
-                                    this.$store.commit(
-                                        "successAngry",
-                                        this.$store.state.emotionRecognition.lastFace
-                                    );
-                                    faceangry.src = this.$store.state.emotionRecognition.lastFace;
-                                }
-                            }
-                        }
-                    }
-                    if (this.enforceLastEmotionDetectionDelay() == false) {
-                        if (
-                            this.$store.state.currentGame.emotions.currentEmotion ==
-                            EMOTION_FEAR
-                        ) {
-                            let facefear = this.$refs.facefear;
-                            if (!facefear) facefear = document.getElementById('facefear');
-                            if (val.label == "Fear") {
-                                if (
-                                    this.$store.state.currentGame.emotions.results.fear == false
-                                ) {
-                                    this.$store.commit(
-                                        "successFear",
-                                        this.$store.state.emotionRecognition.lastFace
-                                    );
-                                    facefear.src = this.$store.state.emotionRecognition.lastFace;
-                                }
-                            }
-                        }
-                    }
-                    if (this.enforceLastEmotionDetectionDelay() == false) {
-                        if (
-                            this.$store.state.currentGame.emotions.currentEmotion == EMOTION_SAD
-                        ) {
-                            let facesad = this.$refs.facesad;
-                            if (!facesad) facesad = document.getElementById('facesad');
-                            if (val.result[3].percent > 0.7) {
-                                if (this.$store.state.currentGame.emotions.results.sad == false) {
-                                    this.$store.commit(
-                                        "successSad",
-                                        this.$store.state.emotionRecognition.lastFace
-                                    );
-                                    facesad.src = this.$store.state.emotionRecognition.lastFace;
-                                }
-                            }
-                        }
-                    }
-                    if (this.enforceLastEmotionDetectionDelay() == false) {
-                        if (
-                            this.$store.state.currentGame.emotions.currentEmotion ==
-                            EMOTION_SURPRISE
-                        ) {
-                            let facesurprise = this.$refs.facesurprise;
-                            if (!facesurprise) facesurprise = document.getElementById('facesurprise');
-                            if (val.result[4].percent > 0.7) {
-                                if (
-                                    this.$store.state.currentGame.emotions.results.surprise == false
-                                ) {
-                                    this.$store.commit(
-                                        "successSurprise",
-                                        this.$store.state.emotionRecognition.lastFace
-                                    );
-                                    facesurprise.src = this.$store.state.emotionRecognition.lastFace;
-                                }
-                            }
-                        }
-                    }
-
-                     */
                 },
-
                 {
                     deep: true
                 }
@@ -271,20 +165,20 @@
             //     }
             //     return output;
             // },
-            selectNextPose() {
+            selectNextEmotion() {
                 let action = this.currentAction = this.emotions[this.index++];
                 let icon = this.$refs[action];
                 icon.setState('active');
                 this.$store.commit('updateCurrentAction', {action: action, title: icon.title});
 
-                let delay = Math.floor(this.$store.state.emotionRecognition.duration / 5) * 1000;
-
                 this.nextRecognitionTime = Date.now() + this.$store.state.emotionRecognition.delay;
+
+                let delay = Math.floor(this.$store.state.emotionRecognition.duration / 5) * 1000;
 
                 if (this.index < this.emotions.length) {
                     this.timeOut = setTimeout(() => {
                         icon.setState('failed');
-                        this.selectNextPose();
+                        this.selectNextEmotion();
                     }, delay);
                 }
             }

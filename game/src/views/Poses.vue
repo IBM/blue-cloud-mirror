@@ -1,13 +1,13 @@
 <template>
     <div class="poses">
-        <controlpanelposes @gameStarted="gameRunning=true" @gameEnded="gameRunning=false"/>
+        <controlpanelposes/>
 
         <div>
             <img id="lastcapturedimage" ref="lastcapturedimage">
         </div>
 
 
-        <b-row v-show="gameRunning" no-gutters>
+        <b-row v-show="gameIsRunning" no-gutters>
             <b-col class="action-container" lg="6" md="12">
                 <webcam/>
             </b-col>
@@ -16,8 +16,8 @@
             </b-col>
         </b-row>
 
-        <level-label v-show="gameRunning" level="2"/>
-        <time-label v-show="gameRunning"/>
+        <level-label v-show="gameIsRunning" level="2"/>
+        <time-label v-show="gameIsRunning"/>
 
         <results-poses class="results"/>
     </div>
@@ -42,6 +42,17 @@
             controlpanelposes
         },
         name: "poses",
+        data() {
+            return {
+                net: {},
+                loaded: false
+            };
+        },
+        computed: {
+            gameIsRunning() {
+                return this.$store.state.currentGame.poses.ongoing;
+            }
+        },
         mounted() {
             let that = this;
             this.loadModel().then(poseNet => {
@@ -75,16 +86,6 @@
                                     .then(result => {
                                         let poses = [];
                                         poses.push(result);
-
-                                        // let canvasElementId = "videooverlaycanvas";
-                                        // this.canvas = document.getElementById(canvasElementId);
-                                        // let ctx = this.canvas.getContext("2d");
-                                        // ctx.clearRect(
-                                        //   0,
-                                        //   0,
-                                        //   this.$store.state.webcam.width,
-                                        //   this.$store.state.webcam.height
-                                        // );
 
                                         poses.forEach(({score, keypoints}) => {
                                             this.$store.commit(
@@ -124,14 +125,8 @@
                     posenet.mobileNetArchitectures[100]
                 );
             }
-        },
-        data() {
-            return {
-                net: {},
-                loaded: false,
-                gameRunning: false
-            };
         }
+
     };
 </script>
 
@@ -157,6 +152,7 @@
         .action-container {
             height: 40vh;
         }
+
         .results {
             height: calc(20vh - 3rem);
         }

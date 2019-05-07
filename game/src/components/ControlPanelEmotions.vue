@@ -120,9 +120,9 @@
             // isLevelCompleted: function () {
             //     return this.$store.state.currentGame.emotions.completed;
             // },
-            getDuration: function () {
-                return this.$store.state.emotionRecognition.duration;
-            },
+            // getDuration: function () {
+            //     return this.$store.state.emotionRecognition.duration;
+            // },
             // isStartButtonDisabled: function () {
             //     if (this.$store.state.emotionRecognition.modelLoaded == false) {
             //         return true;
