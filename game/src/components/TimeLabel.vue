@@ -1,5 +1,5 @@
 <template>
-    <div class="content text-white">
+    <div class="content text-white text-shadow">
         <div class="ibm-plex-sans time">{{$store.state.time}}</div>
         <div class="label">Time</div>
     </div>

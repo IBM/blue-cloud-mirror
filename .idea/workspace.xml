@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="158d7186-3812-4b65-bd1a-f7cc8b56b96c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/game/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/components/ActionPreview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/components/ActionPreview.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/components/ControlPanelEmotions.vue" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/components/ControlPanelEmotions.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/components/ControlPanelPoses.vue" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/components/ControlPanelPoses.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/components/ResultsEmotions.vue" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/components/ResultsEmotions.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/components/ResultsPoses.vue" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/components/ResultsPoses.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/views/Emotions.vue" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/views/Emotions.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/views/Poses.vue" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/views/Poses.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/src/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/src/components/LevelLabel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/components/LevelLabel.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/src/components/TimeLabel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/components/TimeLabel.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,7 +21,7 @@
         <entry file="file://$PROJECT_DIR$/game/src/components/ResultsEmotions.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="665">
-              <caret line="77" column="65" lean-forward="true" selection-start-line="77" selection-start-column="65" selection-end-line="77" selection-end-column="65" />
+              <caret line="77" column="65" selection-start-line="77" selection-start-column="65" selection-end-line="77" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -35,7 +30,7 @@
         <entry file="file://$PROJECT_DIR$/game/src/views/Poses.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="613">
-              <caret line="56" column="55" lean-forward="true" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="55" />
+              <caret line="56" column="55" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -44,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/game/src/components/ResultsPoses.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="493">
-              <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+              <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -53,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/game/src/components/ControlPanelEmotions.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="606">
-              <caret line="75" column="83" lean-forward="true" selection-start-line="75" selection-start-column="83" selection-end-line="75" selection-end-column="83" />
+              <caret line="75" column="83" selection-start-line="75" selection-start-column="83" selection-end-line="75" selection-end-column="83" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
@@ -62,22 +57,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/game/src/components/WebCam.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="80" column="49" selection-start-line="80" selection-start-column="49" selection-end-line="80" selection-end-column="49" />
-              <folding>
-                <element signature="n#style#0;n#video#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game/src/components/ControlPanelPoses.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="637">
-              <caret line="93" column="21" lean-forward="true" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="21" />
+            <state relative-caret-position="297">
+              <caret line="73" column="14" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -87,19 +70,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/game/src/components/EmotionModel.vue">
+        <entry file="file://$PROJECT_DIR$/game/src/components/TimeLabel.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+            <state relative-caret-position="17">
+              <caret line="1" column="46" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/game/src/components/FaceModel.vue">
+        <entry file="file://$PROJECT_DIR$/game/src/components/LevelLabel.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="493">
-              <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/game/src/app.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -108,7 +100,7 @@
         <entry file="file://$PROJECT_DIR$/game/src/components/ActionPreview.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="595">
-              <caret line="35" column="17" lean-forward="true" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+              <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -117,7 +109,7 @@
         <entry file="file://$PROJECT_DIR$/game/src/views/Emotions.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="765">
-              <caret line="52" column="55" lean-forward="true" selection-start-line="52" selection-start-column="55" selection-end-line="52" selection-end-column="55" />
+              <caret line="52" column="55" selection-start-line="52" selection-start-column="55" selection-end-line="52" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -158,8 +150,6 @@
         <option value="$PROJECT_DIR$/game/public/angry.svg" />
         <option value="$PROJECT_DIR$/game/src/views/Register.vue" />
         <option value="$PROJECT_DIR$/game/src/components/Level.vue" />
-        <option value="$PROJECT_DIR$/game/src/components/LevelLabel.vue" />
-        <option value="$PROJECT_DIR$/game/src/components/TimeLabel.vue" />
         <option value="$PROJECT_DIR$/game/src/components/EmotionIcon.vue" />
         <option value="$PROJECT_DIR$/game/public/happy2.svg" />
         <option value="$PROJECT_DIR$/game/public/happy.svg" />
@@ -169,7 +159,6 @@
         <option value="$PROJECT_DIR$/game/src/components/ActionIcon.vue" />
         <option value="$PROJECT_DIR$/game/src/components/EmotionModel.vue" />
         <option value="$PROJECT_DIR$/game/src/main.ts" />
-        <option value="$PROJECT_DIR$/game/src/app.css" />
         <option value="$PROJECT_DIR$/game/src/components/Action.vue" />
         <option value="$PROJECT_DIR$/game/vue.config.js" />
         <option value="$PROJECT_DIR$/game/src/views/Results.vue" />
@@ -182,12 +171,15 @@
         <option value="$PROJECT_DIR$/game/src/views/Emotions.vue" />
         <option value="$PROJECT_DIR$/game/src/components/ControlPanelEmotions.vue" />
         <option value="$PROJECT_DIR$/game/src/components/ControlPanelPoses.vue" />
+        <option value="$PROJECT_DIR$/game/src/components/TimeLabel.vue" />
+        <option value="$PROJECT_DIR$/game/src/components/LevelLabel.vue" />
+        <option value="$PROJECT_DIR$/game/src/app.css" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1398" />
+    <option name="width" value="1298" />
     <option name="height" value="1388" />
   </component>
   <component name="ProjectView">
@@ -327,19 +319,19 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59530000" />
+    <option name="totallyTimeSpent" value="60141000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1968" height="1388" extended-state="0" />
+    <frame x="0" y="23" width="1298" height="1388" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.89175767" visible="true" weight="0.17873652" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.89175767" visible="true" weight="0.27251372" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" sideWeight="0.1082423" side_tool="true" visible="true" weight="0.17873652" />
+      <window_info id="npm" order="2" sideWeight="0.1082423" side_tool="true" visible="true" weight="0.27251372" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.13040063" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.20895523" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20895523" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3998429" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -423,24 +415,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game/src/components/LevelLabel.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/game/node_modules/bootstrap/scss/utilities/_overflow.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/src/components/TimeLabel.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="10" lean-forward="true" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -481,13 +459,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/game/public/norightear.svg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/src/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/game/src/router.ts">
       <provider selected="true" editor-type-id="text-editor">
@@ -627,42 +598,42 @@
     <entry file="file://$PROJECT_DIR$/game/src/components/ActionPreview.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
-          <caret line="35" column="17" lean-forward="true" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+          <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/game/src/views/Poses.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="613">
-          <caret line="56" column="55" lean-forward="true" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="55" />
+          <caret line="56" column="55" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/game/src/views/Emotions.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
-          <caret line="52" column="55" lean-forward="true" selection-start-line="52" selection-start-column="55" selection-end-line="52" selection-end-column="55" />
+          <caret line="52" column="55" selection-start-line="52" selection-start-column="55" selection-end-line="52" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/game/src/components/ResultsEmotions.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="665">
-          <caret line="77" column="65" lean-forward="true" selection-start-line="77" selection-start-column="65" selection-end-line="77" selection-end-column="65" />
+          <caret line="77" column="65" selection-start-line="77" selection-start-column="65" selection-end-line="77" selection-end-column="65" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/game/src/components/ResultsPoses.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
-          <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/game/src/components/ControlPanelEmotions.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="606">
-          <caret line="75" column="83" lean-forward="true" selection-start-line="75" selection-start-column="83" selection-end-line="75" selection-end-column="83" />
+          <caret line="75" column="83" selection-start-line="75" selection-start-column="83" selection-end-line="75" selection-end-column="83" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
@@ -671,12 +642,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/game/src/components/ControlPanelPoses.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="93" column="21" lean-forward="true" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="21" />
+        <state relative-caret-position="297">
+          <caret line="73" column="14" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/src/components/TimeLabel.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="46" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/src/components/LevelLabel.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/src/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
         </state>
       </provider>
     </entry>
