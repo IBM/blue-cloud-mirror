@@ -68,6 +68,7 @@ export default new Vuex.Store({
         },
         currentGame: {
             currentAction: {title: '', action: ''},
+            lastResult: '',
             emotions: {
                 ongoing: false,
                 completed: false,
@@ -137,6 +138,9 @@ export default new Vuex.Store({
         },
         updateCurrentAction(state, payload) {
             state.currentGame.currentAction = payload;
+        },
+        updateLastResult(state, payload) {
+            state.currentGame.lastResult = payload;
         },
         updateCurrentPlayer(state, payload) {
             state.currentPlayer.isAnonymous = false;

@@ -4,15 +4,15 @@
     <!--        <div style="margin-top:30px">-->
     <!--&lt;!&ndash;          <div v-if="firstLevelCompleted == false">&ndash;&gt;-->
     <!--          <div v-if="false">-->
-    <!--            <div>Howdy, hold your horses, buddy <span>&#127943; &#128513;</span></div>-->
-    <!--            <div style="margin-top:15px"></div>-->
-    <!--            <div>You have to play level 1 first</div>-->
-    <!--            <div style="margin-top:15px"></div>-->
-    <!--            <b-button v-on:click="onClickBack" -->
-    <!--                      block -->
-    <!--                      size="lg"-->
-    <!--                      style="background-color: #053c9f !important;border-color:#053c9f !important;">Go to level 1 ...</b-button>-->
-    <!--          </div>-->
+<!--                <div>Howdy, hold your horses, buddy <span>&#127943; &#128513;</span></div>-->
+<!--                <div style="margin-top:15px"></div>-->
+<!--                <div>You have to play level 1 first</div>-->
+<!--                <div style="margin-top:15px"></div>-->
+<!--                <b-button v-on:click="onClickBack" -->
+<!--                          block -->
+<!--                          size="lg"-->
+<!--                          style="background-color: #053c9f !important;border-color:#053c9f !important;">Go to level 1 ...</b-button>-->
+<!--              </div>-->
     <!--&lt;!&ndash;          <div v-if="firstLevelCompleted == true">&ndash;&gt;-->
     <!--          <div v-if="true">-->
     <!--            <div v-if="(isLevelCompleted == false) && (isGaming == false)">Ok, it is time for the second level ! <span>&#128526;</span> <br>-->
@@ -73,14 +73,23 @@
         <div class="content d-flex justify-content-center align-items-center text-white">
 
             <div v-if="state=='intro'" class="font-size-1_25 m-5 text-left">
-                <div class="display-1">Level 2</div>
-                <div class="display-1 ibm-plex-sans mb-3" style="margin-top: -1rem;">Poses</div>
-                Ok, it is time for the second level ! <span>&#128526;</span> <br>
-                Do the five poses as shown below.<br>
-                From left to right. As quickly as you can.<br><br>
 
-                <b-button v-if="modelLoaded" outline-white block @click="onClickStart()">Start/</b-button>
-                <div v-if="!modelLoaded" class="text-center font-size-1">Loading Model ...</div>
+                <div v-if="firstLevelCompleted">
+                    <div class="display-1">Level 2</div>
+                    <div class="display-1 ibm-plex-sans mb-3" style="margin-top: -1rem;">Poses</div>
+                    Ok, it is time for the second level ! <span>&#128526;</span> <br>
+                    Do the five poses as shown below.<br>
+                    From left to right. As quickly as you can.<br><br>
+
+                    <b-button v-if="modelLoaded" outline-white block @click="onClickStart()">Start/</b-button>
+                    <div v-if="!modelLoaded" class="text-center font-size-1">Loading Model ...</div>
+                </div>
+
+                <div v-else>
+                    Howdy, hold your horses, buddy <span>&#127943; &#128513;</span><br>
+                    You have to play level 1 first!<br><br>
+                    <b-button v-if="modelLoaded" outline-white block @click="onClickBack()">Go to level 1 ...</b-button>
+                </div>
             </div>
 
             <div v-if="state=='extro'" class="font-size-1_25 m-5">

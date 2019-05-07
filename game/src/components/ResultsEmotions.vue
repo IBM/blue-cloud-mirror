@@ -137,6 +137,7 @@
                         let action = this.currentAction;
                         if (action === val.label.toLowerCase()) {
                             this.$refs[action].setState('success');
+                            this.$store.commit('updateLastResult', 'success');
                             this.$store.commit(`success${val.label}`, this.$store.state.emotionRecognition.lastFace);
                             clearTimeout(this.timeOut);
                             if (this.index < this.emotions.length) {
@@ -178,6 +179,7 @@
                 if (this.index < this.emotions.length) {
                     this.timeOut = setTimeout(() => {
                         icon.setState('failed');
+                        this.$store.commit('updateLastResult', 'failed');
                         this.selectNextEmotion();
                     }, delay);
                 }

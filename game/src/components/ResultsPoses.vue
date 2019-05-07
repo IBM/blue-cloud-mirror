@@ -138,12 +138,14 @@
                 if (this.index < this.poses.length) {
                     this.timeOut = setTimeout(() => {
                         icon.setState('failed');
+                        this.$store.commit('updateLastResult', 'failed');
                         this.selectNextPose();
                     }, delay);
                 }
             },
             handleSuccess() {
                 this.currentIcon.setState('success');
+                this.$store.commit('updateLastResult', 'success');
                 clearTimeout(this.timeOut);
                 if (this.index < this.poses.length) {
                     this.selectNextPose();
@@ -153,8 +155,6 @@
 
             },
             processPoses(val) {
-
-                console.log('process', this.currentAction);
 
                 // capitulation
                 if (this.currentAction == POSE_POSE1) {
