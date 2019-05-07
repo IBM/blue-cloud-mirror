@@ -1,5 +1,5 @@
 <template>
-  <div class="help">
+  <b-container class="help">
     <h1 style="margin-top:15px;margin-bottom:25px"><p><b>#BlueCloudMirror</b> help</p></h1>
 
     <div style="margin-top:15px;">
@@ -24,7 +24,7 @@
       <li><a target="_blank" style="color:#053c9f" href="https://twitter.com/tsuedbroecker">Thomas Südbröcker</a></li>
       <li><a target="_blank" style="color:#053c9f" href="https://twitter.com/harald_u">Harald Uebele</a></li>
     </ul>
-    </div>
+    </b-container>
 </template>
 
 <script>

@@ -1,9 +1,9 @@
 <template>
-  <div class="about">
+  <b-container class="about">
     <div style="margin-top:15px;"></div>
-    <h2 v-if="this.$store.state.demoMode == false" style="margin-bottom:25px">I want the chance to win a prize</h2>
+    <h1 v-if="this.$store.state.demoMode == false" style="margin-bottom:25px">I want the chance to win a prize</h1>
     <div v-if="this.$store.state.demoMode == true" style="margin-bottom:10px">
-      <h2 style="margin-bottom:25px">Demo version</h2>
+      <h1 style="margin-bottom:25px">Demo version</h1>
       In this demo version, the user registration is <b>not supported</b>. The name <b>'Demo Player'</b> is used to your save game scores result in the HighScore list. Changes in the input fields will not be reflected in the game and HighScore.</div>
     <div>
       <b-form @submit="onSubmit">
@@ -76,7 +76,7 @@
     </div>
     <div></div>
     <div></div>
-  </div>
+  </b-container>
 </template>
 
 <script>

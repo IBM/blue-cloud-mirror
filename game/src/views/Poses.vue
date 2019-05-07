@@ -1,148 +1,168 @@
 <template>
-  <div class="poses">
-    <h2 style="margin-top:15px;margin-bottom:25px">Level 2 (of 2): Poses</h2>
-    <div>
-      <img id="lastcapturedimage" ref="lastcapturedimage">
+    <div class="poses">
+        <controlpanelposes @gameStarted="gameRunning=true" @gameEnded="gameRunning=false"/>
+
+        <div>
+            <img id="lastcapturedimage" ref="lastcapturedimage">
+        </div>
+
+
+        <b-row v-show="gameRunning" no-gutters>
+            <b-col class="action-container" lg="6" md="12">
+                <webcam/>
+            </b-col>
+            <b-col lg="6" class="action-container">
+                <action-preview/>
+            </b-col>
+        </b-row>
+
+        <level-label v-show="gameRunning" level="2"/>
+        <time-label v-show="gameRunning"/>
+
+        <results-poses class="results"/>
     </div>
-    <b-row>
-      <b-col style="min-width: 520px;">
-        <webcam></webcam>
-      </b-col>
-      <b-col style="text-align:center">
-        <controlpanelposes></controlpanelposes>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <results-poses></results-poses>
-      </b-col>
-    </b-row>
-  </div>
 </template>
- 
+
 <script>
-import webcam from "@/components/WebCam.vue";
-import resultsPoses from "@/components/ResultsPoses.vue";
-import * as posenet from "@tensorflow-models/posenet";
-import controlpanelposes from "@/components/ControlPanelPoses.vue";
+    import webcam from "@/components/WebCam.vue";
+    import resultsPoses from "@/components/ResultsPoses.vue";
+    import * as posenet from "@tensorflow-models/posenet";
+    import controlpanelposes from "@/components/ControlPanelPoses.vue";
+    import LevelLabel from "@/components/LevelLabel";
+    import TimeLabel from "@/components/TimeLabel";
+    import ActionPreview from "@/components/ActionPreview";
 
-export default {
-  components: {
-    webcam,
-    resultsPoses,
-    controlpanelposes
-  },
-  name: "poses",
-  mounted() {
-    let that = this;
-    this.loadModel().then(poseNet => {
-      that.net = poseNet;
-      that.loaded = true;
-      that.$store.commit("setPosesRecognitionModelLoaded");
-    });
+    export default {
+        components: {
+            ActionPreview,
+            TimeLabel,
+            LevelLabel,
+            webcam,
+            resultsPoses,
+            controlpanelposes
+        },
+        name: "poses",
+        mounted() {
+            let that = this;
+            this.loadModel().then(poseNet => {
+                that.net = poseNet;
+                that.loaded = true;
+                that.$store.commit("setPosesRecognitionModelLoaded");
+            });
 
-    this.$store.watch(
-      state => {
-        return state.webcam.lastImage;
-      },
-      val => {
-        //console.log("state.webcam.lastImage changed");
-        if (this.$store.state.posesRecognition.modelLoaded == true) {
-          this.image = this.$refs.lastcapturedimage;
-          if (this.image) {
-            this.image.src = val;
+            this.$store.watch(
+                state => {
+                    return state.webcam.lastImage;
+                },
+                val => {
+                    //console.log("state.webcam.lastImage changed");
+                    if (this.$store.state.posesRecognition.modelLoaded == true) {
+                        this.image = this.$refs.lastcapturedimage;
+                        if (this.image) {
+                            this.image.src = val;
 
-            const imageScaleFactor = 0.5;
-            const outputStride = 16;
-            const flipHorizontal = false;
-            if (this.loaded == true) {
-              this.net
-                .estimateSinglePose(
-                  this.image,
-                  imageScaleFactor,
-                  flipHorizontal,
-                  outputStride
-                )
-                .then(result => {
-                  //console.log(result);
-                  let poses = [];
-                  poses.push(result);
+                            const imageScaleFactor = 0.5;
+                            const outputStride = 16;
+                            const flipHorizontal = false;
+                            if (this.loaded == true) {
+                                this.net
+                                    .estimateSinglePose(
+                                        this.image,
+                                        imageScaleFactor,
+                                        flipHorizontal,
+                                        outputStride
+                                    )
+                                    .then(result => {
+                                        let poses = [];
+                                        poses.push(result);
 
-                  let canvasElementId = "videooverlaycanvas";
-                  this.canvas = document.getElementById(canvasElementId);
-                  let ctx = this.canvas.getContext("2d");
-                  ctx.clearRect(
-                    0,
-                    0,
-                    this.$store.state.webcam.width,
-                    this.$store.state.webcam.height
-                  );
+                                        // let canvasElementId = "videooverlaycanvas";
+                                        // this.canvas = document.getElementById(canvasElementId);
+                                        // let ctx = this.canvas.getContext("2d");
+                                        // ctx.clearRect(
+                                        //   0,
+                                        //   0,
+                                        //   this.$store.state.webcam.width,
+                                        //   this.$store.state.webcam.height
+                                        // );
 
-                  poses.forEach(({ score, keypoints }) => {
-                    this.$store.commit(
-                      "updateLastPosesRecognitionResult",
-                      keypoints
-                    );
-                  });
-                });
+                                        poses.forEach(({score, keypoints}) => {
+                                            this.$store.commit(
+                                                "updateLastPosesRecognitionResult",
+                                                keypoints
+                                            );
+                                        });
+                                    });
+                            }
+                        }
+                    }
+                },
+                {
+                    deep: true
+                }
+            );
+        },
+        methods: {
+            async loadModel() {
+                const mobileNetModel = await this.loadMobileNetModel();
+                return new posenet.PoseNet(mobileNetModel);
+            },
+            async loadMobileNetModel() {
+                let otherDomainUrl = this.$store.state.otherDomainUrl;
+                let url = "models/poses/";
+                if (
+                    otherDomainUrl &&
+                    otherDomainUrl != "" &&
+                    otherDomainUrl != "other-domain-url-not-defined"
+                ) {
+                    url = otherDomainUrl + url;
+                }
+                const checkpointLoader = new posenet.CheckpointLoader(url);
+                const variables = await checkpointLoader.getAllVariables();
+                return new posenet.MobileNet(
+                    variables,
+                    posenet.mobileNetArchitectures[100]
+                );
             }
-          }
+        },
+        data() {
+            return {
+                net: {},
+                loaded: false,
+                gameRunning: false
+            };
         }
-      },
-      {
-        deep: true
-      }
-    );
-  },
-  methods: {
-    async loadModel() {
-      const mobileNetModel = await this.loadMobileNetModel();
-      return new posenet.PoseNet(mobileNetModel);
-    },
-    async loadMobileNetModel() {
-      let otherDomainUrl = this.$store.state.otherDomainUrl;
-      let url = "models/poses/";
-      if (
-        otherDomainUrl &&
-        otherDomainUrl != "" &&
-        otherDomainUrl != "other-domain-url-not-defined"
-      ) {
-        url = otherDomainUrl + url;
-      }
-      const checkpointLoader = new posenet.CheckpointLoader(url);
-      const variables = await checkpointLoader.getAllVariables();
-      return new posenet.MobileNet(
-        variables,
-        posenet.mobileNetArchitectures[100]
-      );
-    }
-  },
-  data() {
-    return {
-      net: {},
-      loaded: false
     };
-  }
-};
 </script>
 
 <style scoped>
-#app {
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-#video {
-  background-color: #000000;
-}
-#canvas {
-  display: none;
-}
-li {
-  display: inline;
-  padding: 5px;
-}
-#lastcapturedimage {
-  display: none;
-}
+
+    .results {
+        height: calc(20vh - 3rem);
+        background-color: black;
+        overflow: hidden;
+    }
+
+    .action-container {
+        height: 80vh;
+    }
+
+    .poses {
+        position: relative;
+        height: calc(100vh - 3rem);
+        min-width: 500px;
+    }
+
+    @media (max-width: 992px) {
+        .action-container {
+            height: 40vh;
+        }
+        .results {
+            height: calc(20vh - 3rem);
+        }
+    }
+
+    #lastcapturedimage {
+        display: none;
+    }
 </style>

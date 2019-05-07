@@ -1,5 +1,5 @@
 <template>
-  <div class="architecture">
+  <b-container class="architecture">
    <h1 style="margin-top:15px;margin-bottom:25px">Explore the <b>#BlueCloudMirror</b> Architecture</h1>
    <br>
    <!-- BUTTONs -->
@@ -116,7 +116,7 @@
         <li><a target="_blank" style="color:#053c9f" href="https://twitter.com/harald_u">Harald Uebele</a></li>
       </ul>
     </div>
-  </div>
+  </b-container>
 </template>
 
 <script>

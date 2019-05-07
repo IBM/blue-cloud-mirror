@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <b-container class="home">
     <h1 style="margin-top:15px;margin-bottom:25px"><p>Welcome to our <b>#BlueCloudMirror</b> game</p></h1>
 
     <div style="margin-top:15px;">
@@ -193,7 +193,7 @@
         </center>
       </b-col>
     </b-container>
-    </div>
+    </b-container>
 </template>
 
 <script>

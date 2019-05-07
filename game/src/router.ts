@@ -10,6 +10,7 @@ import Help from './views/Help.vue';
 
 Vue.use(Router);
 
+
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
