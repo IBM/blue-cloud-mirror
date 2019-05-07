@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="158d7186-3812-4b65-bd1a-f7cc8b56b96c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/game/src/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/components/LevelLabel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/components/LevelLabel.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/src/components/TimeLabel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/game/src/components/TimeLabel.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/blue-cloud-mirror-bma.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -90,8 +93,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game/src/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+            <state relative-caret-position="544">
+              <caret line="32" column="23" lean-forward="true" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -319,19 +322,19 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60141000" />
+    <option name="totallyTimeSpent" value="60426000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1298" height="1388" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.89175767" visible="true" weight="0.27251372" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8923802" visible="true" weight="0.27251372" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" sideWeight="0.1082423" side_tool="true" visible="true" weight="0.27251372" />
+      <window_info id="npm" order="2" sideWeight="0.10761979" side_tool="true" visible="true" weight="0.27251372" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.13040063" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20895523" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.20895523" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3998429" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -667,8 +670,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/game/src/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+        <state relative-caret-position="544">
+          <caret line="32" column="23" lean-forward="true" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
         </state>
       </provider>
     </entry>
