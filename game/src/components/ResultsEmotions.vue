@@ -1,64 +1,4 @@
 <template>
-    <!--  <div style="margin-top:0px" class="resultsemotions" id="resultsemotions">-->
-    <!--    <div style="display: table;width:100%">-->
-    <!--      <div style="display: table-row;">-->
-    <!--        <div style="max-width:100px;display: table-cell;vertical-align: top;">-->
-    <!--          <div :class="happyClass">-->
-    <!--            <div style="text-align:center">Happy</div>-->
-    <!--            <img class="face" id="facehappy" ref="facehappy" :src="otherDomainUrl('happy.svg')">-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--        <div style="max-width:100px;display: table-cell;vertical-align: top;">-->
-    <!--          <div :class="angryClass">-->
-    <!--            <div style="text-align:center">Angry</div>-->
-    <!--            <img class="face" id="faceangry" ref="faceangry" :src="otherDomainUrl('angry.svg')">-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--        <div style="max-width:100px;display: table-cell;vertical-align: top;">-->
-    <!--          <div :class="fearClass">-->
-    <!--            <div style="text-align:center">Fear</div>-->
-    <!--            <img class="face" id="facefear" ref="facefear" :src="otherDomainUrl('fear.svg')">-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--        <div style="max-width:100px;display: table-cell;vertical-align: top;">-->
-    <!--          <div :class="sadClass">-->
-    <!--            <div style="text-align:center">Sad</div>-->
-    <!--            <img class="face" id="facesad" ref="facesad" :src="otherDomainUrl('sad.svg')">-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--        <div style="max-width:100px;display: table-cell;vertical-align: top;">-->
-    <!--          <div :class="surpriseClass">-->
-    <!--            <div style="text-align:center">Surprise</div>-->
-    <!--            <img class="face" id="facesurprise" ref="facesurprise" :src="otherDomainUrl('surprise.svg')">-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
-    <!--  </div>-->
-
-    <!--        <div class="h-100" fluid style="background-color: yellow">-->
-    <!--            <b-row class="w-100 h-100"style="background-color: green; overflow: hidden" >-->
-    <!--                <b-row class="h-100 justify-content-center" xalign-v="center">-->
-    <!--                    <b-col>-->
-    <!--                        <img class="face" id="facesurprise1" ref="facesurprise" :src="otherDomainUrl('surprise.svg')">-->
-    <!--                    </b-col>-->
-    <!--                    <b-col>-->
-    <!--                        <img class="face" id="facesurprise2" ref="facesurprise" :src="otherDomainUrl('surprise.svg')">-->
-    <!--                    </b-col>-->
-    <!--                    <b-col>-->
-    <!--                        <img class="face" id="facesurprise3" ref="facesurprise" :src="otherDomainUrl('surprise.svg')">-->
-    <!--                    </b-col>-->
-    <!--                    <b-col>-->
-    <!--                        <img class="face" id="facesurprise4" ref="facesurprise" :src="otherDomainUrl('surprise.svg')">-->
-    <!--                    </b-col>-->
-    <!--                    <b-col>-->
-    <!--                        <img class="face" id="facesurprise5" ref="facesurprise" :src="otherDomainUrl('surprise.svg')">-->
-    <!--                    </b-col>-->
-    <!--                </b-row>-->
-    <!--            </b-row>-->
-
-    <!--        </div>-->
-
     <div class="d-flex justify-content-center align-items-center">
         <b-row class="ml-1 mr-1 content">
             <b-col>
@@ -158,14 +98,7 @@
             this.unwatch1();
         },
         methods: {
-            // otherDomainUrl: function (image) {
-            //     let otherDomainUrl = this.$store.state.otherDomainUrl;
-            //     let output = image;
-            //     if ((otherDomainUrl) && (otherDomainUrl != "") && (otherDomainUrl != "other-domain-url-not-defined")) {
-            //         output = otherDomainUrl + image;
-            //     }
-            //     return output;
-            // },
+
             selectNextEmotion() {
                 let action = this.currentAction = this.emotions[this.index++];
                 let icon = this.$refs[action];
@@ -185,33 +118,7 @@
                 }
             }
 
-            /*
-            moveToNextEmotionIfTooLong() {
-                let now = new Date().getTime();
-                let lastTime = this.$store.state.currentGame.emotions.lastSuccess;
-                if (lastTime == 0) {
-                    lastTime = this.$store.state.currentGame.emotions.startDate;
-                }
-                let difference = now - lastTime;
-                if (difference > this.$store.state.emotionRecognition.skipEmotionAfter) {
-                    this.$store.commit("moveToNextEmotion");
-                }
-            },
-            enforceLastEmotionDetectionDelay() {
-                let now = new Date().getTime();
-                let lastTime = this.$store.state.currentGame.emotions.lastSuccess;
-                if (lastTime == 0) {
-                    return false;
-                } else {
-                    let difference = now - lastTime;
-                    if (difference > this.$store.state.emotionRecognition.delay) {
-                        return false;
-                    } else {
-                        return true;
-                    }
-                }
-            }
-             */
+
         }
     };
 </script>

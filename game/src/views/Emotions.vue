@@ -49,6 +49,9 @@
                 captures: []
             };
         },
+        mounted() {
+            this.$store.commit('updateLastResult', '');
+        },
         computed: {
             gameIsRunning() {
                 return this.$store.state.currentGame.emotions.ongoing;

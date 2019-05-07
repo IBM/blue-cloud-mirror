@@ -1,7 +1,8 @@
 <template>
     <div class="w-100 h-100 background p-5 d-flex justify-content-center align-items-center text-white flex-column overflow-hidden">
         <transition name="flash">
-            <div v-if="flash" :class="{success:lastActionIsSuccess, failed:!lastActionIsSuccess, flash: true}"></div>
+            <div v-if="flash && $store.state.currentGame.lastResult == 'success'" class="flash success"></div>
+            <div v-if="flash && $store.state.currentGame.lastResult == 'failed'" class="flash failed"></div>
         </transition>
         <action-icon class="zindex" :type="$store.state.currentGame.currentAction.action"/>
         <div class="title zindex">{{$store.state.currentGame.currentAction.title}}</div>
@@ -20,15 +21,11 @@
                 flash: false
             }
         },
-        computed: {
-            lastActionIsSuccess() {
-                return this.$store.state.currentGame.lastResult == 'success';
-            }
-        },
+        computed: {},
         mounted() {
             this.unwatch = this.$store.watch(
                 state => {
-                    return state.currentGame.lastResult;
+                    return state.currentGame.currentAction;
                 },
                 val => {
                     this.flash = true;

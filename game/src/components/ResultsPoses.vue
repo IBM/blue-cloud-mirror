@@ -1,40 +1,4 @@
 <template>
-    <!--  <div style="margin-top:30px" class="resultsposes" id="resultsposes">-->
-    <!--    <div style="display: table;width:100%">-->
-    <!--      <div style="display: table-row;">-->
-    <!--        <div style="max-width:100px;display: table-cell;vertical-align: top;">-->
-    <!--          <div :class="pose1Class">-->
-    <!--            <div style="text-align:center">Capitulation</div>-->
-    <!--            <img class="face" id="pose1" ref="pose1" :src="otherDomainUrl('capitulation.png')">-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--        <div style="max-width:100px;display: table-cell;vertical-align: top;">-->
-    <!--          <div :class="pose2Class">-->
-    <!--            <div style="text-align:center">No Right Ear</div>-->
-    <!--            <img class="face" id="pose2" ref="pose2" :src="otherDomainUrl('norightear.png')">-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--        <div style="max-width:100px;display: table-cell;vertical-align: top;">-->
-    <!--          <div :class="pose3Class">-->
-    <!--            <div style="text-align:center">Dancer</div>-->
-    <!--            <img class="face" id="pose3" ref="pose3" :src="otherDomainUrl('dancer.png')">-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--        <div style="max-width:100px;display: table-cell;vertical-align: top;">-->
-    <!--          <div :class="pose4Class">-->
-    <!--            <div style="text-align:center">Elbows</div>-->
-    <!--            <img class="face" id="pose4" ref="pose4" :src="otherDomainUrl('elbows.png')">-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--        <div style="max-width:100px;display: table-cell;vertical-align: top;">-->
-    <!--          <div :class="pose5Class">-->
-    <!--            <div style="text-align:center">Winner</div>-->
-    <!--            <img class="face" id="pose5" ref="pose5" :src="otherDomainUrl('winner.png')">-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
-    <!--  </div>-->
     <div class="d-flex justify-content-center align-items-center">
         <b-row class="ml-1 mr-1 content">
             <b-col>

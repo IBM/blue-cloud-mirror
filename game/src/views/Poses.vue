@@ -54,6 +54,7 @@
             }
         },
         mounted() {
+            this.$store.commit('updateLastResult', '');
             let that = this;
             this.loadModel().then(poseNet => {
                 that.net = poseNet;
