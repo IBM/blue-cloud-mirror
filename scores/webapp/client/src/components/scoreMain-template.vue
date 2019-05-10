@@ -220,9 +220,11 @@ export default {
             }
 
             if (i == 0) {
-                image = '<img class="responsive" width="35" height="35" src="winner.png"/>'; 
+                // image = '<img class="responsive" width="35" height="35" src="winner.png"/>';
+                image = '<span>&#127942;</span>';
               } else {
-                image = '<img class="responsive" width="30" height="30"  src="great.png"/>';
+                // image = '<img class="responsive" width="30" height="30"  src="great.png"/>';
+                image = '<span>&#127941;</span>';
             };
             
             list.push({
@@ -240,7 +242,8 @@ export default {
           } else {
             if (returnlist[i].score == lasthighscore) {
               ranking = highscorerange;
-              image = '<img class="responsive" width="30" height="30"  src="great.png"/>'; 
+              // image = '<img class="responsive" width="30" height="30"  src="great.png"/>'; 
+              image = '<span>&#127942;</span>';
               list.push({
                 ranking: ranking,
                 id: returnlist[i]._id,
@@ -255,7 +258,8 @@ export default {
               });
             } else {
               ranking = ranking + 1;
-              image = '<img class="responsive" width="30" height="30"  src="sleep.png"/>';
+              //image = '<img class="responsive" width="30" height="30"  src="sleep.png"/>';
+              image = '<span>&#128564</span>';
               list.push({
                 ranking: ranking,
                 id: returnlist[i]._id,
