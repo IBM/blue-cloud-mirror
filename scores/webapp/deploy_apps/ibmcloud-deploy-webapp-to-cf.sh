@@ -52,9 +52,6 @@ function ibmcloud_login() {
   ibmcloud cf create-space $IBMCLOUD_CF_SPACE_NAME
 
   _out   _set -s $IBMCLOUD_CF_SPACE_NAME -g $IBMCLOUD_RESOURCE_GROUP
-
-  ibmcloud target -o $IBMCLOUD_CF_ORGANIZATION_NAME
-  ibmcloud cf create-space $IBMCLOUD_CF_SPACE_NAME
   ibmcloud target -s $IBMCLOUD_CF_SPACE_NAME -g $IBMCLOUD_RESOURCE_GROUP
   
   # Show the result of login to stdout
@@ -72,8 +69,7 @@ function setEnv(){
    # set env
   printf "\n# CF APP" >> $ENV_SERVER_FILE  
   printf "\nSERVICE_USER=$IBMCLOUD_CF_APP_WEB_APP_USER" >> $ENV_SERVER_FILE
-  printf "\nSERVICE_PASSWORD=$IBMCLOUD_CF_APP_WEB_APP_PASSWORD" >> $ENV_SERVER_FILE
-  
+  printf "\nSERVICE_PASSWORD=$IBMCLOUD_CF_APP_WEB_APP_PASSWORD" >> $ENV_SERVER_FILE 
 }
 
 function prepareVUEClientCode() {
