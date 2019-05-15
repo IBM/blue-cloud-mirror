@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#!/bin/bash
+
 # Build Webapp
 SOURCE="dist"
 DESTINATION="/scores/webapp/server"
@@ -14,7 +16,7 @@ ROOT_FOLDER=$(cd $(dirname $0); pwd)
 cd $CURRENT_FOLDER
 
 # SETUP logging (redirect stdout and stderr to a log file)
-readonly LOG_FILE="${CURRENT_FOLDER}/ibmcloud-deploy-webapp-to-cf.log"
+readonly LOG_FILE="${CURRENT_FOLDER}/ibmcloud-deploy-webapp-to-cfee.log"
 readonly ENV_ROOT_FILE="${ROOT_FOLDER}/scores/scores.local.root.env"
 ENV_SERVER_FILE="${ROOT_FOLDER}/scores/webapp/server/.env"
 source $ENV_ROOT_FILE
@@ -35,25 +37,21 @@ function _err() {
   echo "$(date +'%F %H:%M:%S') $@"
 }
 
-function ibmcloud_login() {
+function ibmcloud_login_and_set_cfee_env() {
 # Skip version check updates
   ibmcloud config --check-version=false
 
   # Login to Cloud
   _out 1. Login to IBM Cloud
   _out
-  ibmcloud login -u $IBMCLOUD_USER_ID -apikey $IBMCLOUD_CLI_DEVOPS_PLATFORM_KEY -r $IBMCLOUD_REGION
-  
-  # Set target for Cloud Foundry Apps and Resource Groups
-  _out   _set -o $IBMCLOUD_CF_ORGANIZATION_NAME
-  ibmcloud target -o $IBMCLOUD_CF_ORGANIZATION_NAME
 
-  _out   _create -s $IBMCLOUD_CF_SPACE_NAME
-  ibmcloud cf create-space $IBMCLOUD_CF_SPACE_NAME
+  _out _set USER: $IBMCLOUD_USER_ID REGION: $IBMCLOUD_CFEE_CONTAINER_REGION
+  ibmcloud login -u $IBMCLOUD_USER_ID -apikey $IBMCLOUD_CLI_DEVOPS_PLATFORM_KEY -r $IBMCLOUD_CFEE_CONTAINER_REGION
 
-  _out   _set -s $IBMCLOUD_CF_SPACE_NAME -g $IBMCLOUD_RESOURCE_GROUP
-  ibmcloud target -s $IBMCLOUD_CF_SPACE_NAME -g $IBMCLOUD_RESOURCE_GROUP
-  
+  #ibmcloud cs region-set $IBMCLOUD_CFEE_CONTAINER_REGION
+  _out   _set CFEE-API: $IBMCLOUD_CFEE_API_ENDPOINT CFEE-ORG: $IBMCLOUD_CFEE_ORGANIZATION CFEE-SPACE: $IBMCLOUD_CEFF_SPACE 
+  ibmcloud target --cf-api $IBMCLOUD_CFEE_API_ENDPOINT -o $IBMCLOUD_CFEE_ORGANIZATION -s $IBMCLOUD_CEFF_SPACE
+    
   # Show the result of login to stdout
   ibmcloud target
   _out
@@ -142,13 +140,13 @@ function deployClientToServer() {
 
   _out _show existing apps
   ibmcloud cf apps
-
-  _out _push "${IBMCLOUD_CF_APP_WEBAPP_NAME}"
-  ibmcloud cf push $IBMCLOUD_CF_APP_WEBAPP_NAME
+ 
+  _out _push PUSH APP TO CF ENTERPRISE ENVIRONMENT
+  pwd
+  ibmcloud cf push -f $IBMCLOUD_CFEE_WEBAPP_MANIFEST
 
   HIGHSCORE_CLOUD_FOUNDRY=$(ibmcloud cf r | awk '/$IBMCLOUD_CF_APP_WEBAPP_NAME*/' | awk '{print $2}')
   _out _application has been deployed "${HIGHSCORE_CLOUD_FOUNDRY}"
-  _out
   _out Deploy to CF end
   _out
 }
@@ -160,10 +158,9 @@ function endMessage() {
 }
 
 # Main tasks
-ibmcloud_login
+ibmcloud_login_and_set_cfee_env
 setEnv
 prepareVUEClientCode
 createClient
 deployClientToServer
 endMessage
-

@@ -43,6 +43,8 @@ scores/webapp/client/src/App.vue
 scores/webapp/client/src/components/scoreMain.vue
 scores/webapp/deploy_apps/*.log
 scores/scores.local.root.env
+#scores/webapp/deploy_apps/ibmcloud-deploy-webapp-to-cfee.sh
+scores/webapp/server/config/manifest.yml
 
 # icp-k8s  harald
 icp-k8s/hiscore-api/node_modules
@@ -77,3 +79,4 @@ game/.env
 # images
 images/~$architecture.pptx
 game/--.env--
+scores/webapp/server/.env
