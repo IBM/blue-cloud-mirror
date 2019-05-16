@@ -8,7 +8,7 @@
 
         <b-row v-show="gameIsRunning" no-gutters>
             <b-col class="action-container" lg="6" md="12">
-                <webcam/>
+               <webcam/>
             </b-col>
             <b-col lg="6" class="action-container">
                 <action-preview/>

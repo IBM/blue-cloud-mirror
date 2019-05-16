@@ -5,8 +5,9 @@
             <div v-if="state=='intro'" class="font-size-1_25 m-5 text-left">
 
                 <div v-if="firstLevelCompleted">
-                    <div class="display-1">Level 2</div>
-                    <div class="display-1 ibm-plex-sans mb-3" style="margin-top: -1rem;">Poses</div>
+                    <div class="display-3">Level 2</div>
+                    <div class="display-3 ibm-plex-sans mb-3" style="margin-top: -1rem;">Poses</div>
+                    <webcam/>
                     Ok, it is time for the second level ! <span>&#128526;</span> <br>
                     Do the five poses as shown below.<br>
                     From left to right. As quickly as you can.<br><br>
@@ -33,9 +34,11 @@
 </template>
 
 <script>
+    import Webcam from "./WebCam";
     var value = false;
     export default {
         name: "controlpanelposes",
+        components: {Webcam},
         data() {
             return {
                 player: "",

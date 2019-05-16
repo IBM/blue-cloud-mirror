@@ -3,8 +3,9 @@
         <div class="content d-flex justify-content-center align-items-center text-white">
 
             <div v-if="state=='intro'" class="font-size-1_25 m-5">
-                <div class="display-1">Level 1</div>
-                <div class="display-1 ibm-plex-sans mb-3" style="margin-top: -1rem;">Emotions</div>
+                <div class="display-3">Level 1</div>
+                <div class="display-3 ibm-plex-sans mb-3" style="margin-top: -1rem;">Emotions</div>
+                <webcam/>
                 Welcome <b>{{ player }}</b> &#x1F600;,<br>
                 show the five emotions as shown below.<br>
                 From left to right. As quickly as you can.<br><br>
@@ -24,11 +25,13 @@
 </template>
 
 <script>
+    import Webcam from "./WebCam";
     var inGame = false;
     var dontShow = false;
 
     export default {
         name: "controlpanelemotions",
+        components: {Webcam},
         data() {
             return {
                 player: "",

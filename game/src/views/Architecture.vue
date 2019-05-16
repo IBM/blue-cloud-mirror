@@ -9,7 +9,7 @@
         <b-button
           block
           v-on:click="onGetAccount"
-          style="background-color: #053c9f !important;border-color:#053c9f !important;"
+          style="background-color: black !important;border-color: black !important;"
         >Get free IBM Cloud Account</b-button>
        </b-col>
       <b-col>

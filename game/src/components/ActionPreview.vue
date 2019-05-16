@@ -4,7 +4,7 @@
             <div v-if="flash && $store.state.currentGame.lastResult == 'success'" class="flash success"></div>
             <div v-if="flash && $store.state.currentGame.lastResult == 'failed'" class="flash failed"></div>
         </transition>
-        <action-icon class="zindex" :type="$store.state.currentGame.currentAction.action"/>
+        <action-icon class="zindex icon" :type="$store.state.currentGame.currentAction.action"/>
         <div class="title zindex">{{$store.state.currentGame.currentAction.title}}</div>
 
     </div>
@@ -69,8 +69,25 @@
     }
 
     .title {
-        margin-top: -2rem;
+        margin-top: -5rem;
         font-size: 3rem;
+    }
+
+    .icon {
+        width: 90%;
+        padding: 5rem;
+        max-height: 800px;
+    }
+
+    @media (max-width: 992px) {
+        .icon {
+            height: 130%;
+            margin-top: -2rem;
+        }
+
+        .title {
+            margin-top: -6rem;
+        }
     }
 
     .zindex {
@@ -79,7 +96,7 @@
 
     @media (max-height: 900px) and (max-width: 1000px ) {
         .title {
-            margin-top: -3rem;
+            /*margin-top: -6rem;*/
             font-size: 2rem;
         }
     }

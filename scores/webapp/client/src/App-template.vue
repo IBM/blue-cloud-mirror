@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- Navigation -->
-    <b-navbar toggleable="md" type="dark" style="background-color: #053c9f !important;">
+    <b-navbar toggleable="md" type="dark" style="background-color: black !important;">
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
       <b-navbar-brand style="margin-right:40px">Blue Cloud Mirror - IBM Cloud Showcase</b-navbar-brand>
       <b-collapse is-nav id="nav_collapse">

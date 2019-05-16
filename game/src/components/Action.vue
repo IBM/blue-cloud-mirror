@@ -1,7 +1,8 @@
 <template>
     <div class="w-100 h-100 p-1 d-flex justify-content-center align-items-center text-white no-wrap font-size-0_75 flex-column overflow-hidden">
         <div :class="state">{{title}}</div>
-        <action-icon :type="icon" class="icon" :state="state"/>
+        <action-icon v-if="!capturedImage" :type="icon" class="icon" :state="state"/>
+        <div v-if="capturedImage" class="capture"><img :src="capturedImage"/></div>
     </div>
 </template>
 
@@ -11,13 +12,17 @@
     export default {
         name: "Action",
         components: {ActionIcon},
-        props: ['title', 'icon'],
+        props: ['title', 'icon', 'capture', 'level'],
         data() {
             return {
                 state: 'preview'
             }
         },
-        computed: {},
+        computed: {
+            capturedImage() {
+                return this.$store.state.currentGame[this.level].results[this.capture];
+            }
+        },
         methods: {
             setState(state) {
                 this.state = state;
@@ -27,6 +32,24 @@
 </script>
 
 <style scoped>
+
+    .capture {
+        overflow: hidden;
+        width: 12vw;
+        height: 12vw;
+        margin-top: 5px;
+        min-width: 80px;
+        min-height: 80px;
+        max-width: 115px;
+        max-height: 115px;
+    }
+    .capture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+
+    }
     .icon {
         width: 100%;
         height: 8vh;

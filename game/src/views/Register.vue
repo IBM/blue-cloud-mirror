@@ -69,7 +69,7 @@
       <center><b-button
           block 
           size="lg"
-          style="height:10%;width:30%;background-color: #053c9f !important;border-color:#053c9f !important;"
+          style="height:10%;width:30%;background-color: black !important;border-color:black !important;"
           v-on:click="onClickAnonymous"
         >Play anonymously</b-button>
       </center>

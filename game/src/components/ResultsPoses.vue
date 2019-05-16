@@ -2,31 +2,32 @@
     <div class="d-flex justify-content-center align-items-center">
         <b-row class="ml-1 mr-1 content">
             <b-col>
-                <action ref="capitulation" title="Capitulation" icon="capitulation"/>
+                <action ref="capitulation" title="Capitulation" level="poses" capture="imagePose1" icon="capitulation"/>
+            </b-col>
+            <div class="align-self-center arrow">
+                <img class="arrow" src="/arrow.svg">
+
+            </div>
+            <b-col>
+                <action ref="norightear" title="No Right Ear" level="poses" capture="imagePose2" icon="norightear"/>
             </b-col>
             <div class="align-self-center arrow">
                 <img class="arrow" src="/arrow.svg">
             </div>
             <b-col>
-                <action ref="norightear" title="No Right Ear" icon="norightear"/>
+                <action ref="dancer" title="Dancer" level="poses" capture="imagePose3" icon="dancer"/>
             </b-col>
             <div class="align-self-center arrow">
                 <img class="arrow" src="/arrow.svg">
             </div>
             <b-col>
-                <action ref="dancer" title="Dancer" icon="dancer"/>
+                <action ref="elbows" title="Elbows" level="poses" capture="imagePose4" icon="elbows"/>
             </b-col>
             <div class="align-self-center arrow">
                 <img class="arrow" src="/arrow.svg">
             </div>
             <b-col>
-                <action ref="elbows" title="Elbows" icon="elbows"/>
-            </b-col>
-            <div class="align-self-center arrow">
-                <img class="arrow" src="/arrow.svg">
-            </div>
-            <b-col>
-                <action ref="winner" title="Winner" icon="winner"/>
+                <action ref="winner" title="Winner" level="poses" capture="imagePose5" icon="winner"/>
             </b-col>
         </b-row>
     </div>
@@ -90,16 +91,16 @@
         methods: {
 
             selectNextPose() {
-                let action = this.currentAction = this.poses[this.index++];
-                let icon = this.currentIcon = this.$refs[action];
-                icon.setState('active');
-                this.$store.commit('updateCurrentAction', {action: action, title: icon.title});
-
-                this.nextRecognitionTime = Date.now() + this.$store.state.posesRecognition.delay;
-
-                let delay = Math.floor(this.$store.state.posesRecognition.duration / 5) * 1000;
-
                 if (this.index < this.poses.length) {
+                    let action = this.currentAction = this.poses[this.index++];
+                    let icon = this.currentIcon = this.$refs[action];
+                    icon.setState('active');
+                    this.$store.commit('updateCurrentAction', {action: action, title: icon.title});
+
+                    this.nextRecognitionTime = Date.now() + this.$store.state.posesRecognition.delay;
+
+                    let delay = Math.floor(this.$store.state.time / (6 - this.index)) * 1000;
+
                     this.timeOut = setTimeout(() => {
                         icon.setState('failed');
                         this.$store.commit('updateLastResult', 'failed');

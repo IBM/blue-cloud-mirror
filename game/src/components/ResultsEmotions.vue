@@ -1,32 +1,32 @@
 <template>
-    <div class="d-flex justify-content-center align-items-center">
+    <div class="d-flex justify-content-center align-items-center text-white">
         <b-row class="ml-1 mr-1 content">
             <b-col>
-                <action ref="happy" title="Happy" icon="happy"/>
+                <action ref="happy" title="Happy" level="emotions" capture="imageHappy" icon="happy"/>
             </b-col>
             <div class="align-self-center arrow">
                 <img class="arrow" src="/arrow.svg">
             </div>
             <b-col>
-                <action ref="angry" title="Angry" icon="angry"/>
+                <action ref="angry" title="Angry" level="emotions" capture="imageAngry" icon="angry"/>
             </b-col>
             <div class="align-self-center arrow">
                 <img class="arrow" src="/arrow.svg">
             </div>
             <b-col>
-                <action ref="fear" title="Fear" icon="fear"/>
+                <action ref="fear" title="Fear" level="emotions" capture="imageFear" icon="fear"/>
             </b-col>
             <div class="align-self-center arrow">
                 <img class="arrow" src="/arrow.svg">
             </div>
             <b-col>
-                <action ref="sad" title="Sad" icon="sad"/>
+                <action ref="sad" title="Sad" level="emotions" capture="imageSad" icon="sad"/>
             </b-col>
             <div class="align-self-center arrow">
                 <img class="arrow" src="/arrow.svg">
             </div>
             <b-col>
-                <action ref="surprise" title="Surprise" icon="surprise"/>
+                <action ref="surprise" title="Surprise" level="emotions" capture="imageSurprise" icon="surprise"/>
             </b-col>
         </b-row>
     </div>
@@ -100,16 +100,16 @@
         methods: {
 
             selectNextEmotion() {
-                let action = this.currentAction = this.emotions[this.index++];
-                let icon = this.$refs[action];
-                icon.setState('active');
-                this.$store.commit('updateCurrentAction', {action: action, title: icon.title});
-
-                this.nextRecognitionTime = Date.now() + this.$store.state.emotionRecognition.delay;
-
-                let delay = Math.floor(this.$store.state.emotionRecognition.duration / 5) * 1000;
-
                 if (this.index < this.emotions.length) {
+                    let action = this.currentAction = this.emotions[this.index++];
+                    let icon = this.$refs[action];
+                    icon.setState('active');
+                    this.$store.commit('updateCurrentAction', {action: action, title: icon.title});
+
+                    this.nextRecognitionTime = Date.now() + this.$store.state.emotionRecognition.delay;
+
+                    let delay = Math.floor(this.$store.state.time / (6 - this.index)) * 1000;
+
                     this.timeOut = setTimeout(() => {
                         icon.setState('failed');
                         this.$store.commit('updateLastResult', 'failed');
@@ -117,8 +117,6 @@
                     }, delay);
                 }
             }
-
-
         }
     };
 </script>

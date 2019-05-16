@@ -1,24 +1,31 @@
 <style scoped>
     .notfound {
-        color: #383d41;
-        background-color: #e2e3e5;
-        border-color: #d6d8db;
+        color: black;
+        text-decoration: line-through;
         margin-right: 10px;
-        border-radius: 0.25rem;
     }
 
     .found {
-        color: #155724;
+        color: black;
         margin-right: 10px;
-        background-color: #d4edda;
-        border-color: #c3e6cb;
-        border-radius: 0.25rem;
+    }
+
+    .found span:before {
+        content: "<";
+    }
+
+    .found span:after {
+        content: ">";
     }
 
     .face {
         padding-bottom: 2px;
         padding-left: 2px;
         padding-right: 2px;
+        width: 100%;
+    }
+
+    .face img {
         width: 100%;
     }
 
@@ -56,6 +63,7 @@
     <b-container>
         <div class="results">
             <!-- MAIN RESULT -->
+            <br>
             <b-row>
                 <b-col>
                     <h2 style="margin-top:1px;margin-bottom:25px">Results of your game {{ player }}</h2>
@@ -64,7 +72,7 @@
             <b-row v-if="bothLevelsCompleted == false">
                 <b-col>
                     <h2
-                            style="margin-top:1px;margin-bottom:5px;color:darkgreen !important"
+                            style="margin-top:1px;margin-bottom:5px;color:#FE767C !important"
                     >Both levels need to be completed first !</h2>
                 </b-col>
             </b-row>
@@ -85,7 +93,7 @@
                     <b-button
                             block
                             v-on:click="onStartNewGame"
-                            style="margin-right:10px;background-color: #053c9f;border-color:#053c9f;"
+                            style="margin-right:10px;background-color: black;border-color:#053c9f;"
                     >Start new game
                     </b-button>
                 </b-col>
@@ -170,51 +178,52 @@
                             <div style="display: table-row;">
                                 <div style="max-width:100px;display: table-cell;vertical-align: top;">
                                     <div :class="happyClass">
-                                        <div style="text-align:center">Happy</div>
+                                        <div style="text-align:center"><span>Happy</span></div>
                                         <img
                                                 class="face"
                                                 id="facehappy"
                                                 ref="facehappy"
-                                                :src="otherDomainUrl('white.jpeg')"
+                                                :src="otherDomainUrl('failed.svg')"
                                         >
                                     </div>
                                 </div>
                                 <div style="max-width:100px;display: table-cell;vertical-align: top;">
                                     <div :class="angryClass">
-                                        <div style="text-align:center">Angry</div>
+                                        <div style="text-align:center"><span>Angry</span></div>
                                         <img
                                                 class="face"
                                                 id="faceangry"
                                                 ref="faceangry"
-                                                :src="otherDomainUrl('white.jpeg')"
+                                                :src="otherDomainUrl('failed.svg')"
                                         >
                                     </div>
                                 </div>
                                 <div style="max-width:100px;display: table-cell;vertical-align: top;">
                                     <div :class="fearClass">
-                                        <div style="text-align:center">Fear</div>
+                                        <div style="text-align:center"><span>Fear</span></div>
                                         <img
                                                 class="face"
                                                 id="facefear"
                                                 ref="facefear"
-                                                :src="otherDomainUrl('white.jpeg')"
+                                                :src="otherDomainUrl('failed.svg')"
                                         >
                                     </div>
                                 </div>
                                 <div style="max-width:100px;display: table-cell;vertical-align: top;">
                                     <div :class="sadClass">
-                                        <div style="text-align:center">Sad</div>
-                                        <img class="face" id="facesad" ref="facesad" :src="otherDomainUrl('white.jpeg')">
+                                        <div style="text-align:center">
+                                            <span>Sad</span></div>
+                                        <img class="face" id="facesad" ref="facesad" :src="otherDomainUrl('failed.svg')">
                                     </div>
                                 </div>
                                 <div style="max-width:100px;display: table-cell;vertical-align: top;">
                                     <div :class="surpriseClass">
-                                        <div style="text-align:center">Surprise</div>
+                                        <div style="text-align:center"><span>Surprise</span></div>
                                         <img
                                                 class="face"
                                                 id="facesurprise"
                                                 ref="facesurprise"
-                                                :src="otherDomainUrl('white.jpeg')"
+                                                :src="otherDomainUrl('failed.svg')"
                                         >
                                     </div>
                                 </div>
@@ -244,32 +253,32 @@
                             <div style="display: table-row;">
                                 <div style="max-width:100px;display: table-cell;vertical-align: top;">
                                     <div :class="pose1Class">
-                                        <div style="text-align:center">Capitulation</div>
-                                        <img class="face" id="pose1" ref="pose1" :src="otherDomainUrl('white.jpeg')">
+                                        <div style="text-align:center"><span>Capitulation</span></div>
+                                        <img class="face" id="pose1" ref="pose1" :src="otherDomainUrl('failed.svg')">
                                     </div>
                                 </div>
                                 <div style="max-width:100px;display: table-cell;vertical-align: top;">
                                     <div :class="pose2Class">
-                                        <div style="text-align:center">No Right Ear</div>
-                                        <img class="face" id="pose2" ref="pose2" :src="otherDomainUrl('white.jpeg')">
+                                        <div style="text-align:center"><span>No Right Ear</span></div>
+                                        <img class="face" id="pose2" ref="pose2" :src="otherDomainUrl('failed.svg')">
                                     </div>
                                 </div>
                                 <div style="max-width:100px;display: table-cell;vertical-align: top;">
                                     <div :class="pose3Class">
-                                        <div style="text-align:center">Dancer</div>
-                                        <img class="face" id="pose3" ref="pose3" :src="otherDomainUrl('white.jpeg')">
+                                        <div style="text-align:center"><span>Dancer</span></div>
+                                        <img class="face" id="pose3" ref="pose3" :src="otherDomainUrl('failed.svg')">
                                     </div>
                                 </div>
                                 <div style="max-width:100px;display: table-cell;vertical-align: top;">
                                     <div :class="pose4Class">
-                                        <div style="text-align:center">Elbows</div>
-                                        <img class="face" id="pose4" ref="pose4" :src="otherDomainUrl('white.jpeg')">
+                                        <div style="text-align:center"><span>Elbows</span></div>
+                                        <img class="face" id="pose4" ref="pose4" :src="otherDomainUrl('failed.svg')">
                                     </div>
                                 </div>
                                 <div style="max-width:100px;display: table-cell;vertical-align: top;">
                                     <div :class="pose5Class">
-                                        <div style="text-align:center">Winner</div>
-                                        <img class="face" id="pose5" ref="pose5" :src="otherDomainUrl('white.jpeg')">
+                                        <div style="text-align:center"><span>Winner</span></div>
+                                        <img class="face" id="pose5" ref="pose5" :src="otherDomainUrl('failed.svg')">
                                     </div>
                                 </div>
                             </div>
