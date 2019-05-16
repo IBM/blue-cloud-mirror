@@ -42,14 +42,14 @@
         min-height: 80px;
         max-width: 115px;
         max-height: 115px;
+
     }
     .capture img {
         width: 100%;
-        height: 100%;
+        height: 120px;
         object-fit: cover;
-
-
     }
+
     .icon {
         width: 100%;
         height: 8vh;

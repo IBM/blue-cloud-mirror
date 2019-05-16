@@ -218,6 +218,8 @@ export default new Vuex.Store({
 
             state.currentGame.emotions.ongoing = true;
             state.currentGame.emotions.startDate = payload;
+
+            state.time = state.emotionRecognition.duration;
         },
         successHappy(state, payload) {
             state.currentGame.emotions.results.happy = true;
@@ -325,6 +327,7 @@ export default new Vuex.Store({
             state.currentGame.poses.results.imagePose4 = "";
             state.currentGame.poses.results.imagePose5 = "";
             state.currentGame.poses.currentPose = POSE_POSE1;
+            state.time = state.posesRecognition.duration;
         },
         moveToNextPose(state) {
             state.currentGame.poses.lastSuccess = new Date().getTime();

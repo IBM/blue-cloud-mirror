@@ -2,12 +2,12 @@
     <div v-show="state!='game'">
         <div class="content d-flex justify-content-center align-items-center text-white">
 
-            <div v-if="state=='intro'" class="font-size-1_25 m-5 text-left">
+            <div v-if="state=='intro'" class="font-size-1 m-5 text-left">
 
                 <div v-if="firstLevelCompleted">
-                    <div class="display-3">Level 2</div>
-                    <div class="display-3 ibm-plex-sans mb-3" style="margin-top: -1rem;">Poses</div>
-                    <webcam/>
+                    <div class="display-4">Level 2</div>
+                    <div class="display-4 ibm-plex-sans mb-3" style="margin-top: -1rem;">Poses</div>
+                    <webcam class="webcam"/>
                     Ok, it is time for the second level ! <span>&#128526;</span> <br>
                     Do the five poses as shown below.<br>
                     From left to right. As quickly as you can.<br><br>
@@ -105,5 +105,10 @@
     .content {
         height: 80vh;
         background-color: black;
+    }
+
+    .webcam {
+        margin-bottom: 1rem;
+        max-height: 350px;
     }
 </style>

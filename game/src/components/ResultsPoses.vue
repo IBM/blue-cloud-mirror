@@ -100,6 +100,7 @@
                     this.nextRecognitionTime = Date.now() + this.$store.state.posesRecognition.delay;
 
                     let delay = Math.floor(this.$store.state.time / (6 - this.index)) * 1000;
+                    if (delay <= 0) delay = Math.floor(this.$store.state.posesRecognition.duration / 5);
 
                     this.timeOut = setTimeout(() => {
                         icon.setState('failed');
