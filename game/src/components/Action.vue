@@ -38,16 +38,14 @@
         width: 12vw;
         height: 12vw;
         margin-top: 5px;
-        min-width: 80px;
-        min-height: 80px;
+        min-width: 40px;
+        min-height: 40px;
         max-width: 115px;
         max-height: 115px;
 
     }
-    .capture img {
+    img {
         width: 100%;
-        height: 120px;
-        object-fit: cover;
     }
 
     .icon {

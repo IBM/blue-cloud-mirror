@@ -66,7 +66,6 @@
     .results {
         height: calc(20vh - 3rem);
         background-color: black;
-        overflow: hidden;
     }
 
     .action-container {

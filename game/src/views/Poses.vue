@@ -19,7 +19,7 @@
         <level-label v-show="gameIsRunning" level="2"/>
         <time-label v-show="gameIsRunning"/>
 
-        <results-poses class="results"/>
+        <results-poses class="results" style="z-index: 10;"/>
     </div>
 </template>
 
@@ -136,7 +136,6 @@
     .results {
         height: calc(20vh - 3rem);
         background-color: black;
-        overflow: hidden;
     }
 
     .action-container {
