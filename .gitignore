@@ -1,6 +1,7 @@
 node_modules
 .vscode
 .DS_Store
+.idea
 package-lock.json
 emotion-recognition-application.json
 local.env

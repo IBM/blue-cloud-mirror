@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <b-container class="home">
     <h1 style="margin-top:15px;margin-bottom:25px"><p>Welcome to our <b>#BlueCloudMirror</b> game</p></h1>
 
     <div style="margin-top:15px;">
@@ -10,7 +10,7 @@
     <div style="margin-top:15px;">
     <b-button 
        size="lg" 
-       style="height:10%;width:30%;background-color: #053c9f !important;border-color:#053c9f !important;"
+       style="height:10%;width:30%;background-color: black !important;border-color:black !important;"
        v-on:click="onStartNewGame"
     >Start game</b-button>
     </div>
@@ -188,12 +188,12 @@
           block
           v-on:click="onLearnMore"
           size="lg" 
-          style="height:10%;width:30%;background-color: #FFFFFF !important;border-color:##030303 !important;"     
+          style="height:10%;width:30%;background-color: #FFFFFF !important;border-color:#030303 !important;"
         ><font color="black">Learn more about the architecture</font></b-button>
         </center>
       </b-col>
     </b-container>
-    </div>
+    </b-container>
 </template>
 
 <script>

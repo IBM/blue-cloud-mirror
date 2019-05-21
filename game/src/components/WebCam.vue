@@ -1,86 +1,100 @@
 <template>
-  <b-row>
-    <b-col>
-      <div>
-        <div style="position: relative;display: table-cell;vertical-align: top;">
-            <video
-          ref="video"
-          id="video"
-          v-on:play="onPlay"
-          :width="this.$store.state.webcam.width"
-          :height="this.$store.state.webcam.height"
-          muted
-          playsinline style=" -moz-transform: scaleX(-1);
+    <div ref="container" class="w-100 h-100 video-container">
+        <video
+                ref="video"
+                id="video"
+                v-on:play="onPlay"
+                muted
+                playsinline
+                width="101%"
+                height="100%"
+                style=" -moz-transform: scaleX(-1);
             -o-transform: scaleX(-1);
             -webkit-transform: scaleX(-1);
             transform: scaleX(-1);
             "
         ></video>
-        <canvas style="position: absolute;top: 0;left: 0;"
-          ref="videooverlaycanvas"
-          id="videooverlaycanvas"
-          :width="this.$store.state.webcam.width"
-          :height="this.$store.state.webcam.height"
-        ></canvas>       
-                  </div>    
         <canvas
-          ref="capturecanvas"
-          id="capturecanvas"
-          :width="this.$store.state.webcam.width"
-          :height="this.$store.state.webcam.height"
+                ref="capturecanvas"
+                id="capturecanvas"
+                :width="this.$store.state.webcam.width"
+                :height="this.$store.state.webcam.height"
         ></canvas>
-      </div>
-    </b-col>
-  </b-row>
+    </div>
+
 </template>
 
 <script>
-export default {
-  name: "webcam",
-  components: {
-  },
-  data() {
-    return { 
+    export default {
+        name: "webcam",
+        components: {},
+        data() {
+            return {};
+        },
+        computed: {},
+        mounted() {
+            this.video = this.$refs.video;
+
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({video: {}})
+                    .then(stream => {
+                        this.video.srcObject = stream;
+                        this.video.play();
+                    })
+                    .catch((e)=> {
+                        console.log(e);
+                    });
+
+
+            }
+            window.addEventListener('resize', this.onResize);
+        },
+        destroyed() {
+            window.removeEventListener('resize', this.onResize);
+        },
+        methods: {
+            onResize() {
+                this.updateVideoDimensions();
+            },
+            updateVideoDimensions() {
+                this.$store.commit('updateVideoDimensions', {width: this.video.clientWidth, height: this.video.clientHeight});
+            },
+            onPlay(event) {
+                if (this.video.paused || this.video.ended)
+                    return setTimeout(() => this.onPlay());
+
+                this.capturecanvas = this.$refs.capturecanvas;
+                let capturecanvas = this.capturecanvas
+                    .getContext("2d")
+                    .drawImage(
+                        this.video,
+                        0,
+                        0,
+                        520,
+                        440
+                    );
+
+                if ((this.$store.state.currentGame.emotions.ongoing == true) || (this.$store.state.currentGame.poses.ongoing == true)) {
+                    this.$store.commit("updateLastImage", this.capturecanvas.toDataURL("image/png"));
+                }
+
+                setTimeout(() => this.onPlay(), this.$store.state.webcam.delay);
+            }
+        }
     };
-  },
-  mounted() {
-    this.video = this.$refs.video;
-    this.videooverlaycanvas = this.$refs.videooverlaycanvas;
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia({ video: {} }).then(stream => {
-        this.video.srcObject = stream;
-        this.video.play();
-      });
-    }
-  },
-  methods: {
-    onPlay(event) {
-      if (this.video.paused || this.video.ended)
-        return setTimeout(() => this.onPlay());
-
-      this.capturecanvas = this.$refs.capturecanvas;
-      let capturecanvas = this.capturecanvas
-        .getContext("2d")
-        .drawImage(
-          this.video,
-          0,
-          0,
-          this.$store.state.webcam.width,
-          this.$store.state.webcam.height
-        );
-
-      if ((this.$store.state.currentGame.emotions.ongoing == true) || (this.$store.state.currentGame.poses.ongoing == true)) {
-        this.$store.commit("updateLastImage", this.capturecanvas.toDataURL("image/png"));
-      }
-
-      setTimeout(() => this.onPlay(), this.$store.state.webcam.delay);
-    }
-  }
-};
 </script>
 
 <style scoped>
-#capturecanvas {
-  display: none;
-}
+    video {
+        object-fit: cover;
+    }
+
+    .video-container {
+        overflow: hidden;
+        background: black;
+    }
+
+    #capturecanvas {
+        display: none;
+    }
 </style>

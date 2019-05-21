@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans');
+
+html {
+    background-color: #0261FF;
+}
+
+body {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.text-shadow {
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+.ibm-plex-sans, h1, button {
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.font-size-0_5 {
+     font-size: 0.5rem;
+ }
+
+.font-size-0_75 {
+    font-size: 0.75rem;
+}
+
+.font-size-1 {
+    font-size: 1rem;
+}
+
+.font-size-2 {
+    font-size: 2rem;
+}
+
+.font-size-3 {
+    font-size: 3rem;
+}
+
+.font-size-4 {
+    font-size: 4rem;
+}
+
+.font-size-5 {
+    font-size: 5rem;
+}
+
+.font-size-1_5 {
+    font-size: 1.5rem;
+}
+
+.font-size-2_5 {
+    font-size: 2.5rem;
+}
+
+.font-size-3_5 {
+    font-size: 3.5rem;
+}
+
+.font-size-4_5 {
+    font-size: 4.5rem;
+}
+
+.font-size-5_5 {
+    font-size: 5.5rem;
+}
+
+
+.font-size-1_25 {
+    font-size: 1.25rem;
+}
+
+.font-size-2_25 {
+    font-size: 2.25rem;
+}
+
+.font-size-3_25 {
+    font-size: 3.25rem;
+}
+
+.font-size-4_25 {
+    font-size: 4.25rem;
+}
+
+.font-size-5_25 {
+    font-size: 5.25rem;
+}
+
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+
+.flash-enter-active, .flash-leave-active {
+    transition: opacity .25s;
+}
+
+.flash-leave-to {
+    opacity: 0;
+}
+
+.flash-enter {
+    opacity: 0.3;
+}
+
+
+
+
+

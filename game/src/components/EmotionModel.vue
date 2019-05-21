@@ -34,7 +34,7 @@ export default {
           return state.faceRecognition.lastResult;
         },
         val => {
-          //console.log("state.faceRecognition.lastResult changed");
+          console.log("state.faceRecognition.lastResult changed");
 
           if (this.$store.state.emotionRecognition.modelLoaded == true) {
             if (this.$store.state.currentGame.emotions.ongoing == true) {

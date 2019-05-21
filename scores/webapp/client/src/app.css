@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans');
+
+html {
+    background-color: #0261FF;
+}
+
+body {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.ibm-plex-sans, h1, button {
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+
+
+
