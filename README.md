@@ -16,7 +16,7 @@ The game utilizes various key IBM Cloud technologies to demonstrate the value of
 * Users service: Implemented via IBM Cloud Private to avoid storing personal data in a public cloud
 * Scores service: Implemented via Cloud Foundry Enterprise Edition to highlight easy changes via the ‘cf push experience’ (for example theme adoptions for different conferences)
 
-**Note:** In order to allow developers to easily set up the game with an IBM Cloud Lite account, this project contains documentation how to use Cloud Foundry Publication Applications rather than Cloud Foundry Enterprise Environment and how to use Minikube rather than IBM Cloud Private.
+**Note:** In order to allow developers to easily set up the game with an IBM Cloud Lite account, this project contains documentation how to use Cloud Foundry Public applications rather than Cloud Foundry Enterprise Environment and how to use Minikube rather than IBM Cloud Private.
 
 The following diagram shows the key components that are used in this project. More diagrams, including a diagram showing IBM Cloud Private and Cloud Foundry Enterprise Environment, can be found in the [images](https://github.com/IBM/blue-cloud-mirror/tree/master/images) folder.
 
