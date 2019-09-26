@@ -73,11 +73,18 @@ $ scripts/twitter-deploy-functions.sh
 
 To deploy the web application to Cloud Foundry (as public application), invoke the following command:
 
-```
-$ scripts/game-cloud-foundry.sh
+```sh
+$ scripts/game-deploy-cloud-foundry.sh
 ```
 
-The URL to launch the application (e.g. https://emotions-demo.mybluemix.net) will be displayed as output of the script.
+The URL to launch the application (e.g. https://blue-cloud-mirror.mybluemix.net) will be displayed as output of the script.
+
+_Note:_ If you get the following error in the `scripts/game-deploy-cloud-foundry.log` you have to change the `hostname` in the `game/manifest.yml` file to a unique name for example `blue-cloud-mirror-myname`.
+```sh
+FAILED
+Server error, status code: 400, error code: 210003, message: The host is taken: blue-cloud-mirror
+```
+
 
 ### Option 2b: Deployment as Serverless Application
 
