@@ -75,6 +75,10 @@ $ yarn install
 $ yarn run serve
 ```
 
+or 
+
+[![Deploy to IBM Cloud](images/deploytoibmcloud.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/IBM/blue-cloud-mirror.git&branch=master)
+
 The full setup includes IBM Cloud Functions, Cloud Foundry and an on-premises environment. Please refer to the instructions of the three main components:
 
 * [Game](game/README.md): Web application hosted on the IBM Cloud

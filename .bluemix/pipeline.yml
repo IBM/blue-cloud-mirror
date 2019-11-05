@@ -1,0 +1,72 @@
+--- 
+stages: 
+  - name: Build
+    inputs: 
+      - type: git
+        branch: master
+    triggers: 
+      - type: commit
+    jobs: 
+      - name: Build
+        type: builder
+  - name: Deploy
+    inputs: 
+      - type: job
+        stage: Build
+        job: Build
+    triggers: 
+      - type: stage
+    jobs: 
+      - name: dev
+        type: deployer
+        script: |-
+            #!/bin/bash
+            # https://cloud.ibm.com/docs/services/ContinuousDelivery?topic=ContinuousDelivery-deliverypipeline_environment
+            echo "Show API"
+            echo "${CF_TARGET_URL}"
+            echo "Show CF ORG"
+            echo "${CF_ORG}"
+            echo "Show CF SPACE"
+            echo "${CF_SPACE}"
+            echo "Show CF APP"
+            echo "${CF_APP}-${current_time}" 
+            
+            echo "Show api"
+
+            cf api
+            cf api "${CF_TARGET_URL}"
+            cf target -o "${CF_ORG}" -s "${CF_SPACE}"
+
+            cd game
+
+            curl -o- -L https://yarnpkg.com/install.sh | bash
+            export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+            yarn install
+            yarn build
+
+            ls
+
+            cp ../game/Staticfile ../game/dist/Staticfile
+            cp ../game/manifest.yml ../game/dist/manifest.yml
+            cd ../game/dist
+
+            ls 
+            
+            echo "${CF_TARGET_URL}"
+            echo "${CF_ORG}"
+            echo "${CF_SPACE}"
+
+            cf api
+            cf api "${CF_TARGET_URL}"
+            cf target -o "${CF_ORG}" -s "${CF_SPACE}"
+            cf push "${CF_APP}" --hostname "${CF_APP}"
+
+            # View logs
+            cf logs "${CF_APP}" --recent
+
+        target:
+          region_id: ${CF_REGION_ID}
+          organization: ${CF_ORGANIZATION}
+          space: ${CF_SPACE}
+          application: ${CF_APP}
+          api_key: ${API_KEY}
