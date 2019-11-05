@@ -4,6 +4,11 @@ This project contains a game where players need to show five specific emotions a
 
 [Play the Game.](https://blue-cloud-mirror.mybluemix.net/)
 
+and
+
+Fast start [![Deploy to IBM Cloud](images/deploytoibmcloud.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/IBM/blue-cloud-mirror.git&branch=master)
+_Note:_ You need an [IBM Cloud account](https://ibm.biz/nheidloff)
+
 Here is an example of a successful game:
 
 ![alt text](images/game-results-900.jpeg "game results")
