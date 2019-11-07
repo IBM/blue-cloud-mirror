@@ -2,12 +2,15 @@
 
 This project contains a game where players need to show five specific emotions and do five specific poses in two levels. The fastest player wins. The game uses various key cloud technologies to demonstrate the value of a diverse, interconnected system, with both public and private cloud environments.
 
-[Play the Game.](https://blue-cloud-mirror.mybluemix.net/)
+**[Play the Game.](https://blue-cloud-mirror.mybluemix.net/)**
 
 and
 
-Fast start [![Deploy to IBM Cloud](images/deploytoibmcloud.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/IBM/blue-cloud-mirror.git&branch=master)
-_Note:_ You need an [IBM Cloud account](https://ibm.biz/nheidloff)
+the fast start with 
+[![Deployto IBM Cloud](images/deploytoibmcloud.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/IBM/blue-cloud-mirror.git&branch=master) 
+to run your own game instance on IBM Cloud.
+
+_Note:_ You need an [IBM Cloud account](https://ibm.biz/nheidloff) and ask for a [IBM Cloud trial feature code](https://cloud.ibm.com/docs/account?topic=account-codes).
 
 Here is an example of a successful game:
 
