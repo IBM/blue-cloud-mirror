@@ -8,7 +8,7 @@ and
 
 the fast start with 
 [![Deployto IBM Cloud](images/deploytoibmcloud.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/IBM/blue-cloud-mirror.git&branch=master) 
-to run your own game instance on IBM Cloud. [Here is a short how to video on YouTube](https://youtu.be/OJwqG5V75Ns)
+to run your own game instance on IBM Cloud. [Here is a short  "how to" video (4 min) on YouTube](https://youtu.be/OJwqG5V75Ns)
 
 _Note:_ You need an [IBM Cloud account](https://ibm.biz/nheidloff) and ask for a [IBM Cloud trial feature code](https://cloud.ibm.com/docs/account?topic=account-codes).
 
