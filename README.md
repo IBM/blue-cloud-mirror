@@ -1,8 +1,10 @@
-# Blue Cloud Mirror - IBM Cloud Technology Showcase
+# Blue Cloud Mirror - IBM Cloud Technology Showcase 
+
+_Note:_ The project is currently not maintained
 
 This project contains a game where players need to show five specific emotions and do five specific poses in two levels. The fastest player wins. The game uses various key cloud technologies to demonstrate the value of a diverse, interconnected system, with both public and private cloud environments.
 
-**[Play the Game.](https://blue-cloud-mirror.mybluemix.net/)**
+**[Play the Game.](https://blue-cloud-mirror.mybluemix.net/)** Note: The game is currently not active.
 
 and
 
